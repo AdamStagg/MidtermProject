@@ -1,9 +1,8 @@
 Coding Standards and Best Practices
 
 Agreeing Members:
-Person McPerson 
-Person O’Person 
-Person VonPerson
+Adam Stagg
+Alexander Morales
 
 Purpose
 
@@ -18,10 +17,14 @@ All team members are always expected to follow the coding standards and best pra
 ** Commenting standards **
 
 	File header expectation
-		Example:
+		Example: FileHeaderExample.cs
+
+		Capital letters and camel cased.		
 
 	Method heading expectation
-		Example:
+		Example: CalculateVelocity()
+
+		Camel cased, first letter capital on public methods, lowercase on private methods
 
 	Code block expectation
 		Example:
@@ -40,43 +43,85 @@ All team members are always expected to follow the coding standards and best pra
 		GameObject temp;
 
 	Capitalization expectation
-		Example:
+		Example: public int NumOfPlayers
+		Example: private int numOfPlayers
+		Example: void DoWork(int _numOfPlayers)
 		
-	Standard Prefixing 
-		Example:
+	Camel cased on everything, public is started with a capital, private is lower cased on the first word. Parameters are camel cased, starting with an underscore
 		
 	Abbreviation use 
-		Example:
+		Example: int noOfPlayers
+		Example: int nPlayers
+		
+		Abbreviations are fine for common / easy to understand words
 		
 ** Layout Conventions **	
 
 	Indenting standard
 		Example:
-		
+	class Calculator
+		void Calculate()
+			<calculate code>
+	
+	Every time you go into a new scope, it indents again
+
 	Curly braces ( {} ) format
 		Example:
+
+		void Calculate() 
+		{
+			<calculate code>
+		}
 		
 	Blank line expectation
 		Example:
-		
-	Spacing around operators
-		Example:
 
-	Maximum characters per line
+		int MyNum
+		float MyFloat
+
+		void DoThings
+		...
+		}		
+		void DoStuff
+		...
+		}
+
+		At least one line between members / methods 	
+
+	Spacing around operators
+		Example: return a + b;
+
+		Spaces between variables and operators
+
+	Maximum characters per line 
+		If a line goes off the screen, split it up into multiple lines
 		
 	Maximum nested conditions 
-		
+		No limit as long as it does not overflow off the screen	
+	
 	Maximum lines per method
-		
+		No limits, just make comments for large blocks of code		
+	
 	Maximum lines per file
+		No limits
 
 	#region usage
-		Example:
+		
+	Use regions for large chunks of code that are not necessary to be seen at all times, such as math heavy code. 
 		
 ** Programming Practices **
 
 	Static values (hardcoded numbers. Const variables, and #defines)
+	
+	Prefer not to hard code, unless obvious.
+	Const anything that doesn't need to be changed in runtime
+	Defines should have a clear name and purpose, easily accessible at the top of a file
 
 	Commenting out code
 
+	If commented code is left in, put a comment at the top explaining what the code does, and why it is commented out
+
 	DRY practices (“Don’t Repeat Yourself")
+	
+	If using code more than twice, extract into a method. Repeating once is fine
+
