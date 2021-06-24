@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class RayCaster : MonoBehaviour
+[Serializable]
+public class RayCaster : MonoBehaviour, IRandomizable
 {
-
     [SerializeField] float rayCastLength;
-    [SerializeField] float numRayCast;
+
+    public Vector3 directionOne;
+    public Vector3 directionTwo;
 
     [SerializeField] Material hitMaterial;
     [SerializeField] Material initMaterial;
@@ -27,9 +30,11 @@ public class RayCaster : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            dir.x = i == 0 ? 1 : -1;
-            dir.y = 0;
-            dir.z = 0;
+            directionOne = collidableObj[0].GetComponent<Mover>().GetDirectionNormalized(transform.position);
+            directionTwo = collidableObj[1].GetComponent<Mover>().GetDirectionNormalized(transform.position);
+
+            dir = i == 0 ? directionOne : directionTwo;
+            
 
             if (Physics.Raycast(transform.position, dir, out RaycastHit hit, rayCastLength, layerToCheck, QueryTriggerInteraction.Collide))
             {
@@ -43,17 +48,25 @@ public class RayCaster : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
+        ReInitialize();
 
         for (int i = 0; i < 2; i++)
         {
-        Vector3 dir = Vector3.zero;
-            dir.x = i == 0 ? 1 : -1;
-            dir.y = 0;
-            dir.z = 0;
+            Vector3 dir = Vector3.zero;
+            dir = i == 0 ? directionOne : directionTwo;
+            dir.Normalize();
             Gizmos.DrawRay(transform.position, dir * rayCastLength);
         }
 
+    }
+
+    public void ReInitialize()
+    {
+        for (int i = 0; i < collidableObj.Length; i++)
+        {
+            Vector3 dir = collidableObj[i].GetComponent<Mover>().GetDirectionNormalized(transform.position);
+            collidableObj[i].transform.position = dir * 7;
+        }
     }
 }
 
