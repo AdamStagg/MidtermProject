@@ -23,6 +23,12 @@ public class RayCaster : MonoBehaviour, IRandomizable
     {
         Vector3 dir = Vector3.zero;
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Randomize();
+        }
+
+
         for (int i = 0; i < collidableObj.Length; i++)
         {
             collidableObj[i].GetComponent<MeshRenderer>().material = initMaterial;
@@ -66,7 +72,20 @@ public class RayCaster : MonoBehaviour, IRandomizable
         {
             Vector3 dir = collidableObj[i].GetComponent<Mover>().GetDirectionNormalized(transform.position);
             collidableObj[i].transform.position = dir * 7;
+            collidableObj[i].GetComponent<Mover>().SetDirection(dir);
         }
+    }
+
+    public void Randomize()
+    {
+        System.Random random = new System.Random((int)Time.time);
+        for (int i = 0; i < collidableObj.Length; i++)
+        {
+            collidableObj[i].transform.position = new Vector3(random.Next(-101, 101), random.Next(-101, 101), 0);
+            
+        }
+
+        ReInitialize();
     }
 }
 

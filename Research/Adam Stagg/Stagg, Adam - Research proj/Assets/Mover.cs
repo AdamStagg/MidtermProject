@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,5 +33,10 @@ public class Mover : MonoBehaviour
         vec = transform.position - other;
         vec.Normalize();
         return vec;
+    }
+
+    internal void SetDirection(Vector3 dir)
+    {
+        direction = dir;
     }
 }

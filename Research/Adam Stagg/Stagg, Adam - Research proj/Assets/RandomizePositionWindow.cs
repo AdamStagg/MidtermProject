@@ -5,8 +5,9 @@ using UnityEditor;
 
 public class RandomizePositionWindow : EditorWindow
 {
-    IRandomizable[] objs;
 
+
+    GameObject m_Observer;
 
     [MenuItem("Window/Randomize Positions of Objects")]
     static void OpenWindow()
@@ -19,9 +20,33 @@ public class RandomizePositionWindow : EditorWindow
         randomizePositionWindow.Show();
     }
 
-    private void OnGUI()
+    private void OnEnable()
     {
-         
+
+    }
+
+    public void OnGUI()
+    {
+        EditorGUILayout.Space();
+
+        m_Observer = EditorGUILayout.ObjectField("IRandomizable", m_Observer, typeof(GameObject), false) as GameObject;
         
+
+        if (GUILayout.Button("Randomize Objects"))
+        {
+            DoRandomize();
+        }
+    }
+
+
+    public void DoRandomize()
+    {
+        if (m_Observer != null)
+        {
+            m_Observer.GetComponent<IRandomizable>().Randomize();
+        } else
+        {
+            Debug.LogError("You must have an object in the Object Field");
+        }
     }
 }

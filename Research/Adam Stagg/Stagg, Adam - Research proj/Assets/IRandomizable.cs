@@ -1,4 +1,5 @@
 public interface IRandomizable
 {
-    public void ReInitialize();
+    public void Randomize();
+
 }
