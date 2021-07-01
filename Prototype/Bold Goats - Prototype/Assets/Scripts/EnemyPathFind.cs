@@ -6,17 +6,12 @@ using UnityEngine.AI;
 public class EnemyPathFind : MonoBehaviour
 {
     private NavMeshAgent aiEnemy;
-    Vector3 startPos;
     public Vector3[] gaurdPoints;
     private int destinationPoint;
-    public float roamRadius = 15.00f;
-    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         aiEnemy = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
-        startPos = transform.position;
 
         GoToNextPoint();
     }
