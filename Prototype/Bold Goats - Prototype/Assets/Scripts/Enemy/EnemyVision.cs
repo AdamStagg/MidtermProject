@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Enemy
 {
-    [RequireComponent(typeof(EnemyBase))]
+    [RequireComponent(typeof(EnemyState))]
     public class EnemyVision : MonoBehaviour
     {
+        EnemyState enemyState;
+
         private GameObject player;
         [SerializeField] float visionLength;
         [SerializeField] float fillRate = 0.25f;
@@ -19,9 +21,11 @@ namespace Enemy
             private set { suspicion = value; }
         }
 
-        public delegate void StateChange();
-        public event StateChange Alert;
-        public event StateChange Investigate;
+        private void Awake()
+        {
+            enemyState = GetComponent<EnemyState>();
+        }
+
 
 
 
@@ -41,21 +45,25 @@ namespace Enemy
                     if (Suspicion >= 95)
                     {
                         //Alert state
-                        if (Alert != null)
-                        {
-                            Alert.Invoke();
-                        }
+                        Alert();
                     }
                     else if (Suspicion >= 50)
                     {
                         //Suspicious state
-                        if (Investigate != null)
-                        {
-                            Investigate.Invoke();
-                        }
+                        Investigate();
                     }
                 }
             }
+        }
+
+        void Alert()
+        {
+            enemyState.InvokeAlert();
+        }
+
+        void Investigate()
+        {
+            enemyState.InvokeInvestigate();
         }
 
     }
