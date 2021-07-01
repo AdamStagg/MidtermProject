@@ -10,6 +10,7 @@ namespace Enemy
         private NavMeshAgent aiEnemy;
         public Vector3[] gaurdPoints;
         private int destinationPoint;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,7 +22,7 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
-            if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
+            if (aiEnemy.remainingDistance < 0.5f && !aiEnemy.pathPending)
             {
                 GoToNextPoint();
             }
