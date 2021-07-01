@@ -11,20 +11,44 @@ namespace Enemy
         public Vector3[] gaurdPoints;
         private int destinationPoint;
 
+        EnemyState enemyState;
+
         // Start is called before the first frame update
         void Start()
         {
             aiEnemy = GetComponent<NavMeshAgent>();
+            enemyState = GetComponent<EnemyState>();
 
+            enemyState.state = States.Patrol;
             GoToNextPoint();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
+            switch (enemyState.state)
             {
-                GoToNextPoint();
+                case States.Alert:
+                    break;
+                case States.Attack:
+                    break;
+                case States.Chase:
+                    aiEnemy.destination = GameManager.Instance.Player.transform.position;
+                    break;
+                case States.Death:
+                    break;
+                case States.Investigate:
+                    break;
+                case States.Patrol:
+                    if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
+                    {
+                        GoToNextPoint();
+                    }
+                    break;
+                case States.Return:
+                    break;
+                default:
+                    break;
             }
         }
 
