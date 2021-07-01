@@ -9,11 +9,12 @@ namespace Enemy
     {
         EnemyState enemyState;
 
-        private GameObject player;
+
         [SerializeField] float visionLength;
         [SerializeField] float fillRate = 0.25f;
 
         [Range(0, 100)] float suspicion;
+        bool checkForPlayer = false;
 
         public float Suspicion
         {
@@ -26,33 +27,61 @@ namespace Enemy
             enemyState = GetComponent<EnemyState>();
         }
 
+       
 
 
 
         private void Update()
         {
+            //TODO Add angle checks
+            
+            
 
-            //Raycast to the player, certain distance. 
-            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out RaycastHit hit, visionLength))
+            if (checkForPlayer && GameManager.Instance.Player != null)
             {
-                //If we hit the player
-                if (hit.transform.gameObject == player)
-                {
-                    //Increase the suspicion meter based on the range
-                    fillRate = visionLength / (player.transform.position - transform.position).magnitude / 4;
-                    Suspicion += fillRate * Time.deltaTime;
+                Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
 
-                    if (Suspicion >= 95)
+
+
+                //Raycast to the player, certain distance. 
+                if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
+                {
+                    //If we hit the player
+                    if (hit.transform.gameObject == GameManager.Instance.Player)
                     {
-                        //Alert state
-                        Alert();
-                    }
-                    else if (Suspicion >= 50)
-                    {
-                        //Suspicious state
-                        Investigate();
+                        //Increase the suspicion meter based on the range
+                        fillRate = visionLength / dirToPlayer.magnitude / 4;
+                        Suspicion += fillRate * Time.deltaTime;
+
+                        if (Suspicion >= 95)
+                        {
+                            //Alert state
+                            Alert();
+                        }
+                        else if (Suspicion >= 50)
+                        {
+                            //Suspicious state
+                            Investigate();
+                        }
                     }
                 }
+            }
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                checkForPlayer = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                checkForPlayer = false;
             }
         }
 
