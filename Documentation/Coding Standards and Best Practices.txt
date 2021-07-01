@@ -3,6 +3,7 @@ Coding Standards and Best Practices
 Agreeing Members:
 Adam Stagg
 Alexander Morales
+Owens Nicolas
 
 Purpose
 
