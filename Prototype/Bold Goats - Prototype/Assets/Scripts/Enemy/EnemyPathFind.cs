@@ -22,7 +22,7 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
-            if (aiEnemy.remainingDistance < 0.5f && !aiEnemy.pathPending)
+            if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
             {
                 GoToNextPoint();
             }
@@ -30,7 +30,7 @@ namespace Enemy
 
         void GoToNextPoint()
         {
-            // If there are no points set, No Need to run Function
+            // If there are no points set, No Need to continue Function
             if (gaurdPoints.Length == 0)
             {
                 return;
