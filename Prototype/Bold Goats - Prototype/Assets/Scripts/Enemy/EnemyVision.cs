@@ -2,57 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyVision : MonoBehaviour
+namespace Enemy
 {
-    private GameObject player;
-    [SerializeField] float visionLength;
-    [SerializeField] float fillRate = 0.25f;
-
-    [Range(0, 100)] float suspicion;
-
-    public float Suspicion
+    [RequireComponent(typeof(EnemyBase))]
+    public class EnemyVision : MonoBehaviour
     {
-        get { return suspicion; }
-        private set { suspicion = value; }
-    }
+        private GameObject player;
+        [SerializeField] float visionLength;
+        [SerializeField] float fillRate = 0.25f;
 
-    public delegate void StateChange();
-    public event StateChange Alert;
-    public event StateChange Investigate;
+        [Range(0, 100)] float suspicion;
 
-
-
-    private void Update()
-    {
-
-        //Raycast to the player, certain distance. 
-        if (Physics.Raycast(transform.position, player.transform.position - transform.position, out RaycastHit hit, visionLength))
+        public float Suspicion
         {
-            //If we hit the player
-            if (hit.transform.gameObject == player)
-            {
-                //Increase the suspicion meter based on the range
-                fillRate = visionLength / (player.transform.position - transform.position).magnitude / 4;
-                Suspicion += fillRate * Time.deltaTime;
+            get { return suspicion; }
+            private set { suspicion = value; }
+        }
 
-                if (Suspicion >= 95)
+        public delegate void StateChange();
+        public event StateChange Alert;
+        public event StateChange Investigate;
+
+
+
+        private void Update()
+        {
+
+            //Raycast to the player, certain distance. 
+            if (Physics.Raycast(transform.position, player.transform.position - transform.position, out RaycastHit hit, visionLength))
+            {
+                //If we hit the player
+                if (hit.transform.gameObject == player)
                 {
-                    //Alert state
-                    if (Alert != null)
+                    //Increase the suspicion meter based on the range
+                    fillRate = visionLength / (player.transform.position - transform.position).magnitude / 4;
+                    Suspicion += fillRate * Time.deltaTime;
+
+                    if (Suspicion >= 95)
                     {
-                        Alert.Invoke();
+                        //Alert state
+                        if (Alert != null)
+                        {
+                            Alert.Invoke();
+                        }
                     }
-                }
-                else if (Suspicion >= 50)
-                {
-                    //Suspicious state
-                    if (Investigate != null)
+                    else if (Suspicion >= 50)
                     {
-                        Investigate.Invoke();
+                        //Suspicious state
+                        if (Investigate != null)
+                        {
+                            Investigate.Invoke();
+                        }
                     }
                 }
             }
         }
-    }
 
+    }
 }
