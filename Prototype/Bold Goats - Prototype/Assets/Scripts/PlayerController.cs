@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+   
     private CharacterController Controller;
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
@@ -37,30 +38,27 @@ public class PlayerController : MonoBehaviour
         }
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Crouch") && GroundedPlayer)
-        {
+       // if (Input.GetButtonDown("Crouch") && GroundedPlayer)
+       // {
             //Play Crouch Animation
             //Reduce Enemy Sight Lines
-        }
+       // }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            //Activate Aiming Mode
-            //In the if statement, if the enemy is also highlighted
-            if (Input.GetMouseButtonDown(1))
-            {
+        //Create Kunai
+         if (Input.GetMouseButtonDown(0))
+         {
 
-                if (AmountOfKunais > 0)
-                {
-                    CreateKunai();
-                }
-                else
-                {
-                    Debug.Log("Out of Kunais");
-                }
+             if (AmountOfKunais > 0)
+             {
+                 CreateKunai();
+             }
+             else
+             {
+                 Debug.Log("Out of Kunais");
+             }
 
-            }
-        }
+         }
+        
 
 
         if (Input.GetKey(KeyCode.R))
@@ -73,7 +71,7 @@ public class PlayerController : MonoBehaviour
         Controller.Move(PlayerVelocity * Time.deltaTime);
 
     }
-    
+
 
     void CreateKunai()
     {
@@ -89,8 +87,10 @@ public class PlayerController : MonoBehaviour
         AmountOfKunais = 3;
         Debug.Log("Refilled Kunais");
     }
-      
+
 }
+
+
 
 
 

@@ -6,7 +6,8 @@ public class KunaiController : MonoBehaviour
 {
     public Transform Target;
     public Transform KunaiPosition;
-    public Rigidbody Kunai;
+    public Rigidbody KunaiRb;
+    public GameObject Kunai;
 
     public float RotationSpeed;
     public float KunaiVelocity = 10.0f;
@@ -19,20 +20,20 @@ public class KunaiController : MonoBehaviour
    
     void FixedUpdate()
     {
-        if (Kunai == null)
+        if (KunaiRb == null)
         {
           return;
         }
 
-        Kunai.velocity = KunaiPosition.forward * KunaiVelocity;
+        KunaiRb.velocity = KunaiPosition.forward * KunaiVelocity;
         var KunaiRotation = Quaternion.LookRotation(Target.position - KunaiPosition.position);
-        Kunai.MoveRotation(Quaternion.RotateTowards(KunaiPosition.rotation, KunaiRotation, RotationSpeed));
+        KunaiRb.MoveRotation(Quaternion.RotateTowards(KunaiPosition.rotation, KunaiRotation, RotationSpeed));
     }
    
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Target") 
+        if (other.tag == "Enemy") 
         {
             Destroy(Kunai);
             Debug.Log("It's a hit!");
