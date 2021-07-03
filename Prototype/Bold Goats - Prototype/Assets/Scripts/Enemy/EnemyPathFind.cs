@@ -11,6 +11,7 @@ namespace Enemy
         public Vector3[] gaurdPoints;
         private int destinationPoint;
 
+
         GameObject player;
         EnemyState enemyState;
 
@@ -29,8 +30,15 @@ namespace Enemy
         void Update()
         {
 
-            // Checking to see if player is in certain range from enemy to start attacking
-            if (Vector3.Distance(player.transform.position, aiEnemy.transform.position) <= 3.0f)
+            // Checking to see if player is in certain range from enemy so they stop chasing
+            if (Vector3.Distance(player.transform.position, aiEnemy.transform.position) >= 5.0f)
+            {
+                enemyState.state = States.Patrol;
+            }
+
+            // Raycast knowledge to chase player
+            NavMeshHit hit;
+            if (!aiEnemy.Raycast(player.transform.position, out hit))
             {
                 enemyState.state = States.Chase;
             }
