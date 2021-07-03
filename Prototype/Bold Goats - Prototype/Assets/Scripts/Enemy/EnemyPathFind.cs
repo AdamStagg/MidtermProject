@@ -11,6 +11,7 @@ namespace Enemy
         public Vector3[] gaurdPoints;
         private int destinationPoint;
 
+        GameObject player;
         EnemyState enemyState;
 
         // Start is called before the first frame update
@@ -18,6 +19,7 @@ namespace Enemy
         {
             aiEnemy = GetComponent<NavMeshAgent>();
             enemyState = GetComponent<EnemyState>();
+            player = GameObject.Find("Player");
 
             enemyState.state = States.Patrol;
             GoToNextPoint();
@@ -26,6 +28,33 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
+
+            // Checking to see if player is in certain range from enemy to start attacking
+            if (Vector3.Distance(player.transform.position, aiEnemy.transform.position) <= 3.0f)
+            {
+                enemyState.state = States.Chase;
+            }
+            EnemyStateSwitch();
+        }
+
+        void GoToNextPoint()
+        {
+            // If there are no points set, No Need to continue Function
+            if (gaurdPoints.Length == 0)
+            {
+                return;
+            }
+
+            // Set Gaurd point to the point currently selected
+            aiEnemy.destination = gaurdPoints[destinationPoint];
+
+            // Set Destination Point to next point
+            destinationPoint = (destinationPoint + 1) % gaurdPoints.Length;
+        }
+
+        // Switch for enemy behavior
+        void EnemyStateSwitch()
+        {
             switch (enemyState.state)
             {
                 case States.Alert:
@@ -33,7 +62,7 @@ namespace Enemy
                 case States.Attack:
                     break;
                 case States.Chase:
-                    aiEnemy.destination = GameManager.Instance.Player.transform.position;
+                    aiEnemy.destination = player.transform.position;
                     break;
                 case States.Death:
                     break;
@@ -50,21 +79,7 @@ namespace Enemy
                 default:
                     break;
             }
-        }
 
-        void GoToNextPoint()
-        {
-            // If there are no points set, No Need to continue Function
-            if (gaurdPoints.Length == 0)
-            {
-                return;
-            }
-
-            // Set Gaurd point to the point currently selected
-            aiEnemy.destination = gaurdPoints[destinationPoint];
-
-            // Set Destination Point to next point
-            destinationPoint = (destinationPoint + 1) % gaurdPoints.Length;
         }
     }
 }
