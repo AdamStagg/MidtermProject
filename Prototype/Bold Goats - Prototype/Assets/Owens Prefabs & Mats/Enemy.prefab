@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1799317765129675295}
   - component: {fileID: -5106112044980726012}
   - component: {fileID: -95279065530125557}
-  - component: {fileID: 7943974074774539905}
+  - component: {fileID: -4726897719729085454}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -195,7 +195,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &7943974074774539905
+--- !u!114 &-4726897719729085454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,10 +204,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1799317765129675286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 01934f9212a991a498efa77b60601850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
+  visionLength: 0
+  fillRate: 0.25
