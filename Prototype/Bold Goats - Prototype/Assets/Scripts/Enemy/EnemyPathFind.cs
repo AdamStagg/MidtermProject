@@ -73,7 +73,7 @@ namespace Enemy
                     aiEnemy.destination = player.transform.position;
                     break;
                 case States.Death:
-                    
+                    Destroy(aiEnemy);
                     break;
                 case States.Investigate:
                     break;
