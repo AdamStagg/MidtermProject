@@ -9,8 +9,10 @@ namespace Enemy
     public class EnemyPathFind : MonoBehaviour
     {
         private NavMeshAgent aiEnemy;
-        public Transform[] gaurdPoints;
+        public Transform[] guardPoints;
         private int destinationPoint = 0;
+
+        Transform lastPosition;
 
         EnemyVision enemyVision;
 
@@ -18,7 +20,9 @@ namespace Enemy
         EnemyState enemyState;
 
         [SerializeField] float maxDistanceForChase = 10f;
-        [SerializeField] float distanceToAttack = 1f;
+        [SerializeField] float distanceToAttack = 2f;
+
+        [SerializeField] Material attackMaterial;
 
         // Start is called before the first frame update
         void Awake()
@@ -27,22 +31,24 @@ namespace Enemy
             enemyState = GetComponent<EnemyState>();
             enemyVision = GetComponent<EnemyVision>();
 
+            enemyState.Chase += HandleInvokeChase;
+
+            lastPosition = new GameObject().transform;
+
             enemyState.state = States.Patrol;
             GoToNextPoint();
+        }
+
+        private void OnDisable()
+        {
+            enemyState.Chase -= HandleInvokeChase;
         }
 
         // Update is called once per frame
         void Update()
         {
 
-            if (GameManager.Instance.Player != null)
-            {
-                // Checking to see if player is in certain range from enemy so they stop chasing
-                if (Vector3.Distance(GameManager.Instance.Player.transform.position, aiEnemy.transform.position) >= 5.0f)
-                {
-                    enemyState.state = States.Patrol;
-                }
-            }
+           
 
             PerformNavigation();
         }
@@ -57,10 +63,15 @@ namespace Enemy
             //}
 
             // Set Gaurd point to the point currently selected
-            aiEnemy.destination = gaurdPoints[destinationPoint].position;
+            aiEnemy.destination = guardPoints[destinationPoint].position;
 
             // Set Destination Point to next point
-            destinationPoint = (destinationPoint + 1) % gaurdPoints.Length;
+            destinationPoint = (destinationPoint + 1) % guardPoints.Length;
+        }
+
+        public void HandleInvokeChase()
+        {
+            lastPosition.position = transform.position;
         }
 
         // Switch for enemy behavior
@@ -71,10 +82,14 @@ namespace Enemy
                 case States.Alert:
                     break;
                 case States.Attack:
+
+                    
+
                     break;
                 case States.Chase:
 
-                    aiEnemy.destination = player.transform.position;
+                    
+                    aiEnemy.destination = GameManager.Instance.Player.transform.position;
 
                     float distance = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position);
 
@@ -83,6 +98,8 @@ namespace Enemy
                         enemyState.InvokeReturn();
                     } else if (distance <= distanceToAttack)
                     {
+                        aiEnemy.isStopped = true;
+                        aiEnemy.ResetPath();
                         enemyState.InvokeAttack();
                     }
 
@@ -104,6 +121,19 @@ namespace Enemy
 
                     break;
                 case States.Return:
+
+                    aiEnemy.destination = lastPosition.position;
+
+                    if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
+                    {
+                        destinationPoint--;
+                        if (destinationPoint < 0)
+                        {
+                            destinationPoint = guardPoints.Length - 1;
+                        }
+
+                        enemyState.InvokePatrol();
+                    }
                     break;
                 default:
                     break;

@@ -25,17 +25,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region //Player
-    GameObject player;
-    public GameObject Player {
-        get
-        {
-            return player;
-        }
-        private set
-        {
-            player = value;
-        }
-    }
+    public GameObject Player { get; private set; }
     public void SetPlayer(GameObject _player)
     {
         Player = _player;

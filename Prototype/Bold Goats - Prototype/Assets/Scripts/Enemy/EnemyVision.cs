@@ -37,11 +37,10 @@ namespace Enemy
             
             
 
-            if (checkForPlayer && GameManager.Instance.Player != null)
+            if (/*checkForPlayer && */GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
-
-
+                dirToPlayer.Normalize();
 
                 //Raycast to the player, certain distance. 
                 if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
@@ -82,11 +81,18 @@ namespace Enemy
         {
             if (other.tag == "Player")
             {
-                checkForPlayer = false;
+                //checkForPlayer = false;
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
+            dirToPlayer.Normalize();
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, dirToPlayer * visionLength);
 
+        }
 
     }
 }

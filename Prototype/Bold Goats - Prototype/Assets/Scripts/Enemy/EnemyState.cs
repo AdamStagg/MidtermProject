@@ -91,6 +91,21 @@ namespace Enemy
                 ChangeToInvestigate = false;
                 InvokeInvestigate();
             }
+            if (ChangeToPatrol)
+            {
+                ChangeToPatrol = false;
+                InvokePatrol();
+            }
+            if (ChangeToChase)
+            {
+                ChangeToChase = false;
+                InvokeChase();
+            }
+            if (ChangeToReturn)
+            {
+                ChangeToReturn = false;
+                InvokeReturn();
+            }
         }
 
         private void ChangeState(States _state)
