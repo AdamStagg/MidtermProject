@@ -56,12 +56,13 @@ namespace Enemy
                         if (Suspicion >= 95)
                         {
                             //Alert state
-                            Alert();
+                            enemyState.InvokeChase();
+
                         }
                         else if (Suspicion >= 50)
                         {
                             //Suspicious state
-                            Investigate();
+                            enemyState.InvokeInvestigate();
                         }
                     }
                 }
@@ -85,15 +86,7 @@ namespace Enemy
             }
         }
 
-        void Alert()
-        {
-            enemyState.InvokeAlert();
-        }
 
-        void Investigate()
-        {
-            enemyState.InvokeInvestigate();
-        }
 
     }
 }
