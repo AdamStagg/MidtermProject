@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5106112044980726012}
   - component: {fileID: -95279065530125557}
   - component: {fileID: -4726897719729085454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,7 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b27928b8d3bcf40be9ffeb7283610d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gaurdPoints: []
+  guardPoints: []
+  maxDistanceForChase: 10
+  distanceToAttack: 2
+  attackMaterial: {fileID: 0}
 --- !u!195 &1799317765129675295
 NavMeshAgent:
   m_ObjectHideFlags: 0
