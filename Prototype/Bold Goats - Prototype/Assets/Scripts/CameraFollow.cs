@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 NewPos = PlayerTransform.position + CameraOffset;
         PlayerTransform.position = Vector3.Slerp(PlayerTransform.position, NewPos, SmoothFactor);
+        
 
         if (LookAtPlayer) 
         {

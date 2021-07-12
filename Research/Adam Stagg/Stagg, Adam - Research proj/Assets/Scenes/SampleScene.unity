@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,8 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25bee38dbd9a744b82f2d740fdcc14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 5
-  scale: 5
+  speed: 4
 --- !u!135 &583754083
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -227,7 +226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583754081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
+  m_LocalPosition: {x: -1.372813, y: -6.8640647, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -441,8 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25bee38dbd9a744b82f2d740fdcc14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dist: 5
-  scale: -5
+  speed: 4
 --- !u!135 &1204218348
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -513,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204218346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -6.6845665, y: -2.0776355, z: 0}
   m_LocalScale: {x: 1, y: 1.54, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -628,7 +626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastLength: 4
-  numRayCast: 2
+  directionOne: {x: 1, y: 0, z: 0}
+  directionTwo: {x: 0.6989851, y: 0.71513623, z: 0}
   hitMaterial: {fileID: 2100000, guid: 0787407eac88e714a97613098484af49, type: 2}
   initMaterial: {fileID: 2100000, guid: d6be18597a6cf2546ab3005f98c62685, type: 2}
   collidableObj:

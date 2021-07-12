@@ -37,11 +37,10 @@ namespace Enemy
             
             
 
-            if (checkForPlayer && GameManager.Instance.Player != null)
+            if (/*checkForPlayer && */GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
-
-
+                dirToPlayer.Normalize();
 
                 //Raycast to the player, certain distance. 
                 if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
@@ -56,12 +55,13 @@ namespace Enemy
                         if (Suspicion >= 95)
                         {
                             //Alert state
-                            Alert();
+                            enemyState.InvokeChase();
+
                         }
                         else if (Suspicion >= 50)
                         {
                             //Suspicious state
-                            Investigate();
+                            enemyState.InvokeInvestigate();
                         }
                     }
                 }
@@ -81,18 +81,17 @@ namespace Enemy
         {
             if (other.tag == "Player")
             {
-                checkForPlayer = false;
+                //checkForPlayer = false;
             }
         }
 
-        void Alert()
+        private void OnDrawGizmos()
         {
-            enemyState.InvokeAlert();
-        }
+            Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
+            dirToPlayer.Normalize();
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, dirToPlayer * visionLength);
 
-        void Investigate()
-        {
-            enemyState.InvokeInvestigate();
         }
 
     }
