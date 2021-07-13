@@ -78,6 +78,17 @@ namespace Enemy
             ChangeState(States.Attack);
         }
 
+        public void InvokeDie()
+        {
+
+            ChangeState(States.Death);
+        }
+
+        public void Kill()
+        {
+            InvokeDie();
+        }
+
         #region TEST CODE
 
         public bool ChangeToInvestigate;
