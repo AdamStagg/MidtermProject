@@ -33,10 +33,15 @@ public class KunaiController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Enemy") 
+        if (other.tag == "Enemy")
         {
             Destroy(Kunai);
             Debug.Log("It's a hit!");
+        }
+        else if(other.tag == "Wall")
+        {
+            Destroy(Kunai);
+            Debug.Log("Hit a wall");
         }
     }
 }

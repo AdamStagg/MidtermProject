@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController Controller;
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
-    private float PlayerSpeed = 2.0f;
+    private float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
 
     public Rigidbody Kunai;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
             PlayerVelocity.y = 0f;
         }
 
+        ///////////Player movement (Left, Right, Forward, Bacward)///////////
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Controller.Move(Move * Time.deltaTime * PlayerSpeed);
 
@@ -37,30 +38,36 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.forward = Move;
         }
 
-        // Changes the height position of the player..
-       // if (Input.GetButtonDown("Crouch") && GroundedPlayer)
-       // {
+        ///////////Player Crouch///////////
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Player is crouched");
+            PlayerSpeed = 2.5f;
             //Play Crouch Animation
             //Reduce Enemy Sight Lines
-       // }
+        }
+        else 
+        {
+            PlayerSpeed = 5f;
+        }
 
-        //Create Kunai
-         if (Input.GetMouseButtonDown(0))
-         {
+        ///////////Create Kunai///////////
+        if (Input.GetKeyDown(KeyCode.E))
+        {
 
-             if (AmountOfKunais > 0)
-             {
-                 CreateKunai();
-             }
-             else
-             {
-                 Debug.Log("Out of Kunais");
-             }
+            if (AmountOfKunais > 0)
+            {
+                CreateKunai();
+            }
+            else
+            {
+                Debug.Log("Out of Kunais");
+            }
 
-         }
-        
+        }
 
 
+        ///////////Reloads Kunais///////////
         if (Input.GetKey(KeyCode.R))
         {
             Reload();
