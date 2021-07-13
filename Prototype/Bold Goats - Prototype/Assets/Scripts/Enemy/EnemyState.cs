@@ -69,6 +69,7 @@ namespace Enemy
 
         public void InvokeAttack()
         {
+            Debug.Log("Invoke attack");
             if (Attack != null)
             {
                 Attack.Invoke();
@@ -110,6 +111,7 @@ namespace Enemy
 
         private void ChangeState(States _state)
         {
+            Debug.Log("Changing state to " + _state);
             state = _state;
         }
 

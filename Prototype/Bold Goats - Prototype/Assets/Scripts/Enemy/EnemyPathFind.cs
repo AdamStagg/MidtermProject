@@ -12,11 +12,15 @@ namespace Enemy
         public Transform[] guardPoints;
         private int destinationPoint = 0;
 
+        public Color colorAttack;
+        Color originalColor;
+
         Transform lastPosition;
+        Transform investigatePosition;
 
         EnemyVision enemyVision;
 
-        GameObject player;
+        
         EnemyState enemyState;
 
         [SerializeField] float maxDistanceForChase = 10f;
@@ -30,10 +34,18 @@ namespace Enemy
             aiEnemy = GetComponent<NavMeshAgent>();
             enemyState = GetComponent<EnemyState>();
             enemyVision = GetComponent<EnemyVision>();
+            originalColor = GetComponent<Renderer>().material.color;
+
 
             enemyState.Chase += HandleInvokeChase;
+            enemyState.Investigate += HandleInvokeInvestigate;
+            enemyState.Return += HandleInvokeReturn;
 
             lastPosition = new GameObject().transform;
+            investigatePosition = new GameObject().transform;
+
+            lastPosition.name = gameObject.name + " lastPos";
+            investigatePosition.name = gameObject.name + " investigatePos";
 
             enemyState.state = States.Patrol;
             GoToNextPoint();
@@ -42,13 +54,13 @@ namespace Enemy
         private void OnDisable()
         {
             enemyState.Chase -= HandleInvokeChase;
+            enemyState.Investigate -= HandleInvokeInvestigate;
+            enemyState.Return -= HandleInvokeReturn;
         }
 
         // Update is called once per frame
         void Update()
         {
-
-           
 
             PerformNavigation();
         }
@@ -74,6 +86,16 @@ namespace Enemy
             lastPosition.position = transform.position;
         }
 
+        public void HandleInvokeInvestigate()
+        {
+            lastPosition.position = transform.position;
+        }
+
+        public void HandleInvokeReturn()
+        {
+            enemyVision.Suspicion = 45;
+        }
+
         // Switch for enemy behavior
         void PerformNavigation()
         {
@@ -83,7 +105,11 @@ namespace Enemy
                     break;
                 case States.Attack:
 
-                    
+                    Debug.Log("Reached attack state");
+
+                    GetComponent<Renderer>().material.color = colorAttack;
+
+
 
                     break;
                 case States.Chase:
@@ -98,6 +124,8 @@ namespace Enemy
                         enemyState.InvokeReturn();
                     } else if (distance <= distanceToAttack)
                     {
+
+                        Debug.Log("Changing to attack state");
                         aiEnemy.isStopped = true;
                         aiEnemy.ResetPath();
                         enemyState.InvokeAttack();
@@ -122,6 +150,8 @@ namespace Enemy
                     break;
                 case States.Return:
 
+                    GetComponent<Renderer>().material.color = originalColor;
+
                     aiEnemy.destination = lastPosition.position;
 
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
@@ -132,8 +162,10 @@ namespace Enemy
                             destinationPoint = guardPoints.Length - 1;
                         }
 
+                        enemyVision.Suspicion = 0;
                         enemyState.InvokePatrol();
                     }
+
                     break;
                 default:
                     break;
