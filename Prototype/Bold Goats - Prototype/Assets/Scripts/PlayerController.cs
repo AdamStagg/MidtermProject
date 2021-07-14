@@ -6,10 +6,13 @@ public class PlayerController : MonoBehaviour
 {
    
     private CharacterController Controller;
+    public Transform PlayerTransform;
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
+    private bool Crouched = false;
     private float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
+    public float ControllerHeight;
 
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -39,20 +42,19 @@ public class PlayerController : MonoBehaviour
         }
 
         ///////////Player Crouch///////////
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Crouch"))
         {
-            Debug.Log("Player is crouched");
-            PlayerSpeed = 2.5f;
+            Crouched = !Crouched;
+            ToggleCrouch();
             //Play Crouch Animation
             //Reduce Enemy Sight Lines
         }
-        else 
-        {
-            PlayerSpeed = 5f;
-        }
+        
+
+
 
         ///////////Create Kunai///////////
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
 
             if (AmountOfKunais > 0)
@@ -93,6 +95,41 @@ public class PlayerController : MonoBehaviour
     {
         AmountOfKunais = 3;
         Debug.Log("Refilled Kunais");
+    }
+
+    void ToggleCrouch() 
+    {
+        if (Crouched == true)
+        {
+            PlayerTransform.localScale = new Vector3(1, .5f, 1);
+            Controller.height = ControllerHeight;
+            PlayerSpeed = 2.5f;
+            Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
+        }
+        else 
+        {
+            Ray ray = new Ray();
+            RaycastHit hit;
+            ray.origin = transform.position;
+            ray.direction = Vector3.up;
+           
+            if (Physics.Raycast(PlayerTransform.position, ray.direction, out hit, 2.2f))
+            {
+                PlayerTransform.localScale = new Vector3(1, ControllerHeight, 1);
+                Controller.height = 1.8f;
+                PlayerSpeed = 5f;
+                Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
+            }
+            else
+            {
+                Debug.Log("Not enough space to stand up!");
+            }
+        }
+    }
+
+    void Attack() 
+    {
+
     }
 
 }
