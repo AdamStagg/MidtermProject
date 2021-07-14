@@ -122,7 +122,6 @@ namespace Enemy
 
         private void ChangeState(States _state)
         {
-            Debug.Log("Changing state to " + _state);
             state = _state;
         }
 

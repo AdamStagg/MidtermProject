@@ -94,6 +94,8 @@ namespace Enemy
         public void HandleInvokeReturn()
         {
             enemyVision.Suspicion = 45;
+            GetComponent<Renderer>().material.color = originalColor;
+            aiEnemy.ResetPath();
         }
 
         // Switch for enemy behavior
@@ -125,7 +127,6 @@ namespace Enemy
                     } else if (distance <= distanceToAttack)
                     {
 
-                        Debug.Log("Changing to attack state");
                         aiEnemy.isStopped = true;
                         aiEnemy.ResetPath();
                         enemyState.InvokeAttack();
@@ -150,8 +151,7 @@ namespace Enemy
                     break;
                 case States.Return:
 
-                    GetComponent<Renderer>().material.color = originalColor;
-
+                    
                     aiEnemy.destination = lastPosition.position;
 
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
