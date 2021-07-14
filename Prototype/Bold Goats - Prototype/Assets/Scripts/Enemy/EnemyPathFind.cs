@@ -107,16 +107,11 @@ namespace Enemy
                     break;
                 case States.Attack:
 
-                    Debug.Log("Reached attack state");
-
                     GetComponent<Renderer>().material.color = colorAttack;
-
-
 
                     break;
                 case States.Chase:
 
-                    
                     aiEnemy.destination = GameManager.Instance.Player.transform.position;
 
                     float distance = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position);

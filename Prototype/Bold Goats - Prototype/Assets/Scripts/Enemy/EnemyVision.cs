@@ -87,7 +87,7 @@ namespace Enemy
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
             dirToPlayer.Normalize();
