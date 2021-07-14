@@ -15,6 +15,8 @@ namespace Enemy
         public event StateChange Investigate;
         public event StateChange Return;
         public event StateChange Patrol;
+        public event StateChange Chase;
+        public event StateChange Attack;
 
         public void InvokeAlert()
         {
@@ -56,6 +58,37 @@ namespace Enemy
             ChangeState(States.Patrol);
         }
 
+        public void InvokeChase()
+        {
+            if (Chase != null) {
+                Chase.Invoke();
+            }
+
+            ChangeState(States.Chase);
+        }
+
+        public void InvokeAttack()
+        {
+            Debug.Log("Invoke attack");
+            if (Attack != null)
+            {
+                Attack.Invoke();
+            }
+
+            ChangeState(States.Attack);
+        }
+
+        public void InvokeDie()
+        {
+
+            ChangeState(States.Death);
+        }
+
+        public void Kill()
+        {
+            InvokeDie();
+        }
+
         #region TEST CODE
 
         public bool ChangeToInvestigate;
@@ -69,6 +102,21 @@ namespace Enemy
             {
                 ChangeToInvestigate = false;
                 InvokeInvestigate();
+            }
+            if (ChangeToPatrol)
+            {
+                ChangeToPatrol = false;
+                InvokePatrol();
+            }
+            if (ChangeToChase)
+            {
+                ChangeToChase = false;
+                InvokeChase();
+            }
+            if (ChangeToReturn)
+            {
+                ChangeToReturn = false;
+                InvokeReturn();
             }
         }
 

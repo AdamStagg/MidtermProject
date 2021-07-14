@@ -9,27 +9,16 @@ namespace Enemy
     {
         EnemyState enemyState;
 
-
         [SerializeField] float visionLength;
         [SerializeField] float fillRate = 0.25f;
 
-        [Range(0, 100)] float suspicion;
+        [Range(0, 100)] public float Suspicion;
         bool checkForPlayer = false;
-
-        public float Suspicion
-        {
-            get { return suspicion; }
-            private set { suspicion = value; }
-        }
 
         private void Awake()
         {
             enemyState = GetComponent<EnemyState>();
         }
-
-       
-
-
 
         private void Update()
         {
@@ -37,33 +26,37 @@ namespace Enemy
             
             
 
-            if (checkForPlayer && GameManager.Instance.Player != null)
+            if (/*checkForPlayer && */GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
-
-
+                
 
                 //Raycast to the player, certain distance. 
                 if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
                 {
+
                     //If we hit the player
                     if (hit.transform.gameObject == GameManager.Instance.Player)
                     {
                         //Increase the suspicion meter based on the range
-                        fillRate = visionLength / dirToPlayer.magnitude / 4;
-                        Suspicion += fillRate * Time.deltaTime;
+                        fillRate = visionLength / Mathf.Pow(Mathf.Log10(dirToPlayer.magnitude), 2);
+                        Suspicion = Mathf.Clamp(Suspicion + fillRate * Time.deltaTime, 0, 100);
 
-                        if (Suspicion >= 95)
+                        if (Suspicion >= 95 && enemyState.state != States.Attack)
                         {
                             //Alert state
-                            Alert();
+                            enemyState.InvokeChase();
+
                         }
-                        else if (Suspicion >= 50)
+                        else if (Suspicion >= 50 && enemyState.state != States.Attack)
                         {
                             //Suspicious state
-                            Investigate();
+                            enemyState.InvokeInvestigate();
                         }
                     }
+                } else
+                {
+                    Suspicion = Mathf.Clamp(Suspicion - Time.deltaTime, 0, 100);
                 }
             }
         }
@@ -71,10 +64,16 @@ namespace Enemy
 
         private void OnTriggerEnter(Collider other)
         {
+
             if (other.tag == "Player")
             {
                 checkForPlayer = true;
+            } else if (other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyState>().Alert += HandleAlert;
             }
+
+
         }
 
         private void OnTriggerExit(Collider other)
@@ -82,17 +81,24 @@ namespace Enemy
             if (other.tag == "Player")
             {
                 checkForPlayer = false;
+            } else if (other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyState>().Alert -= HandleAlert;
             }
         }
 
-        void Alert()
+        private void OnDrawGizmosSelected()
         {
-            enemyState.InvokeAlert();
+            Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
+            dirToPlayer.Normalize();
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, dirToPlayer * visionLength);
+
         }
 
-        void Investigate()
+        void HandleAlert()
         {
-            enemyState.InvokeInvestigate();
+            throw new System.NotImplementedException();
         }
 
     }
