@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
 
         ///////////Player Crouch///////////
-        if (Input.GetButtonDown("Crouch"))
+        if (GroundedPlayer == true && Input.GetButtonDown("Crouch"))
         {
             Crouched = !Crouched;
             ToggleCrouch();
@@ -70,11 +70,18 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Reloads Kunais///////////
-        if (Input.GetKey(KeyCode.R))
+        ///Will Change after reload stations are included
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
 
+
+        ///////////Executing Enemies///////////
+        if (PlayerTransform.position - && Input.GetButtonDown("Execute")) 
+        {
+
+        }
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
@@ -82,6 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    ///////////Player Actions///////////
     void CreateKunai()
     {
 
@@ -127,10 +135,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Attack() 
-    {
-
-    }
+    
 
 }
 
