@@ -434,7 +434,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 1950991261}
   - component: {fileID: 1950991260}
   - component: {fileID: 1950991259}
+  - component: {fileID: 1950991263}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -738,6 +739,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1950991263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950991258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b0421c5f6aa99429569ac4b7e5deb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTransform: {fileID: 1950991262}
+  ControllerHeight: 0
+  Kunai: {fileID: 0}
+  AmountOfKunais: 3
 --- !u!1 &2006158000
 GameObject:
   m_ObjectHideFlags: 0
