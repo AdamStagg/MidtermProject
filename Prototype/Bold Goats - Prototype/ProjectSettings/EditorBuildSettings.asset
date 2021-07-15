@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CONDITIONALS/Main Menu.unity
+    guid: 28b918754f5a8b942851fe8cb3ea4807
+  - enabled: 1
+    path: Assets/Scenes/Alex - Test.unity
+    guid: 07c95abe3357db34d925fd126ef7cf4e
+  - enabled: 1
+    path: Assets/Scenes/CONDITIONALS/LOSE CONDITION.unity
+    guid: 6d5c31fc6654cb94aa48828ed340ec51
+  - enabled: 1
+    path: Assets/Scenes/CONDITIONALS/WINCONDITION.unity
+    guid: 9a51078e6d3254943819775d773bd770
   m_configObjects: {}
