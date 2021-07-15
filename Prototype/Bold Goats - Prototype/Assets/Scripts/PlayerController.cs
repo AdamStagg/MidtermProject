@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
         Controller.Move(Move * Time.deltaTime * PlayerSpeed);
 
+
+
         if (Move != Vector3.zero)
         {
             gameObject.transform.forward = Move;
@@ -91,10 +93,10 @@ public class PlayerController : MonoBehaviour
             attackCollider.enabled = true;
             timeAttacked = Time.time + timeBetweenAttacks;
 
-            while (timeAttacked > Time.time)
-            {
-                Debug.Log(timeAttacked - Time.time);
-            }
+            //while (timeAttacked > Time.time)
+            //{
+            //    Debug.Log(timeAttacked - Time.time);
+            //}
 
             attackCollider.enabled = false;
         }
