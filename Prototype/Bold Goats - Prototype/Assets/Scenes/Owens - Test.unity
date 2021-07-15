@@ -2123,7 +2123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1799317765129675285, guid: 0b4671de065fa9642aec10c9eed266e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45
+      value: -43.2
       objectReference: {fileID: 0}
     - target: {fileID: 1799317765129675285, guid: 0b4671de065fa9642aec10c9eed266e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2729,6 +2729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b0421c5f6aa99429569ac4b7e5deb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ControllerHeight: 0
+  attackCollider: {fileID: 0}
+  timeBetweenAttacks: 0
   Kunai: {fileID: 0}
   AmountOfKunais: 3
 --- !u!114 &1460669269

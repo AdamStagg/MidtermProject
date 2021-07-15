@@ -40,6 +40,7 @@ namespace Enemy
             enemyState.Chase += HandleInvokeChase;
             enemyState.Investigate += HandleInvokeInvestigate;
             enemyState.Return += HandleInvokeReturn;
+            enemyState.Attack += HandleInvokeAttack;
 
             lastPosition = new GameObject().transform;
             investigatePosition = new GameObject().transform;
@@ -89,6 +90,7 @@ namespace Enemy
         public void HandleInvokeInvestigate()
         {
             lastPosition.position = transform.position;
+            investigatePosition.position = GameManager.Instance.Player.transform.position;
         }
 
         public void HandleInvokeReturn()
@@ -98,16 +100,26 @@ namespace Enemy
             aiEnemy.ResetPath();
         }
 
+        public void HandleInvokeAttack()
+        {
+            GetComponent<Renderer>().material.color = colorAttack;
+            Destroy(GameManager.Instance.Player);
+            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+        }
+
         // Switch for enemy behavior
         void PerformNavigation()
         {
             switch (enemyState.state)
             {
                 case States.Alert:
+
+                    //Unused state
+
                     break;
                 case States.Attack:
-
-                    GetComponent<Renderer>().material.color = colorAttack;
+                    
+                    //Everything taken care of in HandleInvokeAttack
 
                     break;
                 case States.Chase:
@@ -119,7 +131,8 @@ namespace Enemy
                     if (distance >= maxDistanceForChase)
                     {
                         enemyState.InvokeReturn();
-                    } else if (distance <= distanceToAttack)
+                    }
+                    else if (distance <= distanceToAttack)
                     {
 
                         aiEnemy.isStopped = true;
@@ -131,13 +144,23 @@ namespace Enemy
                     break;
                 case States.Death:
 
+                    aiEnemy.isStopped = true;
+                    aiEnemy.ResetPath();
 
 
                     break;
                 case States.Investigate:
+
+                    aiEnemy.destination = investigatePosition.position;
+
+                    if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
+                    {
+                        enemyState.InvokeReturn();
+                    }
+
                     break;
                 case States.Patrol:
-                    
+
                     if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
                     {
                         GoToNextPoint();
@@ -146,7 +169,7 @@ namespace Enemy
                     break;
                 case States.Return:
 
-                    
+
                     aiEnemy.destination = lastPosition.position;
 
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)

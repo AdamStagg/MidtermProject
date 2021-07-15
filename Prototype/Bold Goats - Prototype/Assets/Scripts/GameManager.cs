@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
         //Set everything up here
-        Player = GameObject.FindWithTag("Player");
+        if (Player == null)
+        {
+            Player = GameObject.FindWithTag("Player");
+        }
     }
 
     #region //Player
