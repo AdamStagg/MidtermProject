@@ -149,5 +149,5 @@ MonoBehaviour:
   KunaiPosition: {fileID: 5005980648709000949, guid: 0439d45711e8a8843a30886922c8f877, type: 3}
   KunaiRb: {fileID: 8695075257251887727}
   Kunai: {fileID: 5809008469291648413}
-  RotationSpeed: 30
+  RotationSpeed: 5
   KunaiVelocity: 20

@@ -6,10 +6,13 @@ public class PlayerController : MonoBehaviour
 {
    
     private CharacterController Controller;
+    public Transform PlayerTransform;
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
-    private float PlayerSpeed = 2.0f;
+    private bool Crouched = false;
+    private float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
+    public float ControllerHeight;
 
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
             PlayerVelocity.y = 0f;
         }
 
+        ///////////Player movement (Left, Right, Forward, Bacward)///////////
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Controller.Move(Move * Time.deltaTime * PlayerSpeed);
 
@@ -37,35 +41,47 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.forward = Move;
         }
 
-        // Changes the height position of the player..
-       // if (Input.GetButtonDown("Crouch") && GroundedPlayer)
-       // {
+        ///////////Player Crouch///////////
+        if (GroundedPlayer == true && Input.GetButtonDown("Crouch"))
+        {
+            Crouched = !Crouched;
+            ToggleCrouch();
             //Play Crouch Animation
             //Reduce Enemy Sight Lines
-       // }
-
-        //Create Kunai
-         if (Input.GetMouseButtonDown(0))
-         {
-
-             if (AmountOfKunais > 0)
-             {
-                 CreateKunai();
-             }
-             else
-             {
-                 Debug.Log("Out of Kunais");
-             }
-
-         }
+        }
         
 
 
-        if (Input.GetKey(KeyCode.R))
+
+        ///////////Create Kunai///////////
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            if (AmountOfKunais > 0)
+            {
+                CreateKunai();
+            }
+            else
+            {
+                Debug.Log("Out of Kunais");
+            }
+
+        }
+
+
+        ///////////Reloads Kunais///////////
+        ///Will Change after reload stations are included
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
 
+
+        ///////////Executing Enemies///////////
+        if (PlayerTransform.position - && Input.GetButtonDown("Execute")) 
+        {
+
+        }
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
@@ -73,6 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    ///////////Player Actions///////////
     void CreateKunai()
     {
 
@@ -87,6 +104,38 @@ public class PlayerController : MonoBehaviour
         AmountOfKunais = 3;
         Debug.Log("Refilled Kunais");
     }
+
+    void ToggleCrouch() 
+    {
+        if (Crouched == true)
+        {
+            PlayerTransform.localScale = new Vector3(1, .5f, 1);
+            Controller.height = ControllerHeight;
+            PlayerSpeed = 2.5f;
+            Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
+        }
+        else 
+        {
+            Ray ray = new Ray();
+            RaycastHit hit;
+            ray.origin = transform.position;
+            ray.direction = Vector3.up;
+           
+            if (Physics.Raycast(PlayerTransform.position, ray.direction, out hit, 2.2f))
+            {
+                PlayerTransform.localScale = new Vector3(1, ControllerHeight, 1);
+                Controller.height = 1.8f;
+                PlayerSpeed = 5f;
+                Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
+            }
+            else
+            {
+                Debug.Log("Not enough space to stand up!");
+            }
+        }
+    }
+
+    
 
 }
 
