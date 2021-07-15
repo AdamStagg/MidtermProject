@@ -104,6 +104,7 @@ namespace Enemy
         {
             GetComponent<Renderer>().material.color = colorAttack;
             Destroy(GameManager.Instance.Player);
+            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
         }
 
         // Switch for enemy behavior
