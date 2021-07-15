@@ -51,6 +51,12 @@ public class PlayerController : MonoBehaviour
         //{
         transform.forward = Camera.main.transform.forward;
 
+        Vector3 angles = transform.rotation.eulerAngles;
+        angles.x = 0;
+        angles.z = 0;
+
+        transform.rotation = Quaternion.Euler(angles);
+
         //}
 
         ///////////Player Crouch///////////
