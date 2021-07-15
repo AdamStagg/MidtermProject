@@ -14,7 +14,7 @@ namespace Enemy
         [SerializeField] float maxSightAngle = 30;
 
         [Range(0, 100)] public float Suspicion;
-        bool checkForPlayer = false;
+        public bool checkForPlayer = false;
 
         private void Awake()
         {

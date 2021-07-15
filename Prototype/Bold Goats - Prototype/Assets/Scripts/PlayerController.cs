@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     private float ControllerHeight = .5f;
 
     public Collider attackCollider;
-    private float timeAttacked;
-    public float timeBetweenAttacks;
 
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -96,19 +94,15 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Executing Enemies///////////
-        if (Input.GetButtonDown("Execute") && timeAttacked <= Time.time) 
+        if (Input.GetButtonDown("Execute")) 
         {
 
             Debug.Log("Attacking");
             attackCollider.enabled = true;
-            timeAttacked = Time.time + timeBetweenAttacks;
 
-            //while (timeAttacked > Time.time)
-            //{
-            //    Debug.Log(timeAttacked - Time.time);
-            //}
 
-            attackCollider.enabled = false;
+            StartCoroutine(WaitSomeTime(0.2f));
+
         }
 
         
@@ -120,13 +114,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    IEnumerator WaitSomeTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+       attackCollider.enabled = false;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && timeAttacked > timeBetweenAttacks)
+        if (other.tag == "Enemy")
         {
+            Debug.Log("Collide");
             //Enemy collided with the attack trigger, kill / remove the enemy
             other.GetComponent<EnemyState>().Kill();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        Debug.Log("Trigger exit with " + other.name);
     }
 
     ///////////Player Actions///////////

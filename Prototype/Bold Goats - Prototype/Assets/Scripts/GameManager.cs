@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         if (Player == null)
         {
             Player = GameObject.FindWithTag("Player");
-            Debug.Log("Searching for player");
         }
     }
 
