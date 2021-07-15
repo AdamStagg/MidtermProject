@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
     private bool Crouched = false;
-    private float PlayerSpeed = 5.0f;
+    public float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
-    public float ControllerHeight;
+    private float ControllerHeight = .5f;
 
     public Collider attackCollider;
     private float timeAttacked;
