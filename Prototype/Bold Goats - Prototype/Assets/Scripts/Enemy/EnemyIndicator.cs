@@ -11,6 +11,7 @@ namespace Enemy
         private void Awake()
         {
             rend = GetComponent<Renderer>();
+            HandleOnStateChange(States.Patrol);
         }
 
         public void HandleOnStateChange(States _states)
