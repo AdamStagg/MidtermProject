@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
         _CameraDistance.z = ZoomDist;
 
         // so you don't have to see the mouse move off the screen
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     public void Update()
