@@ -40,6 +40,7 @@ namespace Enemy
             enemyState.Chase += HandleInvokeChase;
             enemyState.Investigate += HandleInvokeInvestigate;
             enemyState.Return += HandleInvokeReturn;
+            enemyState.Attack += HandleInvokeAttack;
 
             lastPosition = new GameObject().transform;
             investigatePosition = new GameObject().transform;
@@ -99,16 +100,25 @@ namespace Enemy
             aiEnemy.ResetPath();
         }
 
+        public void HandleInvokeAttack()
+        {
+            GetComponent<Renderer>().material.color = colorAttack;
+            Destroy(GameManager.Instance.Player);
+        }
+
         // Switch for enemy behavior
         void PerformNavigation()
         {
             switch (enemyState.state)
             {
                 case States.Alert:
+
+                    //Unused state
+
                     break;
                 case States.Attack:
-
-                    GetComponent<Renderer>().material.color = colorAttack;
+                    
+                    //Everything taken care of in HandleInvokeAttack
 
                     break;
                 case States.Chase:

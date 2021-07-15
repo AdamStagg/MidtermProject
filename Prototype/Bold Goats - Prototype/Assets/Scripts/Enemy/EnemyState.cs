@@ -69,7 +69,6 @@ namespace Enemy
 
         public void InvokeAttack()
         {
-            Debug.Log("Invoke attack");
             if (Attack != null)
             {
                 Attack.Invoke();
