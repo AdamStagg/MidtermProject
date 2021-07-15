@@ -78,10 +78,10 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Executing Enemies///////////
-        if (PlayerTransform.position - && Input.GetButtonDown("Execute")) 
-        {
+        //if (PlayerTransform.position - && Input.GetButtonDown("Execute")) 
+        //{
 
-        }
+        //}
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
