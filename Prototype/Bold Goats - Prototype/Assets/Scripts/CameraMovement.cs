@@ -46,46 +46,49 @@ public class CameraMovement : MonoBehaviour
 
     public void Update()
     {
-        CameraCenter.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + yoffset, character.transform.position.z);
-
-        var rotation = Quaternion.Euler(CameraCenter.transform.rotation.eulerAngles.x - Input.GetAxis("Mouse Y") * Sensitivity / 2, CameraCenter.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
-
-        CameraCenter.transform.rotation = rotation;
-
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        if (character != null)
         {
-            var ScrollAmount = Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
-            ScrollAmount *= ZoomDist * 0.3f;
-            ZoomDist += ScrollAmount;
-            ZoomDist = Mathf.Clamp(ZoomDist, ZoomMin, ZoomMax);
-        }
+            CameraCenter.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + yoffset, character.transform.position.z);
 
-        if (_CameraDistance.z != -ZoomDist)
-        {
-            _CameraDistance.z = Mathf.Lerp(_CameraDistance.z, -ZoomDist, Time.deltaTime * ScrollDampening);
-        }
+            var rotation = Quaternion.Euler(CameraCenter.transform.rotation.eulerAngles.x - Input.GetAxis("Mouse Y") * Sensitivity / 2, CameraCenter.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
 
-        CameraFollow.transform.localPosition = _CameraDistance;
+            CameraCenter.transform.rotation = rotation;
 
-        GameObject Objects = new GameObject();
+            if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+            {
+                var ScrollAmount = Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
+                ScrollAmount *= ZoomDist * 0.3f;
+                ZoomDist += ScrollAmount;
+                ZoomDist = Mathf.Clamp(ZoomDist, ZoomMin, ZoomMax);
+            }
 
-        Objects.transform.SetParent(CameraFollow.transform.parent);
-        Objects.transform.localPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, CameraFollow.transform.localPosition.z - CollisionSens);
+            if (_CameraDistance.z != -ZoomDist)
+            {
+                _CameraDistance.z = Mathf.Lerp(_CameraDistance.z, -ZoomDist, Time.deltaTime * ScrollDampening);
+            }
 
-        if (Physics.Linecast(CameraCenter.transform.position, Objects.transform.position, out _CameraHit))
-        {
-            CameraFollow.transform.position = _CameraHit.point;
+            CameraFollow.transform.localPosition = _CameraDistance;
 
-            var LocalPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, CameraFollow.transform.localPosition.z + CollisionSens);
-           
-            CameraFollow.transform.localPosition = LocalPosition;
-        }
+            GameObject Objects = new GameObject();
 
-        Destroy(Objects);
+            Objects.transform.SetParent(CameraFollow.transform.parent);
+            Objects.transform.localPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, CameraFollow.transform.localPosition.z - CollisionSens);
 
-        if (CameraFollow.transform.localPosition.z > -1f)
-        {
-            CameraFollow.transform.localPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, -1f);
+            if (Physics.Linecast(CameraCenter.transform.position, Objects.transform.position, out _CameraHit))
+            {
+                CameraFollow.transform.position = _CameraHit.point;
+
+                var LocalPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, CameraFollow.transform.localPosition.z + CollisionSens);
+
+                CameraFollow.transform.localPosition = LocalPosition;
+            }
+
+            Destroy(Objects);
+
+            if (CameraFollow.transform.localPosition.z > -1f)
+            {
+                CameraFollow.transform.localPosition = new Vector3(CameraFollow.transform.localPosition.x, CameraFollow.transform.localPosition.y, -1f);
+            }
         }
     }
 
