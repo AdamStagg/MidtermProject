@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 5005980648709000949}
+  EnemyTransform: {fileID: 1210393031311378897, guid: 723342626d04f3144afc766b1c5f4576, type: 3}
   ControllerHeight: 5
   Kunai: {fileID: 8695075257251887727, guid: 24a47bd22b4cfeb41a38d7a91d4ee358, type: 3}
   AmountOfKunais: 3

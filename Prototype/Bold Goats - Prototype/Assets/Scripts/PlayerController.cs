@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Enemy;
 public class PlayerController : MonoBehaviour
 {
    
     private CharacterController Controller;
     public Transform PlayerTransform;
+    public Transform EnemyTransform;
     private Vector3 PlayerVelocity;
     private bool GroundedPlayer;
     private bool Crouched = false;
     private float PlayerSpeed = 5.0f;
+    private float DistanceToEnemy;
     private float GravityValue = -9.81f;
     public float ControllerHeight;
+    
 
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -78,9 +81,10 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Executing Enemies///////////
-        if (PlayerTransform.position - && Input.GetButtonDown("Execute")) 
+        DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
+        if (DistanceToEnemy < .3f && Input.GetButtonDown("Execute")) 
         {
-
+            ExecuteEnemy();
         }
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
@@ -135,7 +139,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ExecuteEnemy() 
+    {
+        //Perform Execution animation
+        EnemyState enemy = new EnemyState();
+        enemy.Kill();
     
+    }
 
 }
 
