@@ -27,7 +27,7 @@ namespace Enemy
             
             
 
-            if (/*checkForPlayer && */GameManager.Instance.Player != null)
+            if (checkForPlayer && GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
                 

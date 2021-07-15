@@ -40,12 +40,18 @@ public class PlayerController : MonoBehaviour
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        Controller.Move(Move * Time.deltaTime * PlayerSpeed);
+        
 
-        if (Move != Vector3.zero)
-        {
-            gameObject.transform.forward = Move;
-        }
+        Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
+        Controller.Move(Camera.main.transform.forward * Move.z * Time.deltaTime * PlayerSpeed);
+
+
+
+        //if (Move != Vector3.zero)
+        //{
+        transform.forward = Camera.main.transform.forward;
+
+        //}
 
         ///////////Player Crouch///////////
         if (GroundedPlayer == true && Input.GetButtonDown("Crouch"))

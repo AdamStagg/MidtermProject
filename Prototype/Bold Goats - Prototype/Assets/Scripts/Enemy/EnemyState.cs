@@ -123,6 +123,7 @@ namespace Enemy
         private void ChangeState(States _state)
         {
             state = _state;
+            GetComponentInChildren<EnemyIndicator>().HandleOnStateChange(_state);
         }
 
 
