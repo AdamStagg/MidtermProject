@@ -200,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598667840692855901}
   - component: {fileID: -853493822312918422}
+  - component: {fileID: 4321995958619246218}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -243,6 +244,25 @@ MonoBehaviour:
   - {fileID: 6355114045688112404, guid: 3fd064a2f6c753e4eb9effa354811581, type: 3}
   - {fileID: 3516783918534941136, guid: ab99196eef03e294499de631b5bfc7e7, type: 3}
   - {fileID: 2268068218868592345, guid: 3e9ff371588ae01458423cc1413b5bae, type: 3}
+--- !u!114 &4321995958619246218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705746819523154301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1cd864f18a03046b8b215c3fab1765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Door: {fileID: 0}
+  Hinge: {fileID: 0}
+  Key: {fileID: 0}
+  DoorCam: {fileID: 0}
+  DoorCamEvent: {fileID: 0}
+  MainCam: {fileID: 0}
+  speed: 0
 --- !u!1 &6784888047761185054
 GameObject:
   m_ObjectHideFlags: 0
