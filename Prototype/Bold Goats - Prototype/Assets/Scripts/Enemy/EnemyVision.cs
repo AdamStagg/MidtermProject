@@ -64,30 +64,7 @@ namespace Enemy
         }
 
 
-        private void OnTriggerEnter(Collider other)
-        {
 
-            if (other.tag == "Player")
-            {
-                checkForPlayer = true;
-            } else if (other.tag == "Enemy")
-            {
-                other.GetComponent<EnemyState>().Alert += HandleAlert;
-            }
-
-
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.tag == "Player")
-            {
-                checkForPlayer = false;
-            } else if (other.tag == "Enemy")
-            {
-                other.GetComponent<EnemyState>().Alert -= HandleAlert;
-            }
-        }
 
         private void OnDrawGizmosSelected()
         {
@@ -98,10 +75,6 @@ namespace Enemy
 
         }
 
-        void HandleAlert()
-        {
-            throw new System.NotImplementedException();
-        }
 
     }
 }
