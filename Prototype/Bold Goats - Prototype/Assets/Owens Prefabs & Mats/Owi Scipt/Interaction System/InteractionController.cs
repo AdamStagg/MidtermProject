@@ -6,11 +6,11 @@ public class InteractionController : MonoBehaviour
 {
     // Variables
     [Header("Data")]
-    [SerializeField] private InteractionInputData interactionInputData;
-    [SerializeField] private InteractionData interactionData;
+    public InteractionInputData interactionInputData;
+    public InteractionData interactionData;
 
     [Space, Header("UI")]
-    [SerializeField] private InteractionUIPanel uiPanel;
+    public InteractionUIPanel uiPanel;
 
     [Space]
     [Header("Ray Settings")]
@@ -18,15 +18,15 @@ public class InteractionController : MonoBehaviour
     public float raySphereRadius;
     public LayerMask interactableLayer;
 
-    private Camera cam;
+    public Camera cam;
     private bool interacting;
     private float holdTimer = 0f;
 
     // Methods
-    void Awake()
-    {
-        cam = FindObjectOfType<Camera>();
-    }
+    //void Awake()
+    //{
+    //    cam = FindObjectOfType()
+    //}
 
     void Update()
     {
@@ -36,7 +36,7 @@ public class InteractionController : MonoBehaviour
 
     void CheckForInteractable()
     {
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        Ray ray = new Ray(GameManager.Instance.Player.transform.position, cam.transform.forward);
         RaycastHit hitInfo;
 
         bool hitSomething = Physics.SphereCast(ray, raySphereRadius, out hitInfo, rayDistance, interactableLayer);
@@ -44,6 +44,7 @@ public class InteractionController : MonoBehaviour
         if (hitSomething)
         {
             InteractableBase _interactable = hitInfo.transform.GetComponent<InteractableBase>();
+
             if (_interactable != null)
             {
                 if (interactionData.IsEmpty())

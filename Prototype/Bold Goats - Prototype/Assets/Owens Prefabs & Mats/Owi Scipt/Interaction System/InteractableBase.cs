@@ -60,7 +60,7 @@ public class InteractableBase : MonoBehaviour, IInteractables
     }
 
     // Mehtods
-    public void OnInteract()
+    public virtual void OnInteract()
     {
         
     }
