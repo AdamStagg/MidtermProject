@@ -32,6 +32,11 @@ public class InteractableBehaviour : InteractableBase
         {
             GameManager.Instance.Player.transform.position = transform.position;
             GetComponent<Collider>().enabled = false;
+
+            if (Vector3.Distance(GameManager.Instance.Player.transform.position, transform.position) > .03f)
+            {
+                GetComponent<Collider>().enabled = true;
+            }
         }
     }
 
