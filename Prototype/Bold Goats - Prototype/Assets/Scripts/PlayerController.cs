@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     public float PlayerSpeed = 5.0f;
-    private float DistanceToEnemy;
     private float GravityValue = -9.81f;
     private float ControllerHeight = .25f;
 
@@ -21,10 +20,15 @@ public class PlayerController : MonoBehaviour
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
     public Collider attackCollider;
+    private float DistanceToEnemy;
 
     ///////////Variables for Kunai///////////
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
+
+    ///////////Variables for Distractable///////////
+    public GameObject Distractable;
+    public int AmountOfDistractables = 3;
 
     ///////////Variables for Climbing///////////
     /* public bool Climbing;
@@ -48,11 +52,12 @@ public class PlayerController : MonoBehaviour
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
     public AudioSource WalkAudio;
+    public AudioSource CrouchAudio;
 
 
     private void Start()
     {
-        Controller = gameObject.AddComponent<CharacterController>();
+        Controller = GetComponent<CharacterController>();
         attackCollider.enabled = false;
        /* Helper = new GameObject().transform;
         Helper.name = "Climb Helper";
@@ -71,8 +76,8 @@ public class PlayerController : MonoBehaviour
         }
 
 
-       // Delta = Time.deltaTime;
-       // Tick(Delta);
+        // Delta = Time.deltaTime;
+        // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -110,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Create Kunai///////////
-        if (Input.GetKeyDown(KeyCode.Space))
+     /*   if (Input.GetKeyDown(KeyCode.Space))
         {
 
             if (AmountOfKunais > 0)
@@ -123,18 +128,42 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        
+     */
+
+        ///////////Create Distractable///////////
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+
+            if (AmountOfDistractables > 0)
+            {
+                CreateDistractable();
+            }
+            else
+            {
+                Debug.Log("Out of Distractions");
+            }
+
+        }
+
 
         ///////////Reloads Kunais///////////
         ///Will Change after reload stations are included
-        if (Input.GetKeyDown(KeyCode.R))
+       /* if (Input.GetKeyDown(KeyCode.R))
         {
-            Reload();
+            ReloadKunais();
+        }
+       */
+
+        ///////////Reloads Distractables///////////
+        ///Will Change after reload stations are included
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ReloadDistractables();
         }
 
 
         ///////////Executing Enemies///////////
-        DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
+      /*  DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
         if (DistanceToEnemy < .3f && Input.GetButtonDown("Execute")) 
         {
             ExecuteEnemy();
@@ -145,7 +174,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WaitSomeTime(0.2f));
 
         }
-
+      */
         
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
@@ -156,14 +185,15 @@ public class PlayerController : MonoBehaviour
 
     ///////////Support Methods///////////
     ///Wait time for attack
-    IEnumerator WaitSomeTime(float seconds)
+ /*   IEnumerator WaitSomeTime(float seconds)
     {
         yield return new WaitForSeconds(seconds);
        attackCollider.enabled = false;
     }
-  
+  */
+
     ///Kill enemy when colliding with them
-    public void OnTriggerEnter(Collider other)
+  /*  public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
@@ -179,6 +209,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Trigger exit with " + other.name);
     }
+  */
 
     ///Tick method for climbing
   /*  public void Tick(float delta) 
@@ -306,23 +337,40 @@ public class PlayerController : MonoBehaviour
     ///////////Player Actions///////////
 
     ///Throwing Kunais
-    void CreateKunai()
+  /*  void CreateKunai()
     {
 
-        Rigidbody clone = Instantiate(Kunai, transform.position, transform.rotation);
+        Instantiate(Kunai, transform.position, transform.rotation);
         AmountOfKunais -= 1;
         Debug.Log("Kunais left: " + AmountOfKunais);
 
     }
+*/
+
+    ///Distractions
+    void CreateDistractable() 
+    {
+        Instantiate(Distractable, transform.position, transform.rotation);
+        AmountOfDistractables -= 1;
+        Debug.Log("Distractions left: " + AmountOfDistractables);
+    }
 
     ///Reloading Kunais
-    void Reload()
+ /*   void ReloadKunais()
     {
         AmountOfKunais = 3;
         Debug.Log("Refilled Kunais");
     }
+ */
 
-    
+    ///Reloading Distractables
+    void ReloadDistractables()
+    {
+        AmountOfDistractables = 3;
+        Debug.Log("Refilled Distractables");
+    }
+
+
     ///Crouching
     void ToggleCrouch() 
     {
@@ -331,6 +379,7 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.localScale = new Vector3(.25f, .1f, .25f);
             Controller.height = ControllerHeight;
             PlayerSpeed = 2.5f;
+            //CrouchAudio.Play()
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
         else 
@@ -355,19 +404,20 @@ public class PlayerController : MonoBehaviour
     }
 
     ///Attacking
-    void ExecuteEnemy() 
+  /*  void ExecuteEnemy() 
     {
         //Perform Execution animation
         EnemyState enemy = new EnemyState();
         enemy.Kill();
     
     }
-
+  */
     void Run() 
     {
         if (Running && Crouched == false)
         {
             PlayerSpeed = 8.0f;
+            //RunAudio.Play();
             Debug.Log("Player is running");
             
         }
