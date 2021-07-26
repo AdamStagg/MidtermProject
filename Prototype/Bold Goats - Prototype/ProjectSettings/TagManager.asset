@@ -11,10 +11,13 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - 
-  - Water
+  - Waterx
   - UI
   - MiniMap
   - Interactable
+  - Player
+  - Distractable
+  - Enemy
   - 
   - 
   - 
