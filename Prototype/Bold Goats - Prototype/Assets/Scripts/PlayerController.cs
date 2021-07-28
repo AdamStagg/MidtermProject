@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool Running = false;
     public float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
-    private float ControllerHeight = .25f;
+    private float ControllerHeight = 1f;
 
 
     ///////////Variables for Attacking///////////
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
         ///////////Reloads Distractables///////////
         ///Will Change after reload stations are included
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadDistractables();
         }
@@ -376,7 +376,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Crouched == true)
         {
-            PlayerTransform.transform.localScale = new Vector3(.25f, .1f, .25f);
+            PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
             Controller.height = ControllerHeight;
             PlayerSpeed = 2.5f;
             //CrouchAudio.Play()
@@ -391,7 +391,7 @@ public class PlayerController : MonoBehaviour
            
             if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
             {
-                PlayerTransform.transform.localScale = new Vector3(.25f, ControllerHeight, .25f);
+                PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
                 PlayerSpeed = 5f;
                 Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
