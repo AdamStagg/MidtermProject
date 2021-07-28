@@ -16258,6 +16258,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7385419175721526785, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6429984711160233706, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697803470844380174, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727731176960135775, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8727731178407527507, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -16305,6 +16321,10 @@ PrefabInstance:
     - target: {fileID: 8727731178407527511, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727731178407527511, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
@@ -44408,7 +44428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 817466245}
   CameraCenter: {fileID: 148138098}
-  CameraFollow: {fileID: 0}
+  CameraFollow: {fileID: 2122690437}
   yoffset: 0.2
   Sensitivity: 3
   ScrollSensitivity: 5
