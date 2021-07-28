@@ -191,6 +191,8 @@ GameObject:
   - component: {fileID: 8727731178407527510}
   - component: {fileID: 8727731178407527506}
   - component: {fileID: 1608415850019012173}
+  - component: {fileID: -6429984711160233706}
+  - component: {fileID: -7385419175721526785}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -316,3 +318,37 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6429984711160233706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727731178407527511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a067174f81bca73449baf469dcfc1e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionInputData: {fileID: 11400000, guid: 7bad579d77697c04aa41a361b87c6336, type: 2}
+--- !u!114 &-7385419175721526785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727731178407527511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac84f76b21ca305489f46d5a03cc2518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionInputData: {fileID: 11400000, guid: 7bad579d77697c04aa41a361b87c6336, type: 2}
+  interactionData: {fileID: 11400000, guid: 36b59c83a6b20af47b693410ef415cba, type: 2}
+  uiPanel: {fileID: 0}
+  rayDistance: 0
+  raySphereRadius: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  cam: {fileID: 0}
