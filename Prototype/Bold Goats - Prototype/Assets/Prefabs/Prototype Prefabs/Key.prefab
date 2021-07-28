@@ -16,8 +16,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1940691944745547334
 Transform:
@@ -111,8 +111,8 @@ GameObject:
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6616649421870798539
 Transform:
@@ -259,10 +259,7 @@ MonoBehaviour:
   Door: {fileID: 0}
   Hinge: {fileID: 0}
   Key: {fileID: 0}
-  DoorCam: {fileID: 0}
-  DoorCamEvent: {fileID: 0}
-  MainCam: {fileID: 0}
-  speed: 0
+  UI: {fileID: 0}
 --- !u!1 &6784888047761185054
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,8 +276,8 @@ GameObject:
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7978470210382716935
 Transform:
@@ -374,8 +371,8 @@ GameObject:
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1793118609589076601
 Transform:
