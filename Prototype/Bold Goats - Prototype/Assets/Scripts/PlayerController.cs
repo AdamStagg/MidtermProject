@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
-    public Collider attackCollider;
-    private float DistanceToEnemy;
+    
+   
 
     ///////////Variables for Kunai///////////
     public Rigidbody Kunai;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-        attackCollider.enabled = false;
+        
        /* Helper = new GameObject().transform;
         Helper.name = "Climb Helper";
         CheckForClimb();

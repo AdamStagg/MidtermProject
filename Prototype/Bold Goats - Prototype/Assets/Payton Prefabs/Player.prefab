@@ -32,7 +32,6 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 5005980649547260101}
-  - {fileID: 3397132312196034731}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,7 +113,6 @@ MonoBehaviour:
   PlayerTransform: {fileID: 0}
   PlayerSpeed: 5
   EnemyTransform: {fileID: 1210393031311378897, guid: 723342626d04f3144afc766b1c5f4576, type: 3}
-  attackCollider: {fileID: 5977927771099879051}
   Kunai: {fileID: 8695075257251887727, guid: 24a47bd22b4cfeb41a38d7a91d4ee358, type: 3}
   AmountOfKunais: 3
   Distractable: {fileID: 494251943022776097, guid: f8c5508625feb8b41aba8b6fec78788d, type: 3}
@@ -217,47 +215,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8325260436751358543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3397132312196034731}
-  - component: {fileID: 5977927771099879051}
-  m_Layer: 7
-  m_Name: ExecuteHitBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3397132312196034731
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8325260436751358543}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.194, y: 0.568, z: -0.287}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5005980648709000949}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5977927771099879051
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8325260436751358543}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3961933, y: 1.7411045, z: 1.8321477}
-  m_Center: {x: 0.03813505, y: -0.37055236, z: 0.41607386}

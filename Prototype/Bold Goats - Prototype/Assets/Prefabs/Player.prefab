@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 8727731178407527505}
   - component: {fileID: 8727731178407527510}
   - component: {fileID: 8727731178407527506}
-  - component: {fileID: 5484544610356541860}
+  - component: {fileID: 1608415850019012173}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 8727731178407527511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.561, y: 2.337, z: -18.908}
-  m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children:
   - {fileID: 8727731176960135774}
   - {fileID: 3811183409946248016}
@@ -272,7 +272,7 @@ BoxCollider:
   m_GameObject: {fileID: 8727731178407527511}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -288,20 +288,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b0421c5f6aa99429569ac4b7e5deb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerTransform: {fileID: 0}
   PlayerSpeed: 5
-  attackCollider: {fileID: 5484544610356541860}
+  EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
   AmountOfKunais: 3
---- !u!65 &5484544610356541860
-BoxCollider:
+  Distractable: {fileID: 494251943022776097, guid: f8c5508625feb8b41aba8b6fec78788d, type: 3}
+  AmountOfDistractables: 3
+  RunAudio: {fileID: 0}
+  WalkAudio: {fileID: 0}
+  CrouchAudio: {fileID: 0}
+--- !u!143 &1608415850019012173
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8727731178407527511}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.17, y: 1.38, z: 2.7963324}
-  m_Center: {x: 0, y: 0, z: 1.8581662}
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
