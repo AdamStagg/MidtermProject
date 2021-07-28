@@ -7,7 +7,7 @@ public class DistractionController : MonoBehaviour
     public Rigidbody DistractableRb;
     public GameObject explosion;
     public float speed = 8.0f;
-    public int destroyTime = 2;
+    
 
     public List<EnemyState> enemies;
 
@@ -24,15 +24,15 @@ public class DistractionController : MonoBehaviour
             enemy.InvokeInvestigate();
         }
         DistractableRb.isKinematic = true;
-        //explosion.SetActive(true);
+        explosion.SetActive(true);
         Destroy(gameObject);
-        //OnTriggerEnter(explosion.GetComponent<Collider>());
+        OnTriggerEnter(explosion.GetComponent<Collider>());
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent != null && other.transform.parent.tag == "Enemy")
+        if (other.transform.parent != null && other.tag == "Enemy")
         {
             enemies.Add(transform.parent.GetComponent<EnemyState>());
 
