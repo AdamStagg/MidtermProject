@@ -432,17 +432,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
 
         //We are within the range of the enemy and running
         if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
         {
+            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             //player is moving
-            if (PlayerVelocity.x != 0 || PlayerVelocity.z != 0)
+            if (Move.magnitude > .1f)
             {
-                other.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
-                other.GetComponent<EnemyState>().InvokeInvestigate();
+                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
             }
         }
     }
