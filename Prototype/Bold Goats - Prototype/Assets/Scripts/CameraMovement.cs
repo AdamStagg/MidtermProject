@@ -42,9 +42,11 @@ public class CameraMovement : MonoBehaviour
 
         // so you don't have to see the mouse move off the screen
         Cursor.visible = true;
+        // Created to lock the cursor in the middle of the screen
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if (character != null)
         {
