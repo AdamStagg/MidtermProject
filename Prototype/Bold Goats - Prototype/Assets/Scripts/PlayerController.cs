@@ -384,22 +384,24 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            Ray ray = new Ray();
+          /*  Ray ray = new Ray();
             RaycastHit hit;
             ray.origin = transform.position;
             ray.direction = Vector3.up;
            
-            if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
+            if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 2.0f))
             {
+          */
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
                 PlayerSpeed = 5f;
                 Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
-            }
-            else
+           // }
+           /* else
             {
                 Debug.Log("Not enough space to stand up!");
             }
+           */
         }
     }
 
@@ -421,7 +423,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player is running");
             
         }
-        else 
+        else if(Crouched == false)
         {
 
             Debug.Log("Player is walking");

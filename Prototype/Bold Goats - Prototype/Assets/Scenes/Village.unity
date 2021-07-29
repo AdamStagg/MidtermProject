@@ -20916,6 +20916,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1111113513}
     - target: {fileID: -7385419175721526785, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7385419175721526785, guid: 834c398bd92787a4cad240ac602e5ecf, type: 3}
       propertyPath: rayDistance
       value: 5
       objectReference: {fileID: 0}
