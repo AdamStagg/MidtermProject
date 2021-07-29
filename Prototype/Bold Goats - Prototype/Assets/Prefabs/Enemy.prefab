@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardPoints: []
   colorAttack: {r: 1, g: 0, b: 0, a: 1}
-  maxDistanceForChase: 5
+  maxDistanceForChase: 10
   distanceToAttack: 0.375
   attackMaterial: {fileID: 2100000, guid: 177cb802b8ddd2740be0845589c4978f, type: 2}
 --- !u!114 &1210393031311378923
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01934f9212a991a498efa77b60601850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionLength: 2.5
-  fillRate: 2
+  visionLength: 5
+  stateChangeDelay: 1
   maxSightAngle: 60
   Suspicion: 0
   checkForPlayer: 0

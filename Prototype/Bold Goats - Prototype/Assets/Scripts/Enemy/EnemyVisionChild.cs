@@ -20,26 +20,12 @@ namespace Enemy
             {
                 enemyVision.checkForPlayer = true;
             }
-            else if (other.tag == "Enemy")
-            {
-                other.GetComponent<EnemyState>().Alert += HandleAlert;
-            }
-
+            //else if (other.tag == "Enemy")
+            //{
+            //    other.GetComponent<EnemyState>().Alert += HandleAlert;
+            //}
 
         }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.tag == "Player")
-            {
-                enemyVision.checkForPlayer = false;
-            }
-            else if (other.tag == "Enemy")
-            {
-                other.GetComponent<EnemyState>().Alert -= HandleAlert;
-            }
-        }
-
         void HandleAlert()
         {
             throw new System.NotImplementedException();

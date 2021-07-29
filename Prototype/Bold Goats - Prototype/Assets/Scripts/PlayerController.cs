@@ -416,48 +416,63 @@ public class PlayerController : MonoBehaviour
     {
         if (Running && Crouched == false)
         {
-            PlayerSpeed = 8.0f;
+            PlayerSpeed = 5.0f;
             //RunAudio.Play();
-            Debug.Log("Player is running");
+            //Debug.Log("Player is running");
             
         }
         else 
         {
 
-            Debug.Log("Player is walking");
-            PlayerSpeed = 5.0f;
+            //Debug.Log("Player is walking");
+            PlayerSpeed = 2.0f;
             
         }
         
 
     }
-    
 
-   /* public void CheckForClimb() 
+    private void OnTriggerEnter(Collider other)
     {
-        Vector3 origin = transform.position;
-        origin.y += 1.4f;
-        Vector3 direction = transform.forward;
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, 1)) 
+
+        //We are within the range of the enemy and running
+        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
         {
-            Helper.position = PosWithOffset(origin, hit.point);
-            ClimbOnWall(hit);
+            //player is moving
+            if (PlayerVelocity.x != 0 || PlayerVelocity.z != 0)
+            {
+                other.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+                other.GetComponent<EnemyState>().InvokeInvestigate();
+            }
         }
     }
 
-    void ClimbOnWall(RaycastHit hit) 
-    {
-        GroundedPlayer = false;
-        Climbing = true;
-        Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
-        StartingPosition = transform.position;
-        TargetPosition = hit.point + (hit.normal * OffsetFromWall);
-        PosT = 0;
-        InPosition = false;
-        Anim.CrossFade("climb_idle", 2);
-    }
-   */
+
+    /* public void CheckForClimb() 
+     {
+         Vector3 origin = transform.position;
+         origin.y += 1.4f;
+         Vector3 direction = transform.forward;
+         RaycastHit hit;
+         if (Physics.Raycast(origin, direction, out hit, 1)) 
+         {
+             Helper.position = PosWithOffset(origin, hit.point);
+             ClimbOnWall(hit);
+         }
+     }
+
+     void ClimbOnWall(RaycastHit hit) 
+     {
+         GroundedPlayer = false;
+         Climbing = true;
+         Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
+         StartingPosition = transform.position;
+         TargetPosition = hit.point + (hit.normal * OffsetFromWall);
+         PosT = 0;
+         InPosition = false;
+         Anim.CrossFade("climb_idle", 2);
+     }
+    */
 }
 
 

@@ -20,10 +20,10 @@ namespace Enemy
 
         EnemyVision enemyVision;
 
-        
+
         EnemyState enemyState;
 
-        [SerializeField] float maxDistanceForChase = 10f;
+        [SerializeField] float maxDistanceForChase = 25f;
         [SerializeField] float distanceToAttack = 2f;
 
         [SerializeField] Material attackMaterial;
@@ -69,7 +69,7 @@ namespace Enemy
         void GoToNextPoint()
         {
             // If there are no points set, No Need to continue Function
-            
+
             //if (gaurdPoints.Length == 0)
             //{
             //    return;
@@ -90,12 +90,12 @@ namespace Enemy
         public void HandleInvokeInvestigate()
         {
             lastPosition.position = transform.position;
+            aiEnemy.destination = investigatePosition.position;
             investigatePosition.position = GameManager.Instance.Player.transform.position;
         }
 
         public void HandleInvokeReturn()
         {
-            enemyVision.Suspicion = 45;
             GetComponent<Renderer>().material.color = originalColor;
             aiEnemy.ResetPath();
         }
@@ -105,6 +105,8 @@ namespace Enemy
             GetComponent<Renderer>().material.color = colorAttack;
             Destroy(GameManager.Instance.Player);
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         // Switch for enemy behavior
@@ -118,7 +120,7 @@ namespace Enemy
 
                     break;
                 case States.Attack:
-                    
+
                     //Everything taken care of in HandleInvokeAttack
 
                     break;
@@ -151,7 +153,7 @@ namespace Enemy
                     break;
                 case States.Investigate:
 
-                    aiEnemy.destination = investigatePosition.position;
+                    
 
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
                     {
@@ -189,6 +191,11 @@ namespace Enemy
                     break;
             }
 
+        }
+
+        public void SetInvestigatePosition(Transform position)
+        {
+            investigatePosition = position;
         }
     }
 }

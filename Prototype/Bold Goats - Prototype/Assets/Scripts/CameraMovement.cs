@@ -58,7 +58,7 @@ public class CameraMovement : MonoBehaviour
 
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)
             {
-                var ScrollAmount = Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
+                var ScrollAmount = -Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
                 ScrollAmount *= ZoomDist * 0.3f;
                 ZoomDist += ScrollAmount;
                 ZoomDist = Mathf.Clamp(ZoomDist, ZoomMin, ZoomMax);
