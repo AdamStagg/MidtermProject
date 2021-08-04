@@ -20,9 +20,9 @@ namespace Enemy
             {
                 enemyVision.checkForPlayer = true;
             }
-            else if (other.tag == "Enemy")
+            else if (other.transform.parent.tag == "Enemy")
             {
-                other.GetComponent<EnemyState>().Alert += HandleAlert;
+                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
             }
 
 
@@ -34,10 +34,7 @@ namespace Enemy
             {
                 enemyVision.checkForPlayer = false;
             }
-            else if (other.tag == "Enemy")
-            {
-                other.GetComponent<EnemyState>().Alert -= HandleAlert;
-            }
+            
         }
 
         void HandleAlert()
