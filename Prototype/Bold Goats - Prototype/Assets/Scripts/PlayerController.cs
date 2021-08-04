@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
+    public float Stamina = 20.0f;
     public float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
@@ -100,6 +101,19 @@ public class PlayerController : MonoBehaviour
         {
             Running = !Running;
             Run();
+        }
+        if (Stamina > 5.0f && Running == true)
+        {
+            Stamina -= Time.deltaTime;
+            if (Stamina < 0.1f) 
+            {
+                Running = false;
+                PlayerSpeed = 5.0f;
+            }
+        }
+        else if(Stamina <= 20.0f)
+        {
+            Stamina += Time.deltaTime;
         }
 
         ///////////Player Crouch///////////
@@ -416,7 +430,7 @@ public class PlayerController : MonoBehaviour
   */
     void Run() 
     {
-        if (Running && Crouched == false)
+        if (Running && Crouched == false && Stamina > 5.0f)
         {
             PlayerSpeed = 8.0f;
             //RunAudio.Play();
@@ -427,6 +441,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Debug.Log("Player is walking");
+            Running = false;
             PlayerSpeed = 5.0f;
             
         }
