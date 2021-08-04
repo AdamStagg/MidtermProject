@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
-
+    private Input inputActions;
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
     
@@ -55,19 +56,36 @@ public class PlayerController : MonoBehaviour
     public AudioSource WalkAudio;
     public AudioSource CrouchAudio;
 
+    private void Awake()
+    {
+        inputActions = new Input();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
 
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-        
-       /* Helper = new GameObject().transform;
-        Helper.name = "Climb Helper";
-        CheckForClimb();
-       */
+
+        /* Helper = new GameObject().transform;
+         Helper.name = "Climb Helper";
+         CheckForClimb();
+        */
+
+
     }
 
     void Update()
     {
+        inputActions.Game.Forward.performed += _ => Run();
 
         GroundedPlayer = Controller.isGrounded;
 
@@ -81,7 +99,7 @@ public class PlayerController : MonoBehaviour
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
-        Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 Move = new Vector3(Mouse.current.delta.x.ReadValue(), 0, Mouse.current.delta.y.ReadValue());
 
 
         ///////////Camera Movement///////////
@@ -97,7 +115,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(angles);
 
         ///////////Player Run///////////
-        if (Input.GetButtonDown("Run")) 
+        if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
             Running = !Running;
             Run();
@@ -116,16 +134,8 @@ public class PlayerController : MonoBehaviour
             Stamina += Time.deltaTime;
         }
 
-        ///////////Player Crouch///////////
-        if (Input.GetButtonDown("Crouch"))
-        {
-            Crouched = !Crouched;
-            ToggleCrouch();
-            //Play Crouch Animation
-            //Reduce Enemy Sight Lines
-        }
         
-
+        
 
 
         ///////////Create Kunai///////////
