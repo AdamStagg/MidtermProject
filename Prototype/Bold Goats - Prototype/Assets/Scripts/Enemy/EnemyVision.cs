@@ -65,7 +65,7 @@ namespace Enemy
                             {
                                 enemyState.InvokeChase();
                             }
-
+                            //test
 
 
                             //if (Suspicion >= 95 && enemyState.state == States.Investigate)
