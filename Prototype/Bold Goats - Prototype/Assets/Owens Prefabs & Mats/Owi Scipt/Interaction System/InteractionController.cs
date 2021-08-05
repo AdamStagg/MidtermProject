@@ -36,39 +36,43 @@ public class InteractionController : MonoBehaviour
 
     void CheckForInteractable()
     {
-        Ray ray = new Ray(GameManager.Instance.Player.transform.position, cam.transform.forward);
-        RaycastHit hitInfo;
-
-        bool hitSomething = Physics.SphereCast(ray, raySphereRadius, out hitInfo, rayDistance, interactableLayer);
-
-        if (hitSomething)
+        if (GameManager.Instance.Player != null && cam != null)
         {
-            InteractableBase _interactable = hitInfo.transform.GetComponent<InteractableBase>();
 
-            if (_interactable != null)
+            Ray ray = new Ray(GameManager.Instance.Player.transform.position, cam.transform.forward);
+            RaycastHit hitInfo;
+
+            bool hitSomething = Physics.SphereCast(ray, raySphereRadius, out hitInfo, rayDistance, interactableLayer);
+
+            if (hitSomething)
             {
-                if (interactionData.IsEmpty())
+                InteractableBase _interactable = hitInfo.transform.GetComponent<InteractableBase>();
+
+                if (_interactable != null)
                 {
-                    interactionData.Interactable = _interactable;
-                    uiPanel.SetTooltip(_interactable.TooltipMessage);
-                }
-                else
-                {
-                    if (!interactionData.IsSameInteractable(_interactable))
+                    if (interactionData.IsEmpty())
                     {
                         interactionData.Interactable = _interactable;
                         uiPanel.SetTooltip(_interactable.TooltipMessage);
                     }
+                    else
+                    {
+                        if (!interactionData.IsSameInteractable(_interactable))
+                        {
+                            interactionData.Interactable = _interactable;
+                            uiPanel.SetTooltip(_interactable.TooltipMessage);
+                        }
+                    }
                 }
             }
-        }
-        else
-        {
-            uiPanel.ResetUI();
-            interactionData.ResetData();
-        }
+            else
+            {
+                uiPanel.ResetUI();
+                interactionData.ResetData();
+            }
 
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, hitSomething ? Color.green : Color.red);
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance, hitSomething ? Color.green : Color.red);
+        }
     }
 
     void CheckForInteractableInput()

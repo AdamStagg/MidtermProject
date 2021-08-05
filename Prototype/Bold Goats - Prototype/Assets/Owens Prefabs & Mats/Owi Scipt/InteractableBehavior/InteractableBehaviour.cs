@@ -16,12 +16,17 @@ public class InteractableBehaviour : InteractableBase
     public bool transportType = false;
     public Transform transportPoint;
 
+    [Space]
+    public GameObject textToDisplay;
+    public float timeToDisplayText = 5f;
     public override void OnInteract()
     {
         base.OnInteract();
 
         if (destroyType == true)
         {
+            textToDisplay.SetActive(true);
+            StartCoroutine(WaitSomeTime(timeToDisplayText));
             Destroy(destroy);
         }
         else if (transportType == true)
@@ -38,6 +43,13 @@ public class InteractableBehaviour : InteractableBase
                 GetComponent<Collider>().enabled = true;
             }
         }
+    }
+
+    IEnumerator WaitSomeTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        textToDisplay.SetActive(false);
+            Destroy(this);
     }
 
 }
