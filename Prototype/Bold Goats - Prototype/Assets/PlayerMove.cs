@@ -1,21 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
     Vector3 movPos;
     public float movAmount = .1f;
+
+    private Input inputActions;
+
+    private void Awake()
+    {
+        inputActions = new Input();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
     // Update is called once per frame
     void Update()
     {
+        float movementInputForward = inputActions.Game.Forward.ReadValue<float>();
+        float movementInputBackward = inputActions.Game.Backward.ReadValue<float>();
+        float movementInputLeft = inputActions.Game.Left.ReadValue<float>();
+        float movementInputRight = inputActions.Game.Right.ReadValue<float>();
         Move();
     }
 
     void Move()
     {
         // Forward Movement
-        if (Input.GetKey(KeyCode.W))
+        if (UnityEngine.Input.GetButton("Forward"))
         {
             movPos = transform.position;
             movPos.z -= movAmount;
@@ -23,7 +45,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Backwards Movement
-        if (Input.GetKey(KeyCode.S))
+        if (UnityEngine.Input.GetButton("Backward"))
         {
             movPos = transform.position;
             movPos.z += movAmount;
@@ -32,13 +54,13 @@ public class PlayerMove : MonoBehaviour
 
         // Side to Side Movement
         // Right
-        if (Input.GetKey(KeyCode.D))
+        if (UnityEngine.Input.GetButton("Right"))
         {
             movPos = transform.position;
             movPos.x -= movAmount;
             transform.position = movPos;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (UnityEngine.Input.GetButton("Left"))
         {
             movPos = transform.position;
             movPos.x += movAmount;
