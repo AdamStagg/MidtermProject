@@ -57,6 +57,7 @@ namespace Enemy
             enemyState.Chase -= HandleInvokeChase;
             enemyState.Investigate -= HandleInvokeInvestigate;
             enemyState.Return -= HandleInvokeReturn;
+            enemyState.Attack -= HandleInvokeAttack;
         }
 
         // Update is called once per frame

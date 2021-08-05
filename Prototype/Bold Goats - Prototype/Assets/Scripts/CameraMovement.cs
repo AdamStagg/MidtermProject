@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -52,13 +53,13 @@ public class CameraMovement : MonoBehaviour
         {
             CameraCenter.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + yoffset, character.transform.position.z);
 
-            var rotation = Quaternion.Euler(CameraCenter.transform.rotation.eulerAngles.x - Input.GetAxis("Mouse Y") * Sensitivity / 2, CameraCenter.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
+            var rotation = Quaternion.Euler(CameraCenter.transform.rotation.eulerAngles.x - (Mouse.current.delta.x.ReadValue()) * Sensitivity / 2, CameraCenter.transform.rotation.eulerAngles.y + (Mouse.current.delta.y.ReadValue()) * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
 
             CameraCenter.transform.rotation = rotation;
 
-            if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+            if (Mouse.current.scroll.ReadValue().magnitude != 0f)
             {
-                var ScrollAmount = -Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
+                var ScrollAmount = Mouse.current.scroll.ReadValue().magnitude * ScrollSensitivity;
                 ScrollAmount *= ZoomDist * 0.3f;
                 ZoomDist += ScrollAmount;
                 ZoomDist = Mathf.Clamp(ZoomDist, ZoomMin, ZoomMax);

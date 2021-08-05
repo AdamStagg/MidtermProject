@@ -5,7 +5,22 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     public InteractionInputData interactionInputData;
+    private Input inputActions;
 
+    private void Awake()
+    {
+        inputActions = new Input();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +35,9 @@ public class InputHandler : MonoBehaviour
 
     void GetInteractionInputData()
     {
-        interactionInputData.InteractedClick = Input.GetKeyDown(KeyCode.E);
+        interactionInputData.InteractedRelease = UnityEngine.Input.GetButton("Interact");
         //Debug.Log("E clicked" + interactionInputData.InteractedClick);
-        interactionInputData.InteractedRelease = Input.GetKeyUp(KeyCode.E);
+        interactionInputData.InteractedRelease = UnityEngine.Input.GetButton("Interact");
         //Debug.Log("E clicked" + interactionInputData.InteractedRelease);
 
     }
