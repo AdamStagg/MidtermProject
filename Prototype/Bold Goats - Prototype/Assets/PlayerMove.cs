@@ -20,33 +20,33 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         // Forward Movement
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            movPos = transform.position;
-            movPos.z -= movAmount;
-            transform.position = movPos;
-        }
-
-        // Backwards Movement
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.W))
         {
             movPos = transform.position;
             movPos.z += movAmount;
             transform.position = movPos;
         }
 
-        // Side to Side Movement
-        // Right
-        if (Input.GetKeyDown(KeyCode.D))
+        // Backwards Movement
+        else if (Input.GetKey(KeyCode.S))
         {
             movPos = transform.position;
-            movPos.x -= movAmount;
+            movPos.z -= movAmount;
             transform.position = movPos;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+
+        // Side to Side Movement
+        // Right
+        if (Input.GetKey(KeyCode.D))
         {
             movPos = transform.position;
             movPos.x += movAmount;
+            transform.position = movPos;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            movPos = transform.position;
+            movPos.x -= movAmount;
             transform.position = movPos;
         }
     }

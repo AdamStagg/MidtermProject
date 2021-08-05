@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mainplayer : MonoBehaviour
+public class PlayerMovTest : MonoBehaviour
 {
     Vector3 movpos;
     public float movamount = .1f;
@@ -10,10 +10,10 @@ public class mainplayer : MonoBehaviour
     // update is called once per frame
     void Update()
     {
-        move();
+        Move();
     }
 
-    void move()
+    void Move()
     {
         // forward movement
         if (Input.GetKeyDown(KeyCode.W))
