@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
-    private Input inputActions;
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
     
@@ -32,44 +30,14 @@ public class PlayerController : MonoBehaviour
     public GameObject Distractable;
     public int AmountOfDistractables = 3;
 
-    ///////////Variables for Climbing///////////
-    /* public bool Climbing;
-     private bool InPosition;
-     private bool IsLerping;
-     private float PosT;
-     private float Delta;
-     public float PositionOffset;
-     public float OffsetFromWall = .3f;
-     public float SpeedMultiplier = .2f;
-     public float ClimbSpeed = 3f;
-     public float RotateSpeed = 5f;
-     Vector3 StartingPosition;
-     Vector3 TargetPosition;
-     Quaternion StartRotation;
-     Quaternion TargetRotation;
-     Transform Helper;
-     public Animator Anim;
-    */
+    ///////////Variables for Input///////////
+   
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
     public AudioSource WalkAudio;
     public AudioSource CrouchAudio;
 
-    private void Awake()
-    {
-        inputActions = new Input();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
 
     private void Start()
     {
@@ -85,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        inputActions.Game.Forward.performed += _ => Run();
+        //inputActions.Game.Forward.performed += _ => Run();
 
         GroundedPlayer = Controller.isGrounded;
 
@@ -99,7 +67,7 @@ public class PlayerController : MonoBehaviour
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
-        Vector3 Move = new Vector3(Mouse.current.delta.x.ReadValue(), 0, Mouse.current.delta.y.ReadValue());
+        Vector3 Move = new Vector3(Input.GetAxis("Mouse X"), 0, Input.GetAxis("Mouse Y"));
 
 
         ///////////Camera Movement///////////
