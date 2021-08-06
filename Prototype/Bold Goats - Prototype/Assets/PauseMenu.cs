@@ -21,11 +21,11 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Pause();
+            }
         }
     }
-}
 
-    void Resume()
+    public void Resume()
     {
         uiForPause.SetActive(false);
         Time.timeScale = 1f;
@@ -37,5 +37,25 @@ public class PauseMenu : MonoBehaviour
         uiForPause.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    public void Options()
+    {
+
+    }
+
+    public void Save()
+    {
+
+    }
+
+    public void LoadSave()
+    {
+
+    }
+
+    public void Quit()
+    {
+
     }
 }
