@@ -1,48 +1,49 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class MainPlayer : MonoBehaviour
-//{
-//    Vector3 movPos;
-//    public float movAmount = .1f;
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        Move();
-//    }
+public class PlayerMovTest : MonoBehaviour
+{
+    Vector3 movpos;
+    public float movamount = .1f;
 
-//    void Move()
-//    {
-//        // Forward Movement
-//        if (Input.GetKey(KeyCode.W))
-//        {
-//            movPos = transform.position;
-//            movPos.z += movAmount;
-//            transform.position = movPos;
-//        }
+    // update is called once per frame
+    void Update()
+    {
+        Move();
+    }
 
-//        // Backwards Movement
-//        if (Input.GetKey(KeyCode.S))
-//        {
-//            movPos = transform.position;
-//            movPos.z -= movAmount;
-//            transform.position = movPos;
-//        }
+    void Move()
+    {
+        // forward movement
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            movpos = transform.position;
+            movpos.z += movamount;
+            transform.position = movpos;
+        }
 
-//        // Side to Side Movement
-//        // Right
-//        if (Input.GetKey(KeyCode.D))
-//        {
-//            movPos = transform.position;
-//            movPos.x += movAmount;
-//            transform.position = movPos;
-//        }
-//        else if (Input.GetKey(KeyCode.A))
-//        {
-//            movPos = transform.position;
-//            movPos.x -= movAmount;
-//            transform.position = movPos;
-//        }
-//    }
-//}
+        // backwards movement
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            movpos = transform.position;
+            movpos.z -= movamount;
+            transform.position = movpos;
+        }
+
+        // side to side movement
+        // right
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            movpos = transform.position;
+            movpos.x += movamount;
+            transform.position = movpos;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            movpos = transform.position;
+            movpos.x -= movamount;
+            transform.position = movpos;
+        }
+    }
+}

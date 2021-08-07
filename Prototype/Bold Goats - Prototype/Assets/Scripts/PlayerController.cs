@@ -30,24 +30,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Distractable;
     public int AmountOfDistractables = 3;
 
-    ///////////Variables for Climbing///////////
-    /* public bool Climbing;
-     private bool InPosition;
-     private bool IsLerping;
-     private float PosT;
-     private float Delta;
-     public float PositionOffset;
-     public float OffsetFromWall = .3f;
-     public float SpeedMultiplier = .2f;
-     public float ClimbSpeed = 3f;
-     public float RotateSpeed = 5f;
-     Vector3 StartingPosition;
-     Vector3 TargetPosition;
-     Quaternion StartRotation;
-     Quaternion TargetRotation;
-     Transform Helper;
-     public Animator Anim;
-    */
+    ///////////Variables for Input///////////
+   
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -80,6 +64,7 @@ public class PlayerController : MonoBehaviour
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
+
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 

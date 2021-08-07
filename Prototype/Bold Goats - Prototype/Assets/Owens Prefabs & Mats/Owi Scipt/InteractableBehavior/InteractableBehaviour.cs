@@ -25,8 +25,11 @@ public class InteractableBehaviour : InteractableBase
 
         if (destroyType == true)
         {
+            if (textToDisplay != null)
+            {
             textToDisplay.SetActive(true);
             StartCoroutine(WaitSomeTime(timeToDisplayText));
+            }
             Destroy(destroy);
         }
         else if (transportType == true)
@@ -49,7 +52,7 @@ public class InteractableBehaviour : InteractableBase
     {
         yield return new WaitForSeconds(seconds);
         textToDisplay.SetActive(false);
-            Destroy(this);
+        Destroy(this);
     }
 
 }
