@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
+    public float Stamina = 20.0f;
     public float PlayerSpeed = 5.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
@@ -30,8 +31,24 @@ public class PlayerController : MonoBehaviour
     public GameObject Distractable;
     public int AmountOfDistractables = 3;
 
-    ///////////Variables for Input///////////
-   
+    ///////////Variables for Climbing///////////
+    /* public bool Climbing;
+     private bool InPosition;
+     private bool IsLerping;
+     private float PosT;
+     private float Delta;
+     public float PositionOffset;
+     public float OffsetFromWall = .3f;
+     public float SpeedMultiplier = .2f;
+     public float ClimbSpeed = 3f;
+     public float RotateSpeed = 5f;
+     Vector3 StartingPosition;
+     Vector3 TargetPosition;
+     Quaternion StartRotation;
+     Quaternion TargetRotation;
+     Transform Helper;
+     public Animator Anim;
+    */
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -64,7 +81,6 @@ public class PlayerController : MonoBehaviour
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
-
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 
@@ -85,6 +101,19 @@ public class PlayerController : MonoBehaviour
         {
             Running = !Running;
             Run();
+        }
+        if (Stamina > 5.0f && Running == true)
+        {
+            Stamina -= Time.deltaTime;
+            if (Stamina < 0.1f) 
+            {
+                Running = false;
+                PlayerSpeed = 5.0f;
+            }
+        }
+        else if(Stamina <= 20.0f)
+        {
+            Stamina += Time.deltaTime;
         }
 
         ///////////Player Crouch///////////
@@ -369,22 +398,24 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            Ray ray = new Ray();
+          /*  Ray ray = new Ray();
             RaycastHit hit;
             ray.origin = transform.position;
             ray.direction = Vector3.up;
            
-            if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
+            if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 2.0f))
             {
+          */
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
                 PlayerSpeed = 5f;
                 Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
-            }
-            else
+           // }
+           /* else
             {
                 Debug.Log("Not enough space to stand up!");
             }
+           */
         }
     }
 
@@ -399,66 +430,51 @@ public class PlayerController : MonoBehaviour
   */
     void Run() 
     {
-        if (Running && Crouched == false)
+        if (Running && Crouched == false && Stamina > 5.0f)
         {
-            PlayerSpeed = 5.0f;
+            PlayerSpeed = 8.0f;
             //RunAudio.Play();
-            //Debug.Log("Player is running");
+            Debug.Log("Player is running");
             
         }
-        else 
+        else if(Crouched == false)
         {
 
-            //Debug.Log("Player is walking");
-            PlayerSpeed = 2.0f;
+            Debug.Log("Player is walking");
+            Running = false;
+            PlayerSpeed = 5.0f;
             
         }
         
 
     }
+    
 
-    private void OnTriggerStay(Collider other)
+   /* public void CheckForClimb() 
     {
-
-        //We are within the range of the enemy and running
-        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
+        Vector3 origin = transform.position;
+        origin.y += 1.4f;
+        Vector3 direction = transform.forward;
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, 1)) 
         {
-            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //player is moving
-            if (Move.magnitude > .1f)
-            {
-                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
-                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
-            }
+            Helper.position = PosWithOffset(origin, hit.point);
+            ClimbOnWall(hit);
         }
     }
 
-
-    /* public void CheckForClimb() 
-     {
-         Vector3 origin = transform.position;
-         origin.y += 1.4f;
-         Vector3 direction = transform.forward;
-         RaycastHit hit;
-         if (Physics.Raycast(origin, direction, out hit, 1)) 
-         {
-             Helper.position = PosWithOffset(origin, hit.point);
-             ClimbOnWall(hit);
-         }
-     }
-
-     void ClimbOnWall(RaycastHit hit) 
-     {
-         GroundedPlayer = false;
-         Climbing = true;
-         Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
-         StartingPosition = transform.position;
-         TargetPosition = hit.point + (hit.normal * OffsetFromWall);
-         PosT = 0;
-         InPosition = false;
-         Anim.CrossFade("climb_idle", 2);
-     }
-    */
+    void ClimbOnWall(RaycastHit hit) 
+    {
+        GroundedPlayer = false;
+        Climbing = true;
+        Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
+        StartingPosition = transform.position;
+        TargetPosition = hit.point + (hit.normal * OffsetFromWall);
+        PosT = 0;
+        InPosition = false;
+        Anim.CrossFade("climb_idle", 2);
+    }
+   */
 }
 
 

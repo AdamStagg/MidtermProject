@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -751,8 +751,6 @@ MonoBehaviour:
   hideType: 0
   transportType: 0
   transportPoint: {fileID: 0}
-  textToDisplay: {fileID: 0}
-  timeToDisplayText: 5
 --- !u!65 &504645286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1912,8 +1910,6 @@ MonoBehaviour:
   hideType: 1
   transportType: 0
   transportPoint: {fileID: 0}
-  textToDisplay: {fileID: 0}
-  timeToDisplayText: 5
 --- !u!65 &876561769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2184,8 +2180,6 @@ MonoBehaviour:
   hideType: 0
   transportType: 1
   transportPoint: {fileID: 1049542693}
-  textToDisplay: {fileID: 0}
-  timeToDisplayText: 5
 --- !u!65 &978616963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2949,7 +2943,7 @@ GameObject:
   - component: {fileID: 1460669271}
   - component: {fileID: 1460669266}
   - component: {fileID: 1460669270}
-  - component: {fileID: 1460669273}
+  - component: {fileID: 1460669272}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3027,7 +3021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460669261}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 46, y: 1, z: 45.15}
+  m_LocalPosition: {x: 46, y: 1, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 833832662}
@@ -3049,7 +3043,7 @@ MonoBehaviour:
   interactionInputData: {fileID: 11400000, guid: 7bad579d77697c04aa41a361b87c6336, type: 2}
   interactionData: {fileID: 11400000, guid: 36b59c83a6b20af47b693410ef415cba, type: 2}
   uiPanel: {fileID: 1743237366}
-  rayDistance: 8
+  rayDistance: 5
   raySphereRadius: 0.3
   interactableLayer:
     serializedVersion: 2
@@ -3080,12 +3074,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460669261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b0421c5f6aa99429569ac4b7e5deb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 1460669265}
+  PlayerTransform: {fileID: 0}
   PlayerSpeed: 5
   EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
@@ -3130,25 +3124,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460669261}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0837600d733c25a41800bfc549a63c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movAmount: 0.05
---- !u!114 &1460669273
-MonoBehaviour:
+--- !u!54 &1460669272
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460669261}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ae37726f36e0748a823d317a754bd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movamount: 0.1
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1614097398
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,4 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene(scen_name);
     }
     
-    public void ToggleCursor(bool condition)
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
 }

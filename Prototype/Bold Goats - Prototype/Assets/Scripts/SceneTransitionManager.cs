@@ -87,9 +87,4 @@ public class SceneTransitionManager : MonoBehaviour
     {
         StartCoroutine(LoadSceneEnumerator(_buildIndex));
     }
-
-    public void SetCursor(bool condition)
-    {
-        Cursor.visible = condition;
-    }
 }
