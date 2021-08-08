@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 8727731178407527507}
-  PlayerSpeed: 5
+  PlayerSpeed: 2
   EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
   AmountOfKunais: 3

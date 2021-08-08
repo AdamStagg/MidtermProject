@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlayer : MonoBehaviour
+public class PlayerMovTest : MonoBehaviour
 {
-    Vector3 movPos;
-    public float movAmount = .1f;
-    // Update is called once per frame
+    Vector3 movpos;
+    public float movamount = .1f;
+
+    // update is called once per frame
     void Update()
     {
         Move();
@@ -14,35 +15,35 @@ public class MainPlayer : MonoBehaviour
 
     void Move()
     {
-        // Forward Movement
-        if (Input.GetKey(KeyCode.W))
+        // forward movement
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            movPos = transform.position;
-            movPos.z += movAmount;
-            transform.position = movPos;
+            movpos = transform.position;
+            movpos.z += movamount;
+            transform.position = movpos;
         }
 
-        // Backwards Movement
-        if (Input.GetKey(KeyCode.S))
+        // backwards movement
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            movPos = transform.position;
-            movPos.z -= movAmount;
-            transform.position = movPos;
+            movpos = transform.position;
+            movpos.z -= movamount;
+            transform.position = movpos;
         }
 
-        // Side to Side Movement
-        // Right
-        if (Input.GetKey(KeyCode.D))
+        // side to side movement
+        // right
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            movPos = transform.position;
-            movPos.x += movAmount;
-            transform.position = movPos;
+            movpos = transform.position;
+            movpos.x += movamount;
+            transform.position = movpos;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            movPos = transform.position;
-            movPos.x -= movAmount;
-            transform.position = movPos;
+            movpos = transform.position;
+            movpos.x -= movamount;
+            transform.position = movpos;
         }
     }
 }
