@@ -7,7 +7,11 @@ Textures/Materials/Sprites:
 
 Models:
 
-Music:
+Music: "Chiptune Heist Music by Bertsz from freesound.org"
 
-SFX:
+SFX: "Lasers by SamsterBirdies from freesound.org"
+     "Pick Up Item 1 by SilverIllusionist from freesound.org"
+     "Running/Walking by Juandamb from freesound.org"
+     "Menu Move3 by Tissman from freesound.org"
+     "Beep Short by florianreichelt from freesound.org"
 

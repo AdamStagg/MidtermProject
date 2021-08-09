@@ -22,6 +22,7 @@ public class InteractableBehaviour : InteractableBase
 
         if (destroyType == true)
         {
+
             Destroy(destroy);
         }
         else if (transportType == true)
