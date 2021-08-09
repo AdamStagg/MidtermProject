@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Enemy;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
-    public float PlayerSpeed = 5.0f;
+    public float PlayerSpeed = 3.0f;
+    public float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
@@ -20,8 +21,6 @@ public class PlayerController : MonoBehaviour
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
     
-   
-
     ///////////Variables for Kunai///////////
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -36,13 +35,19 @@ public class PlayerController : MonoBehaviour
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
     public AudioSource WalkAudio;
-    public AudioSource CrouchAudio;
+
+
+    ///////////Variables for KeyCard///////////
+    public static int KeyCards = 0;
+    
+    
 
 
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-        
+        //keyCards = new List<KeyCard>();
+
        /* Helper = new GameObject().transform;
         Helper.name = "Climb Helper";
         CheckForClimb();
@@ -58,8 +63,11 @@ public class PlayerController : MonoBehaviour
         {
             PlayerVelocity.y = 0f;
         }
-
-
+        if (Controller.velocity.magnitude > 1f && WalkAudio.isPlaying == false) 
+        {
+            WalkAudio.Play();
+        }
+        
         // Delta = Time.deltaTime;
         // Tick(Delta);
 
@@ -86,6 +94,9 @@ public class PlayerController : MonoBehaviour
             Running = !Running;
             Run();
         }
+        //Checks Remaining Stamina
+        CheckStamina();
+        
 
         ///////////Player Crouch///////////
         if (Input.GetButtonDown("Crouch"))
@@ -148,19 +159,24 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////Executing Enemies///////////
-      /*  DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
-        if (DistanceToEnemy < .3f && Input.GetButtonDown("Execute")) 
+        /*  DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
+          if (DistanceToEnemy < .3f && Input.GetButtonDown("Execute")) 
+          {
+              ExecuteEnemy();
+              Debug.Log("Attacking");
+              attackCollider.enabled = true;
+
+
+              StartCoroutine(WaitSomeTime(0.2f));
+
+          }
+        */
+
+        ///////////Checking the amount of keycards the player has///////////
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            ExecuteEnemy();
-            Debug.Log("Attacking");
-            attackCollider.enabled = true;
-
-
-            StartCoroutine(WaitSomeTime(0.2f));
-
+            CheckKeyCards();
         }
-      */
-        
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
@@ -319,6 +335,9 @@ public class PlayerController : MonoBehaviour
     }
   */
 
+
+
+
     ///////////Player Actions///////////
 
     ///Throwing Kunais
@@ -364,7 +383,6 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
             Controller.height = ControllerHeight;
             PlayerSpeed = 2.5f;
-            //CrouchAudio.Play()
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
         else 
@@ -399,25 +417,61 @@ public class PlayerController : MonoBehaviour
   */
     void Run() 
     {
-        if (Running && Crouched == false)
+        if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
-            PlayerSpeed = 5.0f;
-            //RunAudio.Play();
+            PlayerSpeed = 8.0f;
+            RunAudio.Play();
+            WalkAudio.Stop();
             //Debug.Log("Player is running");
             
         }
-        else 
+        else if(Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
 
-            //Debug.Log("Player is walking");
-            PlayerSpeed = 2.0f;
+            Debug.Log("Player is walking");
+            Running = false;
+            RunAudio.Stop();
+            WalkAudio.Play();
+            PlayerSpeed = 3.0f;
             
         }
         
 
     }
 
-    private void OnTriggerStay(Collider other)
+    void CheckStamina() 
+    {
+        if (Stamina > 0.1f && Running == true)
+        {
+
+            Stamina -= Time.deltaTime;
+            Debug.Log("Stamina left: " + Stamina);
+        }
+        else if (Stamina <= 10.0f)
+        {
+            Running = false;
+            PlayerSpeed = 3.0f;
+            Debug.Log("Player is now walking");
+            Stamina += Time.deltaTime;
+            if (Stamina > 10.0f)
+            {
+                Stamina = 10.0f;
+            }
+        }
+
+        if (Stamina == 10.0f) 
+        {
+            Debug.Log("Stamina is refilled");
+        }
+    }
+
+   void CheckKeyCards() 
+   {
+        Debug.Log("Keycards = " + KeyCards);
+   }
+   
+
+   /* public void CheckForClimb() 
     {
 
         //We are within the range of the enemy and running
