@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     public float PlayerSpeed = 3.0f;
-    public float Stamina = 10.0f;
+    public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
