@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
-    public float PlayerSpeed = 5.0f;
+    public float PlayerSpeed = 3.0f;
+    public float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
@@ -416,9 +417,9 @@ public class PlayerController : MonoBehaviour
   */
     void Run() 
     {
-        if (Running && Crouched == false && Stamina > 5.0f && Controller.velocity.magnitude > 1f)
+        if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
-            PlayerSpeed = 5.0f;
+            PlayerSpeed = 8.0f;
             RunAudio.Play();
             WalkAudio.Stop();
             //Debug.Log("Player is running");
@@ -446,19 +447,19 @@ public class PlayerController : MonoBehaviour
             Stamina -= Time.deltaTime;
             Debug.Log("Stamina left: " + Stamina);
         }
-        else if (Stamina <= 15.0f)
+        else if (Stamina <= 10.0f)
         {
             Running = false;
             PlayerSpeed = 3.0f;
             Debug.Log("Player is now walking");
             Stamina += Time.deltaTime;
-            if (Stamina > 15.0f)
+            if (Stamina > 10.0f)
             {
-                Stamina = 15.0f;
+                Stamina = 10.0f;
             }
         }
 
-        if (Stamina == 15.0f) 
+        if (Stamina == 10.0f) 
         {
             Debug.Log("Stamina is refilled");
         }
