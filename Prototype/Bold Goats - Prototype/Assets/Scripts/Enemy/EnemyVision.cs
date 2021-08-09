@@ -14,7 +14,6 @@ namespace Enemy
         [SerializeField] float maxSightAngle = 30;
 
         float timeTillCanBeSeen;
-        [Range(0, 100)] public float Suspicion;
         public bool checkForPlayer = false;
 
         private void Awake()
@@ -31,12 +30,13 @@ namespace Enemy
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
-                
-                    if (dirToPlayer.magnitude <= 1)
-                    {
-                        enemyState.InvokeChase();
-                        return;
-                    }
+
+                if (dirToPlayer.magnitude <= 1)
+                {
+                    enemyState.InvokeChase();
+                    GetComponent<EnemyPathFind>().SetLastPosition(transform);
+                    return;
+                }
                 if (Mathf.Abs(Vector3.Angle(transform.forward, dirToPlayer)) <= maxSightAngle)
                 {
 
@@ -53,7 +53,7 @@ namespace Enemy
 
                             //close to the player, alert
                             //Saw the player in patrol, change to investigate.
-                            if (enemyState.state == States.Patrol && timeTillCanBeSeen <= Time.time)
+                            if (enemyState.state == States.Patrol && timeTillCanBeSeen <= Time.time || enemyState.state == States.Return && timeTillCanBeSeen <= Time.time)
                             {
                                 Debug.Log("hit the player");
                                 enemyState.state = States.Investigate;
