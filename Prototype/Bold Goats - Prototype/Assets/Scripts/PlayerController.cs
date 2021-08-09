@@ -26,10 +26,7 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Distractable///////////
     public GameObject Distractable;
-    public int AmountOfDistractables = 3;
-
-    ///////////Variables for Input///////////
-   
+    public static int AmountOfDistractables = 3;
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -38,8 +35,9 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for KeyCard///////////
     public static int KeyCards = 0;
-    
-    
+
+
+
 
 
     private void Start()
