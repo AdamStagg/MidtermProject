@@ -164,6 +164,7 @@ MonoBehaviour:
   colorAttack: {r: 1, g: 0, b: 0, a: 1}
   maxDistanceForChase: 10
   distanceToAttack: 0.375
+  chaseSpeed: 5
   attackMaterial: {fileID: 2100000, guid: 177cb802b8ddd2740be0845589c4978f, type: 2}
 --- !u!114 &1210393031311378923
 MonoBehaviour:
@@ -405,6 +406,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3946cf10e0c91541a44cb3bc3c7dfff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: b3946cf10e0c91541a44cb3bc3c7dfff, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: b3946cf10e0c91541a44cb3bc3c7dfff, type: 3}
       propertyPath: m_Materials.Array.data[0]

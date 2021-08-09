@@ -90,10 +90,13 @@ namespace Enemy
 
         private void OnDrawGizmosSelected()
         {
-            Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
-            dirToPlayer.Normalize();
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, dirToPlayer * visionLength);
+            if (GameObject.Find("Player") != null)
+            {
+                Vector3 dirToPlayer = GameObject.Find("Player").transform.position - transform.position;
+                dirToPlayer.Normalize();
+                Gizmos.color = Color.red;
+                Gizmos.DrawRay(transform.position, dirToPlayer * visionLength);
+            }
 
         }
 
