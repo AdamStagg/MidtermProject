@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     public float PlayerSpeed = 3.0f;
-    public float Stamina = 10.0f;
+    public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
@@ -27,10 +27,7 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Distractable///////////
     public GameObject Distractable;
-    public int AmountOfDistractables = 3;
-
-    ///////////Variables for Input///////////
-   
+    public static int AmountOfDistractables = 3;
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -39,8 +36,9 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for KeyCard///////////
     public static int KeyCards = 0;
-    
-    
+
+
+
 
 
     private void Start()
