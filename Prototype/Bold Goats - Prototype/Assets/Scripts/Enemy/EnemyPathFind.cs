@@ -30,6 +30,7 @@ namespace Enemy
 
         [SerializeField] float maxDistanceForChase = 25f;
         [SerializeField] float distanceToAttack = 2f;
+        [SerializeField] float chaseSpeed = 5.0f;
 
         [SerializeField] Material attackMaterial;
 
