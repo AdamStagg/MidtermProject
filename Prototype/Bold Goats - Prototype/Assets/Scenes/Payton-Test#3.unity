@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1371,7 +1371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &956102710
 Transform:
   m_ObjectHideFlags: 0
@@ -1743,6 +1743,8 @@ MonoBehaviour:
   hideType: 0
   transportType: 0
   transportPoint: {fileID: 0}
+  textToDisplay: {fileID: 0}
+  timeToDisplayText: 5
 --- !u!65 &1499859589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2003,6 +2005,8 @@ MonoBehaviour:
   hideType: 0
   transportType: 0
   transportPoint: {fileID: 0}
+  textToDisplay: {fileID: 0}
+  timeToDisplayText: 5
 --- !u!65 &1699559449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2614,6 +2618,8 @@ MonoBehaviour:
   hideType: 0
   transportType: 0
   transportPoint: {fileID: 0}
+  textToDisplay: {fileID: 0}
+  timeToDisplayText: 5
 --- !u!65 &2052466421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2733,3 +2739,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b551b5672c8401449a542aba9b9221cf, type: 3}
+--- !u!1001 &9137087648130232095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9137087647554325115, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: Priority
+      value: 214
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087647554325115, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087647554325115, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: MaxDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137087648039969514, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
+      propertyPath: m_Name
+      value: LaserGate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5da71cedfa72154468065498a20aeab4, type: 3}

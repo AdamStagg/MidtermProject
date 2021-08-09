@@ -99,16 +99,4 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Controls
-     
-    public KeyCode forward { get; set; }
-    public KeyCode backward { get; set; }
-    public KeyCode left { get; set; }
-    public KeyCode right { get; set; }
-    public KeyCode run { get; set; }
-    public KeyCode distraction { get; set; }
-    public KeyCode interact { get; set; }
-
-    #endregion
-
 }

@@ -10,10 +10,9 @@ namespace Enemy
         EnemyState enemyState;
 
         [SerializeField] float visionLength;
-        [SerializeField] float stateChangeDelay = 1f;
+        [SerializeField] float fillRate = 0.25f;
         [SerializeField] float maxSightAngle = 30;
 
-        float timeTillCanBeSeen;
         public bool checkForPlayer = false;
 
         private void Awake()
@@ -30,6 +29,7 @@ namespace Enemy
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
+                
 
                 if (dirToPlayer.magnitude <= 1)
                 {
@@ -38,18 +38,22 @@ namespace Enemy
                     return;
                 }
                 if (Mathf.Abs(Vector3.Angle(transform.forward, dirToPlayer)) <= maxSightAngle)
+
+                //Raycast to the player, certain distance. 
+                if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
                 {
 
-                    //Raycast to the player, certain distance. 
-                    if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
+                    //If we hit the player
+                    if (hit.transform.gameObject == GameManager.Instance.Player)
                     {
+                        //Increase the suspicion meter based on the range
+                        fillRate = visionLength / Mathf.Pow(Mathf.Log10(dirToPlayer.magnitude), 2);
+                        Suspicion = Mathf.Clamp(Suspicion + fillRate * Time.deltaTime, 0, 100);
 
-                        //If we hit the player
-                        if (hit.transform.gameObject == GameManager.Instance.Player)
+                        if (Suspicion >= 95 && enemyState.state == States.Investigate)
                         {
-                            ////Increase the suspicion meter based on the range
-                            //fillRate = visionLength / Mathf.Pow(Mathf.Log10(dirToPlayer.magnitude), 2);
-                            //Suspicion = Mathf.Clamp(Suspicion + fillRate * Time.deltaTime, 0, 100);
+                            //Alert state
+                            enemyState.InvokeChase();
 
                             //close to the player, alert
                             //Saw the player in patrol, change to investigate.
@@ -80,7 +84,15 @@ namespace Enemy
                             //    enemyState.InvokeInvestigate();
                             //}
                         }
+                        else if (Suspicion >= 50 && enemyState.state == States.Patrol)
+                        {
+                            //Suspicious state
+                            enemyState.InvokeInvestigate();
+                        }
                     }
+                } else
+                {
+                    Suspicion = Mathf.Clamp(Suspicion - Time.deltaTime, 0, 100);
                 }
             }
         }

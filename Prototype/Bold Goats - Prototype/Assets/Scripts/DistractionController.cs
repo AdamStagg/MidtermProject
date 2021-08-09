@@ -21,22 +21,26 @@ public class DistractionController : MonoBehaviour
     {
         foreach (EnemyState enemy in enemies)
         {
-            enemy.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
             enemy.InvokeInvestigate();
         }
         DistractableRb.isKinematic = true;
         explosion.SetActive(true);
-        Destroy(gameObject);
+        Destroy(gameObject, 2);
         //OnTriggerEnter(explosion.GetComponent<Collider>());
+        for (int i = 0; i < enemies.Count; i++) 
+        {
+            enemies[i].transform.position = transform.position;
+        }
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent != null && other.transform.parent.tag == "Enemy")
+        other = explosion.GetComponent<Collider>();
+
+        if (other.transform.parent != null && other.tag == "Enemy")
         {
-        Debug.Log(other.transform.parent.name);
-            enemies.Add(other.transform.parent.GetComponent<EnemyState>());
+            enemies.Add(transform.parent.GetComponent<EnemyState>());
 
         }
 
