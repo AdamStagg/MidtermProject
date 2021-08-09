@@ -105,6 +105,7 @@ public class InteractionController : MonoBehaviour
                 {
                     interactionData.Interact();
                     interacting = false;
+                    PlayerController.KeyCards++;
                 }
             }
             else

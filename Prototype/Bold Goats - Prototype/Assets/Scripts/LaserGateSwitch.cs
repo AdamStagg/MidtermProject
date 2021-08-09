@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserGate : MonoBehaviour
+public class LaserGateSwitch : MonoBehaviour
 {
     public bool IsOn = true;
     public float SwitchTime = 3.0f;
@@ -25,11 +25,5 @@ public class LaserGate : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player") 
-        {
-           
-        }
-    }
+  
 }

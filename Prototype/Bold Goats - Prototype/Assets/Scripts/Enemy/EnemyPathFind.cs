@@ -9,7 +9,7 @@ namespace Enemy
     public class EnemyPathFind : MonoBehaviour
     {
         private NavMeshAgent aiEnemy;
-        public Transform[] guardPoints;
+        public Transform[] guardPoints = null;
         private int destinationPoint = 0;
 
         public Color colorAttack;
@@ -21,10 +21,17 @@ namespace Enemy
         EnemyVision enemyVision;
 
         
+        bool lookingAround = false;
+
+        //Delegate function to be called after the LookAround coroutine
+        delegate void FunctionAfterLookingAround();
+
+
         EnemyState enemyState;
 
         [SerializeField] float maxDistanceForChase = 10f;
         [SerializeField] float distanceToAttack = 2f;
+        [SerializeField] float chaseSpeed = 5.0f;
 
         [SerializeField] Material attackMaterial;
 
@@ -52,6 +59,8 @@ namespace Enemy
             GoToNextPoint();
         }
 
+        
+
         private void OnDisable()
         {
             enemyState.Chase -= HandleInvokeChase;
@@ -71,10 +80,10 @@ namespace Enemy
         {
             // If there are no points set, No Need to continue Function
             
-            //if (gaurdPoints.Length == 0)
-            //{
-            //    return;
-            //}
+            if (guardPoints.Length == 0)
+            {
+                return;
+            }
 
             // Set Gaurd point to the point currently selected
             aiEnemy.destination = guardPoints[destinationPoint].position;
@@ -85,7 +94,7 @@ namespace Enemy
 
         public void HandleInvokeChase()
         {
-            lastPosition.position = transform.position;
+            //lastPosition.position = transform.position;
         }
 
         public void HandleInvokeInvestigate()
@@ -99,6 +108,7 @@ namespace Enemy
             enemyVision.Suspicion = 45;
             GetComponent<Renderer>().material.color = originalColor;
             aiEnemy.ResetPath();
+            aiEnemy.destination = lastPosition.position;
         }
 
         public void HandleInvokeAttack()
@@ -106,6 +116,16 @@ namespace Enemy
             GetComponent<Renderer>().material.color = colorAttack;
             Destroy(GameManager.Instance.Player);
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+        }
+
+        public void HandleInvestigateLookAround()
+        {
+            enemyState.InvokeReturn();
+        }
+
+        public void ResumeNavigation()
+        {
+            aiEnemy.isStopped = false;
         }
 
         // Switch for enemy behavior
@@ -148,40 +168,45 @@ namespace Enemy
                     aiEnemy.isStopped = true;
                     aiEnemy.ResetPath();
 
-
                     break;
                 case States.Investigate:
 
                     aiEnemy.destination = investigatePosition.position;
-
-                    if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
+                    if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending && !lookingAround)
                     {
-                        enemyState.InvokeReturn();
+                        lookingAround = true;
+                        FunctionAfterLookingAround[] func = { HandleInvestigateLookAround , ResumeNavigation};
+                        aiEnemy.isStopped = true;
+                        StartCoroutine(LookAround(func, 5, 90));
+
+                        //enemyState.InvokeReturn();
                     }
 
                     break;
                 case States.Patrol:
 
-                    if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending)
+                    if (aiEnemy.remainingDistance < 1.0f && !aiEnemy.pathPending && !lookingAround )
                     {
-                        GoToNextPoint();
+                        lookingAround = true;
+                        FunctionAfterLookingAround[] func = { GoToNextPoint, ResumeNavigation };
+                        aiEnemy.isStopped = true;
+                        StartCoroutine(LookAround(func, 3, 90, .25f));
+                        //GoToNextPoint();
                     }
 
                     break;
                 case States.Return:
 
-
-                    aiEnemy.destination = lastPosition.position;
-
+                    //Enemy has reached the last position
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
                     {
+                        //calculates which waypoint to set it to
                         destinationPoint--;
                         if (destinationPoint < 0)
                         {
                             destinationPoint = guardPoints.Length - 1;
                         }
-
-                        enemyVision.Suspicion = 0;
+                        //Returns patrolling
                         enemyState.InvokePatrol();
                     }
 
@@ -190,6 +215,61 @@ namespace Enemy
                     break;
             }
 
+        }
+
+        public void SetLastPosition(Transform position)
+        {
+            lastPosition = position;
+        }
+
+        IEnumerator LookAround(FunctionAfterLookingAround[] functionToCall, int timeToLook, float _angleToRotate, float timeBetweenRotations = 0)
+        {
+            //initialized variables
+            Vector3 currentDir = transform.forward, originalDir = transform.forward;
+            float angleToRotate = _angleToRotate;
+            float degreesPerSecond = angleToRotate / ((float)timeToLook / 4f);
+
+            //defines the vector that is rotated to the target
+            Vector3 targetLeft = Quaternion.Euler(0, -angleToRotate, 0) * currentDir;
+            Vector3 targetRight = Quaternion.Euler(0, angleToRotate, 0) * currentDir;
+
+            //Loops until the angle is smaller than 5
+            while (Mathf.Abs(Vector3.Angle(currentDir, targetLeft)) > 5)
+            {
+                //degrees per second based on the time to look
+
+                //rotates and updates the dir
+                transform.Rotate(new Vector3(0, -degreesPerSecond * Time.deltaTime, 0));
+                currentDir = transform.forward;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(timeBetweenRotations);
+
+            //Do the same thing all the way right
+            while (Mathf.Abs(Vector3.Angle(currentDir, targetRight)) > 5)
+            {
+                transform.Rotate(new Vector3(0, degreesPerSecond * Time.deltaTime, 0));
+                currentDir = transform.forward;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(timeBetweenRotations);
+
+            //Return to center
+            while (Mathf.Abs(Vector3.Angle(currentDir, originalDir)) > 5)
+            {
+                transform.Rotate(new Vector3(0, -degreesPerSecond * Time.deltaTime, 0));
+                currentDir = transform.forward;
+                yield return null;
+            }
+
+            lookingAround = false;
+
+            foreach (var function in functionToCall)
+            {
+                function();
+            }
         }
     }
 }

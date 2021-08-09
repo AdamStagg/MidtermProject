@@ -180,7 +180,6 @@ MonoBehaviour:
   visionLength: 2.5
   fillRate: 2
   maxSightAngle: 60
-  Suspicion: 0
   checkForPlayer: 0
 --- !u!136 &1671288270671037296
 CapsuleCollider:
