@@ -25,6 +25,7 @@ namespace Enemy
 
         [SerializeField] float maxDistanceForChase = 25f;
         [SerializeField] float distanceToAttack = 2f;
+        [SerializeField] float chaseSpeed = 5.0f;
 
         [SerializeField] Material attackMaterial;
 
@@ -85,7 +86,7 @@ namespace Enemy
 
         public void HandleInvokeChase()
         {
-            lastPosition.position = transform.position;
+            lastPosition.position = transform.position * chaseSpeed;
         }
 
         public void HandleInvokeInvestigate()
