@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0.05802095, g: 1, b: 0, a: 0}
-  - {r: 1, g: 0.9955864, b: 0, a: 0}
-  - {r: 1, g: 0.50414586, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0.18290138, b: 1, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.05802095, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.9955864, b: 0, a: 1}
+  - {r: 1, g: 0.50414586, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0.18290138, b: 1, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1210393031311378922
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardPoints: []
   colorAttack: {r: 1, g: 0, b: 0, a: 1}
-  maxDistanceForChase: 5
+  maxDistanceForChase: 10
   distanceToAttack: 0.375
   chaseSpeed: 5
   attackMaterial: {fileID: 2100000, guid: 177cb802b8ddd2740be0845589c4978f, type: 2}
@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01934f9212a991a498efa77b60601850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionLength: 2.5
-  fillRate: 2
+  visionLength: 5
+  stateChangeDelay: 1
   maxSightAngle: 60
   checkForPlayer: 0
 --- !u!136 &1671288270671037296
@@ -316,6 +316,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b5d1e127e8f4cd045bc8133c812ce931, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b5d1e127e8f4cd045bc8133c812ce931, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b5d1e127e8f4cd045bc8133c812ce931, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: b5d1e127e8f4cd045bc8133c812ce931, type: 3}
       propertyPath: m_Name
       value: diamond

@@ -6,6 +6,11 @@ public class PlayerMove : MonoBehaviour
 {
     Vector3 movPos;
     public float movAmount = .1f;
+
+    private void Awake()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -22,15 +27,15 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             movPos = transform.position;
-            movPos.z -= movAmount;
+            movPos.z += movAmount;
             transform.position = movPos;
         }
 
         // Backwards Movement
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
             movPos = transform.position;
-            movPos.z += movAmount;
+            movPos.z -= movAmount;
             transform.position = movPos;
         }
 
@@ -39,13 +44,13 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             movPos = transform.position;
-            movPos.x -= movAmount;
+            movPos.x += movAmount;
             transform.position = movPos;
         }
         else if (Input.GetKey(KeyCode.A))
         {
             movPos = transform.position;
-            movPos.x += movAmount;
+            movPos.x -= movAmount;
             transform.position = movPos;
         }
     }

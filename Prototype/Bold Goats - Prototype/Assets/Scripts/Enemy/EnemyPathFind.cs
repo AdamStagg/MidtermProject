@@ -20,7 +20,6 @@ namespace Enemy
 
         EnemyVision enemyVision;
 
-        
         bool lookingAround = false;
 
         //Delegate function to be called after the LookAround coroutine
@@ -29,7 +28,7 @@ namespace Enemy
 
         EnemyState enemyState;
 
-        [SerializeField] float maxDistanceForChase = 10f;
+        [SerializeField] float maxDistanceForChase = 25f;
         [SerializeField] float distanceToAttack = 2f;
         [SerializeField] float chaseSpeed = 5.0f;
 
@@ -79,7 +78,7 @@ namespace Enemy
         void GoToNextPoint()
         {
             // If there are no points set, No Need to continue Function
-            
+
             if (guardPoints.Length == 0)
             {
                 return;
@@ -100,12 +99,12 @@ namespace Enemy
         public void HandleInvokeInvestigate()
         {
             lastPosition.position = transform.position;
+            aiEnemy.destination = investigatePosition.position;
             investigatePosition.position = GameManager.Instance.Player.transform.position;
         }
 
         public void HandleInvokeReturn()
         {
-            enemyVision.Suspicion = 45;
             GetComponent<Renderer>().material.color = originalColor;
             aiEnemy.ResetPath();
             aiEnemy.destination = lastPosition.position;
@@ -116,6 +115,8 @@ namespace Enemy
             GetComponent<Renderer>().material.color = colorAttack;
             Destroy(GameManager.Instance.Player);
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void HandleInvestigateLookAround()
@@ -139,7 +140,7 @@ namespace Enemy
 
                     break;
                 case States.Attack:
-                    
+
                     //Everything taken care of in HandleInvokeAttack
 
                     break;
@@ -171,7 +172,6 @@ namespace Enemy
                     break;
                 case States.Investigate:
 
-                    aiEnemy.destination = investigatePosition.position;
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending && !lookingAround)
                     {
                         lookingAround = true;
@@ -215,6 +215,11 @@ namespace Enemy
                     break;
             }
 
+        }
+
+        public void SetInvestigatePosition(Transform position)
+        {
+            investigatePosition = position;
         }
 
         public void SetLastPosition(Transform position)
