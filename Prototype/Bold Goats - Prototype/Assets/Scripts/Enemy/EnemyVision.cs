@@ -24,8 +24,8 @@ namespace Enemy
         private void Update()
         {
             //TODO Add angle checks
-            
-            
+
+
 
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
