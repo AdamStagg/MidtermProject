@@ -113,8 +113,9 @@ namespace Enemy
         public void HandleInvokeAttack()
         {
             GetComponent<Renderer>().material.color = colorAttack;
-            Destroy(GameManager.Instance.Player);
-            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            //Destroy(GameManager.Instance.Player);
+            //SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
