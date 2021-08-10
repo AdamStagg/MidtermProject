@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     public float PlayerSpeed = 3.0f;
-    public float Stamina = 10.0f;
+    public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
@@ -27,10 +27,7 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Distractable///////////
     public GameObject Distractable;
-    public int AmountOfDistractables = 3;
-
-    ///////////Variables for Input///////////
-   
+    public static int AmountOfDistractables = 3;
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -39,8 +36,9 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for KeyCard///////////
     public static int KeyCards = 0;
-    
-    
+
+
+
 
 
     private void Start()
@@ -89,9 +87,14 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(angles);
 
         ///////////Player Run///////////
-        if (Input.GetButtonDown("Run")) 
+        if (Input.GetButton("Run"))
         {
-            Running = !Running;
+            Running = true;
+            Run();
+        }
+        else if(Input.GetButtonUp("Run"))
+        {
+            Running = false;
             Run();
         }
         //Checks Remaining Stamina
@@ -420,8 +423,11 @@ public class PlayerController : MonoBehaviour
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
             PlayerSpeed = 8.0f;
-            RunAudio.Play();
-            WalkAudio.Stop();
+            if (!RunAudio.isPlaying) 
+            {
+                RunAudio.Play();
+                WalkAudio.Stop();
+            }
             //Debug.Log("Player is running");
             
         }
@@ -430,8 +436,11 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("Player is walking");
             Running = false;
-            RunAudio.Stop();
-            WalkAudio.Play();
+            if (!WalkAudio.isPlaying)
+            {
+                RunAudio.Stop();
+                WalkAudio.Play();
+            }
             PlayerSpeed = 3.0f;
             
         }
@@ -456,6 +465,11 @@ public class PlayerController : MonoBehaviour
             if (Stamina > 10.0f)
             {
                 Stamina = 10.0f;
+            }
+            if (!WalkAudio.isPlaying && RunAudio.isPlaying) 
+            {
+                WalkAudio.Play();
+                RunAudio.Stop();
             }
         }
 
