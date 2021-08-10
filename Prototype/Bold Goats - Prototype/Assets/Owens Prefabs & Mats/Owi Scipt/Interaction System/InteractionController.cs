@@ -22,6 +22,13 @@ public class InteractionController : MonoBehaviour
     private bool interacting;
     private float holdTimer = 0f;
 
+    public GameObject KeyCard1;
+    public GameObject KeyCard2;
+    public GameObject KeyCard3;
+    public GameObject Door;
+    public Animation Open;
+
+
     // Methods
     //void Awake()
     //{
@@ -109,7 +116,14 @@ public class InteractionController : MonoBehaviour
                 {
                     interactionData.Interact();
                     interacting = false;
-                    PlayerController.KeyCards++;
+                    if (interactionData.Interactable == KeyCard1 || interactionData.Interactable == KeyCard2 || interactionData.Interactable == KeyCard3) 
+                    {
+                        PlayerController.KeyCards++;
+                    }
+                    if (interactionData.Interactable == Door && PlayerController.KeyCards == 3) 
+                    {
+                        Open.Play();
+                    }
                 }
             }
             else
