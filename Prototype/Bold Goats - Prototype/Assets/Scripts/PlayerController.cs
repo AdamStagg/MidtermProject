@@ -327,14 +327,14 @@ public class PlayerController : MonoBehaviour
     void CheckAudio() 
     {
         if (Walking == true)
-{
+        {
             RunAudio.Stop();
 
             if (WalkAudio.isPlaying == false)
                 WalkAudio.Play();
         }
         else if (Running == true)
-{
+        {
             WalkAudio.Stop();
 
             if (RunAudio.isPlaying == false)
@@ -368,7 +368,6 @@ public class PlayerController : MonoBehaviour
     }
 }*/
 
-*/
 
 
 
