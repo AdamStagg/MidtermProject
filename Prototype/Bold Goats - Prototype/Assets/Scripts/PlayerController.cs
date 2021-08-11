@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("XRay Shader variables")]
 
     public float xrayTimeLimit = 5f;
-    private float xraytime;
+    [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
 
@@ -115,13 +115,13 @@ public class PlayerController : MonoBehaviour
         {
             if (xraytime >= .1f)
             {
-                //Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+                Shader.SetGlobalFloat("_GlobalVisibility", 1f);
                 xraytime -= Time.deltaTime;
             } 
             timeSinceXray = Time.time + xRayTimeUntilRegen;
         } else
         {
-            //Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+            Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             if (timeSinceXray >= Time.time)
             {
                 xraytime += Time.deltaTime;
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
+        //Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
         Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         Debug.Log(xraytime);
 
@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
         Controller.Move(PlayerVelocity * Time.deltaTime);
 
     }
-
 
 
     ///////////Player Actions///////////
