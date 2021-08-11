@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
-    
+
     ///////////Variables for Kunai///////////
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -64,10 +64,10 @@ public class PlayerController : MonoBehaviour
         volume.profile.TryGet(out vignette);
         volume.profile.TryGet(out colorAdj);
         volume.profile.TryGet(out filmGrain);
-       /* Helper = new GameObject().transform;
-        Helper.name = "Climb Helper";
-        CheckForClimb();
-       */
+        /* Helper = new GameObject().transform;
+         Helper.name = "Climb Helper";
+         CheckForClimb();
+        */
     }
 
     void Update()
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
                 WalkAudio.Play();
             }
         }
-        
+
         // Delta = Time.deltaTime;
         // Tick(Delta);
 
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         ///////////Camera Movement///////////
         Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
         Controller.Move(Camera.main.transform.forward * Move.z * Time.deltaTime * PlayerSpeed);
-       
+
         transform.forward = Camera.main.transform.forward;
 
         Vector3 angles = transform.rotation.eulerAngles;
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
             Running = true;
             Run();
         }
-        else if(Input.GetButtonUp("Run"))
+        else if (Input.GetButtonUp("Run"))
         {
             Running = false;
             Run();
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         //Checks Remaining Stamina
         CheckStamina();
 
-        
+
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
@@ -136,7 +136,8 @@ public class PlayerController : MonoBehaviour
                 if (filmGrain != null)
                     filmGrain.intensity.value = 0.6f;
                 xraytime -= Time.deltaTime;
-            } else
+            }
+            else
             {
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
                 if (vignette != null)
@@ -147,7 +148,8 @@ public class PlayerController : MonoBehaviour
                     filmGrain.intensity.value = 0f;
             }
             timeSinceXray = Time.time + xRayTimeUntilRegen;
-        } else
+        }
+        else
         {
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             if (vignette != null)
@@ -221,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
 
     ///Distractions
-    void CreateDistractable() 
+    void CreateDistractable()
     {
         Instantiate(Distractable, transform.position, transform.rotation);
         AmountOfDistractables -= 1;
@@ -239,7 +241,7 @@ public class PlayerController : MonoBehaviour
 
 
     ///Crouching
-    void ToggleCrouch() 
+    void ToggleCrouch()
     {
         if (Crouched == true)
         {
@@ -248,19 +250,19 @@ public class PlayerController : MonoBehaviour
             PlayerSpeed = 1f;
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
-        else 
+        else
         {
             Ray ray = new Ray();
             RaycastHit hit;
             ray.origin = transform.position;
             ray.direction = Vector3.up;
-           
+
             if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
             {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
                 PlayerSpeed = 1.5f;
-                Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
+                Debug.Log("Player is standing and the speed is " + PlayerSpeed);
             }
             else
             {
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Run() 
+    void Run()
     {
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
@@ -284,12 +286,12 @@ public class PlayerController : MonoBehaviour
                 }
                 //Debug.Log("Player is running");
             }
-            
+
         }
-        else if(Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
+        else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
-                //Debug.Log("Player is walking");
-                Running = false;
+            //Debug.Log("Player is walking");
+            Running = false;
             if (WalkAudio != null)
             {
                 if (!WalkAudio.isPlaying)
@@ -299,19 +301,19 @@ public class PlayerController : MonoBehaviour
                 }
             }
             PlayerSpeed = 1.5f;
-            
+
         }
-        
+
 
     }
 
-    void CheckStamina() 
+    void CheckStamina()
     {
         if (Stamina > 0.1f && Running == true)
         {
 
             Stamina -= Time.deltaTime;
-           // Debug.Log("Stamina left: " + Stamina);
+            // Debug.Log("Stamina left: " + Stamina);
         }
         else if (Stamina <= 10.0f)
         {
@@ -335,10 +337,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   void CheckKeyCards() 
-   {
+    void CheckKeyCards()
+    {
         Debug.Log("Keycards = " + KeyCards);
-   }
+    }
+}
    
 
    /* public void CheckForClimb() 
@@ -356,8 +359,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-}
-
+}*/
 
 
 
