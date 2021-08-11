@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -339,22 +339,22 @@ public class PlayerController : MonoBehaviour
    {
         Debug.Log("Keycards = " + KeyCards);
    }
+   
 
-    public Animation death;
-
-    [Space]
-    public GameObject deathScreen;
-
-
-    public void Die()
+   /* public void CheckForClimb() 
     {
-        death.Play();
-        deathScreen.SetActive(true);
-    }
 
-    public void Reset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //We are within the range of the enemy and running
+        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
+        {
+            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //player is moving
+            if (Move.magnitude > .1f)
+            {
+                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
+            }
+        }
     }
 }
 

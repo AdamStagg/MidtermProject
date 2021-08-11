@@ -150,10 +150,10 @@ MonoBehaviour:
       isFptlEnabled: 0
   m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7, type: 2}
   m_RenderPipelineRayTracingResources: {fileID: 0}
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: 4ccecc357539b4540bff1a81a96cb4ea, type: 2}
+  m_DefaultVolumeProfile: {fileID: 11400000, guid: d2a5c8ab1cf6ca545a8e164816139386, type: 2}
   m_LensAttenuation: 0
   m_UseRenderGraph: 1
-  m_DefaultLookDevProfile: {fileID: 11400000, guid: fcd6cec12144aaa4ba6196590203ce53, type: 2}
+  m_DefaultLookDevProfile: {fileID: 11400000, guid: 796c0e577b90c8d40a353317925422ce, type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
       data1: 72198262773251917
@@ -440,8 +440,8 @@ MonoBehaviour:
   m_DefaultMaterialQualityLevel: 4
   diffusionProfileSettings: {fileID: 0}
   diffusionProfileSettingsList:
-  - {fileID: 11400000, guid: 927126667fec3634d897f4f8dc891c03, type: 2}
-  - {fileID: 11400000, guid: 6538557f83d37584b8f9c5fa7ad3216d, type: 2}
+  - {fileID: 11400000, guid: 51377f2582755b84e83e54038669055d, type: 2}
+  - {fileID: 11400000, guid: 613d60a8a1c30ae4fa6c68d2a46eb50f, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
