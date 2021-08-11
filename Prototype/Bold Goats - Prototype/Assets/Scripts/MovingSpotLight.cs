@@ -70,7 +70,8 @@ public class MovingSpotLight : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            CallForBackUp(SpawnLocation, 3);
+            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            //CallForBackUp(SpawnLocation, 3);
         }
     }
 

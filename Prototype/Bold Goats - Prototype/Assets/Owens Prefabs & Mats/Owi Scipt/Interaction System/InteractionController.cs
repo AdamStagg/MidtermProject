@@ -74,7 +74,8 @@ public class InteractionController : MonoBehaviour
             }
             else
             {
-                uiPanel.ResetUI();
+                if (uiPanel != null)
+                    uiPanel.ResetUI();
                 interactionData.ResetData();
             }
 
