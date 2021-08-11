@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             volume.profile.TryGet(out filmGrain);
         }
 
-        GameManager.Instance.keyCards = 3;
+        GameManager.Instance.keyCards = 0;
         /* Helper = new GameObject().transform;
          Helper.name = "Climb Helper";
          CheckForClimb();

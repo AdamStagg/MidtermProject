@@ -29,10 +29,14 @@ namespace Enemy
 
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
+                Debug.Log("Checking for player");
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
 
-                if (dirToPlayer.magnitude <= 1)
+                dirToPlayer = new Vector3(dirToPlayer.x, dirToPlayer.y + 1, dirToPlayer.z);
+
+                if (dirToPlayer.magnitude <= 2)
                 {
+                    Debug.Log("Chasing");
                     enemyState.InvokeChase();
                     GetComponent<EnemyPathFind>().SetLastPosition(transform);
                     return;
@@ -43,8 +47,10 @@ namespace Enemy
                     //Raycast to the player, certain distance. 
                     if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
                     {
-
+                        
                         //If we hit the player
+                        Debug.Log(hit.transform.gameObject);
+                        Debug.Log(GameManager.Instance.Player);
                         if (hit.transform.gameObject == GameManager.Instance.Player)
                         {
                             ////Increase the suspicion meter based on the range
@@ -59,6 +65,8 @@ namespace Enemy
                                 Debug.Log("hit the player");
                                 enemyState.state = States.Investigate;
                                 GetComponent<EnemyPathFind>().SetInvestigatePosition(GameManager.Instance.Player.transform);
+                                GetComponent<EnemyPathFind>().StopAllCoroutines();
+                                GetComponent<EnemyPathFind>().ResumeNavigation();
                                 timeTillCanBeSeen = Time.time + stateChangeDelay;
                                 enemyState.InvokeInvestigate();
                             }

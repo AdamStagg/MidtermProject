@@ -118,7 +118,7 @@ namespace Enemy
         {
             GetComponent<Renderer>().material.color = colorAttack;
             //Destroy(GameManager.Instance.Player);
-            //SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
 
             Debug.Log("Player had died");
 
@@ -153,9 +153,13 @@ namespace Enemy
                     break;
                 case States.Chase:
 
-                    aiEnemy.destination = GameManager.Instance.Player.transform.position;
+                    Vector3 playerPos = GameManager.Instance.Player.transform.position;
 
-                    float distance = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position);
+                    aiEnemy.destination = playerPos;
+
+                    playerPos = new Vector3(playerPos.x, playerPos.y + 1, playerPos.z);
+
+                    float distance = Vector3.Distance(transform.position, playerPos) ;
 
                     if (distance >= maxDistanceForChase)
                     {

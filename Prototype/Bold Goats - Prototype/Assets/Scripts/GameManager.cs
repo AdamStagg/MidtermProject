@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
         {
             Player = GameObject.FindWithTag("Player");
         }
+        if (HUDParent == null)
+        {
+            HUDParent = GameObject.Find("HUD");
+        }
     }
 
     #region //Player
