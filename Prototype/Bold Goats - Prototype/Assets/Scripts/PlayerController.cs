@@ -62,9 +62,12 @@ public class PlayerController : MonoBehaviour
     {
         Controller = GetComponent<CharacterController>();
         //keyCards = new List<KeyCard>();
-        volume.profile.TryGet(out vignette);
-        volume.profile.TryGet(out colorAdj);
-        volume.profile.TryGet(out filmGrain);
+        if (volume != null)
+        {
+            volume.profile.TryGet(out vignette);
+            volume.profile.TryGet(out colorAdj);
+            volume.profile.TryGet(out filmGrain);
+        }
         /* Helper = new GameObject().transform;
          Helper.name = "Climb Helper";
          CheckForClimb();
@@ -80,10 +83,10 @@ public class PlayerController : MonoBehaviour
         {
             PlayerVelocity.y = 0f;
         }
-
-        ///////////Checks what audio to play according to player's speed///////////
-        CheckAudio();
-
+        if (WalkAudio != null)
+        {
+                CheckAudio();
+        }
         // Delta = Time.deltaTime;
         // Tick(Delta);
 
@@ -137,7 +140,8 @@ public class PlayerController : MonoBehaviour
                 if (filmGrain != null)
                     filmGrain.intensity.value = 0.6f;
                 xraytime -= Time.deltaTime;
-            } else
+            }
+            else
             {
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
                 if (vignette != null)
@@ -148,7 +152,8 @@ public class PlayerController : MonoBehaviour
                     filmGrain.intensity.value = 0f;
             }
             timeSinceXray = Time.time + xRayTimeUntilRegen;
-        } else
+        }
+        else
         {
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             if (vignette != null)
@@ -276,7 +281,7 @@ public class PlayerController : MonoBehaviour
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
             PlayerSpeed = 3f;
-            
+
 
         }
         else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
@@ -361,7 +366,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-}
+}*/
 
 */
 

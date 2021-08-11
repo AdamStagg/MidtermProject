@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CutScene : MonoBehaviour
 {
+    public GameObject Controls;
     //public GameObject PlayerCamera;
     public GameObject HallwayCam;
     public GameObject SpotlightCam;
@@ -17,6 +18,7 @@ public class CutScene : MonoBehaviour
     IEnumerator StartingSequence()
     {
         HallwayCam.SetActive(true);
+        Controls.SetActive(false);
         //PlayerCamera.SetActive(false);
         yield return new WaitForSeconds(7.5f);
         

@@ -36,6 +36,6 @@ public class AnimationController : MonoBehaviour
 
         animator.SetFloat("VelocityZ", VelocityZ, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityX", VelocityX, 0.1f, Time.deltaTime);
-
+        
     }
 }
