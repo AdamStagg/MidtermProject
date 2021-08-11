@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
+    private bool Walking = false;
     public float PlayerSpeed = 1.5f;
     public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
-    
+
     ///////////Variables for Kunai///////////
     public Rigidbody Kunai;
     public int AmountOfKunais = 3;
@@ -64,10 +65,10 @@ public class PlayerController : MonoBehaviour
         volume.profile.TryGet(out vignette);
         volume.profile.TryGet(out colorAdj);
         volume.profile.TryGet(out filmGrain);
-       /* Helper = new GameObject().transform;
-        Helper.name = "Climb Helper";
-        CheckForClimb();
-       */
+        /* Helper = new GameObject().transform;
+         Helper.name = "Climb Helper";
+         CheckForClimb();
+        */
     }
 
     void Update()
@@ -79,26 +80,25 @@ public class PlayerController : MonoBehaviour
         {
             PlayerVelocity.y = 0f;
         }
-        if (WalkAudio != null)
-        {
-            if (Controller.velocity.magnitude > 1f && WalkAudio.isPlaying == false)
-            {
-                WalkAudio.Play();
-            }
-        }
-        
+
+        ///////////Checks what audio to play according to player's speed///////////
+        CheckAudio();
+
         // Delta = Time.deltaTime;
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
 
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
+        if ((Controller.velocity.x > 0f && Controller.velocity.x > 2f) || (Controller.velocity.z > 0f && Controller.velocity.z < 2f)) 
+        {
+            Walking = true;
+        }
 
         ///////////Camera Movement///////////
         Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
         Controller.Move(Camera.main.transform.forward * Move.z * Time.deltaTime * PlayerSpeed);
-       
+
         transform.forward = Camera.main.transform.forward;
 
         Vector3 angles = transform.rotation.eulerAngles;
@@ -111,9 +111,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Run"))
         {
             Running = true;
+            Walking = false;
             Run();
         }
-        else if(Input.GetButtonUp("Run"))
+        else if (Input.GetButtonUp("Run"))
         {
             Running = false;
             Run();
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
         //Checks Remaining Stamina
         CheckStamina();
 
-        
+
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
@@ -221,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
 
     ///Distractions
-    void CreateDistractable() 
+    void CreateDistractable()
     {
         Instantiate(Distractable, transform.position, transform.rotation);
         AmountOfDistractables -= 1;
@@ -239,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
 
     ///Crouching
-    void ToggleCrouch() 
+    void ToggleCrouch()
     {
         if (Crouched == true)
         {
@@ -248,19 +249,19 @@ public class PlayerController : MonoBehaviour
             PlayerSpeed = 1f;
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
-        else 
+        else
         {
             Ray ray = new Ray();
             RaycastHit hit;
             ray.origin = transform.position;
             ray.direction = Vector3.up;
-           
+
             if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
             {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
                 PlayerSpeed = 1.5f;
-                Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
+                Debug.Log("Player is standing and the speed is " + PlayerSpeed);
             }
             else
             {
@@ -270,48 +271,32 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Run() 
+    void Run()
     {
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
             PlayerSpeed = 3f;
-            if (RunAudio != null)
-            {
-                if (!RunAudio.isPlaying)
-                {
-                    //RunAudio.Play();
-                    //WalkAudio.Stop();
-                }
-                //Debug.Log("Player is running");
-            }
             
+
         }
-        else if(Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
+        else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
-                //Debug.Log("Player is walking");
-                Running = false;
-            if (WalkAudio != null)
-            {
-                if (!WalkAudio.isPlaying)
-                {
-                    //RunAudio.Stop();
-                    //WalkAudio.Play();
-                }
-            }
+            //Debug.Log("Player is walking");
+            Running = false;
             PlayerSpeed = 1.5f;
-            
+
         }
-        
+
 
     }
 
-    void CheckStamina() 
+    void CheckStamina()
     {
         if (Stamina > 0.1f && Running == true)
         {
 
             Stamina -= Time.deltaTime;
-           // Debug.Log("Stamina left: " + Stamina);
+            // Debug.Log("Stamina left: " + Stamina);
         }
         else if (Stamina <= 10.0f)
         {
@@ -323,24 +308,44 @@ public class PlayerController : MonoBehaviour
             {
                 Stamina = 10.0f;
             }
-            if (WalkAudio != null)
-            {
-                if (!WalkAudio.isPlaying && RunAudio.isPlaying)
-                {
-                    WalkAudio.Play();
-                    RunAudio.Stop();
-                }
-            }
+           
+           
         }
 
     }
 
-   void CheckKeyCards() 
-   {
+    void CheckKeyCards()
+    {
         Debug.Log("Keycards = " + KeyCards);
-   }
-   
+    }
 
+    void CheckAudio() 
+    {
+        if (Walking == true)
+{
+            RunAudio.Stop();
+
+            if (WalkAudio.isPlaying == false)
+                WalkAudio.Play();
+        }
+        else if (Running == true)
+{
+            WalkAudio.Stop();
+
+            if (RunAudio.isPlaying == false)
+            {
+                RunAudio.Play();
+            }
+        }
+        else
+        {
+            WalkAudio.Stop();
+            RunAudio.Stop();
+           
+        }
+    }
+
+}
    /* public void CheckForClimb() 
     {
 
@@ -358,7 +363,7 @@ public class PlayerController : MonoBehaviour
     }
 }
 
-
+*/
 
 
 

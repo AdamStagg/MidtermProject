@@ -25,8 +25,8 @@ public class InteractionController : MonoBehaviour
     public GameObject KeyCard1;
     public GameObject KeyCard2;
     public GameObject KeyCard3;
-    public GameObject Door;
-    public Animation Open;
+    public Animator DoorController;
+   
 
 
     // Methods
@@ -119,11 +119,9 @@ public class InteractionController : MonoBehaviour
                     if (interactionData.Interactable == KeyCard1 || interactionData.Interactable == KeyCard2 || interactionData.Interactable == KeyCard3) 
                     {
                         PlayerController.KeyCards++;
+                        DoorController.SetInteger("KeyCardAmount", PlayerController.KeyCards);
                     }
-                    if (interactionData.Interactable == Door && PlayerController.KeyCards == 3) 
-                    {
-                        Open.Play();
-                    }
+                    
                 }
             }
             else
