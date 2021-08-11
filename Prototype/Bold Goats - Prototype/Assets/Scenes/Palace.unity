@@ -2393,13 +2393,14 @@ GameObject:
   - component: {fileID: 125702679}
   - component: {fileID: 125702678}
   - component: {fileID: 125702677}
+  - component: {fileID: 125702680}
   m_Layer: 0
   m_Name: Win Room Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &125702676
 Transform:
   m_ObjectHideFlags: 0
@@ -2412,7 +2413,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 875102662}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &125702677
 Animator:
@@ -2484,6 +2485,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!111 &125702680
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125702675}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 59ca05da68f233a48b9e3909271847df, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 59ca05da68f233a48b9e3909271847df, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &136707722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6786,13 +6803,14 @@ GameObject:
   - component: {fileID: 511950628}
   - component: {fileID: 511950627}
   - component: {fileID: 511950626}
+  - component: {fileID: 511950629}
   m_Layer: 0
   m_Name: Lazer Maze Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &511950625
 Transform:
   m_ObjectHideFlags: 0
@@ -6805,7 +6823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 875102662}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &511950626
 Animator:
@@ -6877,6 +6895,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!111 &511950629
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511950624}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 69b133fc4b681d640b95ee7d6356e9de, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 69b133fc4b681d640b95ee7d6356e9de, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &514755179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12432,7 +12466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &875102661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12445,10 +12479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aeda4377d5d9b8438305f09f14cf3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controls: {fileID: 0}
-  HallwayCam: {fileID: 0}
-  SpotlightCam: {fileID: 0}
-  PalaceCam: {fileID: 0}
+  PlayerCamera: {fileID: 1476674416}
+  HallwayCam: {fileID: 1552354776}
+  SpotlightCam: {fileID: 1680292382}
+  LazerMazeCam: {fileID: 1074617008}
+  MazeCam: {fileID: 511950624}
+  WinRoomCam: {fileID: 125702675}
 --- !u!4 &875102662
 Transform:
   m_ObjectHideFlags: 0
@@ -12460,11 +12496,11 @@ Transform:
   m_LocalPosition: {x: 351.27005, y: 10.50268, z: -602.9474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1485904008}
   - {fileID: 1680292383}
   - {fileID: 1074617009}
   - {fileID: 511950625}
   - {fileID: 125702676}
+  - {fileID: 1552354780}
   m_Father: {fileID: 0}
   m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15367,13 +15403,14 @@ GameObject:
   - component: {fileID: 1074617012}
   - component: {fileID: 1074617011}
   - component: {fileID: 1074617010}
+  - component: {fileID: 1074617013}
   m_Layer: 0
   m_Name: Maze Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1074617009
 Transform:
   m_ObjectHideFlags: 0
@@ -15386,7 +15423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 875102662}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1074617010
 Animator:
@@ -15458,6 +15495,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!111 &1074617013
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074617008}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 47e59f12f4d076942bf18fdeedae20c1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 47e59f12f4d076942bf18fdeedae20c1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1076268285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21471,106 +21524,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 714120790706488804, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
   m_PrefabInstance: {fileID: 1484507158}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1485904007
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1485904008}
-  - component: {fileID: 1485904011}
-  - component: {fileID: 1485904010}
-  - component: {fileID: 1485904009}
-  m_Layer: 0
-  m_Name: Hallway Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1485904008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485904007}
-  m_LocalRotation: {x: 0.0035573584, y: 0.70525897, z: -0.0001633534, w: -0.7089409}
-  m_LocalPosition: {x: 11.018188, y: -4.7958565, z: 45.824585}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 875102662}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.021779973, y: -89.702, z: 0.301}
---- !u!111 &1485904009
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485904007}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 0a3da4f507bff8443b2f2c0547e95182, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!81 &1485904010
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485904007}
-  m_Enabled: 1
---- !u!20 &1485904011
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485904007}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &1492534747 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
@@ -22500,6 +22453,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fede988d2670153489fb900bcc349fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1552354776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552354780}
+  - component: {fileID: 1552354779}
+  - component: {fileID: 1552354778}
+  - component: {fileID: 1552354777}
+  m_Layer: 0
+  m_Name: Hallway Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!111 &1552354777
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 2cffbcc4891eef340879ee0c5809a531, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 2cffbcc4891eef340879ee0c5809a531, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!81 &1552354778
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_Enabled: 1
+--- !u!20 &1552354779
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1552354780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_LocalRotation: {x: -0.0012630243, y: -0.70184857, z: 0.0038207863, w: 0.7123148}
+  m_LocalPosition: {x: 11.7323, y: -4.5382247, z: 45.573242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 875102662}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 1.1729915, y: -89.16415, z: 0.414}
 --- !u!1 &1570585700
 GameObject:
   m_ObjectHideFlags: 0
@@ -24141,13 +24194,14 @@ GameObject:
   - component: {fileID: 1680292386}
   - component: {fileID: 1680292385}
   - component: {fileID: 1680292384}
+  - component: {fileID: 1680292387}
   m_Layer: 0
   m_Name: Spotlight Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1680292383
 Transform:
   m_ObjectHideFlags: 0
@@ -24160,7 +24214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 875102662}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1680292384
 Animator:
@@ -24232,6 +24286,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!111 &1680292387
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680292382}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0a3da4f507bff8443b2f2c0547e95182, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0a3da4f507bff8443b2f2c0547e95182, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1686116817
 GameObject:
   m_ObjectHideFlags: 0
