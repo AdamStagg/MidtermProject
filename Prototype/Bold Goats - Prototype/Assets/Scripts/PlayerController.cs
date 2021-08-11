@@ -70,9 +70,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayerVelocity.y = 0f;
         }
-        if (Controller.velocity.magnitude > 1f && WalkAudio.isPlaying == false) 
+        if (WalkAudio != null)
         {
-            WalkAudio.Play();
+            if (Controller.velocity.magnitude > 1f && WalkAudio.isPlaying == false)
+            {
+                WalkAudio.Play();
+            }
         }
         
         // Delta = Time.deltaTime;
@@ -240,23 +243,28 @@ public class PlayerController : MonoBehaviour
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
             PlayerSpeed = 3f;
-            if (!RunAudio.isPlaying) 
+            if (RunAudio != null)
             {
-                RunAudio.Play();
-                WalkAudio.Stop();
+                if (!RunAudio.isPlaying)
+                {
+                    //RunAudio.Play();
+                    //WalkAudio.Stop();
+                }
+                //Debug.Log("Player is running");
             }
-            //Debug.Log("Player is running");
             
         }
         else if(Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
-
-            //Debug.Log("Player is walking");
-            Running = false;
-            if (!WalkAudio.isPlaying)
+                //Debug.Log("Player is walking");
+                Running = false;
+            if (WalkAudio != null)
             {
-                RunAudio.Stop();
-                WalkAudio.Play();
+                if (!WalkAudio.isPlaying)
+                {
+                    //RunAudio.Stop();
+                    //WalkAudio.Play();
+                }
             }
             PlayerSpeed = 1.5f;
             
