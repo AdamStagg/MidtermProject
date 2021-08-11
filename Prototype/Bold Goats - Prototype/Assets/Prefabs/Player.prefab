@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2688c83586aa4fac563a940692570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
 --- !u!1 &5274489820562256463
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,14 +667,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 8727731178407527507}
   PlayerSpeed: 5
+  xrayTimeLimit: 5
+  xRayTimeUntilRegen: 2
+  volume: {fileID: 0}
   EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
   AmountOfKunais: 3
   Distractable: {fileID: 494251943022776097, guid: f8c5508625feb8b41aba8b6fec78788d, type: 3}
   RunAudio: {fileID: 6726811066864144078}
   WalkAudio: {fileID: 4815659674015683702}
-  death: {fileID: 0}
-  deathScreen: {fileID: 0}
 --- !u!143 &1608415850019012173
 CharacterController:
   m_ObjectHideFlags: 0
@@ -742,7 +742,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8727731178407527511}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1.09
   m_Direction: 1
