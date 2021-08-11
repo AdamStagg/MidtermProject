@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +26,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
+
+    public Volume volume;
+    Vignette vignette;
+    ColorAdjustments colorAdj;
+    FilmGrain filmGrain;
 
     [Space]
 
@@ -54,7 +61,9 @@ public class PlayerController : MonoBehaviour
     {
         Controller = GetComponent<CharacterController>();
         //keyCards = new List<KeyCard>();
-
+        volume.profile.TryGet(out vignette);
+        volume.profile.TryGet(out colorAdj);
+        volume.profile.TryGet(out filmGrain);
        /* Helper = new GameObject().transform;
         Helper.name = "Climb Helper";
         CheckForClimb();
@@ -119,13 +128,36 @@ public class PlayerController : MonoBehaviour
             if (xraytime >= .1f)
             {
                 Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+                Debug.Log(vignette);
+                if (vignette != null)
+                    vignette.intensity.value = 0.6f;
+                if (colorAdj != null)
+                    colorAdj.hueShift.value = -40;
+                if (filmGrain != null)
+                    filmGrain.intensity.value = 0.6f;
                 xraytime -= Time.deltaTime;
-            } 
+            } else
+            {
+                Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+                if (vignette != null)
+                    vignette.intensity.value = 0f;
+                if (colorAdj != null)
+                    colorAdj.hueShift.value = 0;
+                if (filmGrain != null)
+                    filmGrain.intensity.value = 0f;
+            }
             timeSinceXray = Time.time + xRayTimeUntilRegen;
         } else
         {
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-            if (timeSinceXray >= Time.time)
+            if (vignette != null)
+                vignette.intensity.value = 0f;
+            if (colorAdj != null)
+                colorAdj.hueShift.value = 0;
+            if (filmGrain != null)
+                filmGrain.intensity.value = 0f;
+
+            if (timeSinceXray <= Time.time)
             {
                 xraytime += Time.deltaTime;
 
@@ -133,8 +165,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
-        Mathf.Clamp(xraytime, 0, xrayTimeLimit);
-        Debug.Log(xraytime);
+        xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
+        //Debug.Log(xraytime);
 
 
 
@@ -307,22 +339,22 @@ public class PlayerController : MonoBehaviour
    {
         Debug.Log("Keycards = " + KeyCards);
    }
+   
 
-    public Animation death;
-
-    [Space]
-    public GameObject deathScreen;
-
-
-    public void Die()
+   /* public void CheckForClimb() 
     {
-        death.Play();
-        deathScreen.SetActive(true);
-    }
 
-    public void Reset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //We are within the range of the enemy and running
+        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
+        {
+            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //player is moving
+            if (Move.magnitude > .1f)
+            {
+                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
+            }
+        }
     }
 }
 
