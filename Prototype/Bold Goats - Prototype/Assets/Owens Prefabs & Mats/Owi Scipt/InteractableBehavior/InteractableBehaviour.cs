@@ -33,6 +33,7 @@ public class InteractableBehaviour : InteractableBase
             if (destroy != null)
             {
                 Destroy(destroy);
+
                 GameManager.Instance.keyCards++;
             }
 

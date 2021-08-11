@@ -22,13 +22,6 @@ public class InteractionController : MonoBehaviour
     private bool interacting;
     private float holdTimer = 0f;
 
-    public GameObject KeyCard1;
-    public GameObject KeyCard2;
-    public GameObject KeyCard3;
-    public Animator DoorController;
-   
-
-
     // Methods
     //void Awake()
     //{
@@ -45,12 +38,17 @@ public class InteractionController : MonoBehaviour
     {
         if (GameManager.Instance.Player != null && cam != null)
         {
+            Vector3 posToDraw = new Vector3
+                (
+                GameManager.Instance.Player.transform.position.x,
+                GameManager.Instance.Player.transform.position.y + 1.5f, 
+                GameManager.Instance.Player.transform.position.z
+                );
 
-            Ray ray = new Ray(GameManager.Instance.Player.transform.position, cam.transform.forward);
+            Ray ray = new Ray(posToDraw, cam.transform.forward);
             RaycastHit hitInfo;
 
             bool hitSomething = Physics.SphereCast(ray, raySphereRadius, out hitInfo, rayDistance, interactableLayer);
-
             if (hitSomething)
             {
                 InteractableBase _interactable = hitInfo.transform.GetComponent<InteractableBase>();
@@ -74,8 +72,7 @@ public class InteractionController : MonoBehaviour
             }
             else
             {
-                if (uiPanel != null)
-                    uiPanel.ResetUI();
+                uiPanel.ResetUI();
                 interactionData.ResetData();
             }
 
@@ -117,12 +114,7 @@ public class InteractionController : MonoBehaviour
                 {
                     interactionData.Interact();
                     interacting = false;
-                    if (interactionData.Interactable == KeyCard1 || interactionData.Interactable == KeyCard2 || interactionData.Interactable == KeyCard3) 
-                    {
-                        PlayerController.KeyCards++;
-                        DoorController.SetInteger("KeyCardAmount", PlayerController.KeyCards);
-                    }
-                    
+                    PlayerController.KeyCards++;
                 }
             }
             else
@@ -131,6 +123,6 @@ public class InteractionController : MonoBehaviour
                 interacting = false;
             }
         }
-      
+
     }
 }
