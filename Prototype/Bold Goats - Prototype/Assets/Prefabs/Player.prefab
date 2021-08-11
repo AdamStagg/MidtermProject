@@ -126,7 +126,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -253,7 +253,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -547,13 +547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 8727731178407527507}
-  Stamina: 20
   PlayerSpeed: 5
   EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
   AmountOfKunais: 3
   Distractable: {fileID: 494251943022776097, guid: f8c5508625feb8b41aba8b6fec78788d, type: 3}
-  AmountOfDistractables: 3
   RunAudio: {fileID: 6726811066864144078}
   WalkAudio: {fileID: 4815659674015683702}
 --- !u!143 &1608415850019012173
@@ -608,3 +606,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cam: {fileID: 0}
+  KeyCard1: {fileID: 0}
+  KeyCard2: {fileID: 0}
+  KeyCard3: {fileID: 0}
+  Door: {fileID: 0}
+  Open: {fileID: 0}
