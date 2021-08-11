@@ -13360,7 +13360,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9999999, y: 2.0000002, z: 4.0614185}
-  m_Center: {x: 0.00003051758, y: 0.0000002384186, z: 0.0016453265}
+  m_Center: {x: -0.000030517578, y: -0.00000023841858, z: 0.0016453265}
 --- !u!1001 &970330585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27119,7 +27119,7 @@ GameObject:
   - component: {fileID: 1975408057}
   - component: {fileID: 1975408056}
   m_Layer: 0
-  m_Name: FinalDoorTrigger
+  m_Name: Cube (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27137,9 +27137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6648886a6f59af4fa3363e96d114174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorsToOpen:
-  - {fileID: 969286572}
-  - {fileID: 1528651800}
+  doorsToOpen: []
   textToDisplay: {fileID: 0}
   timeToDisplayText: 0
 --- !u!65 &1975408057
