@@ -12,11 +12,20 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
-    public float PlayerSpeed = 3.0f;
+    public float PlayerSpeed = 1.5f;
     public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
+    [Space]
+    [Header("XRay Shader variables")]
+
+    public float xrayTimeLimit = 5f;
+    private float xraytime;
+    public float xRayTimeUntilRegen = 2f;
+    private float timeSinceXray = 0;
+
+    [Space]
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
@@ -99,7 +108,33 @@ public class PlayerController : MonoBehaviour
         }
         //Checks Remaining Stamina
         CheckStamina();
+
         
+        //Check for XRay
+        if (Input.GetButton("XRay"))
+        {
+            if (xraytime >= .1f)
+            {
+                //Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+                xraytime -= Time.deltaTime;
+            } 
+            timeSinceXray = Time.time + xRayTimeUntilRegen;
+        } else
+        {
+            //Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+            if (timeSinceXray >= Time.time)
+            {
+                xraytime += Time.deltaTime;
+
+            }
+        }
+
+        Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
+        Mathf.Clamp(xraytime, 0, xrayTimeLimit);
+        Debug.Log(xraytime);
+
+
+
 
         ///////////Player Crouch///////////
         if (Input.GetButtonDown("Crouch"))
@@ -109,25 +144,7 @@ public class PlayerController : MonoBehaviour
             //Play Crouch Animation
             //Reduce Enemy Sight Lines
         }
-        
 
-
-
-        ///////////Create Kunai///////////
-     /*   if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            if (AmountOfKunais > 0)
-            {
-                CreateKunai();
-            }
-            else
-            {
-                Debug.Log("Out of Kunais");
-            }
-
-        }
-     */
 
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
@@ -145,14 +162,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        ///////////Reloads Kunais///////////
-        ///Will Change after reload stations are included
-       /* if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadKunais();
-        }
-       */
-
         ///////////Reloads Distractables///////////
         ///Will Change after reload stations are included
         if (Input.GetKeyDown(KeyCode.R))
@@ -160,20 +169,6 @@ public class PlayerController : MonoBehaviour
             ReloadDistractables();
         }
 
-
-        ///////////Executing Enemies///////////
-        /*  DistanceToEnemy = Vector3.Distance(transform.position, EnemyTransform.position);
-          if (DistanceToEnemy < .3f && Input.GetButtonDown("Execute")) 
-          {
-              ExecuteEnemy();
-              Debug.Log("Attacking");
-              attackCollider.enabled = true;
-
-
-              StartCoroutine(WaitSomeTime(0.2f));
-
-          }
-        */
 
         ///////////Checking the amount of keycards the player has///////////
         if (Input.GetKeyDown(KeyCode.F))
@@ -187,172 +182,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    ///////////Support Methods///////////
-    ///Wait time for attack
- /*   IEnumerator WaitSomeTime(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-       attackCollider.enabled = false;
-    }
-  */
-
-    ///Kill enemy when colliding with them
-  /*  public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            Debug.Log("Collide");
-            //Enemy collided with the attack trigger, kill / remove the enemy
-            other.GetComponent<EnemyState>().Kill();
-        }
-    }
-
-    ///Checking if out of collider
-    private void OnTriggerExit(Collider other)
-    {
-
-        Debug.Log("Trigger exit with " + other.name);
-    }
-  */
-
-    ///Tick method for climbing
-  /*  public void Tick(float delta) 
-    {
-        if (!InPosition) 
-        {
-            GetInPosition(delta);
-            return;
-        }
-
-        if (!IsLerping)
-        {
-            float Hor = Input.GetAxis("Horizontal");
-            float Vert = Input.GetAxis("Vertical");
-            float M = Mathf.Abs(Hor) + Mathf.Abs(Vert);
-
-            Vector3 H = Helper.right * Hor;
-            Vector3 V = Helper.up * Vert;
-            Vector3 Move = (H + V).normalized;
-
-            bool canMove = CanMove(Move);
-            if (!canMove || Move == Vector3.zero) 
-            {
-                return;
-            }
-
-            PosT = 0;
-            IsLerping = true;
-            StartingPosition = transform.position;
-            //Vector3 TP = Helper.position - transform.position;
-            TargetPosition = Helper.position;
-
-        }
-        else 
-        {
-            PosT += delta * ClimbSpeed;
-            if (PosT > 1) 
-            {
-                PosT = 1;
-                IsLerping = false;
-
-            }
-
-            Vector3 ClimbPosition = Vector3.Lerp(StartingPosition, TargetPosition, PosT);
-            transform.position = ClimbPosition;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Helper.rotation, delta * RotateSpeed);
-        }
-
-
-    }
-    ///Checking if the Player can move on the wall
-    bool CanMove(Vector3 moveDir) 
-    {
-        Vector3 Origin = transform.position;
-        float Distance = PositionOffset;
-        Vector3 Direction = moveDir;
-        Debug.DrawRay(Origin, Direction * Distance, Color.red);
-        RaycastHit hit;
-
-        if (Physics.Raycast(Origin, Direction, out hit, Distance)) 
-        {
-            return false;
-        }
-
-        Origin += moveDir * Distance;
-        Direction = Helper.forward;
-        float Distance2 = .5f;
-
-        Debug.DrawRay(Origin, Direction * Distance2, Color.blue);
-
-        if (Physics.Raycast(Origin, Direction, out hit, Distance)) 
-        {
-            Helper.position = PosWithOffset(Origin, hit.point);
-            Helper.rotation = Quaternion.LookRotation(-hit.normal);
-            return true;
-        }
-
-        Origin += Direction * Distance2;
-        Direction = -Vector3.up;
-
-        Debug.DrawRay(Origin, Direction, Color.yellow);
-        if (Physics.Raycast(Origin, Direction, out hit, Distance2)) 
-        {
-            float angle = Vector3.Angle(Helper.up, hit.normal);
-            if (angle < 40) 
-            {
-                Helper.position = PosWithOffset(Origin, hit.point);
-                Helper.rotation = Quaternion.LookRotation(-hit.normal);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    ///Putting the player in position to climb
-    void GetInPosition(float delta) 
-    {
-        PosT += delta;
-
-        if (PosT > 1) 
-        {
-            PosT = 1;
-            InPosition = true;
-
-            //enable the ik (idk something from the tutorial for climbing)
-        }
-
-        Vector3 TP = Vector3.Lerp(StartingPosition, TargetPosition, PosT);
-        transform.position = TP;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Helper.rotation, delta * RotateSpeed);
-
-    }
-
-    ///Climbing slanted and crooked surfaces
-    Vector3 PosWithOffset(Vector3 origin, Vector3 target) 
-    {
-        Vector3 dir = origin - target;
-        dir.Normalize();
-        Vector3 offset = dir * OffsetFromWall;
-        return target + offset;
-    }
-  */
-
-
-
 
     ///////////Player Actions///////////
 
-    ///Throwing Kunais
-  /*  void CreateKunai()
-    {
-
-        Instantiate(Kunai, transform.position, transform.rotation);
-        AmountOfKunais -= 1;
-        Debug.Log("Kunais left: " + AmountOfKunais);
-
-    }
-*/
 
     ///Distractions
     void CreateDistractable() 
@@ -362,13 +194,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Distractions left: " + AmountOfDistractables);
     }
 
-    ///Reloading Kunais
- /*   void ReloadKunais()
-    {
-        AmountOfKunais = 3;
-        Debug.Log("Refilled Kunais");
-    }
- */
+
 
     ///Reloading Distractables
     void ReloadDistractables()
@@ -385,7 +211,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
             Controller.height = ControllerHeight;
-            PlayerSpeed = 2.5f;
+            PlayerSpeed = 1f;
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
         else 
@@ -399,7 +225,7 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
-                PlayerSpeed = 5f;
+                PlayerSpeed = 1.5f;
                 Debug.Log("Player is standing and the speed is " + PlayerSpeed); 
             }
             else
@@ -409,20 +235,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    ///Attacking
-  /*  void ExecuteEnemy() 
-    {
-        //Perform Execution animation
-        EnemyState enemy = new EnemyState();
-        enemy.Kill();
-    
-    }
-  */
+
     void Run() 
     {
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
-            PlayerSpeed = 8.0f;
+            PlayerSpeed = 3f;
             if (!RunAudio.isPlaying) 
             {
                 //RunAudio.Play();
@@ -434,14 +252,14 @@ public class PlayerController : MonoBehaviour
         else if(Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
 
-            Debug.Log("Player is walking");
+            //Debug.Log("Player is walking");
             Running = false;
             if (!WalkAudio.isPlaying)
             {
                 //RunAudio.Stop();
                 //WalkAudio.Play();
             }
-            PlayerSpeed = 3.0f;
+            PlayerSpeed = 1.5f;
             
         }
         
@@ -454,29 +272,28 @@ public class PlayerController : MonoBehaviour
         {
 
             Stamina -= Time.deltaTime;
-            Debug.Log("Stamina left: " + Stamina);
+           // Debug.Log("Stamina left: " + Stamina);
         }
         else if (Stamina <= 10.0f)
         {
             Running = false;
-            PlayerSpeed = 3.0f;
-            Debug.Log("Player is now walking");
+            PlayerSpeed = 1.5f;
+            //Debug.Log("Player is now walking");
             Stamina += Time.deltaTime;
             if (Stamina > 10.0f)
             {
                 Stamina = 10.0f;
             }
-            if (!WalkAudio.isPlaying && RunAudio.isPlaying) 
+            if (WalkAudio != null)
             {
-                //WalkAudio.Play();
-                //RunAudio.Stop();
+                if (!WalkAudio.isPlaying && RunAudio.isPlaying)
+                {
+                    WalkAudio.Play();
+                    RunAudio.Stop();
+                }
             }
         }
 
-        if (Stamina == 10.0f) 
-        {
-            Debug.Log("Stamina is refilled");
-        }
     }
 
    void CheckKeyCards() 
@@ -500,49 +317,6 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    /* public void CheckForClimb() 
-     {
-
-         //We are within the range of the enemy and running
-         if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
-         {
-             Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-             //player is moving
-             if (Move.magnitude > .1f)
-             {
-                 other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
-                 other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
-             }
-         }
-     }
-
-
-     /* public void CheckForClimb() 
-      {
-          Vector3 origin = transform.position;
-          origin.y += 1.4f;
-          Vector3 direction = transform.forward;
-          RaycastHit hit;
-          if (Physics.Raycast(origin, direction, out hit, 1)) 
-          {
-              Helper.position = PosWithOffset(origin, hit.point);
-              ClimbOnWall(hit);
-          }
-      }
-
-      void ClimbOnWall(RaycastHit hit) 
-      {
-          GroundedPlayer = false;
-          Climbing = true;
-          Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
-          StartingPosition = transform.position;
-          TargetPosition = hit.point + (hit.normal * OffsetFromWall);
-          PosT = 0;
-          InPosition = false;
-          Anim.CrossFade("climb_idle", 2);
-      }
-     */
 }
 
 
