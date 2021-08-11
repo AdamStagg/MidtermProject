@@ -12,11 +12,20 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
-    public float PlayerSpeed = 3.0f;
+    public float PlayerSpeed = 1.5f;
     public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
+    [Space]
+    [Header("XRay Shader variables")]
+
+    public float xrayTimeLimit = 5f;
+    private float xraytime;
+    public float xRayTimeUntilRegen = 2f;
+    private float timeSinceXray = 0;
+
+    [Space]
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
@@ -99,7 +108,33 @@ public class PlayerController : MonoBehaviour
         }
         //Checks Remaining Stamina
         CheckStamina();
+
         
+        //Check for XRay
+        if (Input.GetButton("XRay"))
+        {
+            if (xraytime >= .1f)
+            {
+                //Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+                xraytime -= Time.deltaTime;
+            } 
+            timeSinceXray = Time.time + xRayTimeUntilRegen;
+        } else
+        {
+            //Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+            if (timeSinceXray >= Time.time)
+            {
+                xraytime += Time.deltaTime;
+
+            }
+        }
+
+        Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
+        Mathf.Clamp(xraytime, 0, xrayTimeLimit);
+        Debug.Log(xraytime);
+
+
+
 
         ///////////Player Crouch///////////
         if (Input.GetButtonDown("Crouch"))
@@ -249,10 +284,13 @@ public class PlayerController : MonoBehaviour
             {
                 Stamina = 10.0f;
             }
-            if (!WalkAudio.isPlaying && RunAudio.isPlaying) 
+            if (WalkAudio != null)
             {
-                WalkAudio.Play();
-                RunAudio.Stop();
+                if (!WalkAudio.isPlaying && RunAudio.isPlaying)
+                {
+                    WalkAudio.Play();
+                    RunAudio.Stop();
+                }
             }
         }
 
