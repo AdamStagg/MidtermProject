@@ -11,16 +11,36 @@ public class TestEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Shader.SetGlobalFloat("_GlobalVisibility", 0f);
         //StartCoroutine(LookAround(5, 75));
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-            //CallForBackUp(Spawn, 3);
-        //}
+
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+
+            Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+
+            //   CallForBackUp(Spawn, 3);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+
+            Shader.SetGlobalFloat("_GlobalVisibility", .5f);
+
+            //   CallForBackUp(Spawn, 3);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+
+            Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+
+            //   CallForBackUp(Spawn, 3);
+        }
     }
 
 

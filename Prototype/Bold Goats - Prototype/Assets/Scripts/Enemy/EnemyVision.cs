@@ -53,6 +53,7 @@ namespace Enemy
 
                             //close to the player, alert
                             //Saw the player in patrol, change to investigate.
+
                             if (enemyState.state == States.Patrol && timeTillCanBeSeen <= Time.time || enemyState.state == States.Return && timeTillCanBeSeen <= Time.time)
                             {
                                 Debug.Log("hit the player");
