@@ -61,9 +61,12 @@ public class PlayerController : MonoBehaviour
     {
         Controller = GetComponent<CharacterController>();
         //keyCards = new List<KeyCard>();
-        volume.profile.TryGet(out vignette);
-        volume.profile.TryGet(out colorAdj);
-        volume.profile.TryGet(out filmGrain);
+        if (volume != null)
+        {
+            volume.profile.TryGet(out vignette);
+            volume.profile.TryGet(out colorAdj);
+            volume.profile.TryGet(out filmGrain);
+        }
         /* Helper = new GameObject().transform;
          Helper.name = "Climb Helper";
          CheckForClimb();
