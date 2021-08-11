@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -483,66 +483,50 @@ public class PlayerController : MonoBehaviour
    {
         Debug.Log("Keycards = " + KeyCards);
    }
+   
 
-    public Animation death;
-
-    [Space]
-    public GameObject deathScreen;
-
-
-    public void Die()
+   /* public void CheckForClimb() 
     {
-        death.Play();
-        deathScreen.SetActive(true);
+
+        //We are within the range of the enemy and running
+        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
+        {
+            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //player is moving
+            if (Move.magnitude > .1f)
+            {
+                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
+            }
+        }
     }
 
-    public void Reset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 
     /* public void CheckForClimb() 
      {
-
-         //We are within the range of the enemy and running
-         if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
+         Vector3 origin = transform.position;
+         origin.y += 1.4f;
+         Vector3 direction = transform.forward;
+         RaycastHit hit;
+         if (Physics.Raycast(origin, direction, out hit, 1)) 
          {
-             Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-             //player is moving
-             if (Move.magnitude > .1f)
-             {
-                 other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
-                 other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
-             }
+             Helper.position = PosWithOffset(origin, hit.point);
+             ClimbOnWall(hit);
          }
      }
 
-
-     /* public void CheckForClimb() 
-      {
-          Vector3 origin = transform.position;
-          origin.y += 1.4f;
-          Vector3 direction = transform.forward;
-          RaycastHit hit;
-          if (Physics.Raycast(origin, direction, out hit, 1)) 
-          {
-              Helper.position = PosWithOffset(origin, hit.point);
-              ClimbOnWall(hit);
-          }
-      }
-
-      void ClimbOnWall(RaycastHit hit) 
-      {
-          GroundedPlayer = false;
-          Climbing = true;
-          Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
-          StartingPosition = transform.position;
-          TargetPosition = hit.point + (hit.normal * OffsetFromWall);
-          PosT = 0;
-          InPosition = false;
-          Anim.CrossFade("climb_idle", 2);
-      }
-     */
+     void ClimbOnWall(RaycastHit hit) 
+     {
+         GroundedPlayer = false;
+         Climbing = true;
+         Helper.transform.rotation = Quaternion.LookRotation(-hit.normal);
+         StartingPosition = transform.position;
+         TargetPosition = hit.point + (hit.normal * OffsetFromWall);
+         PosT = 0;
+         InPosition = false;
+         Anim.CrossFade("climb_idle", 2);
+     }
+    */
 }
 
 
