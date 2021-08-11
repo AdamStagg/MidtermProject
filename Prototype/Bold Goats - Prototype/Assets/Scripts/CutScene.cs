@@ -8,7 +8,9 @@ public class CutScene : MonoBehaviour
     //public GameObject PlayerCamera;
     public GameObject HallwayCam;
     public GameObject SpotlightCam;
-    public GameObject PalaceCam;
+    public GameObject MazeCam;
+    public GameObject LazerCam;
+    public GameObject WinRoomCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,21 +19,23 @@ public class CutScene : MonoBehaviour
 
     IEnumerator StartingSequence()
     {
-        HallwayCam.SetActive(true);
-        Controls.SetActive(false);
-        //PlayerCamera.SetActive(false);
-        yield return new WaitForSeconds(7.5f);
+        //HallwayCam.SetActive(true);
+        //Controls.SetActive(false);
+        ////PlayerCamera.SetActive(false);
+        //yield return new WaitForSeconds(7.5f);
         
-        SpotlightCam.SetActive(true);
-        HallwayCam.SetActive(false);
-        yield return new WaitForSeconds(4.5f);
+        //SpotlightCam.SetActive(true);
+        //HallwayCam.SetActive(false);
+        //yield return new WaitForSeconds(4.5f);
         
-        PalaceCam.SetActive(true);
-        SpotlightCam.SetActive(false);
-        yield return new WaitForSeconds(5);
+        //PalaceCam.SetActive(true);
+        //SpotlightCam.SetActive(false);
+        //yield return new WaitForSeconds(5);
 
-        //PlayerCamera.SetActive(true);
-        PalaceCam.SetActive(false);
+        ////PlayerCamera.SetActive(true);
+        //PalaceCam.SetActive(false);
+
+
 
 
     }
