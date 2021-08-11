@@ -89,15 +89,20 @@ namespace Enemy
 
             // Set Destination Point to next point
             destinationPoint = (destinationPoint + 1) % guardPoints.Length;
+
+            //StopAllCoroutines();
         }
 
         public void HandleInvokeChase()
         {
+
+            //StopAllCoroutines();
             //lastPosition.position = transform.position;
         }
 
         public void HandleInvokeInvestigate()
         {
+           // StopAllCoroutines();
             lastPosition.position = transform.position;
             aiEnemy.destination = investigatePosition.position;
             investigatePosition.position = GameManager.Instance.Player.transform.position;
@@ -113,8 +118,11 @@ namespace Enemy
         public void HandleInvokeAttack()
         {
             GetComponent<Renderer>().material.color = colorAttack;
-            Destroy(GameManager.Instance.Player);
-            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            //Destroy(GameManager.Instance.Player);
+            //SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+
+            Debug.Log("Player had died");
+
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }

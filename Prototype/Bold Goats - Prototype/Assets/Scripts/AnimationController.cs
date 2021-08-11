@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    [SerializeField] float Speed = 5f;
-    
     Animator animator;
     
     // Start is called before the first frame update
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +26,7 @@ public class AnimationController : MonoBehaviour
         if (Movement.magnitude > 0)
         {
             Movement.Normalize();
-            Movement *= Speed * Time.deltaTime;
+            Movement *= Time.deltaTime;
             transform.Translate(Movement, Space.World);
         }
 
