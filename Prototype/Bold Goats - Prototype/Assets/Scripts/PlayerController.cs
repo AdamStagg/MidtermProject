@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
+    private bool Walking = false;
     public float PlayerSpeed = 1.5f;
     public static float Stamina = 10.0f;
     private float GravityValue = -9.81f;
@@ -84,19 +85,18 @@ public class PlayerController : MonoBehaviour
         }
         if (WalkAudio != null)
         {
-            if (Controller.velocity.magnitude > 1f && WalkAudio.isPlaying == false)
-            {
-                WalkAudio.Play();
-            }
+                CheckAudio();
         }
-
         // Delta = Time.deltaTime;
         // Tick(Delta);
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
 
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
+        if ((Controller.velocity.x > 0f && Controller.velocity.x > 2f) || (Controller.velocity.z > 0f && Controller.velocity.z < 2f)) 
+        {
+            Walking = true;
+        }
 
         ///////////Camera Movement///////////
         Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Run"))
         {
             Running = true;
+            Walking = false;
             Run();
         }
         else if (Input.GetButtonUp("Run"))
@@ -280,29 +281,13 @@ public class PlayerController : MonoBehaviour
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
             PlayerSpeed = 3f;
-            if (RunAudio != null)
-            {
-                if (!RunAudio.isPlaying)
-                {
-                    //RunAudio.Play();
-                    //WalkAudio.Stop();
-                }
-                //Debug.Log("Player is running");
-            }
+
 
         }
         else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
             //Debug.Log("Player is walking");
             Running = false;
-            if (WalkAudio != null)
-            {
-                if (!WalkAudio.isPlaying)
-                {
-                    //RunAudio.Stop();
-                    //WalkAudio.Play();
-                }
-            }
             PlayerSpeed = 1.5f;
 
         }
@@ -328,14 +313,8 @@ public class PlayerController : MonoBehaviour
             {
                 Stamina = 10.0f;
             }
-            if (WalkAudio != null)
-            {
-                if (!WalkAudio.isPlaying && RunAudio.isPlaying)
-                {
-                    WalkAudio.Play();
-                    RunAudio.Stop();
-                }
-            }
+           
+           
         }
 
     }
@@ -344,9 +323,34 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Keycards = " + KeyCards);
     }
-}
-   
 
+    void CheckAudio() 
+    {
+        if (Walking == true)
+{
+            RunAudio.Stop();
+
+            if (WalkAudio.isPlaying == false)
+                WalkAudio.Play();
+        }
+        else if (Running == true)
+{
+            WalkAudio.Stop();
+
+            if (RunAudio.isPlaying == false)
+            {
+                RunAudio.Play();
+            }
+        }
+        else
+        {
+            WalkAudio.Stop();
+            RunAudio.Stop();
+           
+        }
+    }
+
+}
    /* public void CheckForClimb() 
     {
 
@@ -364,6 +368,7 @@ public class PlayerController : MonoBehaviour
     }
 }*/
 
+*/
 
 
 

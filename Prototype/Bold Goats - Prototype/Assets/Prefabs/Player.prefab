@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5866324488314024630
 Transform:
   m_ObjectHideFlags: 0
@@ -133,12 +133,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5274489820562256463}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1104434317376222667, guid: 39cd5576cf16c344abe2260e8700b03f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 13083f0fb4bf2b347a1f4d13361e416b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5142195750317092060
 Transform:
   m_ObjectHideFlags: 0
@@ -485,10 +485,10 @@ AudioSource:
   m_GameObject: {fileID: 6019409691142104749}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1272060683895375793, guid: 39cd5576cf16c344abe2260e8700b03f, type: 2}
   m_audioClip: {fileID: 8300000, guid: d7f041d5af7960b4386f6535e8956cb9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -731,8 +731,7 @@ MonoBehaviour:
   KeyCard1: {fileID: 0}
   KeyCard2: {fileID: 0}
   KeyCard3: {fileID: 0}
-  Door: {fileID: 0}
-  Open: {fileID: 0}
+  DoorController: {fileID: 0}
 --- !u!136 &2986407996714584578
 CapsuleCollider:
   m_ObjectHideFlags: 0
