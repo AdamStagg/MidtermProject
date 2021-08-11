@@ -425,8 +425,8 @@ public class PlayerController : MonoBehaviour
             PlayerSpeed = 8.0f;
             if (!RunAudio.isPlaying) 
             {
-                RunAudio.Play();
-                WalkAudio.Stop();
+                //RunAudio.Play();
+                //WalkAudio.Stop();
             }
             //Debug.Log("Player is running");
             
@@ -438,8 +438,8 @@ public class PlayerController : MonoBehaviour
             Running = false;
             if (!WalkAudio.isPlaying)
             {
-                RunAudio.Stop();
-                WalkAudio.Play();
+                //RunAudio.Stop();
+                //WalkAudio.Play();
             }
             PlayerSpeed = 3.0f;
             
@@ -468,8 +468,8 @@ public class PlayerController : MonoBehaviour
             }
             if (!WalkAudio.isPlaying && RunAudio.isPlaying) 
             {
-                WalkAudio.Play();
-                RunAudio.Stop();
+                //WalkAudio.Play();
+                //RunAudio.Stop();
             }
         }
 
