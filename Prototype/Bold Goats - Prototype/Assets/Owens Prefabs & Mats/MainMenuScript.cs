@@ -7,7 +7,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Village");
+        SceneManager.LoadScene("Palace");
     }
 
     public void QuitGame()
