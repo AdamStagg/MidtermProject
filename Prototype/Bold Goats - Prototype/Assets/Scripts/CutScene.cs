@@ -7,45 +7,37 @@ public class CutScene : MonoBehaviour
     public GameObject PlayerCamera;
     public GameObject HallwayCam;
     public GameObject SpotlightCam;
+    public GameObject LazerMazeCam;
     public GameObject MazeCam;
-    public GameObject LazerCam;
     public GameObject WinRoomCam;
-    // Start is called before the first frame update
-    void OnTriggerEnter(Collider other)
-    {
-        HallwayCam.SetActive(true);
-        PlayerCamera.SetActive(false);
 
+    // Start is called before the first frame update
+
+    void Start()
+    {
+        StartCoroutine(CutScenes());
     }
 
 
-    //void Start()
-    //{
-    //    StartCoroutine(StartingSequence());
-    //}
+    IEnumerator CutScenes()
+    {
+        HallwayCam.SetActive(true);
+        yield return new WaitForSeconds(7);
+        SpotlightCam.SetActive(true);
+        HallwayCam.SetActive(false);
+        yield return new WaitForSeconds(7);
+        LazerMazeCam.SetActive(true);
+        SpotlightCam.SetActive(false);
+        yield return new WaitForSeconds(7);
+        MazeCam.SetActive(true);
+        LazerMazeCam.SetActive(false);
+        yield return new WaitForSeconds(6);
+        WinRoomCam.SetActive(true);
+        MazeCam.SetActive(false);
+        yield return new WaitForSeconds(9.5f);
+        WinRoomCam.SetActive(false);
+       
 
-    //IEnumerator StartingSequence()
-    //{
-
-    //    //HallwayCam.SetActive(true);
-    //    //Controls.SetActive(false);
-    //    ////PlayerCamera.SetActive(false);
-    //    //yield return new WaitForSeconds(7.5f);
-        
-    //    //SpotlightCam.SetActive(true);
-    //    //HallwayCam.SetActive(false);
-    //    //yield return new WaitForSeconds(4.5f);
-        
-    //    //PalaceCam.SetActive(true);
-    //    //SpotlightCam.SetActive(false);
-    //    //yield return new WaitForSeconds(5);
-
-    //    ////PlayerCamera.SetActive(true);
-    //    //PalaceCam.SetActive(false);
-
-
-
-
-    //}
+    }
 
 }
