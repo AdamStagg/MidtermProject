@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CONDITIONALS/Main Menu.unity
     guid: 28b918754f5a8b942851fe8cb3ea4807
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Palace.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CONDITIONALS/LOSE CONDITION.unity
     guid: 6d5c31fc6654cb94aa48828ed340ec51
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CONDITIONALS/WINCONDITION.unity
     guid: 9a51078e6d3254943819775d773bd770
   - enabled: 0
