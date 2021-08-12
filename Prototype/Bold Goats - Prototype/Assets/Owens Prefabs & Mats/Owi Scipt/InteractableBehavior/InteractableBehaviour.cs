@@ -30,7 +30,13 @@ public class InteractableBehaviour : InteractableBase
             textToDisplay.SetActive(true);
             StartCoroutine(WaitSomeTime(timeToDisplayText));
             }
-            Destroy(destroy);
+            if (destroy != null)
+            {
+                Destroy(destroy);
+
+                GameManager.Instance.keyCards++;
+            }
+
         }
         else if (transportType == true)
         {

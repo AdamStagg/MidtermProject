@@ -8,6 +8,22 @@ public class InteractionUIPanel : MonoBehaviour
 {
     [SerializeField] private Image progressBar;
     [SerializeField] private TextMeshProUGUI tooltipText;
+    [SerializeField] private GameObject pressKey;
+    [SerializeField] private GameObject bar;
+
+    public void Show(bool on)
+    {
+        if (on == true)
+        {
+            pressKey.SetActive(true);
+            bar.SetActive(true);
+        }
+        else
+        {
+            pressKey.SetActive(false);
+            bar.SetActive(false);
+        }
+    }
 
     public void SetTooltip(string _tooltip)
     {

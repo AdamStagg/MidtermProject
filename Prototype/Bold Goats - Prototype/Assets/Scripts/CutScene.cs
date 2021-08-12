@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class CutScene : MonoBehaviour
 {
-    public GameObject Controls;
-    //public GameObject PlayerCamera;
+    public GameObject PlayerCamera;
     public GameObject HallwayCam;
     public GameObject SpotlightCam;
-    public GameObject PalaceCam;
+    public GameObject LazerMazeCam;
+    public GameObject MazeCam;
+    public GameObject WinRoomCam;
+
     // Start is called before the first frame update
+
     void Start()
     {
-        StartCoroutine(StartingSequence());
+        StartCoroutine(CutScenes());
     }
 
-    IEnumerator StartingSequence()
+
+    IEnumerator CutScenes()
     {
         HallwayCam.SetActive(true);
-        Controls.SetActive(false);
-        //PlayerCamera.SetActive(false);
-        yield return new WaitForSeconds(7.5f);
-        
+        yield return new WaitForSeconds(7);
         SpotlightCam.SetActive(true);
         HallwayCam.SetActive(false);
-        yield return new WaitForSeconds(4.5f);
-        
-        PalaceCam.SetActive(true);
+        yield return new WaitForSeconds(7);
+        LazerMazeCam.SetActive(true);
         SpotlightCam.SetActive(false);
-        yield return new WaitForSeconds(5);
-
-        //PlayerCamera.SetActive(true);
-        PalaceCam.SetActive(false);
-
+        yield return new WaitForSeconds(7);
+        MazeCam.SetActive(true);
+        LazerMazeCam.SetActive(false);
+        yield return new WaitForSeconds(6);
+        WinRoomCam.SetActive(true);
+        MazeCam.SetActive(false);
+        yield return new WaitForSeconds(9.5f);
+        WinRoomCam.SetActive(false);
+       
 
     }
 
