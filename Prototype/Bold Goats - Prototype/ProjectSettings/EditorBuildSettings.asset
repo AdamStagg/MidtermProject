@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Owens - Test2.unity
+    guid: 14c23fbe9f942dd4c9ba8a4df7b88969
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: f905bf4e3c907de49ab22886d596a902
   - enabled: 0

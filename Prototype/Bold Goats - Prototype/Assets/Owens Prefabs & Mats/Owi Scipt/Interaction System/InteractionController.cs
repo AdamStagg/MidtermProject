@@ -52,6 +52,7 @@ public class InteractionController : MonoBehaviour
             if (hitSomething)
             {
                 InteractableBase _interactable = hitInfo.transform.GetComponent<InteractableBase>();
+                uiPanel.Show(hitSomething);
 
                 if (_interactable != null)
                 {
@@ -74,6 +75,7 @@ public class InteractionController : MonoBehaviour
             {
                 uiPanel.ResetUI();
                 interactionData.ResetData();
+                uiPanel.Show(hitSomething);
             }
 
             Debug.DrawRay(ray.origin, ray.direction * rayDistance, hitSomething ? Color.green : Color.red);

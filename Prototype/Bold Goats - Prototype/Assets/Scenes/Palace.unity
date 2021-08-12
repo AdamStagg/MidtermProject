@@ -650,17 +650,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4119730010757755407, guid: d67acd0ea8a59ec478d9dcd45e487115, type: 3}
   m_PrefabInstance: {fileID: 26589923}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &27248199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3595756687111974907, guid: b077c87f59f978049911e42d74415659, type: 3}
-  m_PrefabInstance: {fileID: 1092143190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e880d0445489fe14da1ef95453b89121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &28657907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3831,6 +3820,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1210393031311378897, guid: 723342626d04f3144afc766b1c5f4576, type: 3}
   m_PrefabInstance: {fileID: 208876828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &223538516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4412443289511220454, guid: b077c87f59f978049911e42d74415659, type: 3}
+  m_PrefabInstance: {fileID: 1092143190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e880d0445489fe14da1ef95453b89121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &224145113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14471,7 +14471,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 278629428}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16657,6 +16657,10 @@ PrefabInstance:
     - target: {fileID: 3595756687111974905, guid: b077c87f59f978049911e42d74415659, type: 3}
       propertyPath: m_Name
       value: InteractionUIPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412443289511220449, guid: b077c87f59f978049911e42d74415659, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b077c87f59f978049911e42d74415659, type: 3}
@@ -20365,7 +20369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionInputData: {fileID: 11400000, guid: 7bad579d77697c04aa41a361b87c6336, type: 2}
   interactionData: {fileID: 11400000, guid: 36b59c83a6b20af47b693410ef415cba, type: 2}
-  uiPanel: {fileID: 27248199}
+  uiPanel: {fileID: 223538516}
   rayDistance: 5
   raySphereRadius: 0.3
   interactableLayer:
@@ -21158,6 +21162,62 @@ PrefabInstance:
     - target: {fileID: 4160899832540526865, guid: da27d865011f6634bba19351783a0531, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2106213918}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899832655874070, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2106213918}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160899833079804573, guid: da27d865011f6634bba19351783a0531, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da27d865011f6634bba19351783a0531, type: 3}
@@ -31028,6 +31088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiForPause: {fileID: 619642373}
   resDropdown: {fileID: 1314473650}
+  musicMixer: {fileID: 24100000, guid: e66934725d4d1464ba010f1f6461f768, type: 2}
+  sfxMixer: {fileID: 24100000, guid: 39cd5576cf16c344abe2260e8700b03f, type: 2}
 --- !u!1 &2117848440
 GameObject:
   m_ObjectHideFlags: 0

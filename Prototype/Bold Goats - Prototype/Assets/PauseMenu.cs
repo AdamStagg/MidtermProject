@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -40,7 +41,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && uiForPause != null)
         {
             if (isPaused)
             {
@@ -103,6 +104,21 @@ public class PauseMenu : MonoBehaviour
         Resolution resolution = resolutions[_resIndex];
 
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    // Sound Settings
+
+    public AudioMixer musicMixer;
+    public AudioMixer sfxMixer;
+
+    public void SetMusicVolume(float _volume)
+    {
+        musicMixer.SetFloat("MusicVolume", _volume);
+    }
+
+    public void SetSFXVolume(float _volume)
+    {
+        sfxMixer.SetFloat("SFXVolume", _volume);
     }
 
 }
