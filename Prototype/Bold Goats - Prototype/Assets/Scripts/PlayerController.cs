@@ -15,8 +15,11 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     private bool Walking = false;
-    public float PlayerSpeed = 1.5f;
-    public static float Stamina = 10.0f;
+    public float PlayerSpeed = 1.2f;
+    public static float Stamina = 6f;
+    public float StaminaTimeLimit = 6f;
+    public float StaminaTimeUntilRegen = 2f;
+    private float TimeSinceRun = 0;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
@@ -115,17 +118,32 @@ public class PlayerController : MonoBehaviour
         ///////////Player Run///////////
         if (Input.GetButton("Run"))
         {
-            Running = true;
-            Walking = false;
-            Run();
+            
+            if (Stamina >= .1f)
+            {
+                Running = true;
+                Walking = false;
+                Stamina -= Time.deltaTime;
+                Run();
+            }
+            TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
-        else if (Input.GetButtonUp("Run"))
+        else 
         {
+            Walking = true;
             Running = false;
+            if (Stamina <= 6.0f) {
+                if (TimeSinceRun <= Time.time)
+                {
+                    Stamina += Time.deltaTime;
+
+                }
+            }
             Run();
         }
-        //Checks Remaining Stamina
-        CheckStamina();
+
+        xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
+
 
 
         //Check for XRay
@@ -172,9 +190,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Shader.SetGlobalFloat("_GlobalVisibility", xraytime / xrayTimeLimit);
         xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
-        //Debug.Log(xraytime);
+        
 
 
 
@@ -184,8 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             Crouched = !Crouched;
             ToggleCrouch();
-            //Play Crouch Animation
-            //Reduce Enemy Sight Lines
+           
         }
 
 
@@ -253,7 +269,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
             Controller.height = ControllerHeight;
-            PlayerSpeed = 1f;
+            PlayerSpeed = .4f;
             Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
         }
         else
@@ -267,7 +283,7 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = .8f;
-                PlayerSpeed = 1.5f;
+                PlayerSpeed = 1.2f;
                 Debug.Log("Player is standing and the speed is " + PlayerSpeed);
             }
             else
@@ -282,44 +298,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
         {
-            PlayerSpeed = 3f;
+            PlayerSpeed = 4f;
 
 
         }
         else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
         {
-            //Debug.Log("Player is walking");
+           
             Running = false;
-            PlayerSpeed = 1.5f;
+            PlayerSpeed = 1.2f;
 
         }
 
 
     }
 
-    void CheckStamina()
-    {
-        if (Stamina > 0.1f && Running == true)
-        {
-
-            Stamina -= Time.deltaTime;
-            // Debug.Log("Stamina left: " + Stamina);
-        }
-        else if (Stamina <= 10.0f)
-        {
-            Running = false;
-            PlayerSpeed = 1.5f;
-            //Debug.Log("Player is now walking");
-            Stamina += Time.deltaTime;
-            if (Stamina > 10.0f)
-            {
-                Stamina = 10.0f;
-            }
-           
-           
-        }
-
-    }
 
     void CheckKeyCards()
     {
@@ -353,22 +346,7 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-   /* public void CheckForClimb() 
-    {
-
-        //We are within the range of the enemy and running
-        if (other.transform.parent != null && other.transform.parent.tag == "Enemy" && Running)
-        {
-            Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //player is moving
-            if (Move.magnitude > .1f)
-            {
-                other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
-                other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
-            }
-        }
-    }
-}*/
+   
 
 
 
