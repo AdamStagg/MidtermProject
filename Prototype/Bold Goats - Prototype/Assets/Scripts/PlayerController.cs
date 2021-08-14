@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-        //keyCards = new List<KeyCard>();
+       
         if (volume != null)
         {
             volume.profile.TryGet(out vignette);
@@ -73,10 +73,7 @@ public class PlayerController : MonoBehaviour
         }
 
         GameManager.Instance.keyCards = 0;
-        /* Helper = new GameObject().transform;
-         Helper.name = "Climb Helper";
-         CheckForClimb();
-        */
+        
     }
 
     void Update()
@@ -92,8 +89,7 @@ public class PlayerController : MonoBehaviour
         {
                 CheckAudio();
         }
-        // Delta = Time.deltaTime;
-        // Tick(Delta);
+        
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
 
@@ -142,7 +138,7 @@ public class PlayerController : MonoBehaviour
             Run();
         }
 
-        xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
+        Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
 
 

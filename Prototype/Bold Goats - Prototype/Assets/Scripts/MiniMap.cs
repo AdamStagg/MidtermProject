@@ -17,7 +17,6 @@ public class MiniMap : MonoBehaviour
 
             // Minimap rotation code
             transform.rotation = Quaternion.Euler(90f, GameManager.Instance.Player.transform.eulerAngles.y, 0f);
-            //transform.rotation = Quaternion.Euler(90f, transform.rotation.y, Mathf.Lerp(GameManager.Instance.Player.transform.rotation.y, transform.rotation.z, 1.0f));
         }
     }
 }
