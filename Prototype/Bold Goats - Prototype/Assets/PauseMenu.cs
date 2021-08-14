@@ -4,12 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
 
     public GameObject uiForPause;
+
+    private void Awake()
+    {
+        Screen.fullScreen = true;
+    }
 
     void Start()
     {
@@ -50,6 +56,8 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 Pause();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
     }

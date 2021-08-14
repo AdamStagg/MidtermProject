@@ -18,7 +18,8 @@ public class InteractableBehaviour : InteractableBase
 
     [Space]
     public GameObject textToDisplay;
-    public float timeToDisplayText = 5f;
+
+    public float timeToDisplayText;
     public override void OnInteract()
     {
         base.OnInteract();
@@ -27,8 +28,7 @@ public class InteractableBehaviour : InteractableBase
         {
             if (textToDisplay != null)
             {
-            textToDisplay.SetActive(true);
-            StartCoroutine(WaitSomeTime(timeToDisplayText));
+                StartCoroutine(WaitCompletionText());
             }
             if (destroy != null)
             {
@@ -54,11 +54,12 @@ public class InteractableBehaviour : InteractableBase
         }
     }
 
-    IEnumerator WaitSomeTime(float seconds)
+    IEnumerator WaitCompletionText()
     {
-        yield return new WaitForSeconds(seconds);
+        textToDisplay.SetActive(true);
+        yield return new WaitForSeconds(timeToDisplayText);
         textToDisplay.SetActive(false);
-        Destroy(this);
+        //Destroy(this);
     }
 
 }

@@ -59,6 +59,7 @@ public class InteractableBase : MonoBehaviour, IInteractables
         }
     }
 
+
     // Mehtods
     public virtual void OnInteract()
     {
