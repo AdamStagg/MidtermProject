@@ -9,7 +9,7 @@ public class LaserGateKill : MonoBehaviour
     {
         if (other.tag == "Player") 
         {
-            //Destroy(GameManager.Instance.Player);
+            
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
