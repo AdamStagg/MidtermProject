@@ -23,14 +23,14 @@ public class PlayerController : MonoBehaviour
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
 
+    ///////////Variables for XRay///////////
     [Space]
-    [Header("XRay Shader variables")]
 
+    [Header("XRay Shader variables")]
     public float xrayTimeLimit = 5f;
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
-
     public Volume volume;
     Vignette vignette;
     ColorAdjustments colorAdj;
@@ -57,8 +57,18 @@ public class PlayerController : MonoBehaviour
     ///////////Variables for KeyCard///////////
     public static int KeyCards = 0;
 
+    ///////////Variables for Checking for Slopes///////////
+    RaycastHit HitInfo;
+    Vector3 forward;
+    public float MaxGroundAngle = 120f;
+    public float Height = .5f;
+    public float HeightPadding = .05f;
+    public LayerMask Ground;
+    private float Angle;
+    private float GroundAngle;
+    
 
-
+    
 
 
     private void Start()
@@ -79,22 +89,37 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        GroundedPlayer = Controller.isGrounded;
 
-        if (GroundedPlayer && PlayerVelocity.y < 0)
+        
+
+        if (GroundAngle >= MaxGroundAngle)
         {
-            PlayerVelocity.y = 0f;
+            PlayerSpeed = 0f;
         }
+        else if (Walking == true)
+        {
+            PlayerSpeed = 1.2f;
+        }
+        else if (Running == true) 
+        {
+            PlayerSpeed = 4.0f;
+        }
+
         if (WalkAudio != null)
         {
                 CheckAudio();
         }
-        
+
+        ///////////Checking for Slopes///////////
+        CalculateForward();
+        CalculateGroundAngle();
+        CheckGrounded();
+       
 
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
 
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if ((Controller.velocity.x > 0f && Controller.velocity.x > 2f) || (Controller.velocity.z > 0f && Controller.velocity.z < 2f)) 
+        if ((Controller.velocity.x > 0f && Controller.velocity.x < 2f) || (Controller.velocity.z > 0f && Controller.velocity.z < 2f)) 
         {
             Walking = true;
         }
@@ -120,7 +145,7 @@ public class PlayerController : MonoBehaviour
                 Running = true;
                 Walking = false;
                 Stamina -= Time.deltaTime;
-                Run();
+    
             }
             TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
@@ -135,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
                 }
             }
-            Run();
+            
         }
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
@@ -233,7 +258,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
-
+        //transform.position += forward * PlayerSpeed * Time.deltaTime;
     }
 
 
@@ -270,45 +295,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Ray ray = new Ray();
-            RaycastHit hit;
-            ray.origin = transform.position;
-            ray.direction = Vector3.up;
-
-            if (Physics.Raycast(PlayerTransform.transform.position, ray.direction, out hit, 1.5f))
-            {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
-                Controller.height = .8f;
+                Controller.height = 1f;
                 PlayerSpeed = 1.2f;
-                Debug.Log("Player is standing and the speed is " + PlayerSpeed);
-            }
-            else
-            {
-                Debug.Log("Not enough space to stand up!");
-            }
         }
     }
-
-
-    void Run()
-    {
-        if (Running && Crouched == false && Stamina > 0.1f && Controller.velocity.magnitude > 1f)
-        {
-            PlayerSpeed = 4f;
-
-
-        }
-        else if (Crouched == false || Controller.velocity.magnitude < 1f || Running == false)
-        {
-           
-            Running = false;
-            PlayerSpeed = 1.2f;
-
-        }
-
-
-    }
-
 
     void CheckKeyCards()
     {
@@ -340,6 +331,41 @@ public class PlayerController : MonoBehaviour
            
         }
     }
+
+    void CalculateForward() 
+    {
+        if (GroundedPlayer == false) 
+        {
+            forward = transform.forward;
+        }
+        forward = Vector3.Cross(HitInfo.normal, -transform.right);
+    }
+
+    void CalculateGroundAngle() 
+    {
+        if (GroundedPlayer == false) 
+        {
+            GroundAngle = 90;
+            return;
+        }
+
+        GroundAngle = Vector3.Angle(HitInfo.normal, transform.forward);
+    }
+
+    void CheckGrounded() 
+    {
+        if (Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, Ground))
+        {
+            GroundedPlayer = true;
+        }
+        else 
+        {
+            GroundedPlayer = false;
+        }
+    }
+
+   
+
 
 }
    
