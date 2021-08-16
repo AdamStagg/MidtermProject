@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KillBox : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.tag == "Player")
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
