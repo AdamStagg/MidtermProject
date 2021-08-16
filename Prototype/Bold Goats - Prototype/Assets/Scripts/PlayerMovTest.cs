@@ -16,33 +16,33 @@ public class PlayerMovTest : MonoBehaviour
     void Move()
     {
         // forward movement
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            movpos = transform.position;
-            movpos.z += movamount;
-            transform.position = movpos;
-        }
-
-        // backwards movement
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.W))
         {
             movpos = transform.position;
             movpos.z -= movamount;
             transform.position = movpos;
         }
 
-        // side to side movement
-        // right
-        if (Input.GetKeyDown(KeyCode.D))
+        // backwards movement
+        if (Input.GetKey(KeyCode.S))
         {
             movpos = transform.position;
-            movpos.x += movamount;
+            movpos.z += movamount;
             transform.position = movpos;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+
+        // side to side movement
+        // right
+        if (Input.GetKey(KeyCode.D))
         {
             movpos = transform.position;
             movpos.x -= movamount;
+            transform.position = movpos;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            movpos = transform.position;
+            movpos.x += movamount;
             transform.position = movpos;
         }
     }
