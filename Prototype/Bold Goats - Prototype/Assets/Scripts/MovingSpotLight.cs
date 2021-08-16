@@ -14,7 +14,8 @@ public class MovingSpotLight : MonoBehaviour
     public GameObject[] waypoints;
     public float delayBeforeRespawn = 5f;
 
-    float moveSpeed = 4;
+    float moveSpeed = 4f;
+    float rotateSpeed = 1f;
     int waypointIndex = 0;
 
     float timeSinceLastSpawned;
@@ -27,6 +28,7 @@ public class MovingSpotLight : MonoBehaviour
         Vector3 dirToWaypoint = waypoints[waypointIndex].transform.position - transform.position;
         dirToWaypoint.Normalize();
         transform.Translate(dirToWaypoint * moveSpeed * Time.deltaTime);
+        transform.Rotate(dirToWaypoint * rotateSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < .1f)
         {
@@ -71,7 +73,7 @@ public class MovingSpotLight : MonoBehaviour
         if (other.tag == "Player")
         {
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
-            //CallForBackUp(SpawnLocation, 3);
+            
         }
     }
 
