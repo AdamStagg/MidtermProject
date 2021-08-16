@@ -22,11 +22,7 @@ public class InteractionController : MonoBehaviour
     private bool interacting;
     private float holdTimer = 0f;
 
-    // Methods
-    //void Awake()
-    //{
-    //    cam = FindObjectOfType()
-    //}
+   
 
     void Update()
     {
