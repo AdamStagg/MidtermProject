@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
         if (WalkAudio != null)
         {
-                CheckAudio();
+           CheckAudio();
         }
 
         ///////////Checking for Slopes///////////
