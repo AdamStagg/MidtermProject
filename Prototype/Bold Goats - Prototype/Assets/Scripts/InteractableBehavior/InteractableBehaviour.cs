@@ -21,10 +21,20 @@ public class InteractableBehaviour : InteractableBase
 
     public float timeToDisplayText;
 
-    [Space]
-    public  GameObject mainCam;
-    public GameObject cutsceneCam;
-    public Animator afterUseCutscene;
+    public InteractionUIPanel uiPanel;
+    GameObject holdPanel;
+
+    //[Space]
+    //public  GameObject mainCam;
+    //public GameObject cutsceneCam;
+    //public Animator afterUseCutscene;
+
+    private void Start()
+    {
+        //uiPanel = GameObject.Find("InteractionUIPanel");
+        holdPanel = GameObject.Find("InteractionUIPanel");
+        uiPanel = holdPanel.GetComponent<InteractionUIPanel>();
+    }
 
     public override void OnInteract()
     {
@@ -32,13 +42,13 @@ public class InteractableBehaviour : InteractableBase
 
         if (destroyType == true)
         {
-            if (textToDisplay != null)
+            if ((textToDisplay != null && destroy != null) || destroy != null)
             {
                 StartCoroutine(WaitCompletionText());
             }
             if (destroy != null)
             {
-                Destroy(destroy);
+                //Destroy(destroy);
 
                 GameManager.Instance.keyCards++;
             }
@@ -62,10 +72,16 @@ public class InteractableBehaviour : InteractableBase
 
     IEnumerator WaitCompletionText()
     {
+        holdPanel.SetActive(false);
+        
+        if (textToDisplay != null)
+        {
         textToDisplay.SetActive(true);
-        yield return new WaitForSeconds(timeToDisplayText);
+        yield return new WaitForSecondsRealtime(timeToDisplayText);
         textToDisplay.SetActive(false);
-        //Destroy(this);
+        }
+        
+        Destroy(destroy);
     }
 
 
