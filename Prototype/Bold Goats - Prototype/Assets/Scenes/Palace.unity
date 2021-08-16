@@ -37502,6 +37502,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a44598c025a4924898a8e0c3931785e, type: 3}
+--- !u!1 &1757681741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757681743}
+  - component: {fileID: 1757681742}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1757681742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757681741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6bafc3ea4062b14c9836d8f2c959106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioClipArray: []
+  musicAudioClipArray:
+  - song: 0
+    audioClip: {fileID: 8300000, guid: 326b17d93c2197549823e3fe5e7eaf43, type: 3}
+  - song: 1
+    audioClip: {fileID: 8300000, guid: b66ca213a681e954b9e086d345675ae1, type: 3}
+  - song: 2
+    audioClip: {fileID: 8300000, guid: d96f990fa10126b49b71377de847eed5, type: 3}
+  - song: 3
+    audioClip: {fileID: 8300000, guid: b1c87ce5b2493fe44954f9d8bdcd1196, type: 3}
+  - song: 4
+    audioClip: {fileID: 8300000, guid: f806b306c753b0e46a1fcc28762fbf52, type: 3}
+  - song: 5
+    audioClip: {fileID: 8300000, guid: 83059fa8275971143a7e1af9bc36ed48, type: 3}
+--- !u!4 &1757681743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757681741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 308.6142, y: 9.369938, z: -545.349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 63
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1771095175
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,6 +20,12 @@ public class InteractableBehaviour : InteractableBase
     public GameObject textToDisplay;
 
     public float timeToDisplayText;
+
+    [Space]
+    public  GameObject mainCam;
+    public GameObject cutsceneCam;
+    public Animator afterUseCutscene;
+
     public override void OnInteract()
     {
         base.OnInteract();
@@ -61,5 +67,6 @@ public class InteractableBehaviour : InteractableBase
         textToDisplay.SetActive(false);
         //Destroy(this);
     }
+
 
 }
