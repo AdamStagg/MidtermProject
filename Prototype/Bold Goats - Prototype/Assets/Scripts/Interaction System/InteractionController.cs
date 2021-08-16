@@ -12,6 +12,7 @@ public class InteractionController : MonoBehaviour
     [Space, Header("UI")]
     public InteractionUIPanel uiPanel;
 
+
     [Space]
     [Header("Ray Settings")]
     public float rayDistance;
@@ -110,13 +111,16 @@ public class InteractionController : MonoBehaviour
 
                 if (heldPercent > 1f)
                 {
+                    uiPanel.Show(false);
                     interactionData.Interact();
                     interacting = false;
-                    PlayerController.KeyCards++;
+                   
+                    
                 }
             }
             else
             {
+                uiPanel.Show(false);
                 interactionData.Interact();
                 interacting = false;
             }

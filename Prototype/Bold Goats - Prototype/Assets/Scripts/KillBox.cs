@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillBox : MonoBehaviour
+public partial class KillBox : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider) 
     {
-        if (collision.transform.tag == "Player")
+        if (collider.tag == "Player") 
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -14,4 +14,7 @@ public class KillBox : MonoBehaviour
             SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
         }
     }
+    
+       
+    
 }
