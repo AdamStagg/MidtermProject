@@ -6,9 +6,9 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WinRoomCamera
+  m_Name: EXAMPLE
   serializedVersion: 6
-  m_Legacy: 1
+  m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -19,7 +19,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.927, y: -88.729, z: 0.341}
+        value: {x: 3.953, y: -89.474, z: 0.006}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -27,53 +27,62 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.55
-        value: {x: 8.662, y: -177.032, z: 0.348}
-        inSlope: {x: 3.4932258, y: -49.881615, z: 0.0032258132}
-        outSlope: {x: 3.4932258, y: -49.881615, z: 0.0032258132}
+        time: 4
+        value: {x: 6.703, y: -152.384, z: 0.01}
+        inSlope: {x: 1.16025, y: -29.994251, z: 0}
+        outSlope: {x: 1.16025, y: -29.994251, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 3.1
-        value: {x: 11.756, y: -243.362, z: 0.351}
-        inSlope: {x: 1.4038744, y: -39.192562, z: 0.0012565284}
-        outSlope: {x: 1.4038744, y: -39.192562, z: 0.0012565284}
+        time: 8
+        value: {x: 8.594, y: -209.451, z: 0.01}
+        inSlope: {x: 0.81649995, y: -29.5215, z: 0}
+        outSlope: {x: 0.81649995, y: -29.5215, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 4.733333
-        value: {x: 13.131, y: -301.79498, z: 0.352}
-        inSlope: {x: 1.4207141, y: -32.87755, z: 0.001224474}
-        outSlope: {x: 1.4207141, y: -32.87755, z: 0.001224474}
+        time: 12
+        value: {x: 9.969, y: -270.47, z: 0.009}
+        inSlope: {x: 0.6875, y: -30.079998, z: 0}
+        outSlope: {x: 0.6875, y: -30.079998, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 6.366667
-        value: {x: 16.397, y: -350.762, z: 0.356}
-        inSlope: {x: 1.5198948, y: -34.02379, z: 0.0025263207}
-        outSlope: {x: 1.5198948, y: -34.02379, z: 0.0025263207}
+        time: 16
+        value: {x: 11.344, y: -329.771, z: 0.009}
+        inSlope: {x: 0.34399986, y: -29.9085, z: 0}
+        outSlope: {x: 0.34399986, y: -29.9085, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 7.9
-        value: {x: 17.944, y: -409.537, z: 0.36}
-        inSlope: {x: 0, y: -31.441284, z: 0}
-        outSlope: {x: 0, y: -31.441284, z: 0}
+        time: 20
+        value: {x: 11.688, y: -390.104, z: 0.009}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 9.5
-        value: {x: 12.615, y: -449.278, z: 0.347}
+        time: 24
+        value: {x: 6.532, y: -91.02, z: 0.026}
+        inSlope: {x: -0.96687496, y: 0.77299416, z: 0}
+        outSlope: {x: -0.96687496, y: 0.77299416, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 28
+        value: {x: 3.953, y: -89.474, z: 0.006}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -90,7 +99,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -52.201538, y: -17.577293, z: 46.121216}
+        value: {x: -54.47989, y: -18.35416, z: 46.17682}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -98,53 +107,62 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.55
-        value: {x: -72.47586, y: -17.565903, z: 64.04773}
-        inSlope: {x: -11.558316, y: 0.01469766, z: 0}
-        outSlope: {x: -11.558316, y: 0.01469766, z: 0}
+        time: 4
+        value: {x: -63.783203, y: -18.454845, z: 62.141113}
+        inSlope: {x: -6.779648, y: 0, z: 0}
+        outSlope: {x: -6.779648, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 3.1
-        value: {x: -88.03232, y: -17.265537, z: 55.307007}
-        inSlope: {x: 0, y: 0.16886328, z: -8.550125}
-        outSlope: {x: 0, y: 0.16886328, z: -8.550125}
+        time: 8
+        value: {x: -81.59848, y: -18.452038, z: 61.796265}
+        inSlope: {x: -6.409958, y: 0.0013918877, z: -0.34484863}
+        outSlope: {x: -6.409958, y: 0.0013918877, z: -0.34484863}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 4.733333
-        value: {x: -87.90698, y: -17.028355, z: 36.829834}
-        inSlope: {x: 0.15347226, y: 0, z: -8.0285015}
-        outSlope: {x: 0.15347226, y: 0, z: -8.0285015}
+        time: 12
+        value: {x: -89.423035, y: -18.449278, z: 46.697815}
+        inSlope: {x: 0, y: 0.001332283, z: -7.5887604}
+        outSlope: {x: 0, y: 0.001332283, z: -7.5887604}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 6.366667
-        value: {x: -74.595, y: -17.159092, z: 29.080566}
-        inSlope: {x: 9.081693, y: -0.125888, z: 0}
-        outSlope: {x: 9.081693, y: -0.125888, z: 0}
+        time: 16
+        value: {x: -80.98135, y: -18.446709, z: 31.441223}
+        inSlope: {x: 6.117195, y: 0.0012946129, z: -0.032348584}
+        outSlope: {x: 6.117195, y: 0.0012946129, z: -0.032348584}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 7.9
-        value: {x: -59.148285, y: -17.427, z: 35.1698}
-        inSlope: {x: 6.522723, y: 0, z: 5.492697}
-        outSlope: {x: 6.522723, y: 0, z: 5.492697}
+        time: 20
+        value: {x: -64.954254, y: -18.4441, z: 31.408875}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 9.5
-        value: {x: -54.03882, y: -17.026737, z: 46.291016}
+        time: 24
+        value: {x: -61.555054, y: -19.658764, z: 46.48004}
+        inSlope: {x: 1.3092957, y: 0, z: 0}
+        outSlope: {x: 1.3092957, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 28
+        value: {x: -54.47989, y: -18.35416, z: 46.17682}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -158,20 +176,34 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
-  m_SampleRate: 60
-  m_WrapMode: 2
+  m_SampleRate: 5
+  m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 4
+      isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 9.5
+    m_StopTime: 28
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -192,64 +224,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -52.201538
+        value: -54.47989
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: -72.47586
-        inSlope: -11.558316
-        outSlope: -11.558316
-        tangentMode: 136
+        time: 4
+        value: -63.783203
+        inSlope: -6.779648
+        outSlope: -6.779648
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.1
-        value: -88.03232
+        time: 8
+        value: -81.59848
+        inSlope: -6.409958
+        outSlope: -6.409958
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 12
+        value: -89.423035
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.733333
-        value: -87.90698
-        inSlope: 0.15347226
-        outSlope: 0.15347226
-        tangentMode: 136
+        time: 16
+        value: -80.98135
+        inSlope: 6.117195
+        outSlope: 6.117195
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 6.366667
-        value: -74.595
-        inSlope: 9.081693
-        outSlope: 9.081693
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 7.9
-        value: -59.148285
-        inSlope: 6.522723
-        outSlope: 6.522723
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 9.5
-        value: -54.03882
+        time: 20
+        value: -64.954254
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 24
+        value: -61.555054
+        inSlope: 1.3092957
+        outSlope: 1.3092957
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: -54.47989
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -265,64 +306,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -17.577293
+        value: -18.35416
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: -17.565903
-        inSlope: 0.01469766
-        outSlope: 0.01469766
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 3.1
-        value: -17.265537
-        inSlope: 0.16886328
-        outSlope: 0.16886328
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.733333
-        value: -17.028355
+        time: 4
+        value: -18.454845
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 6.366667
-        value: -17.159092
-        inSlope: -0.125888
-        outSlope: -0.125888
-        tangentMode: 136
+        time: 8
+        value: -18.452038
+        inSlope: 0.0013918877
+        outSlope: 0.0013918877
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.9
-        value: -17.427
+        time: 12
+        value: -18.449278
+        inSlope: 0.001332283
+        outSlope: 0.001332283
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 16
+        value: -18.446709
+        inSlope: 0.0012946129
+        outSlope: 0.0012946129
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 20
+        value: -18.4441
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 9.5
-        value: -17.026737
+        time: 24
+        value: -19.658764
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: -18.35416
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -338,64 +388,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 46.121216
+        value: 46.17682
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: 64.04773
+        time: 4
+        value: 62.141113
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.1
-        value: 55.307007
-        inSlope: -8.550125
-        outSlope: -8.550125
-        tangentMode: 136
+        time: 8
+        value: 61.796265
+        inSlope: -0.34484863
+        outSlope: -0.34484863
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.733333
-        value: 36.829834
-        inSlope: -8.0285015
-        outSlope: -8.0285015
-        tangentMode: 136
+        time: 12
+        value: 46.697815
+        inSlope: -7.5887604
+        outSlope: -7.5887604
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 6.366667
-        value: 29.080566
+        time: 16
+        value: 31.441223
+        inSlope: -0.032348584
+        outSlope: -0.032348584
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 20
+        value: 31.408875
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.9
-        value: 35.1698
-        inSlope: 5.492697
-        outSlope: 5.492697
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 9.5
-        value: 46.291016
+        time: 24
+        value: 46.48004
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: 46.17682
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -411,64 +470,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.927
+        value: 3.953
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: 8.662
-        inSlope: 3.4932258
-        outSlope: 3.4932258
-        tangentMode: 136
+        time: 4
+        value: 6.703
+        inSlope: 1.16025
+        outSlope: 1.16025
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.1
-        value: 11.756
-        inSlope: 1.4038744
-        outSlope: 1.4038744
-        tangentMode: 136
+        time: 8
+        value: 8.594
+        inSlope: 0.81649995
+        outSlope: 0.81649995
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.733333
-        value: 13.131
-        inSlope: 1.4207141
-        outSlope: 1.4207141
-        tangentMode: 136
+        time: 12
+        value: 9.969
+        inSlope: 0.6875
+        outSlope: 0.6875
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 6.366667
-        value: 16.397
-        inSlope: 1.5198948
-        outSlope: 1.5198948
-        tangentMode: 136
+        time: 16
+        value: 11.344
+        inSlope: 0.34399986
+        outSlope: 0.34399986
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.9
-        value: 17.944
+        time: 20
+        value: 11.688
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 9.5
-        value: 12.615
+        time: 24
+        value: 6.532
+        inSlope: -0.96687496
+        outSlope: -0.96687496
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: 3.953
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -484,64 +552,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -88.729
+        value: -89.474
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: -177.032
-        inSlope: -49.881615
-        outSlope: -49.881615
-        tangentMode: 136
+        time: 4
+        value: -152.384
+        inSlope: -29.994251
+        outSlope: -29.994251
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.1
-        value: -243.362
-        inSlope: -39.192562
-        outSlope: -39.192562
-        tangentMode: 136
+        time: 8
+        value: -209.451
+        inSlope: -29.5215
+        outSlope: -29.5215
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.733333
-        value: -301.79498
-        inSlope: -32.87755
-        outSlope: -32.87755
-        tangentMode: 136
+        time: 12
+        value: -270.47
+        inSlope: -30.079998
+        outSlope: -30.079998
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 6.366667
-        value: -350.762
-        inSlope: -34.02379
-        outSlope: -34.02379
-        tangentMode: 136
+        time: 16
+        value: -329.771
+        inSlope: -29.9085
+        outSlope: -29.9085
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.9
-        value: -409.537
-        inSlope: -31.441284
-        outSlope: -31.441284
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 9.5
-        value: -449.278
+        time: 20
+        value: -390.104
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 24
+        value: -91.02
+        inSlope: 0.77299416
+        outSlope: 0.77299416
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: -89.474
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -557,64 +634,73 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.341
+        value: 0.006
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.55
-        value: 0.348
-        inSlope: 0.0032258132
-        outSlope: 0.0032258132
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 3.1
-        value: 0.351
-        inSlope: 0.0012565284
-        outSlope: 0.0012565284
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.733333
-        value: 0.352
-        inSlope: 0.001224474
-        outSlope: 0.001224474
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 6.366667
-        value: 0.356
-        inSlope: 0.0025263207
-        outSlope: 0.0025263207
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 7.9
-        value: 0.36
+        time: 4
+        value: 0.01
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 9.5
-        value: 0.347
+        time: 8
+        value: 0.01
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 12
+        value: 0.009
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 16
+        value: 0.009
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 20
+        value: 0.009
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 24
+        value: 0.026
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28
+        value: 0.006
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
