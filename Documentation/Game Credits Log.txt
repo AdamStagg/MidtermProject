@@ -25,4 +25,13 @@ SFX: "Lasers by SamsterBirdies from freesound.org"
      "Running/Walking by Juandamb from freesound.org"
      "Menu Move3 by Tissman from freesound.org"
      "Beep Short by florianreichelt from freesound.org"
-
+     "LowVocalPowerDownR LB029403, Lasers MIX24_63_1, KnifeThrow MIX64_63_2, 
+      Transporter HI059801, GrandEntranceDro WHO02_26_3, MetalDoor 9007_55_1,
+      Sci-Fi-Explosion-Laser-Shot-or-Burning-Impact_GEN-HD3-36666, Lasers MIX24_72_2,
+      Water-Splash_OBIN_962, SirenAlert MET01_77_2, HUMAN-GRUNT_GEN-HDF-15100,
+      PromoBeds MIX25_95_2, Voice-Computer-Room-Female-Alert_COMM-2216,
+      AlarmSystemEnterPasscodeTurnOf PEHD060202, HitThud IE03_57_5,
+      Grand-Big-Sweep-Chord-Transition_PET10-333, MetalFenceSlamsClick, ScrapeWood 6056_67_1
+      ScrapeWood 6056_67_1, FOOTSTEPS-OUTDOOR_GEN-HDF-12233 from SourceAudio.com"
+     "birds-consensus, grim, slave-racer, the-last-guardian, till-the-end from Icons8.com"
+     "Pop Flute Loop from DL-Sounds.com"
