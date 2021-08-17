@@ -16,6 +16,9 @@ public class VisionCone : MonoBehaviour
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
 
+    public int edgeFindIterations;
+    public float edgeTolerance;
+
     private void Start()
     {
         enemyVision = GetComponent<EnemyVision>();
@@ -38,16 +41,35 @@ public class VisionCone : MonoBehaviour
 
         List<Vector3> viewPoints = new List<Vector3>();
 
+        ViewCastInfo oldViewCast = new ViewCastInfo();
+
         for (int i = 0; i <= stepCount; i++)
         {
             float angle = transform.eulerAngles.y - enemyVision.maxSightAngle / 2 + stepDegrees * i;
 
-            Debug.DrawLine(transform.position, transform.position + DirFromAngle(angle, true) * enemyVision.visionLength, Color.red);
-
             ViewCastInfo viewCast = ViewCast(angle);
+
+            if (i > 0)
+            {
+                bool edgeToleranceExceeded = Mathf.Abs(oldViewCast.distance - viewCast.distance) > edgeTolerance;
+                if (oldViewCast.hit != viewCast.hit || (oldViewCast.hit && viewCast.hit && edgeToleranceExceeded))
+                {
+                    EdgeInfo edge = FindEdge(oldViewCast, viewCast);
+
+                    if (edge.pointA != Vector3.zero)
+                    {
+                        viewPoints.Add(edge.pointA);
+                    }
+                    if (edge.pointB != Vector3.zero)
+                    {
+                        viewPoints.Add(edge.pointB);
+                    }
+                }
+            }
 
             viewPoints.Add(viewCast.point);
 
+            oldViewCast = viewCast;
 
         }
 
@@ -87,6 +109,37 @@ public class VisionCone : MonoBehaviour
             return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle * Mathf.Deg2Rad));
         }
 
+    EdgeInfo FindEdge(ViewCastInfo min, ViewCastInfo max)
+    {
+        float minAngle = min.angle;
+        float maxAngle = max.angle;
+        Vector3 minPoint = Vector3.zero;
+        Vector3 maxPoint = Vector3.zero;
+
+        float angle = 0f;
+
+        for (int i = 0; i < edgeFindIterations; i++)
+        {
+            angle = (minAngle + maxAngle) / 2;
+            ViewCastInfo viewCast = ViewCast(angle);
+
+
+            bool edgeToleranceExceeded = Mathf.Abs(min.distance - viewCast.distance) > edgeTolerance;
+            if (viewCast.hit == min.hit && !edgeToleranceExceeded)
+            {
+                minAngle = angle;
+                minPoint = viewCast.point;
+            } else
+            {
+                maxAngle = angle;
+                maxPoint = viewCast.point;
+            }
+        }
+
+        return new EdgeInfo(minPoint, maxPoint);
+
+    }
+
     ViewCastInfo ViewCast(float angle)
     {
         Vector3 direction = DirFromAngle(angle, true);
@@ -116,6 +169,18 @@ public class VisionCone : MonoBehaviour
             point = _point;
             distance = _distance;
             angle = _angle;
+        }
+    }
+
+    public struct EdgeInfo
+    {
+        public Vector3 pointA;
+        public Vector3 pointB;
+
+        public EdgeInfo(Vector3 _pointA, Vector3 _pointB)
+        {
+            pointA = _pointA;
+            pointB = _pointB;
         }
     }
 
