@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     private bool Walking = false;
-    public float PlayerSpeed = 1.2f;
-    public static float Stamina = 6f;
-    public float StaminaTimeLimit = 6f;
+    public float PlayerSpeed = 1.6f;
+    public static float Stamina = 7f;
+    public float StaminaTimeLimit = 7f;
     public float StaminaTimeUntilRegen = 2f;
     private float TimeSinceRun = 0;
     private float GravityValue = -9.81f;

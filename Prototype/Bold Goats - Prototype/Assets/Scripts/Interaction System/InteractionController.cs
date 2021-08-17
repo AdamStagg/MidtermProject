@@ -114,7 +114,8 @@ public class InteractionController : MonoBehaviour
                     uiPanel.Show(false);
                     interactionData.Interact();
                     interacting = false;
-                    PlayerController.KeyCards++;
+                   
+                    
                 }
             }
             else
