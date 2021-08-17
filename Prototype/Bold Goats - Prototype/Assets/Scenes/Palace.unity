@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.008832183, g: 0.010658352, b: 0.01291936, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14928,6 +14928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 6723665383526799529, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6723665383526799531, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: xrayBar
       value: 
@@ -22699,6 +22703,8 @@ MonoBehaviour:
   textToDisplay: {fileID: 977076495}
   timeToDisplayText: 5
   uiPanel: {fileID: 0}
+  cutsceneCam: {fileID: 0}
+  cameraToTurnOff: {fileID: 0}
 --- !u!65 &862188040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53449,6 +53455,8 @@ MonoBehaviour:
   textToDisplay: {fileID: 977076495}
   timeToDisplayText: 5
   uiPanel: {fileID: 0}
+  cutsceneCam: {fileID: 0}
+  cameraToTurnOff: {fileID: 0}
 --- !u!65 &2006727687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57040,6 +57048,8 @@ MonoBehaviour:
   textToDisplay: {fileID: 977076495}
   timeToDisplayText: 5
   uiPanel: {fileID: 0}
+  cutsceneCam: {fileID: 863847684}
+  cameraToTurnOff: {fileID: 1476674416}
 --- !u!65 &143921511938423572
 BoxCollider:
   m_ObjectHideFlags: 0
