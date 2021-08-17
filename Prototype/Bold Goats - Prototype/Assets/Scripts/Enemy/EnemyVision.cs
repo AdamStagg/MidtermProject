@@ -9,9 +9,9 @@ namespace Enemy
     {
         EnemyState enemyState;
 
-        [SerializeField] float visionLength;
+        public float visionLength;
         [SerializeField] float stateChangeDelay = 1f;
-        [SerializeField] float maxSightAngle = 30;
+        public float maxSightAngle = 30;
 
         float timeTillCanBeSeen;
         public bool checkForPlayer = false;
@@ -41,7 +41,7 @@ namespace Enemy
                     GetComponent<EnemyPathFind>().SetLastPosition(transform);
                     return;
                 }
-                if (Mathf.Abs(Vector3.Angle(transform.forward, dirToPlayer)) <= maxSightAngle)
+                if (Mathf.Abs(Vector3.Angle(transform.forward, dirToPlayer)) <= maxSightAngle/2)
                 {
 
                     //Raycast to the player, certain distance. 
