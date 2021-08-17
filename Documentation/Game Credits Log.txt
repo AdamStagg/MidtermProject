@@ -5,7 +5,18 @@
 
 Textures/Materials/Sprites:
 
-Models:
+Models: "Futuristic Security Door by Dantesly from Unity.com"
+	"Drone Guard by Lukas Bobor from Unity.com"
+	"Sim Card by IceAspen from turbosquid.com"
+	"Medieval Torch (worn) by reddification from sketchfab.com"
+	"Doric Twist Pedestal by Nikkip from sketchfab.com"
+	"Ancient Pillar Medieval Column by Medieval Models from turbosquid.com"
+	"Robot Soldier by Marcelo Barrio from Unity.com"
+	"Free PBR Security Camera by Red Dot Lab from Unity.com"
+	"Spotlight and Structure by SpaceZeta from Unity.com"
+	"Magic Swords by Hovl Studio from Unity.com"
+	"ATM(Terminal) by CGY (Yemelyan K.) from Unity.com"
+	
 
 Music: "Chiptune Heist Music by Bertsz from freesound.org"
 
