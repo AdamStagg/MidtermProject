@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
             Controller.height = ControllerHeight;
             PlayerSpeed = .4f;
-            Debug.Log("Player speed is now " + PlayerSpeed + " and the player is crouched");
+            
         }
         else
         {
