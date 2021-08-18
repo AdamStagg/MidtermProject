@@ -25471,7 +25471,7 @@ AudioSource:
   m_GameObject: {fileID: 902873279}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 248359632900184141, guid: e66934725d4d1464ba010f1f6461f768, type: 2}
   m_audioClip: {fileID: 8300000, guid: 257ff8bc651ca50429a610107e1942da, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -40022,7 +40022,7 @@ MonoBehaviour:
   EnemyTransform: {fileID: 0}
   Kunai: {fileID: 0}
   AmountOfKunais: 3
-  Distractable: {fileID: 0}
+  Distractable: {fileID: 5014107176996680253, guid: 6da50fb9bc3f54644a33c823b8e0a292, type: 3}
   RunAudio: {fileID: 0}
   WalkAudio: {fileID: 0}
   MaxGroundAngle: 120
@@ -50634,6 +50634,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f806b306c753b0e46a1fcc28762fbf52, type: 3}
   - song: 5
     audioClip: {fileID: 8300000, guid: 83059fa8275971143a7e1af9bc36ed48, type: 3}
+  musicMixer: {fileID: 0}
+  soundMixer: {fileID: 0}
 --- !u!4 &1757681743
 Transform:
   m_ObjectHideFlags: 0

@@ -30,7 +30,8 @@ public static class SoundManager
         EnterTreasureRoom,
         DoorOpen,
         WinGame,
-        ApplicationQuit
+        ApplicationQuit,
+        DistractionExplosion
     }
 
     public enum Music
@@ -82,13 +83,10 @@ public static class SoundManager
     {
         if (CanPlaySound(sound))
         {
-            //if (oneShotGameObject == null)
-            //{
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
                 oneShotAudioSource.outputAudioMixerGroup = soundMixer;
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
-            //}
         }
     }
     public static bool CanPlaySound(Sound sound)
