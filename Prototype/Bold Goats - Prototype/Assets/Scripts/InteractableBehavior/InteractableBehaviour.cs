@@ -45,7 +45,6 @@ public class InteractableBehaviour : InteractableBase
             if ((textToDisplay != null && destroy != null) || destroy != null)
             {
                 StartCoroutine(WaitCompletionText());
-                StartCoroutine(CameraCutscenes());
             }
             if (destroy != null)
             {
@@ -81,6 +80,7 @@ public class InteractableBehaviour : InteractableBase
         yield return new WaitForSecondsRealtime(timeToDisplayText);
         textToDisplay.SetActive(false);
         }
+        StartCoroutine(CameraCutscenes());
     }
 
     IEnumerator CameraCutscenes()
@@ -90,6 +90,6 @@ public class InteractableBehaviour : InteractableBase
             yield return new WaitForSeconds(cutsceneLength);
             cameraToTurnOff.SetActive(true);
             cutsceneCam.SetActive(false);
-        Destroy(destroy);
+            Destroy(destroy);
     }
 }
