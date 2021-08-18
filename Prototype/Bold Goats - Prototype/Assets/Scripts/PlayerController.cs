@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     ///////////Basic Player Movement///////////
     public Transform PlayerTransform;
     private CharacterController Controller;
-    private Vector3 PlayerVelocity;
+    private Vector3 PlayerVelocity; 
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
 
     ///////////Variables for Distractable///////////
+    private Vector3 DistractableSpawn;
     public GameObject Distractable;
     public static int AmountOfDistractables = 3;
 
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
             //volume.profile.TryGet(out colorAdj);
             volume.profile.TryGetSettings(out filmGrain);
         }
-
+        DistractableSpawn.Set(transform.position.x, transform.position.y + .25f, transform.position.z);
         GameManager.Instance.keyCards = 0;
         
     }
@@ -256,7 +257,7 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Instantiate(Distractable, transform.position, transform.rotation);
+        Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
         Debug.Log("Distractions left: " + AmountOfDistractables);
