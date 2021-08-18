@@ -28,7 +28,7 @@ public class WinConTrigger : MonoBehaviour
         WinRoomCam.SetActive(true);
         MusictoHide.SetActive(false);
         Music.SetActive(true);
-        Time.timeScale = 0f;
+        
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
