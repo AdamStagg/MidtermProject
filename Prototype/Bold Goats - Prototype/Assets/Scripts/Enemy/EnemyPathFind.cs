@@ -150,7 +150,7 @@ namespace Enemy
 
                     playerPos = new Vector3(playerPos.x, playerPos.y + 1, playerPos.z);
 
-                    float distance = Vector3.Distance(transform.position, playerPos) ;
+                    float distance = aiEnemy.remainingDistance;
 
                     if (distance >= maxDistanceForChase)
                     {
