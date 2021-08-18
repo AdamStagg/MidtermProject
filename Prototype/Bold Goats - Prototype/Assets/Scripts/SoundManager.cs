@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class SoundManager
 {
@@ -48,13 +49,18 @@ public static class SoundManager
     private static GameObject oneShotGameObject;
     public static AudioSource oneShotAudioSource;
 
+    public static AudioMixerGroup musicMixer;
+    public static AudioMixerGroup soundMixer;
+
     public static void Initialize()
     {
         soundTimerDictionary = new Dictionary<Sound, float>();
         musicObjects = new List<AudioSource>(6);
-        soundTimerDictionary[Sound.PlayerRun] = 0;
+        soundTimerDictionary[Sound.PlayerRun] = 0.1f;
         soundTimerDictionary[Sound.PlayerWalk] = 0;
         soundTimerDictionary[Sound.EnemyWalk] = 0;
+        musicMixer = AudioAssets.instance.musicMixer;
+        soundMixer = AudioAssets.instance.soundMixer;
     }
 
     #region Sound FX
@@ -65,6 +71,7 @@ public static class SoundManager
             GameObject soundObject = new GameObject("Sound");
             soundObject.transform.position = position;
             AudioSource audio = soundObject.AddComponent<AudioSource>();
+            audio.outputAudioMixerGroup = soundMixer;
             audio.clip = GetAudioClip(sound);
             audio.Play();
             Object.Destroy(soundObject, audio.clip.length);
@@ -75,12 +82,13 @@ public static class SoundManager
     {
         if (CanPlaySound(sound))
         {
-            if (oneShotGameObject == null)
-            {
+            //if (oneShotGameObject == null)
+            //{
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+                oneShotAudioSource.outputAudioMixerGroup = soundMixer;
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
-            }
+            //}
         }
     }
     public static bool CanPlaySound(Sound sound)
@@ -143,6 +151,7 @@ public static class SoundManager
         GameObject soundObject = new GameObject(song.ToString());
         soundObject.transform.parent = Camera.main.transform;
         AudioSource audio = soundObject.AddComponent<AudioSource>();
+        audio.outputAudioMixerGroup = musicMixer;
         audio.clip = GetMusicClip(song);
         audio.Play();
         musicObjects.Add(audio);
