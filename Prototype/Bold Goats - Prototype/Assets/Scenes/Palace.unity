@@ -4183,7 +4183,6 @@ GameObject:
   - component: {fileID: 125702679}
   - component: {fileID: 125702678}
   - component: {fileID: 125702680}
-  - component: {fileID: 125702681}
   m_Layer: 0
   m_Name: Win Room Camera
   m_TagString: Untagged
@@ -4272,18 +4271,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &125702681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125702675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &125714224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12059,7 +12046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1.25}
   m_Children: []
   m_Father: {fileID: 1363827696}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &428536279
 AudioListener:
@@ -14171,7 +14158,6 @@ GameObject:
   - component: {fileID: 511950628}
   - component: {fileID: 511950627}
   - component: {fileID: 511950629}
-  - component: {fileID: 511950630}
   m_Layer: 0
   m_Name: Lazer Maze Camera
   m_TagString: Untagged
@@ -14260,18 +14246,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &511950630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511950624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &513262134
 GameObject:
   m_ObjectHideFlags: 0
@@ -29172,6 +29146,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6161738361603452704, guid: f9daea22d15a91747b382200b22843b4, type: 3}
   m_PrefabInstance: {fileID: 1013757672}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1016265317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1016265318}
+  m_Layer: 0
+  m_Name: Rotate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1016265318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016265317}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2094368558}
+  m_Father: {fileID: 1363827696}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1017203302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30613,7 +30618,6 @@ GameObject:
   - component: {fileID: 1074617012}
   - component: {fileID: 1074617011}
   - component: {fileID: 1074617013}
-  - component: {fileID: 1074617014}
   m_Layer: 0
   m_Name: Maze Camera
   m_TagString: Untagged
@@ -30702,18 +30706,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1074617014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074617008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1076268285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39511,9 +39503,9 @@ Transform:
   m_LocalPosition: {x: 351.469, y: 0.653, z: -556.165}
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
-  - {fileID: 2094368558}
   - {fileID: 1578482181}
   - {fileID: 428536278}
+  - {fileID: 1016265318}
   m_Father: {fileID: 0}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42416,7 +42408,6 @@ GameObject:
   - component: {fileID: 1476674417}
   - component: {fileID: 1476674421}
   - component: {fileID: 1476674420}
-  - component: {fileID: 1476674419}
   - component: {fileID: 1476674418}
   m_Layer: 0
   m_Name: Camera
@@ -42463,18 +42454,7 @@ MonoBehaviour:
   ZoomDef: 3
   ZoomDist: 0
   CollisionSens: 0
---- !u!114 &1476674419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476674416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  ClampAngle: 80
 --- !u!81 &1476674420
 AudioListener:
   m_ObjectHideFlags: 0
@@ -45017,7 +44997,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1363827696}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &1578482182
 SpriteRenderer:
@@ -47246,7 +47226,6 @@ GameObject:
   - component: {fileID: 1680292386}
   - component: {fileID: 1680292385}
   - component: {fileID: 1680292387}
-  - component: {fileID: 1680292388}
   m_Layer: 0
   m_Name: Spotlight Camera
   m_TagString: Untagged
@@ -47335,18 +47314,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1680292388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680292382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1686116817
 GameObject:
   m_ObjectHideFlags: 0
@@ -58217,7 +58184,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1363827696}
+    m_TransformParent: {fileID: 1016265318}
     m_Modifications:
     - target: {fileID: -9070493210130169274, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_Layer
@@ -58233,15 +58200,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.056
+      value: -0.055999756
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.183
+      value: 0.18299997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.353
+      value: -0.35302734
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58249,7 +58216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalRotation.y
@@ -58257,7 +58224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c16029ba9366ee84592f9f245094fc79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
