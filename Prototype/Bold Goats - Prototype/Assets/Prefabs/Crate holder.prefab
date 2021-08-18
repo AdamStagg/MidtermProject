@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 30e4ecade3afdac4e9f7250beeb45742, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09502e31003705d41ae2c926fe527397, type: 2}
+      objectReference: {fileID: 2100000, guid: 068b0bb747e25a14880d92a18a0c242c, type: 2}
     - target: {fileID: 919132149155446097, guid: 30e4ecade3afdac4e9f7250beeb45742, type: 3}
       propertyPath: m_Name
       value: crate (1)
@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 30e4ecade3afdac4e9f7250beeb45742, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8b2b6ff7d3abbb94abacf3f9637a83c1, type: 2}
+      objectReference: {fileID: 2100000, guid: f8469e1b8381fd947ae2b38c0a9ffe9f, type: 2}
     - target: {fileID: 919132149155446097, guid: 30e4ecade3afdac4e9f7250beeb45742, type: 3}
       propertyPath: m_Name
       value: crate (2)
