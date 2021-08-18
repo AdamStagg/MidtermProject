@@ -56,7 +56,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnLocation: {fileID: 0}
   enemyPrefab: {fileID: 1210393031311378922, guid: 723342626d04f3144afc766b1c5f4576, type: 3}
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   delayBeforeRespawn: 5
 --- !u!64 &3221224104120749199
 MeshCollider:
