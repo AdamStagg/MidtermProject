@@ -328,9 +328,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.name == "Water")
+        if (other.transform.name == "Water")
         {
             StartCoroutine(WaterDie());
         }
@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaterDie()
     {
         SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene("LOSE CONDITION");
     }
 }
