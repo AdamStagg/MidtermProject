@@ -42,8 +42,10 @@ public class GraphicsSettings : MonoBehaviour
 
     public void SetRes(int _resIndex)
     {
-        Resolution resolution = resolutions[_resIndex];
-
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        if (resolutions != null)
+        {
+            Resolution resolution = resolutions[_resIndex];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
     }
 }
