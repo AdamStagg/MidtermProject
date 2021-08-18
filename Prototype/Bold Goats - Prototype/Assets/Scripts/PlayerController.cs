@@ -66,7 +66,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     private float Angle;
     private float GroundAngle;
- 
+
+    bool hasPlayedxRay = false;
+
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
@@ -160,11 +162,18 @@ public class PlayerController : MonoBehaviour
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
+       
+
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
             if (xraytime >= .1f)
             {
+                if (!hasPlayedxRay)
+                {
+                    SoundManager.PlaySound(SoundManager.Sound.EnableXRay);
+                    hasPlayedxRay = true;
+                }
                 Shader.SetGlobalFloat("_GlobalVisibility", 1f);
                 //Debug.Log(vignette);
                 //if (vignette != null)
@@ -177,6 +186,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                hasPlayedxRay = false;
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
                 //if (vignette != null)
                 //    vignette.intensity.value = 0f;
@@ -189,6 +199,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            hasPlayedxRay = false;
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             //if (vignette != null)
             //    vignette.intensity.value = 0f;
@@ -206,14 +217,7 @@ public class PlayerController : MonoBehaviour
 
         xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         
-        ///////////Player Crouch///////////
-        if (Input.GetButtonDown("Crouch"))
-        {
-            Crouched = !Crouched;
-            ToggleCrouch();
-           
-        }
-
+        
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -248,27 +252,11 @@ public class PlayerController : MonoBehaviour
     void CreateDistractable()
     {
         Instantiate(Distractable, transform.position, transform.rotation);
+        SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
         Debug.Log("Distractions left: " + AmountOfDistractables);
     }
 
-    ///Crouching
-    void ToggleCrouch()
-    {
-        if (Crouched == true)
-        {
-            PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
-            Controller.height = ControllerHeight;
-            PlayerSpeed = .4f;
-            
-        }
-        else
-        {
-                PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
-                Controller.height = 1f;
-                PlayerSpeed = 1.8f;
-        }
-    }
 
     void CheckKeyCards()
     {
