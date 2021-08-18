@@ -35,9 +35,8 @@ public class DistractionController : MonoBehaviour
     {
         if (other.transform.parent != null && other.transform.parent.tag == "Enemy")
         {
-        Debug.Log(other.transform.parent.name);
+            Debug.Log(other.transform.parent.name);
             enemies.Add(other.transform.parent.GetComponent<EnemyState>());
-
         }
 
     }
