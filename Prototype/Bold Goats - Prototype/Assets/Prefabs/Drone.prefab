@@ -231,10 +231,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3058024149560069956, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80303cab53fed7c45beb14a5db988bf5, type: 2}
     - target: {fileID: -927199367670048503, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
       propertyPath: m_Name
       value: Drone_Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 245057565240620769, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80303cab53fed7c45beb14a5db988bf5, type: 2}
+    - target: {fileID: 1249680337386786420, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80303cab53fed7c45beb14a5db988bf5, type: 2}
+    - target: {fileID: 4191006633811747052, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80303cab53fed7c45beb14a5db988bf5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5090c1d92c3e3034a85460b495fcf820, type: 3}
 --- !u!1 &1441002004894259952 stripped
