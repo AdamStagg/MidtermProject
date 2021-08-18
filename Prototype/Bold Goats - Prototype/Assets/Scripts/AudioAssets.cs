@@ -17,10 +17,8 @@ public class AudioAssets : MonoBehaviour
         }
     }
 
-
     public SoundAudioClip[] soundAudioClipArray;
     public MusicAudioClip[] musicAudioClipArray;
-
 
     [System.Serializable]
     public class SoundAudioClip
@@ -28,12 +26,10 @@ public class AudioAssets : MonoBehaviour
         public SoundManager.Sound sound;
         public AudioClip audioClip;
     }
-
     [System.Serializable]
     public class MusicAudioClip
     {
         public SoundManager.Music song;
         public AudioClip audioClip;
     }
-
 }

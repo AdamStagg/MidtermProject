@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Set everything up here
+     
         if (Player == null)
         {
             Player = GameObject.FindWithTag("Player");
@@ -100,7 +100,6 @@ public class GameManager : MonoBehaviour
     {
         Fader = _fader;
     }
-
 
     #endregion
 

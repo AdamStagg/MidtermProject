@@ -66,11 +66,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     private float Angle;
     private float GroundAngle;
-    
-
-    
-
-
+ 
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
@@ -88,10 +84,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-
-        
-
         if (GroundAngle >= MaxGroundAngle)
         {
             PlayerSpeed = 0f;
@@ -115,7 +107,6 @@ public class PlayerController : MonoBehaviour
         CalculateGroundAngle();
         CheckGrounded();
        
-
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
 
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -165,8 +156,6 @@ public class PlayerController : MonoBehaviour
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
-
-
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
@@ -213,10 +202,6 @@ public class PlayerController : MonoBehaviour
 
         xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         
-
-
-
-
         ///////////Player Crouch///////////
         if (Input.GetButtonDown("Crouch"))
         {
@@ -224,7 +209,6 @@ public class PlayerController : MonoBehaviour
             ToggleCrouch();
            
         }
-
 
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
@@ -241,15 +225,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
-        ///////////Reloads Distractables///////////
-        ///Will Change after reload stations are included
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadDistractables();
-        }
-
-
         ///////////Checking the amount of keycards the player has///////////
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -258,7 +233,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerVelocity.y += GravityValue * Time.deltaTime;
         Controller.Move(PlayerVelocity * Time.deltaTime);
-        //transform.position += forward * PlayerSpeed * Time.deltaTime;
+        
     }
 
 
@@ -272,16 +247,6 @@ public class PlayerController : MonoBehaviour
         AmountOfDistractables -= 1;
         Debug.Log("Distractions left: " + AmountOfDistractables);
     }
-
-
-
-    ///Reloading Distractables
-    void ReloadDistractables()
-    {
-        AmountOfDistractables = 3;
-        Debug.Log("Refilled Distractables");
-    }
-
 
     ///Crouching
     void ToggleCrouch()
@@ -297,7 +262,7 @@ public class PlayerController : MonoBehaviour
         {
                 PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
                 Controller.height = 1f;
-                PlayerSpeed = 1.2f;
+                PlayerSpeed = 1.8f;
         }
     }
 

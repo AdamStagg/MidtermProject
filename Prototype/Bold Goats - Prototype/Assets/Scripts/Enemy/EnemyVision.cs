@@ -24,9 +24,6 @@ namespace Enemy
         private void Update()
         {
             //TODO Add angle checks
-
-
-
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
                 Debug.Log("Checking for player");
@@ -43,7 +40,6 @@ namespace Enemy
                 }
                 if (Mathf.Abs(Vector3.Angle(transform.forward, dirToPlayer)) <= maxSightAngle)
                 {
-
                     //Raycast to the player, certain distance. 
                     if (Physics.Raycast(transform.position, dirToPlayer, out RaycastHit hit, visionLength))
                     {
@@ -53,12 +49,6 @@ namespace Enemy
                         Debug.Log(GameManager.Instance.Player);
                         if (hit.transform.gameObject == GameManager.Instance.Player)
                         {
-                            ////Increase the suspicion meter based on the range
-                            //fillRate = visionLength / Mathf.Pow(Mathf.Log10(dirToPlayer.magnitude), 2);
-                            //Suspicion = Mathf.Clamp(Suspicion + fillRate * Time.deltaTime, 0, 100);
-
-                            //close to the player, alert
-                            //Saw the player in patrol, change to investigate.
 
                             if (enemyState.state == States.Patrol && timeTillCanBeSeen <= Time.time || enemyState.state == States.Return && timeTillCanBeSeen <= Time.time)
                             {
@@ -74,20 +64,7 @@ namespace Enemy
                             {
                                 enemyState.InvokeChase();
                             }
-                            //test
-
-
-                            //if (Suspicion >= 95 && enemyState.state == States.Investigate)
-                            //{
-                            //    //Alert state
-                            //    enemyState.InvokeChase();
-
-                            //}
-                            //else if (Suspicion >= 50 && enemyState.state == States.Patrol)
-                            //{
-                            //    //Suspicious state
-                            //    enemyState.InvokeInvestigate();
-                            //}
+                           
                         }
                     }
                 }

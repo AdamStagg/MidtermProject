@@ -5,7 +5,6 @@ using UnityEngine;
 public class LazerMazeCollider : MonoBehaviour
 {
     public GameObject LazerMazeCam;
-    // Start is called before the first frame update
     void Start()
     {
         LazerMazeCam.SetActive(false);

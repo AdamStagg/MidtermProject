@@ -20,11 +20,8 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         resolutions = Screen.resolutions;
-
         resDropdown.ClearOptions();
-
         List<string> res = new List<string>();
-
         int currentRes = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
@@ -39,12 +36,10 @@ public class PauseMenu : MonoBehaviour
         }
 
         resDropdown.AddOptions(res);
-
         resDropdown.value = currentRes;
         resDropdown.RefreshShownValue();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && uiForPause != null)
@@ -115,7 +110,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Sound Settings
-
     public AudioMixer musicMixer;
     public AudioMixer sfxMixer;
 

@@ -12,19 +12,13 @@ namespace Enemy
         {
             enemyVision = transform.parent.GetComponent<EnemyVision>();
         }
-
         private void OnTriggerEnter(Collider other)
         {
-
             if (other.tag == "Player")
             {
                 enemyVision.checkForPlayer = true;
             }
-            //else if (other.tag == "Enemy")
-            //{
-            //    other.GetComponent<EnemyState>().Alert += HandleAlert;
-            //}
-
+           
         }
         void HandleAlert()
         {

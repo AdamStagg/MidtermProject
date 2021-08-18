@@ -66,10 +66,7 @@ public static class SoundManager
             soundObject.transform.position = position;
             AudioSource audio = soundObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-
-
             audio.Play();
-
             Object.Destroy(soundObject, audio.clip.length);
         }
     }
@@ -86,7 +83,6 @@ public static class SoundManager
             }
         }
     }
-
     public static bool CanPlaySound(Sound sound)
     {
         switch (sound)
@@ -101,7 +97,6 @@ public static class SoundManager
                 return CanPlayLogic(sound, 0.05f);
         }
     }
-
     public static bool CanPlayLogic(Sound sound, float maxTimer)
     {
         if (soundTimerDictionary.ContainsKey(sound))
@@ -120,7 +115,6 @@ public static class SoundManager
         }
         return true;
     }
-
     private static AudioClip GetAudioClip(Sound sound)
     {
         foreach (AudioAssets.SoundAudioClip soundAudioClip in AudioAssets.instance.soundAudioClipArray)
@@ -152,10 +146,7 @@ public static class SoundManager
         audio.clip = GetMusicClip(song);
         audio.Play();
         musicObjects.Add(audio);
-
-
     }
-
     public static void StopAllMusic()
     {
         foreach (var obj in musicObjects)
@@ -163,7 +154,6 @@ public static class SoundManager
             obj.Stop();
         }
     }
-
     private static AudioClip GetMusicClip(Music song)
     {
         foreach (AudioAssets.MusicAudioClip musicAudioClip in AudioAssets.instance.musicAudioClipArray)
@@ -178,7 +168,6 @@ public static class SoundManager
         return null;
     }
     #endregion
-
     public static void Reset()
     {
         musicObjects.Clear();

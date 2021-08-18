@@ -25,15 +25,13 @@ namespace Enemy
         //Delegate function to be called after the LookAround coroutine
         delegate void FunctionAfterLookingAround();
 
-
         EnemyState enemyState;
 
         [SerializeField] float maxDistanceForChase = 25f;
         [SerializeField] float distanceToAttack = 2f;
-
         [SerializeField] Material attackMaterial;
 
-        // Start is called before the first frame update
+        
         void Awake()
         {
             aiEnemy = GetComponent<NavMeshAgent>();
@@ -57,8 +55,6 @@ namespace Enemy
             GoToNextPoint();
         }
 
-        
-
         private void OnDisable()
         {
             enemyState.Chase -= HandleInvokeChase;
@@ -77,7 +73,6 @@ namespace Enemy
         void GoToNextPoint()
         {
             // If there are no points set, No Need to continue Function
-
             if (guardPoints.Length == 0)
             {
                 return;
@@ -89,19 +84,15 @@ namespace Enemy
             // Set Destination Point to next point
             destinationPoint = (destinationPoint + 1) % guardPoints.Length;
 
-            //StopAllCoroutines();
         }
 
         public void HandleInvokeChase()
         {
 
-            //StopAllCoroutines();
-            //lastPosition.position = transform.position;
         }
 
         public void HandleInvokeInvestigate()
         {
-           // StopAllCoroutines();
             lastPosition.position = transform.position;
             aiEnemy.destination = investigatePosition.position;
             investigatePosition.position = GameManager.Instance.Player.transform.position;
@@ -117,7 +108,7 @@ namespace Enemy
         public void HandleInvokeAttack()
         {
             GetComponent<Renderer>().material.color = colorAttack;
-            //Destroy(GameManager.Instance.Player);
+           
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
 
             Debug.Log("Player had died");
@@ -189,8 +180,6 @@ namespace Enemy
                         FunctionAfterLookingAround[] func = { HandleInvestigateLookAround , ResumeNavigation};
                         aiEnemy.isStopped = true;
                         StartCoroutine(LookAround(func, 5, 90));
-
-                        //enemyState.InvokeReturn();
                     }
 
                     break;
@@ -227,7 +216,6 @@ namespace Enemy
             }
 
         }
-
         public void SetInvestigatePosition(Transform position)
         {
             investigatePosition = position;
@@ -237,7 +225,6 @@ namespace Enemy
         {
             lastPosition = position;
         }
-
         IEnumerator LookAround(FunctionAfterLookingAround[] functionToCall, int timeToLook, float _angleToRotate, float timeBetweenRotations = 0)
         {
             //initialized variables

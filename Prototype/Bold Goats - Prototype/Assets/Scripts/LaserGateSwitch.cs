@@ -5,23 +5,27 @@ using UnityEngine;
 public class LaserGateSwitch : MonoBehaviour
 {
     public bool IsOn = true;
+    public bool IsPermanentlyOn = false;
     public float SwitchTime = 3.0f;
     public GameObject Lasers;
     // Start is called before the first frame update
     void Start()
     {
-        Lasers.SetActive(true);
+        Lasers.SetActive(IsOn);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SwitchTime -= Time.deltaTime;
-        if (SwitchTime < 0.1) 
+        if (IsPermanentlyOn == false) 
         {
-            SwitchTime = 3.0f;
-            IsOn = !IsOn;
-            Lasers.SetActive(IsOn);
+            SwitchTime -= Time.deltaTime;
+            if (SwitchTime < 0.1)
+            {
+                SwitchTime = 3.0f;
+                IsOn = !IsOn;
+                Lasers.SetActive(IsOn);
+            }
         }
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class CutScene : MonoBehaviour
 {
     public GameObject PlayerCamera;
@@ -11,14 +10,10 @@ public class CutScene : MonoBehaviour
     public GameObject MazeCam;
     public GameObject WinRoomCam;
 
-    // Start is called before the first frame update
-
     void Start()
     {
         StartCoroutine(CutScenes());
     }
-
-
     IEnumerator CutScenes()
     {
         HallwayCam.SetActive(true);
@@ -36,8 +31,5 @@ public class CutScene : MonoBehaviour
         MazeCam.SetActive(false);
         yield return new WaitForSeconds(9.5f);
         WinRoomCam.SetActive(false);
-       
-
     }
-
 }
