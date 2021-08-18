@@ -10,11 +10,21 @@ public partial class KillBox : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
 
-            SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
+            GameObject text = GameObject.Find("WATERDEATHTEXT");
+            text.SetActive(true);
+            StartCoroutine(WaitSomeTime(2f));
+            //SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
         }
     }
     
+    IEnumerator WaitSomeTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
+    }
        
     
 }

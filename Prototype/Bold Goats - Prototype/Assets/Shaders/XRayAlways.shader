@@ -17,7 +17,7 @@ Shader "Unlit/XRayAlways"
                 }*/
                     Name "Behind"
                     Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-                    Blend SrcAlpha OneMinusSrcAlpha
+                    //Blend SrcAlpha OneMinusSrcAlpha
                     ZTest Greater
                     Cull Back
                     ZWrite Off

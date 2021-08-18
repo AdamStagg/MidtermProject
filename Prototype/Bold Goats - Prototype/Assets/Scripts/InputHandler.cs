@@ -22,6 +22,11 @@ public class InputHandler : MonoBehaviour
     void GetInteractionInputData()
     {
         interactionInputData.InteractedClick = Input.GetKeyDown(KeyCode.E);
+
+        if (interactionInputData.InteractedClick)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.ActivateTerminal);
+        }
         //Debug.Log("E clicked" + interactionInputData.InteractedClick);
         interactionInputData.InteractedRelease = Input.GetKeyUp(KeyCode.E);
         //Debug.Log("E clicked" + interactionInputData.InteractedRelease);

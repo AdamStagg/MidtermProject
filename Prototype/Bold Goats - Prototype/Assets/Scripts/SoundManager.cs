@@ -56,9 +56,9 @@ public static class SoundManager
     {
         soundTimerDictionary = new Dictionary<Sound, float>();
         musicObjects = new List<AudioSource>(6);
-        soundTimerDictionary[Sound.PlayerRun] = 0.1f;
-        soundTimerDictionary[Sound.PlayerWalk] = 0;
-        soundTimerDictionary[Sound.EnemyWalk] = 0;
+        soundTimerDictionary[Sound.PlayerRun] = 0f;
+        soundTimerDictionary[Sound.PlayerWalk] = 0f;
+        soundTimerDictionary[Sound.EnemyWalk] = 0f;
         musicMixer = AudioAssets.instance.musicMixer;
         soundMixer = AudioAssets.instance.soundMixer;
     }
@@ -82,27 +82,28 @@ public static class SoundManager
     {
         if (CanPlaySound(sound))
         {
-            //if (oneShotGameObject == null)
-            //{
+            if (oneShotGameObject == null)
+            {
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
                 oneShotAudioSource.outputAudioMixerGroup = soundMixer;
+            }
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
-            //}
         }
     }
     public static bool CanPlaySound(Sound sound)
     {
+        //Debug.Log(soundTimerDictionary);
         switch (sound)
         {
             default:
                 return true;
             case Sound.PlayerRun:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
             case Sound.PlayerWalk:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
             case Sound.EnemyWalk:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
         }
     }
     public static bool CanPlayLogic(Sound sound, float maxTimer)
@@ -110,7 +111,7 @@ public static class SoundManager
         if (soundTimerDictionary.ContainsKey(sound))
         {
             float lastTimePlayed = soundTimerDictionary[sound];
-            float playerMoveTimerMax = 0.05f;
+            float playerMoveTimerMax = maxTimer;
             if (lastTimePlayed + playerMoveTimerMax < Time.time)
             {
                 soundTimerDictionary[sound] = Time.time;
