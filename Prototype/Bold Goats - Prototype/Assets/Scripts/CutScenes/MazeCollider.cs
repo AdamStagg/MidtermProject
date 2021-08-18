@@ -6,6 +6,8 @@ public class MazeCollider : MonoBehaviour
 {
     public GameObject MazeCam;
     public GameObject PlayerCam;
+    public GameObject skipText;
+
 
     void Update()
     {
@@ -23,12 +25,13 @@ public class MazeCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        skipText.SetActive(true);
         MazeCam.SetActive(true);
         PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         MazeCam.SetActive(false);
-
+        skipText.SetActive(false);
     }
 
     void SkipScene()
@@ -36,6 +39,6 @@ public class MazeCollider : MonoBehaviour
         StopAllCoroutines();
         PlayerCam.SetActive(true);
         MazeCam.SetActive(false);
-        Debug.Log("Stop Scene");
+        skipText.SetActive(false);
     }
 }
