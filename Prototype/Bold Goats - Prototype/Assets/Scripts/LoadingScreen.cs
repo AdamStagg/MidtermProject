@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class LoadingScreen : MonoBehaviour
@@ -17,10 +18,10 @@ public class LoadingScreen : MonoBehaviour
 
     void Update()
     {
-        slider.value += Time.deltaTime * 4;
-        if (slider.value >= 100) 
+        slider.value += Time.deltaTime;
+        if (slider.value >= 3) 
         {
-            SceneTransitionManager.Instance.LoadScene("Palace");
+            SceneManager.LoadScene("Palace");
         }
     }
 }
