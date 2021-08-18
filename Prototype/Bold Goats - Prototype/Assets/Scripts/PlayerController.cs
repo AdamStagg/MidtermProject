@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     private bool Walking = false;
-    public float PlayerSpeed = 1.6f;
+    public float PlayerSpeed;
     public static float Stamina = 7f;
     public float StaminaTimeLimit = 7f;
     public float StaminaTimeUntilRegen = 2f;
@@ -66,7 +66,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     private float Angle;
     private float GroundAngle;
- 
+
+    bool hasPlayedxRay = false;
+
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
@@ -90,11 +92,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Walking == true)
         {
-            PlayerSpeed = 1.2f;
+            //PlayerSpeed = PlayerSpeed;
         }
         else if (Running == true) 
         {
-            PlayerSpeed = 4.0f;
+            PlayerSpeed = 6;
         }
 
         if (WalkAudio != null)
@@ -137,17 +139,22 @@ public class PlayerController : MonoBehaviour
             
             if (Stamina >= .1f)
             {
+                SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
+                PlayerSpeed = PlayerSpeed + 3;
                 Walking = false;
                 Stamina -= Time.deltaTime;
-    
+
             }
+                SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
         else 
         {
+            SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
+            PlayerSpeed = 3;
             if (Stamina <= 6.0f) {
                 if (TimeSinceRun <= Time.time)
                 {
@@ -160,11 +167,18 @@ public class PlayerController : MonoBehaviour
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
+       
+
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
             if (xraytime >= .1f)
             {
+                if (!hasPlayedxRay)
+                {
+                    SoundManager.PlaySound(SoundManager.Sound.EnableXRay);
+                    hasPlayedxRay = true;
+                }
                 Shader.SetGlobalFloat("_GlobalVisibility", 1f);
                 //Debug.Log(vignette);
                 //if (vignette != null)
@@ -177,6 +191,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                hasPlayedxRay = false;
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
                 //if (vignette != null)
                 //    vignette.intensity.value = 0f;
@@ -189,6 +204,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            hasPlayedxRay = false;
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             //if (vignette != null)
             //    vignette.intensity.value = 0f;
@@ -206,14 +222,7 @@ public class PlayerController : MonoBehaviour
 
         xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         
-        ///////////Player Crouch///////////
-        if (Input.GetButtonDown("Crouch"))
-        {
-            Crouched = !Crouched;
-            ToggleCrouch();
-           
-        }
-
+        
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -248,27 +257,11 @@ public class PlayerController : MonoBehaviour
     void CreateDistractable()
     {
         Instantiate(Distractable, transform.position, transform.rotation);
+        SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
         Debug.Log("Distractions left: " + AmountOfDistractables);
     }
 
-    ///Crouching
-    void ToggleCrouch()
-    {
-        if (Crouched == true)
-        {
-            PlayerTransform.transform.localScale = new Vector3(1f, .5f, 1f);
-            Controller.height = ControllerHeight;
-            PlayerSpeed = .4f;
-            
-        }
-        else
-        {
-                PlayerTransform.transform.localScale = new Vector3(1f, ControllerHeight, 1f);
-                Controller.height = 1f;
-                PlayerSpeed = 1.8f;
-        }
-    }
 
     void CheckKeyCards()
     {

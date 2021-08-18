@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class SoundManager
 {
@@ -48,13 +49,18 @@ public static class SoundManager
     private static GameObject oneShotGameObject;
     public static AudioSource oneShotAudioSource;
 
+    public static AudioMixerGroup musicMixer;
+    public static AudioMixerGroup soundMixer;
+
     public static void Initialize()
     {
         soundTimerDictionary = new Dictionary<Sound, float>();
         musicObjects = new List<AudioSource>(6);
-        soundTimerDictionary[Sound.PlayerRun] = 0;
-        soundTimerDictionary[Sound.PlayerWalk] = 0;
-        soundTimerDictionary[Sound.EnemyWalk] = 0;
+        soundTimerDictionary[Sound.PlayerRun] = 0f;
+        soundTimerDictionary[Sound.PlayerWalk] = 0f;
+        soundTimerDictionary[Sound.EnemyWalk] = 0f;
+        musicMixer = AudioAssets.instance.musicMixer;
+        soundMixer = AudioAssets.instance.soundMixer;
     }
 
     #region Sound FX
@@ -65,6 +71,7 @@ public static class SoundManager
             GameObject soundObject = new GameObject("Sound");
             soundObject.transform.position = position;
             AudioSource audio = soundObject.AddComponent<AudioSource>();
+            audio.outputAudioMixerGroup = soundMixer;
             audio.clip = GetAudioClip(sound);
             audio.Play();
             Object.Destroy(soundObject, audio.clip.length);
@@ -79,22 +86,24 @@ public static class SoundManager
             {
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-                oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
+                oneShotAudioSource.outputAudioMixerGroup = soundMixer;
             }
+                oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
     public static bool CanPlaySound(Sound sound)
     {
+        //Debug.Log(soundTimerDictionary);
         switch (sound)
         {
             default:
                 return true;
             case Sound.PlayerRun:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
             case Sound.PlayerWalk:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
             case Sound.EnemyWalk:
-                return CanPlayLogic(sound, 0.05f);
+                return CanPlayLogic(sound, .4f);
         }
     }
     public static bool CanPlayLogic(Sound sound, float maxTimer)
@@ -102,7 +111,7 @@ public static class SoundManager
         if (soundTimerDictionary.ContainsKey(sound))
         {
             float lastTimePlayed = soundTimerDictionary[sound];
-            float playerMoveTimerMax = 0.05f;
+            float playerMoveTimerMax = maxTimer;
             if (lastTimePlayed + playerMoveTimerMax < Time.time)
             {
                 soundTimerDictionary[sound] = Time.time;
@@ -143,6 +152,7 @@ public static class SoundManager
         GameObject soundObject = new GameObject(song.ToString());
         soundObject.transform.parent = Camera.main.transform;
         AudioSource audio = soundObject.AddComponent<AudioSource>();
+        audio.outputAudioMixerGroup = musicMixer;
         audio.clip = GetMusicClip(song);
         audio.Play();
         musicObjects.Add(audio);

@@ -6,6 +6,7 @@ public class HallwayCollider : MonoBehaviour
 {
     public GameObject HallwayCam;
     public GameObject PlayerCam;
+    public GameObject skipText;
 
     void Update()
     {
@@ -23,11 +24,13 @@ public class HallwayCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        skipText.SetActive(true);
         HallwayCam.SetActive(true);
         PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
+        skipText.SetActive(false);
 
     }
 
@@ -36,6 +39,6 @@ public class HallwayCollider : MonoBehaviour
         StopAllCoroutines();
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
-        Debug.Log("Stop Scene");
+        skipText.SetActive(false);
     }
 }
