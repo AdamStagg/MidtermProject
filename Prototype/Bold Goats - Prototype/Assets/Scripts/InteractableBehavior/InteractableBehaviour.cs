@@ -85,11 +85,11 @@ public class InteractableBehaviour : InteractableBase
 
     IEnumerator CameraCutscenes()
     {
-            cameraToTurnOff.SetActive(false);
-            cutsceneCam.SetActive(true);
-            yield return new WaitForSeconds(cutsceneLength);
-            cameraToTurnOff.SetActive(true);
-            cutsceneCam.SetActive(false);
-            Destroy(destroy);
+        cutsceneCam.SetActive(true);
+        cameraToTurnOff.SetActive(false);
+        yield return new WaitForSeconds(cutsceneLength);
+        cameraToTurnOff.SetActive(true);
+        cutsceneCam.SetActive(false);
+        Destroy(destroy);
     }
 }
