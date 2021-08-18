@@ -90,6 +90,7 @@ public class InteractableBehaviour : InteractableBase
         yield return new WaitForSeconds(cutsceneLength);
         cameraToTurnOff.SetActive(true);
         cutsceneCam.SetActive(false);
+        holdPanel.SetActive(true);
         Destroy(destroy);
     }
 

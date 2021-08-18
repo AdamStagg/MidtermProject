@@ -23,9 +23,6 @@ public class InteractionController : MonoBehaviour
     private bool interacting;
     private float holdTimer = 0f;
 
-    public GameObject Terminal1;
-    public GameObject Terminal2;
-    public GameObject Terminal3;
     public AudioSource Terminal;
 
     void Update()
@@ -114,20 +111,18 @@ public class InteractionController : MonoBehaviour
 
                 if (heldPercent > 1f)
                 {
-                    uiPanel.Show(false);
+                    //uiPanel.Show(false);
                     if (interactionData.Interactable.tag == "Interact") 
                     {
                         Terminal.Play();
                     }
                     interactionData.Interact();
                     interacting = false;
-                   
-                    
                 }
             }
             else
             {
-                uiPanel.Show(false);
+                //uiPanel.Show(false);
                 interactionData.Interact();
                 interacting = false;
             }

@@ -121,4 +121,8 @@ public class PauseMenu : MonoBehaviour
         sfxMixer.SetFloat("SFXVolume", _volume);
     }
 
+    public void GimmeKey()
+    {
+        GameManager.Instance.keyCards = GameManager.Instance.keyCards + 1;
+    }
 }
