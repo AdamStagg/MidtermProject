@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused = false;
-
     public GameObject uiForPause;
 
     private void Awake()
@@ -44,7 +42,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && uiForPause != null)
         {
-            if (isPaused)
+            if (GameManager.Instance.isPaused)
             {
                 Resume();
             }
@@ -61,14 +59,14 @@ public class PauseMenu : MonoBehaviour
     {
         uiForPause.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+        GameManager.Instance.isPaused = false;
     }
 
     void Pause()
     {
         uiForPause.SetActive(true);
         Time.timeScale = 0f;
-        isPaused = true;
+        GameManager.Instance.isPaused = true;
     }
 
     public void Options()

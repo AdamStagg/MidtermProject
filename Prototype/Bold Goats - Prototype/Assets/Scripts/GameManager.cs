@@ -115,4 +115,18 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region Paused
+    public bool isPaused = false;
+    bool IsPaused
+    {
+        get
+        {
+            return isPaused;
+        }
+        set
+        {
+            isPaused = value;
+        }
+    }
+    #endregion
 }
