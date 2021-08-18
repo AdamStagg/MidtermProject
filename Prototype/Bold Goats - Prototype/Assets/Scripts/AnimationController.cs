@@ -5,14 +5,14 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     Animator animator;
-    
+
     // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
     }
-
-    // Update is called once per frame
+ 
+    //Update is called once per frame
     void Update()
     {
         //Input 
@@ -20,15 +20,7 @@ public class AnimationController : MonoBehaviour
         float Vertical = Input.GetAxis("Vertical");
 
         //Movement
-        Vector3 Movement = new Vector3(Horizontal,0f,Vertical);
-
-        //Moving
-        if (Movement.magnitude > 0)
-        {
-            Movement.Normalize();
-            Movement *= Time.deltaTime;
-            transform.Translate(Movement, Space.World);
-        }
+        Vector3 Movement = new Vector3(Horizontal, 0f, Vertical);
 
         //Animation
         float VelocityZ = Vector3.Dot(Movement.normalized, transform.forward);
@@ -36,6 +28,6 @@ public class AnimationController : MonoBehaviour
 
         animator.SetFloat("VelocityZ", VelocityZ, 0.1f, Time.deltaTime);
         animator.SetFloat("VelocityX", VelocityX, 0.1f, Time.deltaTime);
-        
+
     }
 }

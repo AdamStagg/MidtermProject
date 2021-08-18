@@ -5,16 +5,21 @@ using UnityEngine;
 public class LazerMazeCollider : MonoBehaviour
 {
     public GameObject LazerMazeCam;
-    void Start()
-    {
-        LazerMazeCam.SetActive(false);
-    }
+    public GameObject PlayerCam;
+    // Start is called before the first frame update
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            LazerMazeCam.SetActive(true);
-        }
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        LazerMazeCam.SetActive(true);
+        PlayerCam.SetActive(false);
+        StartCoroutine(FinishCutScene());   
+    }
+
+    IEnumerator FinishCutScene()
+    {
+        yield return new WaitForSeconds(5);
+        PlayerCam.SetActive(true);
+        LazerMazeCam.SetActive(false);
     }
 }

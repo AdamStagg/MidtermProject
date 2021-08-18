@@ -5,17 +5,21 @@ using UnityEngine;
 public class MazeCollider : MonoBehaviour
 {
     public GameObject MazeCam;
+    public GameObject PlayerCam;
     // Start is called before the first frame update
-    void Start()
-    {
-        MazeCam.SetActive(false);
-    }
-
+ 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            MazeCam.SetActive(true);
-        }
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        MazeCam.SetActive(true);
+        PlayerCam.SetActive(false);
+        StartCoroutine(FinishCutScene());
+    }
+
+    IEnumerator FinishCutScene()
+    {
+        yield return new WaitForSeconds(7);
+        PlayerCam.SetActive(true);
+        MazeCam.SetActive(false);
     }
 }
