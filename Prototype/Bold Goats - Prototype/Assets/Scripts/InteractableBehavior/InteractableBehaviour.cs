@@ -27,6 +27,7 @@ public class InteractableBehaviour : InteractableBase
     [Space]
     public GameObject cutsceneCam;
     public GameObject cameraToTurnOff;
+    public float cutsceneLength;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class InteractableBehaviour : InteractableBase
             if ((textToDisplay != null && destroy != null) || destroy != null)
             {
                 StartCoroutine(WaitCompletionText());
+                StartCoroutine(CameraCutscenes());
             }
             if (destroy != null)
             {
@@ -79,21 +81,15 @@ public class InteractableBehaviour : InteractableBase
         yield return new WaitForSecondsRealtime(timeToDisplayText);
         textToDisplay.SetActive(false);
         }
-
-        StartCoroutine(CameraCutscenes());
-
     }
 
     IEnumerator CameraCutscenes()
     {
-        if (cutsceneCam != null)
-        {
             cameraToTurnOff.SetActive(false);
             cutsceneCam.SetActive(true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(cutsceneLength);
             cameraToTurnOff.SetActive(true);
             cutsceneCam.SetActive(false);
-        }
         Destroy(destroy);
     }
 }
