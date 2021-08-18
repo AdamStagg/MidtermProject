@@ -125,17 +125,21 @@ public class PlayerController : MonoBehaviour
         }
 
         ///////////Camera Movement///////////
-        Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
-        Controller.Move(Camera.main.transform.forward * Move.z * Time.deltaTime * PlayerSpeed);
+        if (Camera.main != null)
+        {
+            Controller.Move(Camera.main.transform.right * Move.x * Time.deltaTime * PlayerSpeed);
+            Controller.Move(Camera.main.transform.forward * Move.z * Time.deltaTime * PlayerSpeed); 
+            transform.forward = Camera.main.transform.forward;
 
-        transform.forward = Camera.main.transform.forward;
+            Vector3 angles = transform.rotation.eulerAngles;
+            angles.x = 0;
+            angles.z = 0;
 
-        Vector3 angles = transform.rotation.eulerAngles;
-        angles.x = 0;
-        angles.z = 0;
+            transform.rotation = Quaternion.Euler(angles);
 
-        transform.rotation = Quaternion.Euler(angles);
-
+        }
+        
+        
         ///////////Player Run///////////
         if (Input.GetButton("Run"))
         {

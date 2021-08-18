@@ -6,17 +6,21 @@ public class SpotlightCollision : MonoBehaviour
 {
 
     public GameObject SpotlightCam;
+    public GameObject PlayerCam;
     // Start is called before the first frame update
-    void Start()
-    {
-        SpotlightCam.SetActive(false);
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            SpotlightCam.SetActive(true);          
-        }
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        SpotlightCam.SetActive(true);
+        PlayerCam.SetActive(false);
+        StartCoroutine(FinishCutScene());
+    }
+
+    IEnumerator FinishCutScene()
+    {
+        yield return new WaitForSeconds(7);
+        PlayerCam.SetActive(true);
+        SpotlightCam.SetActive(false);
     }
 }

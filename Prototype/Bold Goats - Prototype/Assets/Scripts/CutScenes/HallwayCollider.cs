@@ -5,17 +5,36 @@ using UnityEngine;
 public class HallwayCollider : MonoBehaviour
 {
     public GameObject HallwayCam;
-    // Start is called before the first frame update
-    void Start()
-    {
-        HallwayCam.SetActive(false);
-    }
+    public GameObject PlayerCam;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        HallwayCam.SetActive(true);
+        PlayerCam.SetActive(false);
+       
+        
+        StartCoroutine(FinishCutScene());       
+    }
+
+    IEnumerator FinishCutScene()
+    {
+        yield return new WaitForSeconds(8);
+        PlayerCam.SetActive(true);
+        HallwayCam.SetActive(false);
+
+        if (Input.GetKey(KeyCode.G))
         {
-            HallwayCam.SetActive(true);
+            yield return new WaitForSeconds(0);
+            PlayerCam.SetActive(true);
+            HallwayCam.SetActive(false);
         }
     }
+
+    //IEnumerator SkipScene()
+    //{
+    //    yield return new WaitForSeconds(0);
+    //    PlayerCam.SetActive(true);
+    //    HallwayCam.SetActive(false);
+    //}
 }
