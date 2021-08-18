@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class SpotlightCollision : MonoBehaviour
 {
-
     public GameObject SpotlightCam;
     public GameObject PlayerCam;
-    // Start is called before the first frame update
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SkipScene();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        SpotlightCam.SetActive(true);
-        PlayerCam.SetActive(false);
+
         StartCoroutine(FinishCutScene());
     }
 
     IEnumerator FinishCutScene()
     {
-        yield return new WaitForSeconds(7);
+        SpotlightCam.SetActive(true);
+        PlayerCam.SetActive(false);
+        yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         SpotlightCam.SetActive(false);
+
+    }
+
+    void SkipScene()
+    {
+        StopAllCoroutines();
+        PlayerCam.SetActive(true);
+        SpotlightCam.SetActive(false);
+        Debug.Log("Stop Scene");
     }
 }

@@ -6,20 +6,36 @@ public class MazeCollider : MonoBehaviour
 {
     public GameObject MazeCam;
     public GameObject PlayerCam;
-    // Start is called before the first frame update
- 
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SkipScene();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        MazeCam.SetActive(true);
-        PlayerCam.SetActive(false);
+
         StartCoroutine(FinishCutScene());
     }
 
     IEnumerator FinishCutScene()
     {
-        yield return new WaitForSeconds(7);
+        MazeCam.SetActive(true);
+        PlayerCam.SetActive(false);
+        yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         MazeCam.SetActive(false);
+
+    }
+
+    void SkipScene()
+    {
+        StopAllCoroutines();
+        PlayerCam.SetActive(true);
+        MazeCam.SetActive(false);
+        Debug.Log("Stop Scene");
     }
 }

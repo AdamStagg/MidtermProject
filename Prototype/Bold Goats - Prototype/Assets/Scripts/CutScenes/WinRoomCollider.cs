@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class WinRoomCollider : MonoBehaviour
 {
-    public GameObject WinCam;
+    public GameObject WinRoomCam;
     public GameObject PlayerCam;
-    // Start is called before the first frame update
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SkipScene();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
-
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        WinCam.SetActive(true);
-        PlayerCam.SetActive(false);
+
         StartCoroutine(FinishCutScene());
     }
 
     IEnumerator FinishCutScene()
     {
+        WinRoomCam.SetActive(true);
+        PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
-        WinCam.SetActive(false);
+        WinRoomCam.SetActive(false);
+
+    }
+
+    void SkipScene()
+    {
+        StopAllCoroutines();
+        PlayerCam.SetActive(true);
+        WinRoomCam.SetActive(false);
+        Debug.Log("Stop Scene");
     }
 }
