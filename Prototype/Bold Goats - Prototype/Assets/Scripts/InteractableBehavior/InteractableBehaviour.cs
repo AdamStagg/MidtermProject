@@ -73,12 +73,12 @@ public class InteractableBehaviour : InteractableBase
     IEnumerator WaitCompletionText()
     {
         holdPanel.SetActive(false);
-        
+
         if (textToDisplay != null)
         {
-        textToDisplay.SetActive(true);
-        yield return new WaitForSecondsRealtime(timeToDisplayText);
-        textToDisplay.SetActive(false);
+            textToDisplay.SetActive(true);
+            yield return new WaitForSecondsRealtime(timeToDisplayText);
+            textToDisplay.SetActive(false);
         }
         StartCoroutine(CameraCutscenes());
     }
@@ -92,4 +92,5 @@ public class InteractableBehaviour : InteractableBase
         cutsceneCam.SetActive(false);
         Destroy(destroy);
     }
+
 }

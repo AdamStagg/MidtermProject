@@ -115,7 +115,7 @@ public class InteractionController : MonoBehaviour
                 if (heldPercent > 1f)
                 {
                     uiPanel.Show(false);
-                    if (interactionData.Interactable == Terminal1 || interactionData.Interactable == Terminal2 || interactionData.Interactable == Terminal3) 
+                    if (interactionData.Interactable.tag == "Interact") 
                     {
                         Terminal.Play();
                     }
