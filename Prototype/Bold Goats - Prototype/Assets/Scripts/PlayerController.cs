@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
+//using UnityEngine.Rendering.HighDefinition;
 
 
 public class PlayerController : MonoBehaviour
@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
     public Volume volume;
-    Vignette vignette;
-    ColorAdjustments colorAdj;
-    FilmGrain filmGrain;
+    //Vignette vignette;
+    //ColorAdjustments colorAdj;
+    //FilmGrain filmGrain;
 
     [Space]
 
@@ -73,9 +73,9 @@ public class PlayerController : MonoBehaviour
        
         if (volume != null)
         {
-            volume.profile.TryGet(out vignette);
-            volume.profile.TryGet(out colorAdj);
-            volume.profile.TryGet(out filmGrain);
+            //volume.profile.TryGet(out vignette);
+            //volume.profile.TryGet(out colorAdj);
+            //volume.profile.TryGet(out filmGrain);
         }
 
         GameManager.Instance.keyCards = 0;
@@ -166,36 +166,36 @@ public class PlayerController : MonoBehaviour
             if (xraytime >= .1f)
             {
                 Shader.SetGlobalFloat("_GlobalVisibility", 1f);
-                Debug.Log(vignette);
-                if (vignette != null)
-                    vignette.intensity.value = 0.6f;
-                if (colorAdj != null)
-                    colorAdj.hueShift.value = -40;
-                if (filmGrain != null)
-                    filmGrain.intensity.value = 0.6f;
+                //Debug.Log(vignette);
+                //if (vignette != null)
+                //    vignette.intensity.value = 0.6f;
+                //if (colorAdj != null)
+                //    colorAdj.hueShift.value = -40;
+                //if (filmGrain != null)
+                //    filmGrain.intensity.value = 0.6f;
                 xraytime -= Time.deltaTime;
             }
             else
             {
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-                if (vignette != null)
-                    vignette.intensity.value = 0f;
-                if (colorAdj != null)
-                    colorAdj.hueShift.value = 0;
-                if (filmGrain != null)
-                    filmGrain.intensity.value = 0f;
+                //if (vignette != null)
+                //    vignette.intensity.value = 0f;
+                //if (colorAdj != null)
+                //    colorAdj.hueShift.value = 0;
+                //if (filmGrain != null)
+                //    filmGrain.intensity.value = 0f;
             }
             timeSinceXray = Time.time + xRayTimeUntilRegen;
         }
         else
         {
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-            if (vignette != null)
-                vignette.intensity.value = 0f;
-            if (colorAdj != null)
-                colorAdj.hueShift.value = 0;
-            if (filmGrain != null)
-                filmGrain.intensity.value = 0f;
+            //if (vignette != null)
+            //    vignette.intensity.value = 0f;
+            //if (colorAdj != null)
+            //    colorAdj.hueShift.value = 0;
+            //if (filmGrain != null)
+            //    filmGrain.intensity.value = 0f;
 
             if (timeSinceXray <= Time.time)
             {
