@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 //using UnityEngine.Rendering.HighDefinition;
 
 
@@ -326,9 +327,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name == "Water")
+        {
+            StartCoroutine(WaterDie());
+        }
+    }
 
-
+    IEnumerator WaterDie()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("LOSE CONDITION");
+    }
 }
    
 
