@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool Crouched = false;
     private bool Running = false;
     private bool Walking = false;
-    public float PlayerSpeed = 1.6f;
+    public float PlayerSpeed;
     public static float Stamina = 7f;
     public float StaminaTimeLimit = 7f;
     public float StaminaTimeUntilRegen = 2f;
@@ -92,11 +92,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Walking == true)
         {
-            PlayerSpeed = 1.2f;
+            //PlayerSpeed = PlayerSpeed;
         }
         else if (Running == true) 
         {
-            PlayerSpeed = 4.0f;
+            PlayerSpeed = 6;
         }
 
         if (WalkAudio != null)
@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
+                PlayerSpeed = PlayerSpeed + 3;
                 Walking = false;
                 Stamina -= Time.deltaTime;
 
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
+            PlayerSpeed = 3;
             if (Stamina <= 6.0f) {
                 if (TimeSinceRun <= Time.time)
                 {

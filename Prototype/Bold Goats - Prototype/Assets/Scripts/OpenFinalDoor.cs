@@ -10,6 +10,18 @@ public class OpenFinalDoor : MonoBehaviour
     public Text textToDisplay;
     public int timeToDisplayText;
 
+    public GameObject door1;
+    public GameObject door2;
+
+    private void Update()
+    {
+        if (GameManager.Instance.keyCards >= 3)
+        {
+            Destroy(door2);
+            Destroy(door1);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

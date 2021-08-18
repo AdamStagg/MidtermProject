@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused = false;
-
     public GameObject uiForPause;
 
     private void Awake()
@@ -44,7 +42,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && uiForPause != null)
         {
-            if (isPaused)
+            if (GameManager.Instance.isPaused)
             {
                 Resume();
             }
@@ -63,7 +61,7 @@ public class PauseMenu : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sound.UnpauseGame);
         uiForPause.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+        GameManager.Instance.isPaused = false;
     }
 
     void Pause()
@@ -72,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sound.PauseGame);
         uiForPause.SetActive(true);
         Time.timeScale = 0f;
-        isPaused = true;
+        GameManager.Instance.isPaused = true;
     }
 
     public void Options()
@@ -127,4 +125,8 @@ public class PauseMenu : MonoBehaviour
         sfxMixer.SetFloat("SFXVolume", _volume);
     }
 
+    public void GimmeKey()
+    {
+        GameManager.Instance.keyCards = GameManager.Instance.keyCards + 1;
+    }
 }
