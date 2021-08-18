@@ -15491,11 +15491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6723665383318066090, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_Value
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6723665383318066090, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_MaxValue
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6723665383318066090, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_WholeNumbers
@@ -19239,6 +19239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpotlightCam: {fileID: 1680292382}
   PlayerCam: {fileID: 1476674416}
+  skipText: {fileID: 186879892}
 --- !u!65 &677653958
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26019,6 +26020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LazerMazeCam: {fileID: 511950624}
   PlayerCam: {fileID: 1476674416}
+  skipText: {fileID: 186879892}
 --- !u!65 &914203766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28817,6 +28819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MazeCam: {fileID: 1074617008}
   PlayerCam: {fileID: 1476674416}
+  skipText: {fileID: 186879892}
 --- !u!65 &1008483627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44138,7 +44141,7 @@ GameObject:
   - component: {fileID: 1551495325}
   - component: {fileID: 1551495328}
   m_Layer: 11
-  m_Name: Cube (59)
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
@@ -55414,6 +55417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinRoomCam: {fileID: 125702675}
   PlayerCam: {fileID: 1476674416}
+  skipText: {fileID: 0}
 --- !u!1 &1981447803
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class SpotlightCollision : MonoBehaviour
 {
     public GameObject SpotlightCam;
     public GameObject PlayerCam;
+    public GameObject skipText;
+
 
     void Update()
     {
@@ -23,12 +25,13 @@ public class SpotlightCollision : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        skipText.SetActive(true);
         SpotlightCam.SetActive(true);
         PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         SpotlightCam.SetActive(false);
-
+        skipText.SetActive(false);
     }
 
     void SkipScene()
@@ -36,6 +39,6 @@ public class SpotlightCollision : MonoBehaviour
         StopAllCoroutines();
         PlayerCam.SetActive(true);
         SpotlightCam.SetActive(false);
-        Debug.Log("Stop Scene");
+        skipText.SetActive(false);
     }
 }
