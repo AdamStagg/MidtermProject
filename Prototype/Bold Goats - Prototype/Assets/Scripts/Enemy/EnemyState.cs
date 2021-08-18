@@ -30,6 +30,8 @@ namespace Enemy
 
         public void InvokeInvestigate()
         {
+            SoundManager.PlaySound(SoundManager.Sound.EnemySpotPlayer);
+
             if (Investigate != null)
             {
                 Investigate.Invoke();
@@ -40,6 +42,7 @@ namespace Enemy
 
         public void InvokeReturn()
         {
+            SoundManager.PlaySound(SoundManager.Sound.EnemyReturn);
             if (Return != null)
             {
                 Return.Invoke();
@@ -60,6 +63,7 @@ namespace Enemy
 
         public void InvokeChase()
         {
+            SoundManager.PlaySound(SoundManager.Sound.EnemyChasePlayer);
             if (Chase != null) {
                 Chase.Invoke();
             }
@@ -69,6 +73,7 @@ namespace Enemy
 
         public void InvokeAttack()
         {
+            SoundManager.PlaySound(SoundManager.Sound.EnemyAttack);
             if (Attack != null)
             {
                 Attack.Invoke();

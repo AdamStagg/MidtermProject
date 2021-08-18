@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 6141792594909284739}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4618452154778268429
+--- !u!1 &2070444055777850481
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,44 +40,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4930531603011386570}
-  - component: {fileID: 3387532596632652356}
+  - component: {fileID: 4957692115263172789}
+  - component: {fileID: 9039149219896190769}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4930531603011386570
+--- !u!4 &4957692115263172789
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4618452154778268429}
-  m_LocalRotation: {x: -0.9066492, y: -0, z: -0, w: -0.42188525}
-  m_LocalPosition: {x: -7.55, y: -0.39, z: 107.77}
+  m_GameObject: {fileID: 2070444055777850481}
+  m_LocalRotation: {x: 0.9273478, y: -0, z: -0, w: 0.37420058}
+  m_LocalPosition: {x: -7.37, y: -0.37, z: 108.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6141792594909284739}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -229.907, y: 0, z: 0}
---- !u!108 &3387532596632652356
+  m_LocalEulerAnglesHint: {x: 136.05, y: 0, z: 0}
+--- !u!108 &9039149219896190769
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4618452154778268429}
+  m_GameObject: {fileID: 2070444055777850481}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 100
-  m_SpotAngle: 70.2
+  m_Intensity: 5
+  m_Range: 50
+  m_SpotAngle: 122
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -154,7 +154,7 @@ Transform:
   m_Children:
   - {fileID: 7091669477734718628}
   - {fileID: 4619970446717471349}
-  - {fileID: 4930531603011386570}
+  - {fileID: 4957692115263172789}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
