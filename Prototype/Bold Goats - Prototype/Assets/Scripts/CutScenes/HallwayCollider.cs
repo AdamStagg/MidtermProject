@@ -7,32 +7,35 @@ public class HallwayCollider : MonoBehaviour
     public GameObject HallwayCam;
     public GameObject PlayerCam;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SkipScene();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        HallwayCam.SetActive(true);
-        PlayerCam.SetActive(false);
-               
-        StartCoroutine(FinishCutScene());       
+
+        StartCoroutine(FinishCutScene());
     }
 
     IEnumerator FinishCutScene()
     {
+        HallwayCam.SetActive(true);
+        PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
 
-        if (Input.GetKey(KeyCode.G))
-        {            
-            PlayerCam.SetActive(true);
-            HallwayCam.SetActive(false);
-        }
     }
 
-    //IEnumerator SkipScene()
-    //{
-    //    yield return new WaitForSeconds(0);
-    //    PlayerCam.SetActive(true);
-    //    HallwayCam.SetActive(false);
-    //}
+    void SkipScene()
+    {
+        StopAllCoroutines();
+        PlayerCam.SetActive(true);
+        HallwayCam.SetActive(false);
+        Debug.Log("Stop Scene");
+    }
 }
