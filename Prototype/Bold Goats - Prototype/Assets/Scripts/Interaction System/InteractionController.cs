@@ -23,7 +23,10 @@ public class InteractionController : MonoBehaviour
     private bool interacting;
     private float holdTimer = 0f;
 
-   
+    public GameObject Terminal1;
+    public GameObject Terminal2;
+    public GameObject Terminal3;
+    public AudioSource Terminal;
 
     void Update()
     {
@@ -114,6 +117,10 @@ public class InteractionController : MonoBehaviour
                     uiPanel.Show(false);
                     interactionData.Interact();
                     interacting = false;
+                    if (interactionData.Interactable == Terminal1 || interactionData.Interactable == Terminal2 || interactionData.Interactable == Terminal3) 
+                    {
+                        Terminal.Play();
+                    }
                    
                     
                 }

@@ -12,8 +12,7 @@ public class HallwayCollider : MonoBehaviour
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         HallwayCam.SetActive(true);
         PlayerCam.SetActive(false);
-       
-        
+               
         StartCoroutine(FinishCutScene());       
     }
 
@@ -24,8 +23,7 @@ public class HallwayCollider : MonoBehaviour
         HallwayCam.SetActive(false);
 
         if (Input.GetKey(KeyCode.G))
-        {
-            yield return new WaitForSeconds(0);
+        {            
             PlayerCam.SetActive(true);
             HallwayCam.SetActive(false);
         }

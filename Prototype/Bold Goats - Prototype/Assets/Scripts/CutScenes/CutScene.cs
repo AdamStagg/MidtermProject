@@ -22,7 +22,7 @@ public class CutScene : MonoBehaviour
     IEnumerator CutScenes()
     {
         HallwayCam.SetActive(true);
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(12);
         SpotlightCam.SetActive(true);
         HallwayCam.SetActive(false);
         yield return new WaitForSeconds(7);
