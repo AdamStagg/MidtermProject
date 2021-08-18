@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1681273756273693907
+--- !u!1 &4148648296219483276
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1378620522472397588}
-  - component: {fileID: 8669414593531735450}
+  - component: {fileID: 7736545726238263374}
+  - component: {fileID: 3922187950907577876}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1378620522472397588
+--- !u!4 &7736545726238263374
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681273756273693907}
-  m_LocalRotation: {x: -0.9066492, y: -0, z: -0, w: -0.42188525}
-  m_LocalPosition: {x: -7.55, y: -0.39, z: 107.77}
+  m_GameObject: {fileID: 4148648296219483276}
+  m_LocalRotation: {x: 0.8911396, y: -0.000000026077029, z: -0.14685439, w: 0.42930633}
+  m_LocalPosition: {x: -7.38, y: -0.56, z: 107.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 175952106591759965}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -229.907, y: 0, z: 0}
---- !u!108 &8669414593531735450
+  m_LocalEulerAnglesHint: {x: 49.92, y: -156.014, z: -168.706}
+--- !u!108 &3922187950907577876
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681273756273693907}
+  m_GameObject: {fileID: 4148648296219483276}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 902.13104
-  m_SpotAngle: 70.2
+  m_Intensity: 8
+  m_Range: 60
+  m_SpotAngle: 98
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -122,7 +122,7 @@ Transform:
   m_Children:
   - {fileID: 3830231769048218490}
   - {fileID: 1679969061631864235}
-  - {fileID: 1378620522472397588}
+  - {fileID: 7736545726238263374}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -9.358, z: 0}

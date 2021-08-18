@@ -140,16 +140,19 @@ public class PlayerController : MonoBehaviour
             
             if (Stamina >= .1f)
             {
+                SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
                 PlayerSpeed = PlayerSpeed + 3;
                 Walking = false;
                 Stamina -= Time.deltaTime;
-    
+
             }
+                SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
         else 
         {
+            SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
             PlayerSpeed = 3;

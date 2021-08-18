@@ -45,6 +45,7 @@ public class MovingSpotLight : MonoBehaviour
 
     public void CallForBackUp(GameObject spawnLocation, int numEnemies, float timeBetweenEnemies = 0.5f)
     {
+        SoundManager.PlaySound(SoundManager.Sound.SpotlightFindsPlayer);
         if (spawnLocation != null)
         {
             if (timeSinceLastSpawned <= Time.time)

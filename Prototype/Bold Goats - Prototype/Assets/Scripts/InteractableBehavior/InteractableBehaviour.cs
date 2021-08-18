@@ -50,7 +50,6 @@ public class InteractableBehaviour : InteractableBase
             {
                 //Destroy(destroy);
 
-                GameManager.Instance.keyCards++;
             }
 
         }
@@ -68,6 +67,8 @@ public class InteractableBehaviour : InteractableBase
                 GetComponent<Collider>().enabled = true;
             }
         }
+        SoundManager.PlaySound(SoundManager.Sound.DoorOpen);
+        GameManager.Instance.keyCards++;
     }
 
     IEnumerator WaitCompletionText()

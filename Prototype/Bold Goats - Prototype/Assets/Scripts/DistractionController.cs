@@ -26,8 +26,8 @@ public class DistractionController : MonoBehaviour
         }
         DistractableRb.isKinematic = true;
         explosion.SetActive(true);
+        SoundManager.PlaySound(SoundManager.Sound.DistractionExplosion);
         Destroy(gameObject);
-        //OnTriggerEnter(explosion.GetComponent<Collider>());
         
     }
 
@@ -41,18 +41,6 @@ public class DistractionController : MonoBehaviour
         }
 
     }
-
-    /*private void OnTriggerExit(Collider other)
-    {
-        other = explosion.GetComponent<Collider>();
-
-        if (other.transform.parent!= null && other.tag == "Enemy")
-        {
-            enemies.Remove(transform.parent.GetComponent<EnemyState>());
-
-        }
-    }
-    */
 
     private void LateUpdate()
     {

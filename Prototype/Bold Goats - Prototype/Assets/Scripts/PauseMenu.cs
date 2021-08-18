@@ -57,6 +57,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Camera.main.GetComponent<CameraMovement>().enabled = true;
+        SoundManager.PlaySound(SoundManager.Sound.UnpauseGame);
         uiForPause.SetActive(false);
         Time.timeScale = 1f;
         GameManager.Instance.isPaused = false;
@@ -64,6 +66,8 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        Camera.main.GetComponent<CameraMovement>().enabled = false;
+        SoundManager.PlaySound(SoundManager.Sound.PauseGame);
         uiForPause.SetActive(true);
         Time.timeScale = 0f;
         GameManager.Instance.isPaused = true;

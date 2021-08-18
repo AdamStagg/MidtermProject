@@ -16,6 +16,8 @@ public class AudioAssets : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SoundManager.Initialize();
     }
 
     public SoundAudioClip[] soundAudioClipArray;

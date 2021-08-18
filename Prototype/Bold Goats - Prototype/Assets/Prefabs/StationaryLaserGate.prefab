@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 9137087648039969511}
   - component: {fileID: 9137087648039969512}
   - component: {fileID: 9137087648039969513}
+  - component: {fileID: 3928223206109237446}
   m_Layer: 0
   m_Name: StationaryLaserGate
   m_TagString: Untagged
@@ -478,6 +479,25 @@ MonoBehaviour:
   IsPermanentlyOn: 0
   SwitchTime: 3
   Lasers: {fileID: 9137087647554325116}
+--- !u!95 &3928223206109237446
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137087648039969514}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9137087648080979647
 GameObject:
   m_ObjectHideFlags: 0
