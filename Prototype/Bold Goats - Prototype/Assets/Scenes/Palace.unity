@@ -16691,11 +16691,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3109433080868026695, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_Value
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3109433080868026695, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_MaxValue
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3109433081107869920, guid: 1591aee10a20f734d9fb1c6bcbd4d38a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -42882,7 +42882,6 @@ MonoBehaviour:
   PlayerSpeed: 3
   StaminaTimeLimit: 6
   StaminaTimeUntilRegen: 2
-  xrayTimeLimit: 5
   xRayTimeUntilRegen: 2
   volume: {fileID: 776359255}
   EnemyTransform: {fileID: 0}
