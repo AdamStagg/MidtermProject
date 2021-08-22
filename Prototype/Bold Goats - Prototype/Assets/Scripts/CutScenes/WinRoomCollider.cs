@@ -6,6 +6,7 @@ public class WinRoomCollider : MonoBehaviour
 {
     public GameObject WinRoomCam;
     public GameObject PlayerCam;
+    public GameObject skipText;
 
     void Update()
     {
@@ -23,11 +24,13 @@ public class WinRoomCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        skipText.SetActive(true);
         WinRoomCam.SetActive(true);
         PlayerCam.SetActive(false);
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
+        skipText.SetActive(false);
 
     }
 
@@ -36,6 +39,6 @@ public class WinRoomCollider : MonoBehaviour
         StopAllCoroutines();
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
-        Debug.Log("Stop Scene");
+        skipText.SetActive(false);
     }
 }

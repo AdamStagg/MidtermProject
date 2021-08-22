@@ -23,11 +23,17 @@ public class AnimationController : MonoBehaviour
         Vector3 Movement = new Vector3(Horizontal, 0f, Vertical);
 
         //Animation
-        float VelocityZ = Vector3.Dot(Movement.normalized, transform.forward);
-        float VelocityX = Vector3.Dot(Movement.normalized, transform.right);
 
-        animator.SetFloat("VelocityZ", VelocityZ, 0.1f, Time.deltaTime);
-        animator.SetFloat("VelocityX", VelocityX, 0.1f, Time.deltaTime);
+        Vector3 x = transform.InverseTransformPoint(transform.forward);
+        x.Normalize();
+        Vector3 z = transform.InverseTransformPoint(transform.right);
+        //z.Normalize();
+
+        float VelocityZ = Vector3.Dot(Movement.normalized, x);
+        float VelocityX = Vector3.Dot(Movement.normalized, z);
+
+        animator.SetFloat("VelocityZ", VelocityX, 0.1f, Time.deltaTime);
+        animator.SetFloat("VelocityX", -VelocityZ, 0.1f, Time.deltaTime);
 
     }
 }

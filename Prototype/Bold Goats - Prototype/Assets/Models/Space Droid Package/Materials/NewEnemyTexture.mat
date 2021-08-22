@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: NewEnemyTexture
-  m_Shader: {fileID: 12, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9e0977993a0c8f748b87126f84bb93ff, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -72,6 +72,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RimPow: 1
     - _Shininess: 0.16
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -81,5 +82,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.8970588, b: 0.74264705, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimCol: {r: 0.93934953, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 //using UnityEngine.Rendering.HighDefinition;
 
 
@@ -10,7 +12,7 @@ public class PlayerController : MonoBehaviour
     ///////////Basic Player Movement///////////
     public Transform PlayerTransform;
     private CharacterController Controller;
-    private Vector3 PlayerVelocity;
+    private Vector3 PlayerVelocity; 
     private bool GroundedPlayer;
     private bool Crouched = false;
     private bool Running = false;
@@ -31,21 +33,19 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
-    public Volume volume;
-    //Vignette vignette;
+    public PostProcessVolume volume;
+    Vignette vignette;
     //ColorAdjustments colorAdj;
-    //FilmGrain filmGrain;
+    Grain filmGrain;
 
     [Space]
 
     ///////////Variables for Attacking///////////
     public Transform EnemyTransform;
 
-    ///////////Variables for Kunai///////////
-    public Rigidbody Kunai;
-    public int AmountOfKunais = 3;
 
     ///////////Variables for Distractable///////////
+    private Vector3 DistractableSpawn;
     public GameObject Distractable;
     public static int AmountOfDistractables = 3;
 
@@ -75,11 +75,12 @@ public class PlayerController : MonoBehaviour
        
         if (volume != null)
         {
-            //volume.profile.TryGet(out vignette);
+            
+            volume.profile.TryGetSettings(out vignette);
             //volume.profile.TryGet(out colorAdj);
-            //volume.profile.TryGet(out filmGrain);
+            volume.profile.TryGetSettings(out filmGrain);
         }
-
+        DistractableSpawn.Set(transform.position.x, transform.position.y + .25f, transform.position.z);
         GameManager.Instance.keyCards = 0;
         
     }
@@ -181,24 +182,24 @@ public class PlayerController : MonoBehaviour
                 }
                 Shader.SetGlobalFloat("_GlobalVisibility", 1f);
                 //Debug.Log(vignette);
-                //if (vignette != null)
-                //    vignette.intensity.value = 0.6f;
+                if (vignette != null)
+                    vignette.intensity.value = 0.6f;
                 //if (colorAdj != null)
                 //    colorAdj.hueShift.value = -40;
-                //if (filmGrain != null)
-                //    filmGrain.intensity.value = 0.6f;
+                if (filmGrain != null)
+                    filmGrain.intensity.value = 0.6f;
                 xraytime -= Time.deltaTime;
             }
             else
             {
                 hasPlayedxRay = false;
                 Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-                //if (vignette != null)
-                //    vignette.intensity.value = 0f;
+                if (vignette != null)
+                    vignette.intensity.value = 0f;
                 //if (colorAdj != null)
                 //    colorAdj.hueShift.value = 0;
-                //if (filmGrain != null)
-                //    filmGrain.intensity.value = 0f;
+                if (filmGrain != null)
+                    filmGrain.intensity.value = 0f;
             }
             timeSinceXray = Time.time + xRayTimeUntilRegen;
         }
@@ -206,12 +207,12 @@ public class PlayerController : MonoBehaviour
         {
             hasPlayedxRay = false;
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-            //if (vignette != null)
-            //    vignette.intensity.value = 0f;
+            if (vignette != null)
+                vignette.intensity.value = 0f;
             //if (colorAdj != null)
             //    colorAdj.hueShift.value = 0;
-            //if (filmGrain != null)
-            //    filmGrain.intensity.value = 0f;
+            if (filmGrain != null)
+                filmGrain.intensity.value = 0f;
 
             if (timeSinceXray <= Time.time)
             {
@@ -256,7 +257,7 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Instantiate(Distractable, transform.position, transform.rotation);
+        Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
         Debug.Log("Distractions left: " + AmountOfDistractables);
@@ -326,9 +327,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.name == "Water")
+        {
+            StartCoroutine(WaterDie());
+        }
+    }
 
-
+    IEnumerator WaterDie()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
+        yield return new WaitForSecondsRealtime(1f);
+        SceneManager.LoadScene("LOSE CONDITION");
+    }
 }
    
 
