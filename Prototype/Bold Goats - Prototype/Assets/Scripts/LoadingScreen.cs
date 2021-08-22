@@ -14,14 +14,16 @@ public class LoadingScreen : MonoBehaviour
     void Start()
     {
         slider.value = 0;
+        StartCoroutine(Load());
     }
-
-    void Update()
+    IEnumerator Load()
     {
-        slider.value += Time.deltaTime;
-        if (slider.value >= 3) 
+        AsyncOperation load = SceneManager.LoadSceneAsync("Palace");
+
+        while (!load.isDone)
         {
-            SceneManager.LoadScene("Palace");
+            slider.value = load.progress;
+            yield return null;
         }
     }
 }
