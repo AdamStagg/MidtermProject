@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private CharacterController Controller;
     private Vector3 PlayerVelocity; 
     private bool GroundedPlayer;
-    private bool Crouched = false;
     private bool Running = false;
     private bool Walking = false;
     public float PlayerSpeed;
@@ -23,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public float StaminaTimeUntilRegen = 2f;
     private float TimeSinceRun = 0;
     private float GravityValue = -9.81f;
-    private float ControllerHeight = 1f;
     public float WalkSpeed = 3f;
     public float RunSpeed = 6f;
 
@@ -120,6 +118,17 @@ public class PlayerController : MonoBehaviour
         {
             Walking = true;
         }
+        if (Controller.velocity.magnitude > 0)
+        {
+            if (Running)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
+            }
+            else if (Walking)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
+            }
+        }
 
         ///////////Camera Movement///////////
         if (Camera.main != null)
@@ -143,7 +152,6 @@ public class PlayerController : MonoBehaviour
             
             if (Stamina >= .1f)
             {
-                SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
                 PlayerSpeed = RunSpeed;
                 Walking = false;
@@ -153,7 +161,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
                 Walking = true;
                 Running = false;
                 PlayerSpeed = WalkSpeed;
@@ -172,7 +179,7 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
+            //SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
             PlayerSpeed = WalkSpeed;

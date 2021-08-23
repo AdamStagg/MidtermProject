@@ -72,7 +72,7 @@ public static class SoundManager
             GameObject soundObject = new GameObject("Sound");
             soundObject.transform.position = position;
             AudioSource audio = soundObject.AddComponent<AudioSource>();
-            audio.outputAudioMixerGroup = soundMixer;
+            //audio.outputAudioMixerGroup = soundMixer;
             audio.clip = GetAudioClip(sound);
             audio.Play();
             Object.Destroy(soundObject, audio.clip.length);
@@ -89,12 +89,12 @@ public static class SoundManager
 
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-                oneShotAudioSource.outputAudioMixerGroup = soundMixer;
+                //oneShotAudioSource.outputAudioMixerGroup = soundMixer;
             }
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
-    public static bool CanPlaySound(Sound sound)
+    private static bool CanPlaySound(Sound sound)
     {
         
         switch (sound)
@@ -109,7 +109,7 @@ public static class SoundManager
                 return CanPlayLogic(sound, .4f);
         }
     }
-    public static bool CanPlayLogic(Sound sound, float maxTimer)
+    private static bool CanPlayLogic(Sound sound, float maxTimer)
     {
         if (soundTimerDictionary.ContainsKey(sound))
         {

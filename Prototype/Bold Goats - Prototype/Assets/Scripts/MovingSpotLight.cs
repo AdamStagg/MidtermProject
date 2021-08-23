@@ -15,7 +15,7 @@ public class MovingSpotLight : MonoBehaviour
     public float delayBeforeRespawn = 5f;
 
     float moveSpeed = 4f;
-    float rotateSpeed = 1f;
+    //float rotateSpeed = 1f;
     int waypointIndex = 0;
 
     float timeSinceLastSpawned;
