@@ -251,6 +251,7 @@ public class PlayerController : MonoBehaviour
             CheckKeyCards();
         }
 
+
         if (GroundedPlayer == false) 
         {
             PlayerVelocity.y += GravityValue * Time.deltaTime;
