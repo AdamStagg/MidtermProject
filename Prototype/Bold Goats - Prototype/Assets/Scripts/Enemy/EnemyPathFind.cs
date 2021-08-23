@@ -96,7 +96,7 @@ namespace Enemy
         {
             lastPosition.position = transform.position;
             aiEnemy.destination = investigatePosition.position;
-            investigatePosition.position = GameManager.Instance.Player.transform.position;
+            investigatePosition = GameManager.Instance.Player.transform;
         }
 
         public void HandleInvokeReturn()

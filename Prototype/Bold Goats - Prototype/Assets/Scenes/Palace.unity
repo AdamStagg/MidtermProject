@@ -3333,9 +3333,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: de2fcc2fe53383146a11096476df4fd8, type: 2}
+    - target: {fileID: 6843859547416542700, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
       propertyPath: m_Name
-      value: Plane (6)
+      value: Grass ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12450,6 +12458,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9137087648039969509, guid: 5da71cedfa72154468065498a20aeab4, type: 3}
   m_PrefabInstance: {fileID: 399849465}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &400179727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
+  m_PrefabInstance: {fileID: 84828401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &400179731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400179727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.88, y: 0.01, z: 10.59}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &402862080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44983,7 +45009,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: aca8f24a24343ac4b83ecae72322d908, type: 2}
     - target: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
       propertyPath: m_Name
-      value: Plane (5)
+      value: Maze Entrance
       objectReference: {fileID: 0}
     - target: {fileID: 8104384782773836444, guid: 30a45c4c3d953a44b9e724af7ffc986e, type: 3}
       propertyPath: m_Layer
@@ -59844,6 +59870,10 @@ PrefabInstance:
     - target: {fileID: 2318049507315978713, guid: d67acd0ea8a59ec478d9dcd45e487115, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318049507315978713, guid: d67acd0ea8a59ec478d9dcd45e487115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4119730010757755407, guid: d67acd0ea8a59ec478d9dcd45e487115, type: 3}
       propertyPath: m_RootOrder

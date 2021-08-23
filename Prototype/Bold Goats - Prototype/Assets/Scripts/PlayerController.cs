@@ -293,11 +293,11 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1, GameManager.Instance.Player.transform.position.z + 1f);
+        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1.5f, GameManager.Instance.Player.transform.position.z + 1f);
         GameObject clone = Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
-        Destroy(clone, 3);
+        Destroy(clone, 10);
     }
 
     
