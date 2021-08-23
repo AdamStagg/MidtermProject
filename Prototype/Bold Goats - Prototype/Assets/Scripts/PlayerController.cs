@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
 
     ///////////Variables for Distractable///////////
-    private Vector3 DistractableSpawn;
     public GameObject Distractable;
     public static int AmountOfDistractables = 3;
     private float timeToRefillDistractable = 5f;
@@ -65,6 +64,7 @@ public class PlayerController : MonoBehaviour
     public float Height = .5f;
     public float HeightPadding = .05f;
     public LayerMask Ground;
+    public LayerMask MiniMapWall;
     private float Angle;
     private float GroundAngle;
 
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
             //volume.profile.TryGet(out colorAdj);
             volume.profile.TryGetSettings(out filmGrain);
         }
-        DistractableSpawn.Set(transform.position.x, transform.position.y + .25f, transform.position.z);
         GameManager.Instance.keyCards = 0;
         
     }
@@ -228,25 +227,22 @@ public class PlayerController : MonoBehaviour
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
         {
-
             if (AmountOfDistractables > 0)
             {
+                
                 CreateDistractable();
 
             }
-            else if(AmountOfDistractables < 3)
-            {
-                if (timeToRefillDistractable > 0)
-                {
-                    timeToRefillDistractable -= Time.deltaTime;
-                }
-                else 
-                {
-                    AmountOfDistractables++;
-                    timeToRefillDistractable = 5f;
-                }
-            }
+        }
 
+        if (AmountOfDistractables < 3)
+        {
+            timeToRefillDistractable -= Time.deltaTime;
+        }
+        if(AmountOfDistractables < 3 && timeToRefillDistractable <= 0)
+        {
+           AmountOfDistractables++;
+           timeToRefillDistractable = 5f;
         }
 
         ///////////Checking the amount of keycards the player has///////////
@@ -255,7 +251,10 @@ public class PlayerController : MonoBehaviour
             CheckKeyCards();
         }
 
-        PlayerVelocity.y += GravityValue * Time.deltaTime;
+        if (GroundedPlayer == false) 
+        {
+            PlayerVelocity.y += GravityValue * Time.deltaTime;
+        }
         Controller.Move(PlayerVelocity * Time.deltaTime);
         
     }
@@ -267,10 +266,11 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Instantiate(Distractable, DistractableSpawn, transform.rotation);
+        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1, GameManager.Instance.Player.transform.position.z + 1f);
+        GameObject clone = Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
-        Debug.Log("Distractions left: " + AmountOfDistractables);
+        Destroy(clone, 3);
     }
 
     
@@ -327,7 +327,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded() 
     {
-        if (Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, Ground))
+        if (Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, Ground) || Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, MiniMapWall))
         {
             GroundedPlayer = true;
         }
