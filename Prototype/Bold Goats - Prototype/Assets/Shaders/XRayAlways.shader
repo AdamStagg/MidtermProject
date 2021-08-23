@@ -51,11 +51,13 @@ Shader "Unlit/XRayAlways"
                         return o;
                     }
 
+                    uniform half4 _GlobalPlayerVisibility;
+
                     half4 frag(v2f i) : COLOR
                     {
                         half Rim = 1 - saturate(dot(normalize(i.viewDir), i.normal));
 
-                        half4 RimOut = _RimCol * pow(Rim, _RimPow);
+                        half4 RimOut = _RimCol * pow(Rim, _RimPow) * _GlobalPlayerVisibility;
                         return RimOut;
                     }
                     ENDCG

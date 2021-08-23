@@ -54,9 +54,11 @@ namespace Enemy
                             {
                                 Debug.Log("hit the player");
                                 enemyState.state = States.Investigate;
-                                GetComponent<EnemyPathFind>().SetInvestigatePosition(GameManager.Instance.Player.transform);
-                                GetComponent<EnemyPathFind>().StopAllCoroutines();
-                                GetComponent<EnemyPathFind>().ResumeNavigation();
+                                EnemyPathFind enemy = GetComponent<EnemyPathFind>();
+                                enemy.SetInvestigatePosition(GameManager.Instance.Player.transform);
+                                enemy.StopAllCoroutines();
+                                enemy.ResumeNavigation();
+                                enemy.lookingAround = false;
                                 timeTillCanBeSeen = Time.time + stateChangeDelay;
                                 enemyState.InvokeInvestigate();
                             }

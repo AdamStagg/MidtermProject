@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceRun = 0;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
+    public float WalkSpeed = 3f;
+    public float RunSpeed = 6f;
 
     ///////////Variables for XRay///////////
     [Space]
@@ -73,7 +75,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-       
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+
         if (volume != null)
         {
             
@@ -93,11 +96,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Walking == true)
         {
-            //PlayerSpeed = PlayerSpeed;
+            PlayerSpeed = WalkSpeed;
         }
         else if (Running == true) 
         {
-            PlayerSpeed = 6;
+            PlayerSpeed = RunSpeed;
         }
 
         if (WalkAudio != null)
@@ -142,12 +145,29 @@ public class PlayerController : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
-                PlayerSpeed = PlayerSpeed + 3;
+                PlayerSpeed = RunSpeed;
                 Walking = false;
                 Stamina -= Time.deltaTime;
 
+
             }
+            else
+            {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
+                Walking = true;
+                Running = false;
+                PlayerSpeed = WalkSpeed;
+                if (Stamina <= 6.0f)
+                {
+                    if (TimeSinceRun <= Time.time)
+                    {
+                        Stamina += Time.deltaTime;
+
+                    }
+                }
+
+            }
+            SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
         else 
@@ -155,7 +175,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
-            PlayerSpeed = 3;
+            PlayerSpeed = WalkSpeed;
             if (Stamina <= 6.0f) {
                 if (TimeSinceRun <= Time.time)
                 {
