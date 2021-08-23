@@ -109,11 +109,9 @@ namespace Enemy
         public void HandleInvokeAttack()
         {
             GetComponent<Renderer>().material.color = colorAttack;
-           
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
-
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void HandleInvestigateLookAround()

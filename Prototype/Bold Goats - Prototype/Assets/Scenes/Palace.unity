@@ -32106,6 +32106,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 28.439
       objectReference: {fileID: 0}
+    - target: {fileID: 9080754524690095339, guid: 2a44598c025a4924898a8e0c3931785e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9643242
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080754524690095339, guid: 2a44598c025a4924898a8e0c3931785e, type: 3}
+      propertyPath: m_Center.x
+      value: 1.9640123e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080754524690095339, guid: 2a44598c025a4924898a8e0c3931785e, type: 3}
+      propertyPath: m_Center.y
+      value: -0.017837876
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a44598c025a4924898a8e0c3931785e, type: 3}
 --- !u!4 &1019033389 stripped
@@ -46442,7 +46454,6 @@ MonoBehaviour:
   ZoomDef: 3
   ZoomDist: 0
   CollisionSens: 4
-  ClampAngle: 80
 --- !u!114 &1476674419
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class MovingSpotLight : MonoBehaviour
         Vector3 dirToWaypoint = waypoints[waypointIndex].transform.position - transform.position;
         dirToWaypoint.Normalize();
         transform.Translate(dirToWaypoint * moveSpeed * Time.deltaTime);
-        //transform.Rotate(waypoints[waypointIndex].transform.position * rotateSpeed * Time.deltaTime);
+        
         if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < .1f)
         {
             UpdateWaypoint();
@@ -85,6 +85,8 @@ public class MovingSpotLight : MonoBehaviour
         player.RunSpeed = 0;
         SoundManager.PlaySound(SoundManager.Sound.SpotlightFindsPlayer);
         yield return new WaitForSecondsRealtime(.2f);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
     }
 

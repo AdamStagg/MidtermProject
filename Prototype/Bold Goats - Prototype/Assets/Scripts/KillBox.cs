@@ -18,7 +18,7 @@ public partial class KillBox : MonoBehaviour
                 text.SetActive(true);
             }
             StartCoroutine(WaitSomeTime(2f));
-            //SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
+            
         }
     }
     
