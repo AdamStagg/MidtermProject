@@ -13,7 +13,10 @@ public partial class KillBox : MonoBehaviour
             Cursor.visible = true;
             SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
             
-            text.SetActive(true);
+            if (text != null)
+            {
+                text.SetActive(true);
+            }
             StartCoroutine(WaitSomeTime(2f));
             //SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
         }

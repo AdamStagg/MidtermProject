@@ -7,6 +7,8 @@ public class LazerMazeCollider : MonoBehaviour
     public GameObject LazerMazeCam;
     public GameObject PlayerCam;
     public GameObject skipText;
+    private float initalWalkSpeed = 0;
+    private float initalRunSpeed = 0;
 
 
     void Update()
@@ -25,6 +27,11 @@ public class LazerMazeCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 0f);
+        initalWalkSpeed = GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed;
+        initalRunSpeed = GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = 0f;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = 0f;
         skipText.SetActive(true);
         LazerMazeCam.SetActive(true);
         PlayerCam.SetActive(false);
@@ -32,6 +39,9 @@ public class LazerMazeCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         LazerMazeCam.SetActive(false);
         skipText.SetActive(false);
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initalWalkSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initalRunSpeed;
     }
 
     void SkipScene()
@@ -40,5 +50,6 @@ public class LazerMazeCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         LazerMazeCam.SetActive(false);
         skipText.SetActive(false);
+        
     }
 }

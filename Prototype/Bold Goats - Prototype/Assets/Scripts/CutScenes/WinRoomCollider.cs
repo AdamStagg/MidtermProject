@@ -7,6 +7,8 @@ public class WinRoomCollider : MonoBehaviour
     public GameObject WinRoomCam;
     public GameObject PlayerCam;
     public GameObject skipText;
+    private float initalWalking = 0;
+    private float initalRunning = 0;
 
     void Update()
     {
@@ -24,6 +26,11 @@ public class WinRoomCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 0f);
+        initalWalking = GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed;
+        initalRunning = GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = 0f;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = 0f;
         skipText.SetActive(true);
         WinRoomCam.SetActive(true);
         PlayerCam.SetActive(false);
@@ -31,7 +38,9 @@ public class WinRoomCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
         skipText.SetActive(false);
-
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initalWalking;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initalRunning;
     }
 
     void SkipScene()
@@ -40,5 +49,6 @@ public class WinRoomCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
         skipText.SetActive(false);
+       
     }
 }

@@ -26,14 +26,12 @@ namespace Enemy
             //TODO Add angle checks
             if (checkForPlayer && GameManager.Instance.Player != null)
             {
-                Debug.Log("Checking for player");
                 Vector3 dirToPlayer = GameManager.Instance.Player.transform.position - transform.position;
 
                 dirToPlayer = new Vector3(dirToPlayer.x, dirToPlayer.y + 1, dirToPlayer.z);
 
                 if (dirToPlayer.magnitude <= 2)
                 {
-                    Debug.Log("Chasing");
                     enemyState.InvokeChase();
                     GetComponent<EnemyPathFind>().SetLastPosition(transform);
                     return;
@@ -45,14 +43,11 @@ namespace Enemy
                     {
                         
                         //If we hit the player
-                        Debug.Log(hit.transform.gameObject);
-                        Debug.Log(GameManager.Instance.Player);
                         if (hit.transform.gameObject == GameManager.Instance.Player)
                         {
 
                             if (enemyState.state == States.Patrol && timeTillCanBeSeen <= Time.time || enemyState.state == States.Return && timeTillCanBeSeen <= Time.time)
                             {
-                                Debug.Log("hit the player");
                                 enemyState.state = States.Investigate;
                                 EnemyPathFind enemy = GetComponent<EnemyPathFind>();
                                 enemy.SetInvestigatePosition(GameManager.Instance.Player.transform);

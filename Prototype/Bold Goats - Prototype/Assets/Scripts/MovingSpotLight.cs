@@ -15,7 +15,7 @@ public class MovingSpotLight : MonoBehaviour
     public float delayBeforeRespawn = 5f;
 
     float moveSpeed = 4f;
-    float rotateSpeed = 1f;
+    //float rotateSpeed = 1f;
     int waypointIndex = 0;
 
     float timeSinceLastSpawned;
@@ -73,10 +73,19 @@ public class MovingSpotLight : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            StartCoroutine(SpotPlayer());
             
         }
     }
 
+    IEnumerator SpotPlayer()
+    {
+        var player = GameManager.Instance.Player.GetComponent<PlayerController>();
+        player.WalkSpeed = 0;
+        player.RunSpeed = 0;
+        SoundManager.PlaySound(SoundManager.Sound.SpotlightFindsPlayer);
+        yield return new WaitForSecondsRealtime(.2f);
+        SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+    }
 
 }

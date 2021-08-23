@@ -4353,6 +4353,7 @@ GameObject:
   - component: {fileID: 125702676}
   - component: {fileID: 125702679}
   - component: {fileID: 125702680}
+  - component: {fileID: 125702677}
   m_Layer: 0
   m_Name: Win Room Camera
   m_TagString: Untagged
@@ -4374,6 +4375,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &125702677
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125702675}
+  m_Enabled: 1
 --- !u!20 &125702679
 Camera:
   m_ObjectHideFlags: 0
@@ -13286,7 +13295,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428536277}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &428536280
 Camera:
   m_ObjectHideFlags: 0
@@ -13988,7 +13997,7 @@ MonoBehaviour:
   CameratoHide: {fileID: 1476674416}
   WinRoomCam: {fileID: 2034774408}
   Music: {fileID: 587824514}
-  MusictoHide: {fileID: 902873279}
+  MusictoHide: {fileID: 0}
   soundeffect: {fileID: 282833183}
 --- !u!4 &465420724 stripped
 Transform:
@@ -15362,6 +15371,7 @@ GameObject:
   - component: {fileID: 511950625}
   - component: {fileID: 511950628}
   - component: {fileID: 511950629}
+  - component: {fileID: 511950626}
   m_Layer: 0
   m_Name: Lazer Maze Camera
   m_TagString: Untagged
@@ -15383,6 +15393,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &511950626
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511950624}
+  m_Enabled: 1
 --- !u!20 &511950628
 Camera:
   m_ObjectHideFlags: 0
@@ -27931,6 +27949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904761040}
+  - component: {fileID: 904761041}
   m_Layer: 0
   m_Name: Camera Center
   m_TagString: MainCamera
@@ -27953,6 +27972,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904761041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904761039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dea5e0eb3b28014088c5dc5aec676dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RestrictMinAngle: -25
+  RestrictMaxAngle: 70
 --- !u!1001 &908143771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33334,6 +33367,7 @@ GameObject:
   - component: {fileID: 1074617009}
   - component: {fileID: 1074617012}
   - component: {fileID: 1074617013}
+  - component: {fileID: 1074617010}
   m_Layer: 0
   m_Name: Maze Camera
   m_TagString: Untagged
@@ -33355,6 +33389,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1074617010
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074617008}
+  m_Enabled: 1
 --- !u!20 &1074617012
 Camera:
   m_ObjectHideFlags: 0
@@ -39807,25 +39849,13 @@ PrefabInstance:
       value: AudioAssets
       objectReference: {fileID: 0}
     - target: {fileID: 4951177673127949900, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
-      propertyPath: musicMixer
-      value: 
-      objectReference: {fileID: 24300002, guid: e66934725d4d1464ba010f1f6461f768, type: 2}
-    - target: {fileID: 4951177673127949900, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
       propertyPath: soundMixer
       value: 
-      objectReference: {fileID: 24300002, guid: 39cd5576cf16c344abe2260e8700b03f, type: 2}
+      objectReference: {fileID: 24300002, guid: 8053a84a083330c4a9746bc9a6217155, type: 2}
     - target: {fileID: 4951177673127949900, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
-      propertyPath: soundAudioClipArray.Array.size
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 4951177673127949900, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
-      propertyPath: soundAudioClipArray.Array.data[23].sound
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4951177673127949900, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
-      propertyPath: soundAudioClipArray.Array.data[23].audioClip
+      propertyPath: soundAudioClipArray.Array.data[20].audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: baf4513605514774d856b384c1ca05b8, type: 3}
+      objectReference: {fileID: 8300000, guid: c47a5ac360404ee468cfa068b689e236, type: 3}
     - target: {fileID: 5721079266695865262, guid: 8be4d7ce012f41944ae47d6b95a83382, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -42983,7 +43013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2688c83586aa4fac563a940692570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmoothDamp: 0.01
+  SmoothDamp: 0.001
 --- !u!4 &1363827696
 Transform:
   m_ObjectHideFlags: 0
@@ -46403,16 +46433,16 @@ MonoBehaviour:
   character: {fileID: 1363827694}
   CameraCenter: {fileID: 904761039}
   CameraFollow: {fileID: 1476674421}
-  yoffset: 1.5
+  yoffset: 1
   Sensitivity: 3
   ScrollSensitivity: 5
   ScrollDampening: 6
   ZoomMin: 3
-  ZoomMax: 6
-  ZoomDef: 4
+  ZoomMax: 5
+  ZoomDef: 3
   ZoomDist: 0
   CollisionSens: 4
-  ClampAngle: 75
+  ClampAngle: 80
 --- !u!114 &1476674419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48403,6 +48433,7 @@ GameObject:
   - component: {fileID: 1552354780}
   - component: {fileID: 1552354779}
   - component: {fileID: 1552354777}
+  - component: {fileID: 1552354778}
   m_Layer: 0
   m_Name: Hallway Camera
   m_TagString: Untagged
@@ -48426,6 +48457,14 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!81 &1552354778
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_Enabled: 1
 --- !u!20 &1552354779
 Camera:
   m_ObjectHideFlags: 0
@@ -51908,6 +51947,7 @@ GameObject:
   - component: {fileID: 1680292383}
   - component: {fileID: 1680292386}
   - component: {fileID: 1680292387}
+  - component: {fileID: 1680292384}
   m_Layer: 0
   m_Name: Spotlight Camera
   m_TagString: Untagged
@@ -51929,6 +51969,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1680292384
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680292382}
+  m_Enabled: 1
 --- !u!20 &1680292386
 Camera:
   m_ObjectHideFlags: 0
@@ -55532,7 +55580,7 @@ PrefabInstance:
     - target: {fileID: 23000013163389464, guid: c62700998e152c04caf87b3620ca2fee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd03ba95f6de4354c81b4e0eb3775cae, type: 2}
+      objectReference: {fileID: 2100000, guid: 3c32ac0594bbca043ad7378312674a7b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c62700998e152c04caf87b3620ca2fee, type: 3}
 --- !u!1 &1800120531
@@ -61763,7 +61811,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034774408}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2034774412
 Camera:
   m_ObjectHideFlags: 0
