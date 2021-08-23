@@ -4352,6 +4352,7 @@ GameObject:
   - component: {fileID: 125702676}
   - component: {fileID: 125702679}
   - component: {fileID: 125702680}
+  - component: {fileID: 125702677}
   m_Layer: 0
   m_Name: Win Room Camera
   m_TagString: Untagged
@@ -4373,6 +4374,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &125702677
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125702675}
+  m_Enabled: 1
 --- !u!20 &125702679
 Camera:
   m_ObjectHideFlags: 0
@@ -15368,6 +15377,7 @@ GameObject:
   - component: {fileID: 511950625}
   - component: {fileID: 511950628}
   - component: {fileID: 511950629}
+  - component: {fileID: 511950626}
   m_Layer: 0
   m_Name: Lazer Maze Camera
   m_TagString: Untagged
@@ -15389,6 +15399,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &511950626
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511950624}
+  m_Enabled: 1
 --- !u!20 &511950628
 Camera:
   m_ObjectHideFlags: 0
@@ -27918,6 +27936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904761040}
+  - component: {fileID: 904761041}
   m_Layer: 0
   m_Name: Camera Center
   m_TagString: MainCamera
@@ -27940,6 +27959,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904761041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904761039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dea5e0eb3b28014088c5dc5aec676dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RestrictMinAngle: -25
+  RestrictMaxAngle: 70
 --- !u!1001 &908143771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33301,6 +33334,7 @@ GameObject:
   - component: {fileID: 1074617009}
   - component: {fileID: 1074617012}
   - component: {fileID: 1074617013}
+  - component: {fileID: 1074617010}
   m_Layer: 0
   m_Name: Maze Camera
   m_TagString: Untagged
@@ -33322,6 +33356,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1074617010
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074617008}
+  m_Enabled: 1
 --- !u!20 &1074617012
 Camera:
   m_ObjectHideFlags: 0
@@ -42930,7 +42972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2688c83586aa4fac563a940692570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmoothDamp: 0.01
+  SmoothDamp: 0.001
 --- !u!4 &1363827696
 Transform:
   m_ObjectHideFlags: 0
@@ -46350,16 +46392,16 @@ MonoBehaviour:
   character: {fileID: 1363827694}
   CameraCenter: {fileID: 904761039}
   CameraFollow: {fileID: 1476674421}
-  yoffset: 1.5
+  yoffset: 1
   Sensitivity: 3
   ScrollSensitivity: 5
   ScrollDampening: 6
   ZoomMin: 3
-  ZoomMax: 6
-  ZoomDef: 4
+  ZoomMax: 5
+  ZoomDef: 3
   ZoomDist: 0
   CollisionSens: 4
-  ClampAngle: 75
+  ClampAngle: 80
 --- !u!114 &1476674419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48349,6 +48391,7 @@ GameObject:
   - component: {fileID: 1552354780}
   - component: {fileID: 1552354779}
   - component: {fileID: 1552354777}
+  - component: {fileID: 1552354778}
   m_Layer: 0
   m_Name: Hallway Camera
   m_TagString: Untagged
@@ -48372,6 +48415,14 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!81 &1552354778
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552354776}
+  m_Enabled: 1
 --- !u!20 &1552354779
 Camera:
   m_ObjectHideFlags: 0
@@ -51705,6 +51756,7 @@ GameObject:
   - component: {fileID: 1680292383}
   - component: {fileID: 1680292386}
   - component: {fileID: 1680292387}
+  - component: {fileID: 1680292384}
   m_Layer: 0
   m_Name: Spotlight Camera
   m_TagString: Untagged
@@ -51726,6 +51778,14 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1680292384
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680292382}
+  m_Enabled: 1
 --- !u!20 &1680292386
 Camera:
   m_ObjectHideFlags: 0
