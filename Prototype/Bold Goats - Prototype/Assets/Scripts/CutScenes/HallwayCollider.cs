@@ -7,6 +7,8 @@ public class HallwayCollider : MonoBehaviour
     public GameObject HallwayCam;
     public GameObject PlayerCam;
     public GameObject skipText;
+    private float initWalkSpeed = 0;
+    private float initRunSpeed = 0;
 
     void Update()
     {
@@ -25,6 +27,10 @@ public class HallwayCollider : MonoBehaviour
     IEnumerator FinishCutScene()
     {
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 0f);
+        initWalkSpeed = GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed;
+        initRunSpeed = GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = 0f;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = 0f;
         skipText.SetActive(true);
         HallwayCam.SetActive(true);
         PlayerCam.SetActive(false);
@@ -33,6 +39,8 @@ public class HallwayCollider : MonoBehaviour
         HallwayCam.SetActive(false);
         skipText.SetActive(false);
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalkSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunSpeed;
 
     }
 
@@ -43,5 +51,8 @@ public class HallwayCollider : MonoBehaviour
         HallwayCam.SetActive(false);
         skipText.SetActive(false);
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalkSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunSpeed;
+
     }
 }
