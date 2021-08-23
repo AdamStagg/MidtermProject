@@ -26,8 +26,8 @@ public class WinConTrigger : MonoBehaviour
         WinScreenUI.SetActive(true);
         CameratoHide.SetActive(false);
         WinRoomCam.SetActive(true);
-        MusictoHide.SetActive(false);
-        Music.SetActive(true);
+        //MusictoHide.SetActive(false);
+        //Music.SetActive(true);
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

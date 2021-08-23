@@ -23,7 +23,11 @@ public class DistractionController : MonoBehaviour
     {
         foreach (EnemyState enemy in enemies)
         {
-            enemy.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+            EnemyPathFind enemypf = enemy.GetComponent<EnemyPathFind>();
+            enemypf.SetInvestigatePosition(transform);
+            enemypf.lookingAround = false;
+            enemypf.StopAllCoroutines();
+            enemypf.ResumeNavigation();
             enemy.InvokeInvestigate();
         }
         DistractableRb.isKinematic = true;
