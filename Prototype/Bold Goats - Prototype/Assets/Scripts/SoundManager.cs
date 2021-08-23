@@ -60,6 +60,9 @@ public static class SoundManager
         soundTimerDictionary[Sound.PlayerRun] = 0f;
         soundTimerDictionary[Sound.PlayerWalk] = 0f;
         soundTimerDictionary[Sound.EnemyWalk] = 0f;
+        soundTimerDictionary[Sound.EnemySpotPlayer] = 0f;
+        soundTimerDictionary[Sound.EnemyChasePlayer] = 0f;
+        soundTimerDictionary[Sound.PlayerWaterDeath] = 0f;
         musicMixer = AudioAssets.instance.musicMixer;
         soundMixer = AudioAssets.instance.soundMixer;
     }
@@ -70,9 +73,10 @@ public static class SoundManager
         if (CanPlaySound(sound))
         {
             GameObject soundObject = new GameObject("Sound");
+            Object.DontDestroyOnLoad(soundObject);
             soundObject.transform.position = position;
             AudioSource audio = soundObject.AddComponent<AudioSource>();
-            //audio.outputAudioMixerGroup = soundMixer;
+            audio.outputAudioMixerGroup = soundMixer;
             audio.clip = GetAudioClip(sound);
             audio.Play();
             Object.Destroy(soundObject, audio.clip.length);
@@ -89,8 +93,9 @@ public static class SoundManager
 
                 oneShotGameObject = new GameObject("One Shot Sound");
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
-                //oneShotAudioSource.outputAudioMixerGroup = soundMixer;
-            }
+                Object.DontDestroyOnLoad(oneShotGameObject);
+                oneShotAudioSource.outputAudioMixerGroup = soundMixer;
+            } 
                 oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
@@ -102,11 +107,17 @@ public static class SoundManager
             default:
                 return true;
             case Sound.PlayerRun:
-                return CanPlayLogic(sound, .4f);
+                return CanPlayLogic(sound, 1f);
             case Sound.PlayerWalk:
-                return CanPlayLogic(sound, .4f);
+                return CanPlayLogic(sound, .5f);
             case Sound.EnemyWalk:
                 return CanPlayLogic(sound, .4f);
+            case Sound.EnemySpotPlayer:
+                return CanPlayLogic(sound, 4f);
+            case Sound.EnemyChasePlayer:
+                return CanPlayLogic(sound, 6f);
+            case Sound.PlayerWaterDeath:
+                return CanPlayLogic(sound, 1f);
         }
     }
     private static bool CanPlayLogic(Sound sound, float maxTimer)

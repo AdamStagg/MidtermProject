@@ -10,10 +10,12 @@ public class BUTTONFX : MonoBehaviour
 
     public void HoverSound()
     {
-        FX.PlayOneShot(Hoverfx);
+        //FX.PlayOneShot(Hoverfx);
+        SoundManager.PlaySound(SoundManager.Sound.HoverMenuItem);
     }
     public void ClickSound()
     {
-        FX.PlayOneShot(Clickfx);
+        //FX.PlayOneShot(Clickfx);
+        SoundManager.PlaySound(SoundManager.Sound.ClickMenuItem);
     }
 }

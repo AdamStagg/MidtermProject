@@ -14,7 +14,18 @@ public class LaserGateKill : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
+            StartCoroutine(SpotPlayer());
+
         }
+    }
+
+    IEnumerator SpotPlayer()
+    {
+        var player = GameManager.Instance.Player.GetComponent<PlayerController>();
+        player.WalkSpeed = 0;
+        player.RunSpeed = 0;
+        SoundManager.PlaySound(SoundManager.Sound.SpotlightFindsPlayer);
+        yield return new WaitForSecondsRealtime(.2f);
+        SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
     }
 }

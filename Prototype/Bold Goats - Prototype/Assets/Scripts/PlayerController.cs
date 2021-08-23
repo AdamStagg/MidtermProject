@@ -120,11 +120,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Controller.velocity.magnitude > 0)
         {
-            if (Running)
+            if (Running && !Walking)
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
             }
-            else if (Walking)
+            else if (Walking && !Running)
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             }
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (TimeSinceRun <= Time.time)
                     {
-                        Stamina += Time.deltaTime;
+                        Stamina += Time.deltaTime * 3;
 
                     }
                 }
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
             if (Stamina <= 6.0f) {
                 if (TimeSinceRun <= Time.time)
                 {
-                    Stamina += Time.deltaTime;
+                    Stamina += Time.deltaTime * 3;
 
                 }
             }
@@ -199,7 +199,6 @@ public class PlayerController : MonoBehaviour
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
-        Debug.Log(xraytime);
             if (xraytime >= .1f)
             {
                 if (!hasPlayedxRay)
