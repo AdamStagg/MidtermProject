@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float TimeSinceRun = 0;
     private float GravityValue = -9.81f;
     private float ControllerHeight = 1f;
+    public float WalkSpeed = 3f;
+    public float RunSpeed = 6f;
 
     ///////////Variables for XRay///////////
     [Space]
@@ -45,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
 
     ///////////Variables for Distractable///////////
-    private Vector3 DistractableSpawn;
     public GameObject Distractable;
     public static int AmountOfDistractables = 3;
     private float timeToRefillDistractable = 5f;
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public float Height = .5f;
     public float HeightPadding = .05f;
     public LayerMask Ground;
+    public LayerMask MiniMapWall;
     private float Angle;
     private float GroundAngle;
 
@@ -73,7 +75,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
-       
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+
         if (volume != null)
         {
             
@@ -81,7 +84,6 @@ public class PlayerController : MonoBehaviour
             //volume.profile.TryGet(out colorAdj);
             volume.profile.TryGetSettings(out filmGrain);
         }
-        DistractableSpawn.Set(transform.position.x, transform.position.y + .25f, transform.position.z);
         GameManager.Instance.keyCards = 0;
         
     }
@@ -94,11 +96,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Walking == true)
         {
-            //PlayerSpeed = PlayerSpeed;
+            PlayerSpeed = WalkSpeed;
         }
         else if (Running == true) 
         {
-            PlayerSpeed = 6;
+            PlayerSpeed = RunSpeed;
         }
 
         if (WalkAudio != null)
@@ -143,12 +145,29 @@ public class PlayerController : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerRun);
                 Running = true;
-                PlayerSpeed = PlayerSpeed + 3;
+                PlayerSpeed = RunSpeed;
                 Walking = false;
                 Stamina -= Time.deltaTime;
 
+
             }
+            else
+            {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
+                Walking = true;
+                Running = false;
+                PlayerSpeed = WalkSpeed;
+                if (Stamina <= 6.0f)
+                {
+                    if (TimeSinceRun <= Time.time)
+                    {
+                        Stamina += Time.deltaTime;
+
+                    }
+                }
+
+            }
+            SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             TimeSinceRun = Time.time + StaminaTimeUntilRegen;
         }
         else 
@@ -156,7 +175,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
             Walking = true;
             Running = false;
-            PlayerSpeed = 3;
+            PlayerSpeed = WalkSpeed;
             if (Stamina <= 6.0f) {
                 if (TimeSinceRun <= Time.time)
                 {
@@ -228,25 +247,22 @@ public class PlayerController : MonoBehaviour
         ///////////Create Distractable///////////
         if (Input.GetKeyDown(KeyCode.Q))
         {
-
             if (AmountOfDistractables > 0)
             {
+                
                 CreateDistractable();
 
             }
-            else if(AmountOfDistractables < 3)
-            {
-                if (timeToRefillDistractable > 0)
-                {
-                    timeToRefillDistractable -= Time.deltaTime;
-                }
-                else 
-                {
-                    AmountOfDistractables++;
-                    timeToRefillDistractable = 5f;
-                }
-            }
+        }
 
+        if (AmountOfDistractables < 3)
+        {
+            timeToRefillDistractable -= Time.deltaTime;
+        }
+        if(AmountOfDistractables < 3 && timeToRefillDistractable <= 0)
+        {
+           AmountOfDistractables++;
+           timeToRefillDistractable = 5f;
         }
 
         ///////////Checking the amount of keycards the player has///////////
@@ -255,7 +271,11 @@ public class PlayerController : MonoBehaviour
             CheckKeyCards();
         }
 
-        PlayerVelocity.y += GravityValue * Time.deltaTime;
+
+        if (GroundedPlayer == false) 
+        {
+            PlayerVelocity.y += GravityValue * Time.deltaTime;
+        }
         Controller.Move(PlayerVelocity * Time.deltaTime);
         
     }
@@ -267,10 +287,11 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Instantiate(Distractable, DistractableSpawn, transform.rotation);
+        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1, GameManager.Instance.Player.transform.position.z + 1f);
+        GameObject clone = Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
-        Debug.Log("Distractions left: " + AmountOfDistractables);
+        Destroy(clone, 3);
     }
 
     
@@ -327,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded() 
     {
-        if (Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, Ground))
+        if (Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, Ground) || Physics.Raycast(transform.position, -Vector3.up, out HitInfo, Height + HeightPadding, MiniMapWall))
         {
             GroundedPlayer = true;
         }

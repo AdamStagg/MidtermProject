@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     Animator animator;
+    public float SmoothDamp;
 
     // Start is called before the first frame update
     void Awake()
@@ -32,8 +33,8 @@ public class AnimationController : MonoBehaviour
         float VelocityZ = Vector3.Dot(Movement.normalized, x);
         float VelocityX = Vector3.Dot(Movement.normalized, z);
 
-        animator.SetFloat("VelocityZ", VelocityX, 0.1f, Time.deltaTime);
-        animator.SetFloat("VelocityX", -VelocityZ, 0.1f, Time.deltaTime);
+        animator.SetFloat("VelocityZ", VelocityX, SmoothDamp, Time.deltaTime);
+        animator.SetFloat("VelocityX", -VelocityZ, SmoothDamp, Time.deltaTime);
 
     }
 }
