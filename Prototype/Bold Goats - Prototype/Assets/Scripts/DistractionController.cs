@@ -17,6 +17,8 @@ public class DistractionController : MonoBehaviour
         enemies = new List<EnemyState>();
     }
 
+
+
     private void OnCollisionEnter(Collision hit)
     {
         foreach (EnemyState enemy in enemies)
@@ -27,7 +29,6 @@ public class DistractionController : MonoBehaviour
         DistractableRb.isKinematic = true;
         explosion.SetActive(true);
         SoundManager.PlaySound(SoundManager.Sound.DistractionExplosion);
-        Destroy(gameObject);
         
     }
 
