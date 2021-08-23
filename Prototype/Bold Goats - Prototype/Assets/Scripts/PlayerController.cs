@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [Header("XRay Shader variables")]
-    public float xrayTimeLimit = 5f;
+    public static float xrayTimeLimit = 5f;
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 DistractableSpawn;
     public GameObject Distractable;
     public static int AmountOfDistractables = 3;
+    private float timeToRefillDistractable = 5f;
 
     ///////////Variables for Audio///////////
     public AudioSource RunAudio;
@@ -168,11 +169,11 @@ public class PlayerController : MonoBehaviour
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
-       
 
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
+        Debug.Log(xraytime);
             if (xraytime >= .1f)
             {
                 if (!hasPlayedxRay)
@@ -231,10 +232,19 @@ public class PlayerController : MonoBehaviour
             if (AmountOfDistractables > 0)
             {
                 CreateDistractable();
+
             }
-            else
+            else if(AmountOfDistractables < 3)
             {
-                Debug.Log("Out of Distractions");
+                if (timeToRefillDistractable > 0)
+                {
+                    timeToRefillDistractable -= Time.deltaTime;
+                }
+                else 
+                {
+                    AmountOfDistractables++;
+                    timeToRefillDistractable = 5f;
+                }
             }
 
         }
@@ -263,7 +273,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Distractions left: " + AmountOfDistractables);
     }
 
-
+    
     void CheckKeyCards()
     {
         Debug.Log("Keycards = " + KeyCards);

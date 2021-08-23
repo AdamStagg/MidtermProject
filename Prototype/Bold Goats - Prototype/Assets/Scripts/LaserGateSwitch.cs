@@ -9,12 +9,11 @@ public class LaserGateSwitch : MonoBehaviour
     public float SwitchTime = 3.0f;
     public GameObject Lasers;
 
-    Animator anim;
+    
     // Start is called before the first frame update
     void Start()
     {
         Lasers.SetActive(IsOn);
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,9 +25,8 @@ public class LaserGateSwitch : MonoBehaviour
             if (SwitchTime < 0.1)
             {
                 SwitchTime = 3.0f;
-                anim.SetTrigger("Switch");
-                //IsOn = !IsOn;
-                //Lasers.SetActive(IsOn);
+                IsOn = !IsOn;
+                Lasers.SetActive(IsOn);
             }
         }
     }
