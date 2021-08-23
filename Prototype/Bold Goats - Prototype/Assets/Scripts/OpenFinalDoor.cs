@@ -13,14 +13,14 @@ public class OpenFinalDoor : MonoBehaviour
     public GameObject door1;
     public GameObject door2;
 
-    private void Update()
-    {
-        if (GameManager.Instance.keyCards >= 3)
-        {
-            Destroy(door2);
-            Destroy(door1);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (GameManager.Instance.keyCards >= 3)
+    //    {
+    //        Destroy(door2);
+    //        Destroy(door1);
+    //    }
+    //}
 
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +32,8 @@ public class OpenFinalDoor : MonoBehaviour
                 //Open door
                 foreach (var door in doorsToOpen)
                 {
-                    door.GetComponent<Animator>().SetTrigger("Open");
+                    Destroy(door);
+                    //door.GetComponent<Animator>().SetTrigger("Open");
                 }
 
             } else
@@ -43,10 +44,10 @@ public class OpenFinalDoor : MonoBehaviour
 
                 float time = Time.time + timeToDisplayText;
 
-                while (time >= Time.time)
-                {
-                    continue;
-                }
+                //while (time >= Time.time)
+                //{
+                //    continue;
+                //}
 
                 textToDisplay.SetActive(false);
             }

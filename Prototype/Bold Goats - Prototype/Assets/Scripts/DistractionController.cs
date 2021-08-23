@@ -21,11 +21,23 @@ public class DistractionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
+<<<<<<< HEAD
         //foreach (EnemyState enemy in enemies)
         //{
         //    enemy.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
         //    enemy.InvokeInvestigate();
         //}
+=======
+        foreach (EnemyState enemy in enemies)
+        {
+            EnemyPathFind enemypf = enemy.GetComponent<EnemyPathFind>();
+            enemypf.SetInvestigatePosition(transform);
+            enemypf.lookingAround = false;
+            enemypf.StopAllCoroutines();
+            enemypf.ResumeNavigation();
+            enemy.InvokeInvestigate();
+        }
+>>>>>>> 3dcea9a20bb384092677e6475edc88d9393f4950
         DistractableRb.isKinematic = true;
         explosion.SetActive(true);
         SoundManager.PlaySound(SoundManager.Sound.DistractionExplosion);

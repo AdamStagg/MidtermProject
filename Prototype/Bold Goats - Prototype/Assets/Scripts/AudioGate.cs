@@ -6,30 +6,26 @@ public class AudioGate : MonoBehaviour
 {
     // Start is called before the first frame update
     bool entered = false;
-    public AudioSource audio;
-    void Start()
-    {
-        
-    }
+    public AudioSource audioS;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") 
         {
+
+
             entered = !entered;
 
             if (entered == true)
             {
-                audio.Play();
+                audioS.Play();
+                GameObject.Find("BG SONG").GetComponent<AudioSource>().Stop();
             }
             else 
             {
-                audio.Stop();
+                audioS.Stop();
+                GameObject.Find("BG SONG").GetComponent<AudioSource>().Play();
             }
         }
     }

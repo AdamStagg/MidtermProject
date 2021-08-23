@@ -59,6 +59,10 @@ namespace Enemy
                             }
                             else if (enemyState.state == States.Investigate && Time.time >= timeTillCanBeSeen)
                             {
+                                EnemyPathFind enemy = GetComponent<EnemyPathFind>();
+                                enemy.StopAllCoroutines();
+                                enemy.ResumeNavigation();
+                                enemy.lookingAround = false;
                                 enemyState.InvokeChase();
                             }
                            
