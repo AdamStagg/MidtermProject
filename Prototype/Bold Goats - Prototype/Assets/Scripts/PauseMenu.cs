@@ -28,11 +28,10 @@ public class PauseMenu : MonoBehaviour
             {
                 string tempRes = resolutions[i].width + " x " + resolutions[i].height + " : " + resolutions[i].refreshRate;
                 res.Add(tempRes);
-
-                if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-                {
-                    currentRes = i;
-                }
+            }
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentRes = i;
             }
         }
 
