@@ -20,7 +20,8 @@ namespace Enemy
 
         EnemyVision enemyVision;
 
-        bool lookingAround = false;
+        [HideInInspector]
+        public bool lookingAround = false;
 
         //Delegate function to be called after the LookAround coroutine
         delegate void FunctionAfterLookingAround();
@@ -28,7 +29,7 @@ namespace Enemy
         EnemyState enemyState;
 
         [SerializeField] float maxDistanceForChase = 25f;
-        [SerializeField] float distanceToAttack = 2f;
+        [SerializeField] const float distanceToAttack = .5f;
         [SerializeField] Material attackMaterial;
 
         
@@ -111,7 +112,7 @@ namespace Enemy
            
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
 
-            Debug.Log("Player had died");
+            //Debug.Log("Player had died");
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -143,6 +144,8 @@ namespace Enemy
 
                     break;
                 case States.Chase:
+
+                    lookingAround = false;
 
                     Vector3 playerPos = GameManager.Instance.Player.transform.position;
 
@@ -196,6 +199,8 @@ namespace Enemy
 
                     break;
                 case States.Return:
+
+                    lookingAround = false;
 
                     //Enemy has reached the last position
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
