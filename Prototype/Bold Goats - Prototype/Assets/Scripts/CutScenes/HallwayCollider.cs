@@ -41,7 +41,6 @@ public class HallwayCollider : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalkSpeed;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunSpeed;
-
     }
 
     void SkipScene()

@@ -7,6 +7,8 @@ public class MazeCollider : MonoBehaviour
     public GameObject MazeCam;
     public GameObject PlayerCam;
     public GameObject skipText;
+    private float initWalk = 0;
+    private float initRun = 0;
 
 
     void Update()
@@ -25,6 +27,11 @@ public class MazeCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 0f);
+        initWalk = GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed;
+        initRun = GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed;
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = 0f;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = 0f;
         skipText.SetActive(true);
         MazeCam.SetActive(true);
         PlayerCam.SetActive(false);
@@ -32,6 +39,9 @@ public class MazeCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         MazeCam.SetActive(false);
         skipText.SetActive(false);
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
+        GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalk;
+        GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRun;
     }
 
     void SkipScene()
@@ -40,5 +50,6 @@ public class MazeCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         MazeCam.SetActive(false);
         skipText.SetActive(false);
+        
     }
 }

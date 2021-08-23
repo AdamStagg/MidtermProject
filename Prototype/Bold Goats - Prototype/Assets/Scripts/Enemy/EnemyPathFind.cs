@@ -112,8 +112,6 @@ namespace Enemy
            
             SceneTransitionManager.Instance.LoadScene("LOSE CONDITION");
 
-            //Debug.Log("Player had died");
-
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
@@ -149,6 +147,7 @@ namespace Enemy
 
                     Vector3 playerPos = GameManager.Instance.Player.transform.position;
 
+                    aiEnemy.speed = 4.5f;
                     aiEnemy.destination = playerPos;
 
                     playerPos = new Vector3(playerPos.x, playerPos.y + 1, playerPos.z);
@@ -194,14 +193,14 @@ namespace Enemy
                         FunctionAfterLookingAround[] func = { GoToNextPoint, ResumeNavigation };
                         aiEnemy.isStopped = true;
                         StartCoroutine(LookAround(func, 3, 90, .25f));
-                        //GoToNextPoint();
+                        
                     }
 
                     break;
                 case States.Return:
 
                     lookingAround = false;
-
+                    aiEnemy.speed = 3;
                     //Enemy has reached the last position
                     if (aiEnemy.remainingDistance <= 1.0f && !aiEnemy.pathPending)
                     {

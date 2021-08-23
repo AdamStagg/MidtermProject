@@ -34,10 +34,6 @@ public class CameraMovement : MonoBehaviour
     private RaycastHit _CameraHit;
     private Vector3 _CameraDistance;
 
-    // Camera Clamp Variables 
-    private float Clamp = 0.0f;
-    public float ClampAngle = 80f;
-
     private void Start()
     {
         _CameraDistance = CameraFollow.transform.localPosition;
@@ -54,8 +50,6 @@ public class CameraMovement : MonoBehaviour
     {
         if (character != null)
         {
-            // Camera Clamp
-            Clamp = Mathf.Clamp(Clamp, -ClampAngle, ClampAngle);
 
             CameraCenter.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + yoffset, character.transform.position.z);
 
