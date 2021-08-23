@@ -29012,7 +29012,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 116.45001, y: -22.990005}
-  m_SizeDelta: {x: 232.09, y: 45.51}
+  m_SizeDelta: {x: 218.37, y: 45.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938560292
 MonoBehaviour:
@@ -48387,6 +48387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fede988d2670153489fb900bcc349fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 938560290}
 --- !u!1 &1552354776
 GameObject:
   m_ObjectHideFlags: 0
@@ -49507,7 +49508,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 116.45001, y: -22.990005}
-  m_SizeDelta: {x: 232.09, y: 45.51}
+  m_SizeDelta: {x: 455.11, y: 45.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591269585
 MonoBehaviour:
@@ -60244,7 +60245,7 @@ MonoBehaviour:
   doorsToOpen:
   - {fileID: 1528651800}
   - {fileID: 969286572}
-  textToDisplay: {fileID: 0}
+  textToDisplay: {fileID: 1591269583}
   timeToDisplayText: 0
   door1: {fileID: 1528651800}
   door2: {fileID: 969286572}

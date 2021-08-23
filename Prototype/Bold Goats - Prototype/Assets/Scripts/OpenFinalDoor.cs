@@ -7,7 +7,7 @@ public class OpenFinalDoor : MonoBehaviour
 {
     public GameObject[] doorsToOpen;
 
-    public Text textToDisplay;
+    public GameObject textToDisplay;
     public int timeToDisplayText;
 
     public GameObject door1;
@@ -39,7 +39,7 @@ public class OpenFinalDoor : MonoBehaviour
             {
                 //display text saying to get all 3 keys
 
-                textToDisplay.enabled = true;
+                textToDisplay.SetActive(true);
 
                 float time = Time.time + timeToDisplayText;
 
@@ -48,7 +48,7 @@ public class OpenFinalDoor : MonoBehaviour
                     continue;
                 }
 
-                textToDisplay.enabled = false;
+                textToDisplay.SetActive(false);
             }
         }
     }

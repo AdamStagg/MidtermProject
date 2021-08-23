@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class KillBox : MonoBehaviour
 {
+    public GameObject text;
     void OnTriggerEnter(Collider collider) 
     {
         if (collider.tag == "Player") 
@@ -11,8 +12,7 @@ public partial class KillBox : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
-
-            GameObject text = GameObject.Find("WATERDEATHTEXT");
+            
             text.SetActive(true);
             StartCoroutine(WaitSomeTime(2f));
             //SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
