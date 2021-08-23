@@ -4351,7 +4351,6 @@ GameObject:
   m_Component:
   - component: {fileID: 125702676}
   - component: {fileID: 125702679}
-  - component: {fileID: 125702678}
   - component: {fileID: 125702680}
   m_Layer: 0
   m_Name: Win Room Camera
@@ -4374,14 +4373,6 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &125702678
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125702675}
-  m_Enabled: 1
 --- !u!20 &125702679
 Camera:
   m_ObjectHideFlags: 0
@@ -15376,7 +15367,6 @@ GameObject:
   m_Component:
   - component: {fileID: 511950625}
   - component: {fileID: 511950628}
-  - component: {fileID: 511950627}
   - component: {fileID: 511950629}
   m_Layer: 0
   m_Name: Lazer Maze Camera
@@ -15399,14 +15389,6 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &511950627
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511950624}
-  m_Enabled: 1
 --- !u!20 &511950628
 Camera:
   m_ObjectHideFlags: 0
@@ -26169,9 +26151,9 @@ MonoBehaviour:
   textToDisplay: {fileID: 624844675}
   timeToDisplayText: 2
   uiPanel: {fileID: 0}
-  cutsceneCam: {fileID: 1422129766}
-  cameraToTurnOff: {fileID: 1476674416}
-  cutsceneLength: 8.25
+  cutsceneCam: {fileID: 0}
+  cameraToTurnOff: {fileID: 0}
+  cutsceneLength: 0
 --- !u!65 &862188040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26200,7 +26182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 863847685}
   - component: {fileID: 863847688}
-  - component: {fileID: 863847687}
   - component: {fileID: 863847686}
   m_Layer: 0
   m_Name: Terminal 1 Cutscene
@@ -26239,14 +26220,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!81 &863847687
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863847684}
-  m_Enabled: 1
 --- !u!20 &863847688
 Camera:
   m_ObjectHideFlags: 0
@@ -31289,7 +31262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1006571990}
   - component: {fileID: 1006571993}
-  - component: {fileID: 1006571992}
   - component: {fileID: 1006571991}
   m_Layer: 0
   m_Name: Terminal 2 Cutscene
@@ -31328,14 +31300,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!81 &1006571992
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006571989}
-  m_Enabled: 1
 --- !u!20 &1006571993
 Camera:
   m_ObjectHideFlags: 0
@@ -33336,7 +33300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1074617009}
   - component: {fileID: 1074617012}
-  - component: {fileID: 1074617011}
   - component: {fileID: 1074617013}
   m_Layer: 0
   m_Name: Maze Camera
@@ -33359,14 +33322,6 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1074617011
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074617008}
-  m_Enabled: 1
 --- !u!20 &1074617012
 Camera:
   m_ObjectHideFlags: 0
@@ -43044,6 +42999,8 @@ MonoBehaviour:
   PlayerSpeed: 3
   StaminaTimeLimit: 6
   StaminaTimeUntilRegen: 2
+  WalkSpeed: 3
+  RunSpeed: 6
   xRayTimeUntilRegen: 2
   volume: {fileID: 776359255}
   EnemyTransform: {fileID: 0}
@@ -44271,7 +44228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1422129767}
   - component: {fileID: 1422129770}
-  - component: {fileID: 1422129769}
   - component: {fileID: 1422129768}
   m_Layer: 0
   m_Name: Terminal 3 Cutscene
@@ -44310,14 +44266,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!81 &1422129769
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422129766}
-  m_Enabled: 1
 --- !u!20 &1422129770
 Camera:
   m_ObjectHideFlags: 0
@@ -48400,7 +48348,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1552354780}
   - component: {fileID: 1552354779}
-  - component: {fileID: 1552354778}
   - component: {fileID: 1552354777}
   m_Layer: 0
   m_Name: Hallway Camera
@@ -48425,14 +48372,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!81 &1552354778
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552354776}
-  m_Enabled: 1
 --- !u!20 &1552354779
 Camera:
   m_ObjectHideFlags: 0
@@ -51765,7 +51704,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1680292383}
   - component: {fileID: 1680292386}
-  - component: {fileID: 1680292385}
   - component: {fileID: 1680292387}
   m_Layer: 0
   m_Name: Spotlight Camera
@@ -51788,14 +51726,6 @@ Transform:
   m_Father: {fileID: 875102662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1680292385
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680292382}
-  m_Enabled: 1
 --- !u!20 &1680292386
 Camera:
   m_ObjectHideFlags: 0
@@ -60874,8 +60804,8 @@ MonoBehaviour:
   timeToDisplayText: 2
   uiPanel: {fileID: 0}
   cutsceneCam: {fileID: 0}
-  cameraToTurnOff: {fileID: 1476674416}
-  cutsceneLength: 11
+  cameraToTurnOff: {fileID: 0}
+  cutsceneLength: 0
 --- !u!65 &2006727687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64907,9 +64837,9 @@ MonoBehaviour:
   textToDisplay: {fileID: 624844675}
   timeToDisplayText: 2
   uiPanel: {fileID: 0}
-  cutsceneCam: {fileID: 863847684}
-  cameraToTurnOff: {fileID: 1476674416}
-  cutsceneLength: 3
+  cutsceneCam: {fileID: 0}
+  cameraToTurnOff: {fileID: 0}
+  cutsceneLength: 0
 --- !u!4 &143921511938423571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2827686394484130195, guid: 9f144cee6c054ee47bba07d573f413bd, type: 3}
