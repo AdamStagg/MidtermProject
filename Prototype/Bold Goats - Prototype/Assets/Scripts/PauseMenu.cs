@@ -24,9 +24,11 @@ public class PauseMenu : MonoBehaviour
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string tempRes = resolutions[i].width + " x " + resolutions[i].height + " : " + resolutions[i].refreshRate;
-            res.Add(tempRes);
-
+            if (resolutions[i].width >= 854 && resolutions[i].height >= 480)
+            {
+                string tempRes = resolutions[i].width + " x " + resolutions[i].height + " : " + resolutions[i].refreshRate;
+                res.Add(tempRes);
+            }
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 currentRes = i;
@@ -62,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         uiForPause.SetActive(false);
         Time.timeScale = 1f;
         GameManager.Instance.isPaused = false;
+        Cursor.visible = false;
     }
 
     void Pause()
