@@ -13,7 +13,10 @@ public partial class KillBox : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerWaterDeath);
 
             GameObject text = GameObject.Find("WATERDEATHTEXT");
-            text.SetActive(true);
+            if (text != null)
+            {
+                text.SetActive(true);
+            }
             StartCoroutine(WaitSomeTime(2f));
             //SceneTransitionManager.Instance.LoadScene("LOSE_CONDITION");
         }
