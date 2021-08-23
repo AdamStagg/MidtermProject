@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [Header("XRay Shader variables")]
-    public float xrayTimeLimit = 5f;
+    public static float xrayTimeLimit = 5f;
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
@@ -189,11 +189,11 @@ public class PlayerController : MonoBehaviour
 
         Stamina = Mathf.Clamp(Stamina, 0, StaminaTimeLimit);
 
-       
 
         //Check for XRay
         if (Input.GetButton("XRay"))
         {
+        Debug.Log(xraytime);
             if (xraytime >= .1f)
             {
                 if (!hasPlayedxRay)

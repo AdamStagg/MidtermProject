@@ -21,6 +21,6 @@ public class InGameHUD : MonoBehaviour
         amountOfDistractables.sprite = xAmountOfDistractables[PlayerController.AmountOfDistractables];
 
         staminaBar.value = PlayerController.Stamina;
-        xrayBar.value = PlayerController.xraytime * 2;
+        xrayBar.value = PlayerController.xraytime / PlayerController.xrayTimeLimit;
     }
 }
