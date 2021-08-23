@@ -42814,6 +42814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb2688c83586aa4fac563a940692570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmoothDamp: 0.01
 --- !u!4 &1363827696
 Transform:
   m_ObjectHideFlags: 0
@@ -42906,7 +42907,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.86
+  m_Height: 1.7
   m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -46242,12 +46243,12 @@ MonoBehaviour:
   Sensitivity: 3
   ScrollSensitivity: 5
   ScrollDampening: 6
-  ZoomMin: 3.01
-  ZoomMax: 6.23
-  ZoomDef: 3
+  ZoomMin: 3
+  ZoomMax: 6
+  ZoomDef: 4
   ZoomDist: 0
   CollisionSens: 4
-  ClampAngle: 80
+  ClampAngle: 75
 --- !u!114 &1476674419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60701,7 +60702,7 @@ MonoBehaviour:
   textToDisplay: {fileID: 624844675}
   timeToDisplayText: 2
   uiPanel: {fileID: 0}
-  cutsceneCam: {fileID: 1006571989}
+  cutsceneCam: {fileID: 0}
   cameraToTurnOff: {fileID: 1476674416}
   cutsceneLength: 11
 --- !u!65 &2006727687

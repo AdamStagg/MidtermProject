@@ -24,6 +24,7 @@ public class HallwayCollider : MonoBehaviour
 
     IEnumerator FinishCutScene()
     {
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 0f);
         skipText.SetActive(true);
         HallwayCam.SetActive(true);
         PlayerCam.SetActive(false);
@@ -31,6 +32,7 @@ public class HallwayCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
         skipText.SetActive(false);
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
 
     }
 
@@ -40,5 +42,6 @@ public class HallwayCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
         skipText.SetActive(false);
+        Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
     }
 }
