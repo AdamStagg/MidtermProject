@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         Screen.fullScreen = true;
+
     }
 
     void Start()
@@ -62,9 +63,9 @@ public class PauseMenu : MonoBehaviour
         Camera.main.GetComponent<CameraMovement>().enabled = true;
         SoundManager.PlaySound(SoundManager.Sound.UnpauseGame);
         uiForPause.SetActive(false);
+        Cursor.visible = false;
         Time.timeScale = 1f;
         GameManager.Instance.isPaused = false;
-        Cursor.visible = false;
     }
 
     void Pause()

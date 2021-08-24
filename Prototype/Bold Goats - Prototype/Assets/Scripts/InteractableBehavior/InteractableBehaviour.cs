@@ -81,7 +81,14 @@ public class InteractableBehaviour : InteractableBase
             yield return new WaitForSecondsRealtime(timeToDisplayText);
             textToDisplay.SetActive(false);
         }
-        StartCoroutine(CameraCutscenes());
+        if (cutsceneCam != null)
+        {
+            StartCoroutine(CameraCutscenes());
+        }
+        else
+        {
+            Destroy(destroy);
+        }
     }
 
     IEnumerator CameraCutscenes()
