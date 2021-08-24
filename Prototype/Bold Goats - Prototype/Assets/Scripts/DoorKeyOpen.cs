@@ -11,10 +11,13 @@ public class DoorKeyOpen : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collided");
-        Destroy(this.gameObject);
-        Door.transform.position = Hinge.position;
-        UI.SetActive(true);
+        if (other.CompareTag("Player")) 
+        {
+            Debug.Log("collided");
+            Destroy(this.gameObject);
+            Door.transform.position = Hinge.position;
+            UI.SetActive(true);
+        }
     }
 
    

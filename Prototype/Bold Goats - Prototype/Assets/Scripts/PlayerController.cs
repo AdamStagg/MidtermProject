@@ -83,7 +83,9 @@ public class PlayerController : MonoBehaviour
             volume.profile.TryGetSettings(out filmGrain);
         }
         GameManager.Instance.keyCards = 0;
-        
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
@@ -112,7 +114,6 @@ public class PlayerController : MonoBehaviour
         CheckGrounded();
        
         ///////////Player movement (Left, Right, Forward, Bacward)///////////
-
         Vector3 Move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if ((Controller.velocity.x > 0f && Controller.velocity.x < 2f) || (Controller.velocity.z > 0f && Controller.velocity.z < 2f)) 
         {
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
         
         
         ///////////Player Run///////////
-        if (Input.GetButton("Run"))
+        if (Controller.velocity.magnitude > 0 && Input.GetButton("Run"))
         {
             
             if (Stamina >= .1f)
@@ -293,11 +294,11 @@ public class PlayerController : MonoBehaviour
     ///Distractions
     void CreateDistractable()
     {
-        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1.5f, GameManager.Instance.Player.transform.position.z + 1f);
+        Vector3 DistractableSpawn = new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 1.5f, GameManager.Instance.Player.transform.position.z + .5f) ;
         GameObject clone = Instantiate(Distractable, DistractableSpawn, transform.rotation);
         SoundManager.PlaySound(SoundManager.Sound.PlayerThrowDistractable);
         AmountOfDistractables -= 1;
-        Destroy(clone, 10);
+        Destroy(clone, 3);
     }
 
     

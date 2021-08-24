@@ -36,7 +36,8 @@ public class OpenFinalDoor : MonoBehaviour
                     //door.GetComponent<Animator>().SetTrigger("Open");
                 }
 
-            } else
+            } 
+            else
             {
                 //display text saying to get all 3 keys
 
