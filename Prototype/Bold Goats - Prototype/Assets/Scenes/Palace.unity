@@ -29437,7 +29437,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904761040}
-  - component: {fileID: 904761041}
   m_Layer: 0
   m_Name: Camera Center
   m_TagString: MainCamera
@@ -29460,20 +29459,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &904761041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904761039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dea5e0eb3b28014088c5dc5aec676dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RestrictMinAngle: -25
-  RestrictMaxAngle: 70
 --- !u!1001 &908143771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36257,7 +36242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4412443289511220449, guid: b077c87f59f978049911e42d74415659, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.805267
+      value: -19.805298
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b077c87f59f978049911e42d74415659, type: 3}
@@ -48741,10 +48726,10 @@ MonoBehaviour:
   Sensitivity: 3
   ScrollSensitivity: 5
   ScrollDampening: 6
-  ZoomMin: 3
-  ZoomMax: 5
+  ZoomMin: 2
+  ZoomMax: 4
   ZoomDef: 3
-  ZoomDist: 0
+  ZoomDist: 2
   CollisionSens: 4
 --- !u!114 &1476674419
 MonoBehaviour:
@@ -57192,6 +57177,7 @@ GameObject:
   - component: {fileID: 1765085866}
   - component: {fileID: 1765085865}
   - component: {fileID: 1765085864}
+  - component: {fileID: 1765085868}
   m_Layer: 0
   m_Name: Hallway Collision
   m_TagString: Untagged
@@ -57290,6 +57276,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765085862}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1765085868
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765085862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 415dfca2024675544985ae1dc457fce2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1765379846
 PrefabInstance:
   m_ObjectHideFlags: 0

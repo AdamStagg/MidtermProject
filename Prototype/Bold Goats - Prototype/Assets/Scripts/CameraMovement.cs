@@ -53,7 +53,7 @@ public class CameraMovement : MonoBehaviour
 
             CameraCenter.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + yoffset, character.transform.position.z);
 
-            var rotation = Quaternion.Euler(CameraCenter.transform.rotation.eulerAngles.x - Input.GetAxis("Mouse Y") * Sensitivity / 2, CameraCenter.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
+            var rotation = Quaternion.Euler(Mathf.Clamp(CameraCenter.transform.rotation.eulerAngles.x - Input.GetAxis("Mouse Y") * Sensitivity / 2, 0, 70), CameraCenter.transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity, CameraCenter.transform.rotation.eulerAngles.z);
 
             CameraCenter.transform.rotation = rotation;
 

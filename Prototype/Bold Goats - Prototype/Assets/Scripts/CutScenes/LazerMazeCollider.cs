@@ -38,6 +38,7 @@ public class LazerMazeCollider : MonoBehaviour
         skipText.SetActive(true);
         LazerMazeCam.SetActive(true);
         PlayerCam.SetActive(false);
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = false;
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         LazerMazeCam.SetActive(false);
@@ -45,6 +46,7 @@ public class LazerMazeCollider : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initalWalkSpeed;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initalRunSpeed;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
     }
 
     void SkipScene()
@@ -53,6 +55,7 @@ public class LazerMazeCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         LazerMazeCam.SetActive(false);
         skipText.SetActive(false);
-        
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
+
     }
 }

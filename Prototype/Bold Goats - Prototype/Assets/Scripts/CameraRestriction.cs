@@ -12,10 +12,10 @@ public class CameraRestriction : MonoBehaviour
     {
         Vector3 Rotation = gameObject.transform.localEulerAngles;
 
-        if (Rotation.x < RestrictMinAngle)
-        {
-            gameObject.transform.localEulerAngles = new Vector3(RestrictMinAngle, Rotation.y, Rotation.z);
-        }
+        //if (Rotation.x < RestrictMinAngle)
+        //{
+        //    gameObject.transform.localEulerAngles = new Vector3(RestrictMinAngle, Rotation.y, Rotation.z);
+        //}
 
         if (Rotation.x > RestrictMaxAngle)
         {

@@ -38,6 +38,7 @@ public class SpotlightCollision : MonoBehaviour
         skipText.SetActive(true);
         SpotlightCam.SetActive(true);
         PlayerCam.SetActive(false);
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = false;
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         SpotlightCam.SetActive(false);
@@ -45,6 +46,7 @@ public class SpotlightCollision : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalking;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunning;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
     }
 
     void SkipScene()
@@ -53,6 +55,7 @@ public class SpotlightCollision : MonoBehaviour
         PlayerCam.SetActive(true);
         SpotlightCam.SetActive(false);
         skipText.SetActive(false);
-        
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
+
     }
 }

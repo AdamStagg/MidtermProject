@@ -37,6 +37,7 @@ public class WinRoomCollider : MonoBehaviour
         skipText.SetActive(true);
         WinRoomCam.SetActive(true);
         PlayerCam.SetActive(false);
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = false;
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
@@ -44,6 +45,7 @@ public class WinRoomCollider : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initalWalking;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initalRunning;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
     }
 
     void SkipScene()
@@ -52,6 +54,7 @@ public class WinRoomCollider : MonoBehaviour
         PlayerCam.SetActive(true);
         WinRoomCam.SetActive(false);
         skipText.SetActive(false);
-       
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
+
     }
 }

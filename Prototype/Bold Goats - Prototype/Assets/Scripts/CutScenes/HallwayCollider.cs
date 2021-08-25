@@ -22,7 +22,7 @@ public class HallwayCollider : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
-
+            
             StartCoroutine(FinishCutScene());
         }
     }
@@ -34,9 +34,10 @@ public class HallwayCollider : MonoBehaviour
         initRunSpeed = GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed;
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = 0f;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = 0f;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = false;
         skipText.SetActive(true);
         HallwayCam.SetActive(true);
-        PlayerCam.SetActive(false);
+        PlayerCam.SetActive(false);      
         yield return new WaitForSeconds(8);
         PlayerCam.SetActive(true);
         HallwayCam.SetActive(false);
@@ -44,6 +45,7 @@ public class HallwayCollider : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalkSpeed;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunSpeed;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
     }
 
     void SkipScene()
@@ -55,6 +57,7 @@ public class HallwayCollider : MonoBehaviour
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
         GameManager.Instance.Player.GetComponent<PlayerController>().WalkSpeed = initWalkSpeed;
         GameManager.Instance.Player.GetComponent<PlayerController>().RunSpeed = initRunSpeed;
+        GameManager.Instance.Player.GetComponentInChildren<Animator>().enabled = true;
 
     }
 }

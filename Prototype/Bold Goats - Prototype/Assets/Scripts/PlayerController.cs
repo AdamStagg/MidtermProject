@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     ///////////Basic Player Movement///////////
     public Transform PlayerTransform;
+    private Animator Ninja;
     private CharacterController Controller;
     private Vector3 PlayerVelocity; 
     private bool GroundedPlayer;
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Controller = GetComponent<CharacterController>();
+        Ninja = GetComponentInChildren<Animator>();
         Shader.SetGlobalFloat("_GlobalPlayerVisibility", 1f);
 
         if (volume != null)
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
             if (Stamina >= .1f)
             {
                 Running = true;
+                Ninja.Play("Running");
                 PlayerSpeed = RunSpeed;
                 Walking = false;
                 Stamina -= Time.deltaTime;
