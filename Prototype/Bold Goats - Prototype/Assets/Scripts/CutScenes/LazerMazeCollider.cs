@@ -20,9 +20,12 @@ public class LazerMazeCollider : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        if (other.CompareTag("Player")) 
+        {
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
 
-        StartCoroutine(FinishCutScene());
+            StartCoroutine(FinishCutScene());
+        }
     }
 
     IEnumerator FinishCutScene()

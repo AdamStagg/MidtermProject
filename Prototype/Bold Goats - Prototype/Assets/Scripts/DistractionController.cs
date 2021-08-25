@@ -21,15 +21,14 @@ public class DistractionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
-        foreach (EnemyState enemy in enemies)
-        {
-            EnemyPathFind enemypf = enemy.GetComponent<EnemyPathFind>();
-            enemypf.SetInvestigatePosition(transform);
-            enemypf.lookingAround = false;
-            enemypf.StopAllCoroutines();
-            enemypf.ResumeNavigation();
-            enemy.InvokeInvestigate();
-        }
+
+        //foreach (EnemyState enemy in enemies)
+        //{
+        //    enemy.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+        //    enemy.InvokeInvestigate();
+        //}
+
+
         DistractableRb.isKinematic = true;
         explosion.SetActive(true);
         SoundManager.PlaySound(SoundManager.Sound.DistractionExplosion);
@@ -40,22 +39,14 @@ public class DistractionController : MonoBehaviour
     {
         if (other.transform.parent != null && other.transform.parent.tag == "Enemy")
         {
-            enemies.Add(other.transform.parent.GetComponent<EnemyState>());
+            
+            other.transform.parent.GetComponent<EnemyPathFind>().SetInvestigatePosition(transform);
+            other.transform.parent.GetComponent<EnemyState>().InvokeInvestigate();
         }
 
     }
 
-    private void LateUpdate()
-    {
-       if (explosion == null && enemies.Count >=1) 
-        {
-            for (int i = 0; i < enemies.Count; i++) 
-            {
-                enemies.Remove(enemies[i]);
-                i--;
-            }
-        }
-    }
+   
 
 
 }
