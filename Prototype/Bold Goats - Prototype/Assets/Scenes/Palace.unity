@@ -34627,7 +34627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4412443289511220449, guid: b077c87f59f978049911e42d74415659, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.805267
+      value: -19.805237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b077c87f59f978049911e42d74415659, type: 3}
@@ -43207,7 +43207,7 @@ MonoBehaviour:
   interactionInputData: {fileID: 11400000, guid: 7bad579d77697c04aa41a361b87c6336, type: 2}
   interactionData: {fileID: 11400000, guid: 36b59c83a6b20af47b693410ef415cba, type: 2}
   uiPanel: {fileID: 223538516}
-  rayDistance: 0.5
+  rayDistance: 1
   raySphereRadius: 0.3
   interactableLayer:
     serializedVersion: 2
