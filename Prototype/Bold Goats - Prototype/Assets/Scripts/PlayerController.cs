@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
             volume.profile.TryGetSettings(out filmGrain);
         }
         GameManager.Instance.keyCards = 0;
+
+        if (GameManager.Instance.KeyCardCountText != null)
+        {
+            GameManager.Instance.KeyCardCountText.text = GameManager.Instance.keyCards.ToString();
+        }
         GameManager.Instance.isPaused = false;
 
         AmountOfDistractables = 3;

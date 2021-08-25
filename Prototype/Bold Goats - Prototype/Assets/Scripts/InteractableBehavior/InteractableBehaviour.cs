@@ -69,6 +69,7 @@ public class InteractableBehaviour : InteractableBase
         }
         SoundManager.PlaySound(SoundManager.Sound.DoorOpen);
         GameManager.Instance.keyCards++;
+        GameManager.Instance.KeyCardCountText.text = GameManager.Instance.keyCards.ToString();
     }
 
     IEnumerator WaitCompletionText()
