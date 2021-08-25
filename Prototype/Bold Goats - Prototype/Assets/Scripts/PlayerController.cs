@@ -33,9 +33,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public static float xraytime = 5f;
     public float xRayTimeUntilRegen = 2f;
     private float timeSinceXray = 0;
+    bool hasPlayedxRay = false;
     public PostProcessVolume volume;
     Vignette vignette;
-    //ColorAdjustments colorAdj;
     Grain filmGrain;
 
     [Space]
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private float Angle;
     private float GroundAngle;
 
-    bool hasPlayedxRay = false;
+    
 
     private void Start()
     {
@@ -79,13 +79,14 @@ public class PlayerController : MonoBehaviour
         {
             
             volume.profile.TryGetSettings(out vignette);
-            //volume.profile.TryGet(out colorAdj);
             volume.profile.TryGetSettings(out filmGrain);
         }
         GameManager.Instance.keyCards = 0;
+        GameManager.Instance.isPaused = false;
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
+        AmountOfDistractables = 3;
+
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -103,10 +104,11 @@ public class PlayerController : MonoBehaviour
             PlayerSpeed = RunSpeed;
         }
 
-        if (WalkAudio != null)
+        /*if (WalkAudio != null)
         {
            CheckAudio();
         }
+        */
 
         ///////////Checking for Slopes///////////
         CalculateForward();
@@ -180,7 +182,7 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            //SoundManager.PlaySound(SoundManager.Sound.PlayerWalk);
+            
             Walking = true;
             Running = false;
             PlayerSpeed = WalkSpeed;
@@ -236,8 +238,7 @@ public class PlayerController : MonoBehaviour
             Shader.SetGlobalFloat("_GlobalVisibility", 0f);
             if (vignette != null)
                 vignette.intensity.value = 0f;
-            //if (colorAdj != null)
-            //    colorAdj.hueShift.value = 0;
+         
             if (filmGrain != null)
                 filmGrain.intensity.value = 0f;
 
@@ -307,7 +308,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Keycards = " + KeyCards);
     }
 
-    void CheckAudio() 
+  /*  void CheckAudio() 
     {
         if (Walking == true)
 {
@@ -332,7 +333,7 @@ public class PlayerController : MonoBehaviour
            
         }
     }
-
+    */
     void CalculateForward() 
     {
         if (GroundedPlayer == false) 
