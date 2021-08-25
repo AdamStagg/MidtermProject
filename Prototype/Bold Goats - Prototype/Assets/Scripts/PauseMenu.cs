@@ -70,6 +70,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        GameManager.Instance.Player.GetComponent<PlayerController>().UnXray();
         if (Camera.main != null) Camera.main.GetComponent<CameraMovement>().enabled = false;
         SoundManager.PlaySound(SoundManager.Sound.PauseGame);
         uiForPause.SetActive(true);

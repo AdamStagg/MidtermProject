@@ -203,56 +203,40 @@ public class PlayerController : MonoBehaviour
 
 
         //Check for XRay
-        if (Input.GetButton("XRay"))
+        if (!GameManager.Instance.isPaused)
         {
-            if (xraytime >= .1f)
+            if (Input.GetButton("XRay"))
             {
-                if (!hasPlayedxRay)
+                if (xraytime >= .1f)
                 {
-                    SoundManager.PlaySound(SoundManager.Sound.EnableXRay);
-                    hasPlayedxRay = true;
+                    if (!hasPlayedxRay)
+                    {
+                        SoundManager.PlaySound(SoundManager.Sound.EnableXRay);
+                        hasPlayedxRay = true;
+                    }
+                    Shader.SetGlobalFloat("_GlobalVisibility", 1f);
+                    //Debug.Log(vignette);
+                    if (vignette != null)
+                        vignette.intensity.value = 0.6f;
+                    //if (colorAdj != null)
+                    //    colorAdj.hueShift.value = -40;
+                    if (filmGrain != null)
+                        filmGrain.intensity.value = 0.6f;
+                    xraytime -= Time.deltaTime;
                 }
-                Shader.SetGlobalFloat("_GlobalVisibility", 1f);
-                //Debug.Log(vignette);
-                if (vignette != null)
-                    vignette.intensity.value = 0.6f;
-                //if (colorAdj != null)
-                //    colorAdj.hueShift.value = -40;
-                if (filmGrain != null)
-                    filmGrain.intensity.value = 0.6f;
-                xraytime -= Time.deltaTime;
+                else
+                {
+                    UnXray();
+                }
+                timeSinceXray = Time.time + xRayTimeUntilRegen;
             }
             else
             {
-                hasPlayedxRay = false;
-                Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-                if (vignette != null)
-                    vignette.intensity.value = 0f;
-                //if (colorAdj != null)
-                //    colorAdj.hueShift.value = 0;
-                if (filmGrain != null)
-                    filmGrain.intensity.value = 0f;
+                UnXray();
             }
-            timeSinceXray = Time.time + xRayTimeUntilRegen;
+
+            xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         }
-        else
-        {
-            hasPlayedxRay = false;
-            Shader.SetGlobalFloat("_GlobalVisibility", 0f);
-            if (vignette != null)
-                vignette.intensity.value = 0f;
-         
-            if (filmGrain != null)
-                filmGrain.intensity.value = 0f;
-
-            if (timeSinceXray <= Time.time)
-            {
-                xraytime += Time.deltaTime;
-
-            }
-        }
-
-        xraytime = Mathf.Clamp(xraytime, 0, xrayTimeLimit);
         
         
         ///////////Create Distractable///////////
@@ -289,6 +273,24 @@ public class PlayerController : MonoBehaviour
         }
         Controller.Move(PlayerVelocity * Time.deltaTime);
         
+    }
+
+    public void UnXray()
+    {
+        hasPlayedxRay = false;
+        Shader.SetGlobalFloat("_GlobalVisibility", 0f);
+        if (vignette != null)
+            vignette.intensity.value = 0f;
+        //if (colorAdj != null)
+        //    colorAdj.hueShift.value = 0;
+        if (filmGrain != null)
+            filmGrain.intensity.value = 0f;
+
+        if (timeSinceXray <= Time.time)
+        {
+            xraytime += Time.deltaTime;
+
+        }
     }
 
 
